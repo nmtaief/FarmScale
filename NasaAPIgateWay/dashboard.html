@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Field Monitor</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <style>
+    :root {
+      --bg: #f2f5ef;
+      --panel: #fff;
+      --side: #fafcf8;
+      --ink: #1c2a1f;
+      --mute: #667367;
+      --line: #e1e7dd;
+      --acc: #2d6a3e;
+      --soft: #e7f0e4;
+      --ok: #2b8a49;
+      --warn: #c47f0a;
+      --bad: #c3412d;
+      --temp: #d9661b;
+      --rain: #2b76bd;
+      --sm: #12858c;
+      --veg: #3d9a3a;
+      --shine: rgba(255, 255, 255, .7);
+      --sh: 0 1px 2px rgba(20, 40, 20, .06), 0 4px 14px rgba(20, 40, 20, .05)
+    }
+
+    [data-theme=dark] {
+      --bg: #0f140f;
+      --panel: #171e18;
+      --side: #121812;
+      --ink: #e5ece3;
+      --mute: #8e9c8e;
+      --line: #263027;
+      --acc: #86d294;
+      --soft: #1e2a1f;
+      --ok: #6fd08a;
+      --warn: #f0b04f;
+      --bad: #ff8a73;
+      --temp: #f29a57;
+      --rain: #6db3f2;
+      --sm: #4cc7cd;
+      --veg: #85d478;
+      --shine: rgba(255, 255, 255, .06);
+      --sh: 0 1px 2px #0006
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 14.5px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      color: inherit
+    }
+
+    input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--ink);
+      font: inherit
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--acc);
+      outline-offset: 2px
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 304px 1fr;
+      min-height: 100vh
+    }
+
+    aside {
+      background: var(--side);
+      border-right: 1px solid var(--line);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: auto
+    }
+
+    @media(max-width:880px) {
+      .app {
+        grid-template-columns: 1fr
+      }
+
+      aside {
+        position: static;
+        height: auto
+      }
+    }
+
+    main {
+      padding: 22px 28px 56px;
+      min-width: 0
+    }
+
+    .brand {
+      font: 700 20px Georgia, serif;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .logo {
+      width: 26px;
+      height: 26px;
+      border-radius: 50% 50% 50% 4px;
+      background: linear-gradient(135deg, var(--veg), var(--sm))
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--mute);
+      display: block;
+      margin: 0 0 3px
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 10px;
+      background: var(--panel)
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600
+    }
+
+    details>div {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px
+    }
+
+    #map {
+      height: 190px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      z-index: 0
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--acc);
+      color: var(--bg);
+      font-weight: 600;
+      transition: transform .1s
+    }
+
+    .btn:active {
+      transform: scale(.97)
+    }
+
+    .ghost {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 5px 10px;
+      color: var(--ink);
+      font-size: 13px
+    }
+
+    .ghost:hover {
+      background: var(--soft)
+    }
+
+    .mute {
+      color: var(--mute)
+    }
+
+    .loc {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      text-align: left;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel)
+    }
+
+    .loc small {
+      display: block;
+      color: var(--mute);
+      font-size: 12px
+    }
+
+    .loc:hover,
+    .loc.on {
+      border-color: var(--acc);
+      background: var(--soft)
+    }
+
+    .badge {
+      min-width: 30px;
+      text-align: center;
+      padding: 2px 7px;
+      border-radius: 99px;
+      color: #fff;
+      font-size: 13px
+    }
+
+    .ok {
+      color: var(--ok)
+    }
+
+    .warn {
+      color: var(--warn)
+    }
+
+    .bad {
+      color: var(--bad)
+    }
+
+    .badge.ok {
+      background: var(--ok)
+    }
+
+    .badge.warn {
+      background: var(--warn)
+    }
+
+    .badge.bad {
+      background: var(--bad)
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: flex-start
+    }
+
+    h1 {
+      font: 700 30px/1.15 Georgia, serif;
+      margin: 0
+    }
+
+    .tools {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center
+    }
+
+    .seg {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--panel)
+    }
+
+    .seg button {
+      border: 0;
+      background: none;
+      padding: 6px 12px
+    }
+
+    .seg button.on {
+      background: var(--acc);
+      color: var(--bg);
+      font-weight: 600
+    }
+
+    #chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 4px;
+      min-height: 28px
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 3px 11px;
+      border-radius: 99px;
+      font-size: 13px;
+      background: var(--panel);
+      border: 1px solid var(--line)
+    }
+
+    .chip i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--mute)
+    }
+
+    .chip.ok i {
+      background: var(--ok)
+    }
+
+    .chip.bad i {
+      background: var(--bad)
+    }
+
+    .chip.wait i {
+      background: var(--warn);
+      animation: pulse 1.1s infinite
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: .25
+      }
+    }
+
+    nav.tabs {
+      display: flex;
+      gap: 4px;
+      margin: 14px 0;
+      border-bottom: 1px solid var(--line);
+      overflow: auto
+    }
+
+    nav.tabs button {
+      border: 0;
+      background: none;
+      padding: 9px 14px;
+      color: var(--mute);
+      border-bottom: 2px solid transparent;
+      white-space: nowrap
+    }
+
+    nav.tabs button.on {
+      color: var(--ink);
+      border-color: var(--acc);
+      font-weight: 600
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--sh)
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 15px
+    }
+
+    .ch {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: flex-start
+    }
+
+    .cap {
+      margin: 2px 0 8px;
+      font-size: 13px;
+      color: var(--mute);
+      min-height: 19px
+    }
+
+    .cv {
+      position: relative;
+      height: 250px
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 14px
+    }
+
+    @media(max-width:520px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+
+      main {
+        padding: 18px 14px
+      }
+    }
+
+    .top {
+      display: grid;
+      grid-template-columns: minmax(270px, 1fr) 1.5fr;
+      gap: 14px
+    }
+
+    @media(max-width:760px) {
+      .top {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 14px 0
+    }
+
+    .kpi b {
+      display: block;
+      font: 700 28px/1.2 Georgia, serif;
+      font-variant-numeric: tabular-nums
+    }
+
+    .kpi small {
+      color: var(--mute)
+    }
+
+    .kpi:hover {
+      transform: translateY(-2px);
+      transition: transform .15s
+    }
+
+    .sp {
+      height: 30px;
+      margin-top: 8px
+    }
+
+    .sp svg {
+      width: 100%;
+      height: 100%
+    }
+
+    .gauge {
+      width: 100%;
+      max-width: 290px;
+      display: block;
+      margin: 6px auto 0
+    }
+
+    .gv {
+      text-align: center;
+      margin-top: -34px
+    }
+
+    .gv b {
+      font: 700 46px/1 Georgia, serif
+    }
+
+    .gv span {
+      display: block;
+      color: var(--mute);
+      text-transform: capitalize
+    }
+
+    .comp {
+      margin: 10px 0 0;
+      font-size: 13px
+    }
+
+    .comp div {
+      display: flex;
+      justify-content: space-between
+    }
+
+    .comp s {
+      display: block;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--line);
+      margin-top: 3px
+    }
+
+    .comp u {
+      display: block;
+      height: 100%;
+      border-radius: 3px;
+      background: var(--acc);
+      transition: width .8s
+    }
+
+    #ins {
+      list-style: none;
+      margin: 10px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 10px
+    }
+
+    #ins li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start
+    }
+
+    #ins li:before {
+      content: "";
+      flex: none;
+      width: 9px;
+      height: 9px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: currentColor
+    }
+
+    #ins span {
+      color: var(--ink)
+    }
+
+    .card.loading:after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 30%, var(--shine), transparent 70%);
+      background-size: 220% 100%;
+      animation: sh 1.3s infinite
+    }
+
+    @keyframes sh {
+      from {
+        background-position: 120% 0
+      }
+
+      to {
+        background-position: -120% 0
+      }
+    }
+
+    .card.loading .cv,
+    .card.loading b {
+      opacity: .35
+    }
+
+    #toasts {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: grid;
+      gap: 8px;
+      z-index: 9999
+    }
+
+    .toast {
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--ink);
+      color: var(--bg);
+      max-width: 340px;
+      box-shadow: var(--sh);
+      animation: in .25s
+    }
+
+    .toast.bad {
+      background: var(--bad);
+      color: #fff
+    }
+
+    @keyframes in {
+      from {
+        transform: translateY(10px);
+        opacity: 0
+      }
+    }
+
+    dialog {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--panel);
+      color: var(--ink);
+      padding: 20px;
+      width: min(380px, 92vw)
+    }
+
+    dialog::backdrop {
+      background: #0006
+    }
+
+    dialog form {
+      display: grid;
+      gap: 12px
+    }
+
+    .row {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end
+    }
+
+    [hidden] {
+      display: none !important
+    }
+
+    h4 {
+      margin: 22px 0 8px;
+      font: 600 17px Georgia, serif
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <aside>
+      <div class="brand"><span class="logo"></span>Field Monitor</div>
+      <details id="conn">
+        <summary>Connection</summary>
+        <div>
+          <div><label for="base">Server URL</label><input id="base"></div>
+          <div><label for="key">API key</label><input id="key" type="password" placeholder="ge_..."></div>
+        </div>
+      </details>
+      <div><label for="q">Search a place</label><input id="q" placeholder="Dhaka, Rajshahi, Sylhet… then Enter"></div>
+      <div id="map"></div>
+      <div class="two">
+        <div><label for="lat">Latitude</label><input id="lat" type="number" step="any"></div>
+        <div><label for="lon">Longitude</label><input id="lon" type="number" step="any"></div>
+      </div>
+      <button class="btn" id="go">Analyze this location</button>
+      <div><label>Saved locations</label>
+        <div id="locs"></div><button class="ghost" id="save" style="width:100%">Save current location</button>
+      </div>
+    </aside>
+
+    <main>
+      <header>
+        <div>
+          <h1 id="title">Field conditions</h1>
+          <div class="mute" id="coords">Click the map or search for a place to begin.</div>
+        </div>
+        <div class="tools">
+          <div class="seg" id="range" aria-label="Time range"><button data-r="1">1Y</button><button
+              data-r="3">3Y</button><button data-r="5">5Y</button><button data-r="all">All</button></div>
+          <button class="ghost" id="refresh" title="Skip the cache and refetch">Refresh</button>
+          <button class="ghost" id="del" hidden>Delete</button>
+          <button class="ghost" id="themeBtn" aria-label="Toggle theme">Theme</button>
+        </div>
+      </header>
+      <div id="chips"></div>
+      <nav class="tabs" id="tabs"><button data-tab="overview">Overview</button><button
+          data-tab="weather">Weather</button><button data-tab="soil">Soil</button><button
+          data-tab="sat">Satellite</button><button data-tab="hist">History</button></nav>
+
+      <section id="p-overview">
+        <div class="top">
+          <div class="card" data-sec="weather">
+            <h3>Water stress</h3>
+            <div id="stress"></div>
+          </div>
+          <div class="card">
+            <h3>What stands out</h3>
+            <ul id="ins"></ul>
+          </div>
+        </div>
+        <div class="kpis" id="kpis"></div>
+      </section>
+      <section id="p-weather" hidden>
+        <div class="grid" id="g-weather"></div>
+      </section>
+      <section id="p-soil" hidden>
+        <div class="kpis" id="soilTiles"></div>
+        <div class="grid" id="g-soil"></div>
+      </section>
+      <section id="p-sat" hidden>
+        <h4 style="margin-top:0">Soil moisture (SMAP)</h4>
+        <div class="grid" id="g-smap"></div>
+        <h4>Crop greenness (MODIS)</h4>
+        <div class="grid" id="g-veg"></div>
+      </section>
+      <section id="p-hist" hidden>
+        <div class="grid" id="g-hist"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="dlg">
+    <form method="dialog">
+      <h3 style="margin:0">Save location</h3>
+      <p class="mute" style="margin:0">Saved locations refresh automatically and build a stress history.</p>
+      <input id="locName" placeholder="e.g. North field" required maxlength="80">
+      <div class="row"><button class="ghost" value="cancel" formnovalidate>Cancel</button><button class="btn"
+          value="ok">Save</button></div>
+    </form>
+  </dialog>
+  <div id="toasts"></div>
+
+  <script>
+    const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+    const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const mean = a => a.reduce((x, y) => x + y, 0) / a.length, f = (v, d = 1) => v == null ? '–' : (+v).toFixed(d);
+    const LS = { get: k => { try { return localStorage.getItem('de_' + k) || '' } catch { return '' } }, set: (k, v) => { try { localStorage.setItem('de_' + k, v) } catch { } } };
+    const S = { w: null, soil: null, smap: null, veg: null, stress: null, hist: null, range: LS.get('range') || '3', locs: [], cur: null, run: 0 };
+    const charts = {}, timers = {}, chipS = {}, busy = new Set(), lastCache = {};
+    const NAMES = { weather: 'Weather', soil: 'Soil', smap: 'Soil moisture', veg: 'Greenness' };
+    const lvl = s => s < 35 ? 'ok' : s < 60 ? 'warn' : 'bad';
+    const dim = r => new Date(+r.date.slice(0, 4), +r.date.slice(4), 0).getDate();
+    const ymd = r => r.date.length === 6 ? r.date.slice(0, 4) + '-' + r.date.slice(4) + '-01' : r.date;
+    function cut(rows) { if (S.range === 'all') return rows; const d = new Date(); d.setFullYear(d.getFullYear() - S.range); const c = d.toISOString().slice(0, 10); return rows.filter(r => ymd(r) >= c) }
+    function lin(x, y) { const mx = mean(x), my = mean(y), m = x.reduce((a, v, i) => a + (v - mx) * (y[i] - my), 0) / x.reduce((a, v) => a + (v - mx) ** 2, 0); return { m, b: my - m * mx } }
+    function ann(rows) {
+      const by = {}; rows.forEach(r => (by[r.date.slice(0, 4)] = by[r.date.slice(0, 4)] || []).push(r));
+      const ys = Object.keys(by).sort().filter(y => by[y].length === 12 && by[y].every(r => r.T2M != null && r.PRECTOTCORR != null)); if (ys.length < 3) return null;
+      const x = ys.map(Number), t = ys.map(y => mean(by[y].map(r => r.T2M))), p = ys.map(y => by[y].reduce((s, r) => s + r.PRECTOTCORR * dim(r), 0)); return { ys, x, t, p, lt: lin(x, t), lr: lin(x, p) }
+    }
+    function toast(t, c) { const e = document.createElement('div'); e.className = 'toast ' + (c || ''); e.textContent = t; $('#toasts').append(e); setTimeout(() => e.remove(), 5000) }
+
+    /* ---------- charts ---------- */
+    function theme(t) {
+      document.documentElement.dataset.theme = t; LS.set('theme', t); if (typeof Chart === 'undefined') return;
+      const d = Chart.defaults; d.color = css('--mute'); d.borderColor = css('--line'); d.responsive = true; d.maintainAspectRatio = false; d.animation.duration = 500;
+      d.font.family = 'ui-sans-serif,system-ui,sans-serif'; d.plugins.tooltip.padding = 10; d.plugins.legend.labels.usePointStyle = true; d.plugins.legend.labels.boxWidth = 8; renderAll()
+    }
+    function draw(id, cfg) { const el = $('#' + id); if (!el || typeof Chart === 'undefined') return; if (charts[id]) charts[id].destroy(); charts[id] = new Chart(el, cfg) }
+    const ds = (label, data, c, x) => ({ label, data, borderColor: c, backgroundColor: c, borderWidth: 1.6, pointRadius: 0, tension: .25, spanGaps: true, ...x });
+    const opts = (yt, y) => ({ interaction: { mode: 'index', intersect: false }, scales: { x: { ticks: { maxTicksLimit: 8 }, grid: { display: false } }, y: { title: { display: !!yt, text: yt || '' }, ...(y || {}) } } });
+    const nolegend = { legend: { display: false } };
+    const zc = a => a.map(v => v == null ? 'transparent' : v <= -1 ? css('--bad') : v >= 1 ? css('--ok') : css('--mute'));
+    const spark = (a, c) => {
+      a = a.filter(x => x != null); if (a.length < 2) return ''; const lo = Math.min(...a), hi = Math.max(...a), n = a.length;
+      return `<svg viewBox="0 0 100 28" preserveAspectRatio="none"><polyline fill="none" stroke="${c}" stroke-width="1.8" vector-effect="non-scaling-stroke" points="${a.map((x, i) => (i / (n - 1) * 100).toFixed(1) + ',' + (26 - (hi === lo ? 12 : (x - lo) / (hi - lo) * 24)).toFixed(1)).join(' ')}"/></svg>`
+    };
+
+    /* ---------- panels ---------- */
+    const CARDS = {
+      weather: [['cTemp', 'Temperature', 'Monthly mean with daily max and min (°C)', 'w'], ['cRain', 'Rainfall', 'Total per month (mm)', 'w'], ['cAnnT', 'Temperature trend', '', 'w'], ['cAnnR', 'Rainfall trend', '', 'w'], ['cWet', 'Modeled soil wetness', '0 dry, 1 saturated (NASA POWER model)', 'w']],
+      soil: [['cPh', 'pH by depth', '6 to 7 suits most crops'], ['cSoc', 'Organic carbon by depth', 'Above 20 g/kg is good for cropland'], ['cTex', 'Texture by depth', 'Sand, silt and clay (%)']],
+      smap: [['cSm', 'Root-zone soil moisture', 'Daily mean (m³/m³) against the typical value', 's'], ['cSmZ', 'Moisture anomaly', 'Below −1σ is drier than usual', 's']],
+      veg: [['cNd', 'NDVI and EVI', '16-day composites against the typical NDVI', 'v'], ['cNdZ', 'Greenness anomaly', 'Below −1σ is browner than usual', 'v']],
+      hist: [['cHist', 'Water stress history', 'Save the location to start recording snapshots']]
+    };
+    const card = (sec, [id, t, cap, csv]) => `<div class="card" data-sec="${sec}"><div class="ch"><div><h3>${t}</h3><p class="cap" id="cap_${id}">${cap}</p></div>${csv ? `<button class="ghost" data-csv="${csv}">CSV</button>` : ''}</div><div class="cv"><canvas id="${id}"></canvas></div></div>`;
+    Object.entries(CARDS).forEach(([s, l]) => $('#g-' + s).innerHTML = l.map(c => card(s, c)).join(''));
+    function load(sec, on) { on ? busy.add(sec) : busy.delete(sec); $$(`[data-sec=${sec}]`).forEach(e => e.classList.toggle('loading', on)) }
+    function tab(t) { LS.set('tab', t); $$('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === t)); $$('main>section').forEach(s => s.hidden = s.id !== 'p-' + t); Object.values(charts).forEach(c => c.resize()) }
+    function setRange(r) { S.range = r; LS.set('range', r); $$('#range button').forEach(b => b.classList.toggle('on', b.dataset.r === String(r))); renderWeather(); renderSmap(); renderVeg() }
+    function chip(id, state, text, t0) { chipS[id] = { state, text, t0 }; renderChips() }
+    function renderChips() { $('#chips').innerHTML = Object.values(chipS).map(c => { let t = c.text; if (c.t0 && c.state === 'wait') { const s = Math.round((Date.now() - c.t0) / 1000); t += ` · ${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}` } return `<span class="chip ${c.state}"><i></i>${esc(t)}</span>` }).join('') }
+
+    /* ---------- renderers ---------- */
+    function renderAll() { renderWeather(); renderSoil(); renderSmap(); renderVeg(); renderOverview(); renderHist() }
+    function renderOverview() { renderKpis(); renderStress(); renderInsights() }
+    function renderWeather() {
+      const rows = S.w; if (!rows) return; const v = cut(rows), lab = v.map(r => r.date.slice(0, 4) + '-' + r.date.slice(4));
+      draw('cTemp', { type: 'line', data: { labels: lab, datasets: [ds('Mean', v.map(r => r.T2M), css('--temp'), { borderWidth: 2.2 }), ds('Max', v.map(r => r.T2M_MAX), css('--temp'), { borderDash: [4, 3], borderWidth: 1 }), ds('Min', v.map(r => r.T2M_MIN), css('--rain'), { borderDash: [4, 3], borderWidth: 1 })] }, options: opts('°C') });
+      draw('cRain', { type: 'bar', data: { labels: lab, datasets: [{ label: 'Rainfall (mm)', data: v.map(r => r.PRECTOTCORR == null ? null : +(r.PRECTOTCORR * dim(r)).toFixed(1)), backgroundColor: css('--rain'), borderRadius: 3 }] }, options: { ...opts('mm'), plugins: nolegend } });
+      draw('cWet', { type: 'line', data: { labels: lab, datasets: [ds('Root zone', v.map(r => r.GWETROOT), css('--sm'), { borderWidth: 2 }), ds('Surface', v.map(r => r.GWETTOP), css('--veg'))] }, options: opts('index', { min: 0, max: 1 }) });
+      const a = ann(rows);
+      if (a) {
+        const sh = a.ys.length < 8 ? ' (short record)' : '';
+        $('#cap_cAnnT').textContent = `${a.lt.m >= 0 ? '+' : ''}${a.lt.m.toFixed(3)} °C per year, ${a.ys[0]} to ${a.ys.at(-1)}${sh}`;
+        $('#cap_cAnnR').textContent = `${a.lr.m >= 0 ? '+' : ''}${a.lr.m.toFixed(1)} mm per year (${(a.lr.m * 10 / mean(a.p) * 100).toFixed(1)}% per decade)${sh}`;
+        draw('cAnnT', { type: 'line', data: { labels: a.ys, datasets: [ds('Annual mean', a.t, css('--temp'), { pointRadius: 3 }), ds('Trend', a.x.map(x => a.lt.m * x + a.lt.b), css('--ink'), { borderDash: [6, 4], borderWidth: 1.5 })] }, options: opts('°C') });
+        draw('cAnnR', { type: 'bar', data: { labels: a.ys, datasets: [{ label: 'Annual rainfall (mm)', data: a.p.map(Math.round), backgroundColor: css('--rain'), borderRadius: 4 }, { type: 'line', label: 'Trend', data: a.x.map(x => Math.round(a.lr.m * x + a.lr.b)), borderColor: css('--ink'), borderDash: [6, 4], borderWidth: 1.5, pointRadius: 0 }] }, options: opts('mm') })
+      }
+      else $('#cap_cAnnT').textContent = $('#cap_cAnnR').textContent = 'Needs at least 3 complete years of data'
+    }
+    function renderSoil() {
+      const s = S.soil; if (!s) return; const D = ['0-5cm', '5-15cm', '15-30cm', '30-60cm'], g = k => D.map(d => s[k] && s[k].depths[d]);
+      const bar = (id, l, d, c) => draw(id, { type: 'bar', data: { labels: D, datasets: [{ label: l, data: d, backgroundColor: c, borderRadius: 6 }] }, options: { ...opts(), plugins: nolegend } });
+      bar('cPh', 'pH', g('phh2o'), css('--temp')); bar('cSoc', 'Organic carbon', g('soc'), css('--veg'));
+      draw('cTex', { type: 'bar', data: { labels: D, datasets: [['sand', 'Sand', '--temp'], ['silt', 'Silt', '--mute'], ['clay', 'Clay', '--rain']].map(([k, n, c]) => ({ label: n, data: g(k), backgroundColor: css(c) })) }, options: { interaction: { mode: 'index' }, scales: { x: { stacked: true, grid: { display: false } }, y: { stacked: true, max: 100 } } } });
+      const ph = s.phh2o && s.phh2o.rootzone_0_60cm_weighted, oc = s.soc && s.soc.rootzone_0_60cm_weighted;
+      $('#soilTiles').innerHTML = [['Root-zone pH', f(ph, 1), ph == null ? '' : ph < 5.5 ? 'Acidic' : ph > 8 ? 'Alkaline' : ph <= 7.5 ? 'Suitable for most crops' : 'Slightly alkaline'], ['Root-zone organic carbon', f(oc, 1) + ' g/kg', oc == null ? '' : oc < 10 ? 'Low' : oc < 20 ? 'Moderate' : 'Good']].map(([l, v, n]) => `<div class="card kpi"><span class="mute">${l}</span><b>${v}</b><small>${n}</small></div>`).join('')
+    }
+    function renderSmap() {
+      const d = S.smap; if (!d) return; const s = cut(d.series), lab = s.map(r => r.date), z = s.map(r => r.sm_rootzone_z);
+      draw('cSm', { type: 'line', data: { labels: lab, datasets: [ds('Soil moisture', s.map(r => r.sm_rootzone), css('--sm'), { borderWidth: 1.5 }), ds('Typical', s.map(r => r.sm_rootzone_mean), css('--ink'), { borderDash: [5, 4], borderWidth: 1 })] }, options: opts('m³/m³') });
+      draw('cSmZ', { type: 'bar', data: { labels: lab, datasets: [{ label: 'z-score', data: z, backgroundColor: zc(z) }] }, options: { ...opts('σ'), plugins: nolegend } })
+    }
+    function renderVeg() {
+      const d = S.veg; if (!d) return; const s = cut(d.series), lab = s.map(r => r.date), z = s.map(r => r.ndvi_z);
+      draw('cNd', { type: 'line', data: { labels: lab, datasets: [ds('NDVI', s.map(r => r.ndvi), css('--veg'), { borderWidth: 2 }), ds('EVI', s.map(r => r.evi), css('--sm'), { borderWidth: 1 }), ds('Typical NDVI', s.map(r => r.ndvi_mean), css('--ink'), { borderDash: [5, 4], borderWidth: 1 })] }, options: opts('index', { min: 0 }) });
+      draw('cNdZ', { type: 'bar', data: { labels: lab, datasets: [{ label: 'z-score', data: z, backgroundColor: zc(z) }] }, options: { ...opts('σ'), plugins: nolegend } })
+    }
+    function renderHist() {
+      const h = S.hist; if (charts.cHist) { charts.cHist.destroy(); delete charts.cHist }
+      if (!S.cur) { $('#cap_cHist').textContent = 'Save the location to start recording snapshots'; return }
+      if (!h) { return } $('#cap_cHist').textContent = h.length < 2 ? h.length + ' snapshot so far. More are added every few hours and when you press Refresh.' : h.length + ' snapshots';
+      draw('cHist', { type: 'line', data: { labels: h.map(r => r.date), datasets: [ds('Water stress', h.map(r => r.score), css('--bad'), { borderWidth: 2, pointRadius: 3 })] }, options: { ...opts('score', { min: 0, max: 100 }), plugins: nolegend } })
+    }
+    function renderKpis() {
+      const w = S.w || [], a = w.length ? ann(w) : null, last = [...w].reverse().find(r => r.T2M != null), r12 = w.slice(-12);
+      const rain = r12.length === 12 && r12.every(r => r.PRECTOTCORR != null) ? r12.reduce((s, r) => s + r.PRECTOTCORR * dim(r), 0) : null, avg = a ? mean(a.p) : null, sm = S.smap && S.smap.latest, nv = S.veg && S.veg.latest;
+      const k = [['weather', 'Temperature', last ? f(last.T2M) + ' °C' : '–', a ? `${a.lt.m >= 0 ? '+' : ''}${a.lt.m.toFixed(2)} °C per year` : '', spark(w.slice(-36).map(r => r.T2M), css('--temp'))],
+      ['weather', 'Rainfall, last 12 months', rain != null ? Math.round(rain) + ' mm' : '–', rain != null && avg ? `${((rain / avg - 1) * 100).toFixed(0)}% vs an average year` : '', spark(w.slice(-36).map(r => r.PRECTOTCORR == null ? null : r.PRECTOTCORR * dim(r)), css('--rain'))],
+      ['smap', 'Soil moisture', sm ? f(sm.sm_rootzone, 3) : '–', sm && sm.sm_rootzone_pctl != null ? `${Math.round(sm.sm_rootzone_pctl)}th percentile for the season` : '', S.smap ? spark(S.smap.series.slice(-120).map(r => r.sm_rootzone), css('--sm')) : ''],
+      ['veg', 'Greenness (NDVI)', nv ? f(nv.ndvi, 2) : '–', nv && nv.ndvi_vci != null ? `Condition index ${Math.round(nv.ndvi_vci)} of 100` : '', S.veg ? spark(S.veg.series.slice(-40).map(r => r.ndvi), css('--veg')) : '']];
+      $('#kpis').innerHTML = k.map(([s, l, v, sub, sp]) => `<div class="card kpi" data-sec="${s}"><span class="mute">${l}</span><b>${v}</b><small>${sub}</small><div class="sp">${sp}</div></div>`).join('');
+      busy.forEach(s => $$(`#kpis [data-sec=${s}]`).forEach(e => e.classList.add('loading')))
+    }
+    const NM = { root_zone_wetness_model: 'Modeled root-zone dryness', soil_moisture_smap: 'Soil moisture dryness (SMAP)', vegetation_ndvi: 'Greenness shortfall (NDVI)' };
+    function renderStress() {
+      const w = S.stress, el = $('#stress'); if (!w) { el.innerHTML = '<p class="mute">Waiting for enough data to score water stress…</p>'; return }
+      const ang = -90 + w.score * 1.8;
+      el.innerHTML = `<svg viewBox="0 0 200 112" class="gauge"><defs><linearGradient id="gg"><stop offset="0" stop-color="var(--ok)"/><stop offset=".55" stop-color="var(--warn)"/><stop offset="1" stop-color="var(--bad)"/></linearGradient></defs><path d="M20 100A80 80 0 0 1 180 100" fill="none" stroke="var(--line)" stroke-width="14" stroke-linecap="round"/><path d="M20 100A80 80 0 0 1 180 100" fill="none" stroke="url(#gg)" stroke-width="14" stroke-linecap="round" opacity=".9"/><g id="needle" style="transform:rotate(-90deg);transform-origin:100px 100px;transition:transform .9s cubic-bezier(.3,1.35,.5,1)"><path d="M100 100V36" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/></g><circle cx="100" cy="100" r="7" fill="var(--ink)"/></svg>
+ <div class="gv"><b class="${lvl(w.score)}">${Math.round(w.score)}</b><span>${w.level} water stress</span></div>
+ ${Object.entries(w.components).map(([k, v]) => `<div class="comp"><div><span>${NM[k] || k}</span><b>${Math.round(v)}</b></div><s><u style="width:${Math.max(0, Math.min(100, v))}%"></u></s></div>`).join('')}`;
+      requestAnimationFrame(() => requestAnimationFrame(() => { const n = $('#needle'); if (n) n.style.transform = `rotate(${ang}deg)` }))
+    }
+    function renderInsights() {
+      const a = [], w = S.w && ann(S.w), sm = S.smap && S.smap.latest, nv = S.veg && S.veg.latest, s = S.soil, ph = s && s.phh2o && s.phh2o.rootzone_0_60cm_weighted, oc = s && s.soc && s.soc.rootzone_0_60cm_weighted;
+      if (S.stress) a.push([lvl(S.stress.score), `Water stress is ${S.stress.level} (${Math.round(S.stress.score)} of 100), averaged over the signals available.`]);
+      if (sm && sm.sm_rootzone_pctl != null) a.push([sm.sm_rootzone_pctl < 20 ? 'bad' : sm.sm_rootzone_pctl < 40 ? 'warn' : 'ok', `Root-zone soil moisture is at the ${Math.round(sm.sm_rootzone_pctl)}th percentile for this time of year.`]);
+      if (nv && nv.ndvi_z != null) a.push([nv.ndvi_z <= -1 ? 'bad' : nv.ndvi_z >= 1 ? 'ok' : 'warn', `Crop greenness is ${Math.abs(nv.ndvi_z).toFixed(1)}σ ${nv.ndvi_z < 0 ? 'below' : 'above'} normal for the season.`]);
+      if (w) a.push(['warn', `Temperature is trending ${w.lt.m >= 0 ? 'up' : 'down'} by ${Math.abs(w.lt.m).toFixed(2)} °C per year; annual rainfall by ${(w.lr.m * 10 / mean(w.p) * 100).toFixed(1)}% per decade.`]);
+      if (ph != null) a.push([ph < 5.5 || ph > 8 ? 'bad' : 'ok', `Root-zone soil pH is ${ph.toFixed(1)}${oc != null ? ` with ${oc.toFixed(1)} g/kg organic carbon (${oc < 10 ? 'low' : oc < 20 ? 'moderate' : 'good'})` : ''}.`]);
+      $('#ins').innerHTML = a.length ? a.map(([c, t]) => `<li class="${c}"><span>${esc(t)}</span></li>`).join('') : '<li class="mute"><span>Insights appear as data arrives.</span></li>'
+    }
+
+    /* ---------- API ---------- */
+    async function api(path, params, opt) {
+      const base = $('#base').value.replace(/\/$/, ''), qs = new URLSearchParams({ lat: $('#lat').value, lon: $('#lon').value, ...(params || {}) }); let r;
+      try { r = await fetch(`${base}${path}?${qs}`, { ...opt, headers: { 'X-API-Key': $('#key').value, ...((opt && opt.headers) || {}) } }) } catch { throw new Error('Cannot reach the server at ' + base) }
+      const j = await r.json().catch(() => ({})), xc = r.headers.get('X-Cache'); lastCache[path] = xc === 'HIT' ? ' · cached' : '';
+      if (!r.ok) { const d = j.detail || j.error; throw new Error(r.status === 401 ? 'The API key was rejected.' : typeof d === 'string' ? d : 'Request failed (' + r.status + ')') } return j
+    }
+    async function loadWeather(run, force) { try { const j = await api('/v1/weather', { start: new Date().getFullYear() - 20, ...(force ? { refresh: 'true' } : {}) }); if (run !== S.run) return; S.w = j.data; load('weather', false); chip('weather', 'ok', 'Weather' + lastCache['/v1/weather']); renderWeather(); renderOverview() } catch (e) { load('weather', false); chip('weather', 'bad', 'Weather failed'); toast(e.message, 'bad') } }
+    async function loadSoil(run, force) { try { const j = await api('/v1/soil', force ? { refresh: 'true' } : {}); if (run !== S.run) return; S.soil = j.soil; load('soil', false); chip('soil', 'ok', 'Soil' + lastCache['/v1/soil']); renderSoil(); renderInsights() } catch (e) { load('soil', false); chip('soil', 'bad', 'Soil failed'); toast(e.message, 'bad') } }
+    async function loadStress(run) { try { const j = await api('/v1/field-profile'); if (run !== S.run) return; S.stress = j.water_stress; renderOverview() } catch { } }
+    async function loadHist(run) { if (!S.cur) { S.hist = null; renderHist(); return } try { const j = await api(`/v1/locations/${S.cur.id}/history`); if (run !== S.run) return; S.hist = j.history; renderHist() } catch { } }
+    function poll(kind, path, run, render) {
+      const t0 = Date.now(), tick = async () => {
+        try {
+          const j = await api(path); if (run !== S.run) return;
+          if (j.status === 'done' && j.data) { S[kind] = j.data; load(kind, false); chip(kind, 'ok', NAMES[kind]); render(); renderOverview(); loadStress(run) }
+          else if (j.status === 'failed') { load(kind, false); chip(kind, 'bad', NAMES[kind] + ' failed'); toast(j.error || 'The satellite job failed', 'bad') }
+          else { chip(kind, 'wait', `${NAMES[kind]} · NASA ${j.status}`, t0); timers[kind] = setTimeout(tick, 15000) }
+        } catch (e) { load(kind, false); chip(kind, 'bad', NAMES[kind] + ' error'); toast(e.message, 'bad') }
+      }; tick()
+    }
+    async function loadAll(force) {
+      if (!$('#key').value) { toast('Enter your API key under Connection first.', 'bad'); $('#conn').open = true; return }
+      const lat = +$('#lat').value, lon = +$('#lon').value; if (isNaN(lat) || isNaN(lon) || $('#lat').value === '') { toast('Enter valid coordinates.', 'bad'); return }
+      ['base', 'key', 'lat', 'lon'].forEach(k => LS.set(k, $('#' + k).value)); Object.values(timers).forEach(clearTimeout);
+      const run = ++S.run; S.w = S.soil = S.smap = S.veg = S.stress = S.hist = null; Object.keys(chipS).forEach(k => delete chipS[k]);
+      $('#title').textContent = S.cur ? S.cur.name : 'Selected location'; $('#coords').textContent = `${lat.toFixed(4)}, ${lon.toFixed(4)}`; $('#del').hidden = !S.cur;
+      Object.keys(NAMES).forEach(s => { load(s, true); chip(s, 'wait', NAMES[s]) }); renderOverview();
+      loadWeather(run, force).then(() => loadStress(run)); loadSoil(run, force); poll('smap', '/v1/smap', run, renderSmap); poll('veg', '/v1/vegetation', run, renderVeg); loadHist(run)
+    }
+
+    /* ---------- map, search, saved locations ---------- */
+    let map, pin, mk;
+    function initMap() {
+      if (typeof L === 'undefined') { $('#map').innerHTML = '<p class="mute" style="padding:12px">The map needs an internet connection.</p>'; return }
+      map = L.map('map').setView([+$('#lat').value, +$('#lon').value], 6); L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '© OpenStreetMap' }).addTo(map);
+      pin = L.circleMarker([+$('#lat').value, +$('#lon').value], { radius: 8, color: '#fff', weight: 2, fillColor: '#2d6a3e', fillOpacity: 1 }).addTo(map); mk = L.layerGroup().addTo(map);
+      map.on('click', e => { setPos(e.latlng.lat, e.latlng.lng); loadAll(false) }); setTimeout(() => map.invalidateSize(), 200)
+    }
+    function setPos(lat, lon, fly) { $('#lat').value = lat.toFixed(4); $('#lon').value = lon.toFixed(4); S.cur = null; if (map) { pin.setLatLng([lat, lon]); if (fly) map.flyTo([lat, lon], 8) } renderLocs() }
+    function pick(l) { setPos(l.lat, l.lon, true); S.cur = l; renderLocs(); loadAll(false) }
+    function renderLocs() {
+      $('#locs').innerHTML = S.locs.length ? S.locs.map(l => `<button class="loc ${S.cur && S.cur.id === l.id ? 'on' : ''}" data-id="${l.id}"><span>${esc(l.name)}<small>${l.lat.toFixed(2)}, ${l.lon.toFixed(2)}</small></span>${l.last_score != null ? `<b class="badge ${lvl(l.last_score)}">${Math.round(l.last_score)}</b>` : ''}</button>`).join('') : '<p class="mute" style="margin:0 0 8px">No saved locations yet.</p>';
+      if (mk) { mk.clearLayers(); S.locs.forEach(l => L.circleMarker([l.lat, l.lon], { radius: 6, weight: 1, color: '#fff', fillOpacity: 1, fillColor: l.last_score == null ? '#888' : css('--' + lvl(l.last_score)) }).bindTooltip(l.name).on('click', () => pick(l)).addTo(mk)) }
+    }
+    async function loadLocs() { if (!$('#key').value) return; try { S.locs = (await api('/v1/locations')).locations; renderLocs() } catch (e) { toast(e.message, 'bad') } }
+    $('#q').addEventListener('keydown', async e => {
+      if (e.key !== 'Enter' || !e.target.value.trim()) return;
+      try {
+        const r = await (await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(e.target.value))).json();
+        if (!r.length) return toast('Place not found.', 'bad'); setPos(+r[0].lat, +r[0].lon, true); loadAll(false)
+      } catch { toast('Search failed. Check your connection.', 'bad') }
+    });
+    $('#save').onclick = () => { if (!$('#key').value) return toast('Enter your API key first.', 'bad'); $('#locName').value = ''; $('#dlg').showModal() };
+    $('#dlg').addEventListener('close', async () => {
+      if ($('#dlg').returnValue !== 'ok') return;
+      try {
+        const l = await api('/v1/locations', {}, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: $('#locName').value.trim(), lat: +$('#lat').value, lon: +$('#lon').value }) });
+        await loadLocs(); S.cur = S.locs.find(x => x.id === l.id) || l; renderLocs(); $('#title').textContent = S.cur.name; $('#del').hidden = false; toast('Saved. This location now refreshes automatically and builds a history.'); loadHist(S.run)
+      } catch (e) { toast(e.message, 'bad') }
+    });
+    $('#del').onclick = async () => {
+      if (!S.cur || !confirm(`Delete "${S.cur.name}" and its history?`)) return;
+      try { await api('/v1/locations/' + S.cur.id, {}, { method: 'DELETE' }); S.cur = null; S.hist = null; $('#del').hidden = true; await loadLocs(); renderHist(); toast('Deleted.') } catch (e) { toast(e.message, 'bad') }
+    };
+    $('#refresh').onclick = async () => { if (S.cur) { try { toast('Refreshing from NASA and recording a snapshot…'); await api(`/v1/locations/${S.cur.id}/refresh`, {}, { method: 'POST' }); loadLocs() } catch (e) { return toast(e.message, 'bad') } } loadAll(true) };
+    $('#go').onclick = () => { const lat = +$('#lat').value, lon = +$('#lon').value; if (map && !isNaN(lat) && !isNaN(lon)) { pin.setLatLng([lat, lon]); map.flyTo([lat, lon], 8) } S.cur = null; renderLocs(); loadAll(false) };
+
+    /* ---------- misc interactions ---------- */
+    function csv(k) {
+      const rows = { w: S.w, s: S.smap && S.smap.series, v: S.veg && S.veg.series }[k]; if (!rows || !rows.length) return toast('No data to export yet.');
+      const c = Object.keys(rows[0]), t = [c.join(',')].concat(rows.map(r => c.map(x => r[x] ?? '').join(','))).join('\n'), a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([t], { type: 'text/csv' })); a.download = { w: 'weather', s: 'soil_moisture', v: 'vegetation' }[k] + '.csv'; a.click()
+    }
+    document.addEventListener('click', e => {
+      let b; if (b = e.target.closest('[data-csv]')) csv(b.dataset.csv); else if (b = e.target.closest('[data-tab]')) tab(b.dataset.tab); else if (b = e.target.closest('#range button')) setRange(b.dataset.r);
+      else if (b = e.target.closest('.loc')) { const l = S.locs.find(x => String(x.id) === b.dataset.id); if (l) pick(l) }
+    });
+    $('#themeBtn').onclick = () => theme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+    $('#key').addEventListener('change', () => { LS.set('key', $('#key').value); loadLocs() });
+
+    /* ---------- start ---------- */
+    $('#base').value = LS.get('base') || (location.protocol.startsWith('http') ? location.origin : 'http://127.0.0.1:8000');
+    $('#key').value = LS.get('key'); $('#lat').value = LS.get('lat') || '23.8103'; $('#lon').value = LS.get('lon') || '90.4125';
+    theme(LS.get('theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light'));
+    initMap(); tab(LS.get('tab') || 'overview'); setRange(S.range); renderOverview(); renderHist(); setInterval(renderChips, 1000);
+    loadLocs().then(() => { if ($('#key').value) loadAll(false) });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Engine Tester</title>
+<style>
+:root{--bg:#f2f5f1;--card:#fff;--ink:#1b2a28;--mute:#5d6e6a;--line:#d5ddd8;--acc:#0e6b5c;--acc-ink:#fff;--ok:#1a7f4b;--bad:#b3261e;--wait:#a15c07;--code:#0f1c1a;--code-ink:#d7efe8}
+@media(prefers-color-scheme:dark){:root{--bg:#101716;--card:#182321;--ink:#e3eeea;--mute:#8fa39d;--line:#2b3b38;--acc:#3fbfa6;--acc-ink:#07201b;--ok:#4ed08c;--bad:#ff8a80;--wait:#f0b45a;--code:#0a1110;--code-ink:#cfe9e1}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{padding:20px 24px 4px}
+h1{margin:0;font-size:22px;letter-spacing:-.01em}
+header p{margin:2px 0 0;color:var(--mute)}
+.wrap{display:grid;grid-template-columns:260px 1fr;gap:16px;padding:16px 24px 40px;max-width:1200px}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px}
+.conn{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 24px 0;max-width:1152px}
+label{display:block;font-size:13px;color:var(--mute);margin-bottom:3px}
+input[type=text],input[type=password],input[type=number]{width:100%;padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:inherit}
+input:focus,button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+nav button{display:flex;justify-content:space-between;width:100%;text-align:left;padding:8px 10px;margin:0 0 4px;border:1px solid transparent;border-radius:6px;background:none;color:var(--ink);font:inherit;cursor:pointer}
+nav button:hover{background:var(--bg)}
+nav button[aria-current=true]{background:var(--acc);color:var(--acc-ink)}
+nav small{opacity:.7;font-family:ui-monospace,Menlo,Consolas,monospace}
+nav h3{margin:12px 0 6px;font-size:13px;color:var(--mute);font-weight:600}
+.btn{padding:8px 14px;border:0;border-radius:6px;background:var(--acc);color:var(--acc-ink);font:inherit;font-weight:600;cursor:pointer}
+.btn.sec{background:none;color:var(--ink);border:1px solid var(--line);font-weight:500}
+.btn:disabled{opacity:.5;cursor:wait}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:10px 0}
+.row>div{flex:1 1 150px}
+.meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:10px 0 6px;font-size:13px;color:var(--mute)}
+.chip{padding:2px 9px;border-radius:99px;font-weight:700;font-size:13px;border:1px solid currentColor}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.wait{color:var(--wait)}
+pre{margin:0;padding:12px;background:var(--code);color:var(--code-ink);border-radius:6px;max-height:460px;overflow:auto;font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word}
+.url{font:12px ui-monospace,Menlo,Consolas,monospace;color:var(--mute);word-break:break-all}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--mute);font-weight:600}
+h2{font-size:16px;margin:0 0 4px}
+.hint{color:var(--mute);font-size:13px;margin:0}
+</style>
+</head>
+<body>
+<header>
+  <h1>Data Engine Tester</h1>
+  <p>Call every endpoint with your API key and see the raw response.</p>
+</header>
+
+<div class="conn">
+  <div><label for="base">Server URL</label><input type="text" id="base"></div>
+  <div><label for="key">API key (X-API-Key)</label><input type="password" id="key" placeholder="ge_..."></div>
+  <div><label for="admin">Admin key (only for key management)</label><input type="password" id="admin"></div>
+  <div><label for="lat">Latitude</label><input type="number" id="lat" step="any" value="23.8103"></div>
+  <div><label for="lon">Longitude</label><input type="number" id="lon" step="any" value="90.4125"></div>
+</div>
+
+<div class="wrap">
+  <nav class="box" id="nav" aria-label="Endpoints"></nav>
+  <main>
+    <section class="box" id="panel"></section>
+    <section class="box" style="margin-top:16px">
+      <h2>Smoke test</h2>
+      <p class="hint">Runs every data endpoint once with the location above. Soil can take 12+ seconds, and satellite endpoints return a pending job on first call (that counts as a pass).</p>
+      <div class="row"><button class="btn" id="runAll">Run all tests</button></div>
+      <table id="results" hidden><thead><tr><th>Endpoint</th><th>Result</th><th>Time</th><th>Note</th></tr></thead><tbody></tbody></table>
+    </section>
+  </main>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const EPS = [
+  {g:'Data', id:'weather', name:'Weather', p:'/v1/weather', loc:1, q:[['temporal','monthly'],['start',''],['end','']]},
+  {g:'Data', id:'soil', name:'Soil', p:'/v1/soil', loc:1},
+  {g:'Data', id:'smap', name:'Soil moisture', p:'/v1/smap', loc:1, q:[['start',''],['end',''],['include_series','false']]},
+  {g:'Data', id:'veg', name:'Vegetation', p:'/v1/vegetation', loc:1, q:[['start',''],['end',''],['include_series','false']]},
+  {g:'Data', id:'profile', name:'Field profile', p:'/v1/field-profile', loc:1},
+  {g:'Data', id:'job', name:'Job status', p:'/v1/jobs/{job_id}', q:[['job_id',''],['include_series','false']]},
+  {g:'Account', id:'usage', name:'My usage', p:'/v1/usage'},
+  {g:'Account', id:'layers', name:'Product layers', p:'/v1/meta/layers/{product}', q:[['product','MOD13Q1.061']]},
+  {g:'Account', id:'health', name:'Health', p:'/health', noauth:1},
+  {g:'Storage', id:'locs', name:'Saved locations', p:'/v1/locations'},
+  {g:'Storage', id:'locadd', name:'Save a location', m:'POST', p:'/v1/locations', body:[['name','my-farm'],['lat','23.8103'],['lon','90.4125']]},
+  {g:'Storage', id:'hist', name:'Location history', p:'/v1/locations/{id}/history', q:[['id','1']]},
+  {g:'Storage', id:'locref', name:'Refresh + snapshot', m:'POST', p:'/v1/locations/{id}/refresh', q:[['id','1']]},
+  {g:'Storage', id:'cstats', name:'Cache stats', p:'/v1/cache/stats'},
+  {g:'Admin', id:'cclear', name:'Clear cache', m:'DELETE', p:'/admin/cache', admin:1, q:[['prefix',''],['jobs','false']]},
+  {g:'Admin', id:'mk', name:'Create API key', m:'POST', p:'/admin/keys', admin:1, body:[['name','my-app'],['rpm','60']]},
+  {g:'Admin', id:'ls', name:'List API keys', p:'/admin/keys', admin:1},
+];
+let cur = EPS[0], timer = null;
+
+function store(k, v){ try{ if(v===undefined) return localStorage.getItem(k)||''; localStorage.setItem(k,v);}catch{ return ''; } }
+$('#base').value = store('de_base') || (location.protocol.startsWith('http') ? location.origin : 'http://127.0.0.1:8000');
+$('#key').value = store('de_key'); $('#admin').value = store('de_admin');
+['base','key','admin'].forEach(id => $('#'+id).addEventListener('change', e => store('de_'+id, e.target.value)));
+
+function renderNav(){
+  let html = '', g = '';
+  EPS.forEach(e => {
+    if(e.g !== g){ g = e.g; html += `<h3>${g}</h3>`; }
+    html += `<button data-id="${e.id}" aria-current="${e===cur}">${e.name}<small>${e.m||'GET'}</small></button>`;
+  });
+  $('#nav').innerHTML = html;
+  $('#nav').querySelectorAll('button').forEach(b => b.onclick = () => { cur = EPS.find(x => x.id === b.dataset.id); clearTimeout(timer); renderNav(); renderPanel(); });
+}
+
+function renderPanel(){
+  const f = [...(cur.q||[]), ...(cur.body||[])];
+  $('#panel').innerHTML = `
+    <h2>${cur.name}</h2><p class="url">${cur.m||'GET'} ${cur.p}</p>
+    <div class="row">${f.map(([k,v]) => `<div><label for="f_${k}">${k}</label><input type="text" id="f_${k}" value="${v}"></div>`).join('')}</div>
+    <div class="row"><button class="btn" id="go">Send request</button>
+      <label style="margin:0"><input type="checkbox" id="poll"> Auto-poll every 15s while a job is pending</label></div>
+    <div class="meta" id="meta"></div><pre id="out">Press "Send request".</pre>`;
+  $('#go').onclick = () => runPanel();
+}
+
+function vals(){ const o = {}; [...(cur.q||[]), ...(cur.body||[])].forEach(([k]) => o[k] = $('#f_'+k).value.trim()); return o; }
+
+async function call(ep, v){
+  const base = $('#base').value.replace(/\/$/, '');
+  let path = ep.p; const qs = new URLSearchParams();
+  if(ep.loc){ qs.set('lat', $('#lat').value); qs.set('lon', $('#lon').value); }
+  (ep.q||[]).forEach(([k]) => {
+    if(path.includes('{'+k+'}')) path = path.replace('{'+k+'}', encodeURIComponent(v[k]||''));
+    else if(v[k] !== '') qs.set(k, v[k]);
+  });
+  const h = {};
+  if(ep.admin) h['X-Admin-Key'] = $('#admin').value; else if(!ep.noauth) h['X-API-Key'] = $('#key').value;
+  const opt = {method: ep.m||'GET', headers: h};
+  if(ep.body){ h['Content-Type'] = 'application/json'; const b = {}; ep.body.forEach(([k]) => b[k] = (k==='rpm'||k==='lat'||k==='lon') ? +v[k] : v[k]); opt.body = JSON.stringify(b); }
+  const url = base + path + (qs.toString() ? '?' + qs : '');
+  const t = performance.now();
+  try{
+    const r = await fetch(url, opt); const txt = await r.text(); const xc = r.headers.get('X-Cache'); let json; try{ json = JSON.parse(txt); }catch{ json = txt; }
+    return {status:r.status, ms:Math.round(performance.now()-t), json, url, cache:xc};
+  }catch(e){
+    return {status:0, ms:Math.round(performance.now()-t), json:{error:'Could not reach the server. Check the Server URL and that it is running (CORS must allow this page).', detail:String(e)}, url};
+  }
+}
+
+const pending = j => /"status":\s*"(pending|processing|queued)"/.test(JSON.stringify(j));
+
+async function runPanel(){
+  const btn = $('#go'); btn.disabled = true; clearTimeout(timer);
+  const res = await call(cur, vals());
+  btn.disabled = false;
+  const cls = res.status>=200 && res.status<300 ? 'ok' : 'bad';
+  $('#meta').innerHTML = `<span class="chip ${cls}">${res.status||'ERR'}</span><span>${res.ms} ms</span>` +
+    (res.cache ? `<span class="chip ${res.cache==='HIT'?'ok':'wait'}">cache ${res.cache}</span>` : '') + (pending(res.json) ? '<span class="chip wait">job pending</span>' : '') + `<span class="url">${res.url}</span>`;
+  $('#out').textContent = typeof res.json === 'string' ? res.json : JSON.stringify(res.json, null, 2);
+  if(cur.id === 'mk' && res.json.api_key){ $('#key').value = res.json.api_key; store('de_key', res.json.api_key); $('#meta').innerHTML += '<span class="ok">Key copied into the API key field.</span>'; }
+  if(res.json && res.json.job_id && cur.id !== 'job'){ const jf = EPS.find(e => e.id === 'job'); jf.q[0][1] = res.json.job_id; }
+  if($('#poll').checked && pending(res.json)) timer = setTimeout(runPanel, 15000);
+}
+
+$('#runAll').onclick = async () => {
+  const tb = $('#results tbody'); $('#results').hidden = false; tb.innerHTML = ''; $('#runAll').disabled = true;
+  const plan = [['health'],['usage'],['weather'],['soil'],['smap'],['veg'],['profile']];
+  for(const [id] of plan){
+    const ep = EPS.find(e => e.id === id), v = {};
+    [...(ep.q||[])].forEach(([k, d]) => v[k] = d);
+    const tr = document.createElement('tr'); tr.innerHTML = `<td>${ep.name}</td><td class="wait">running…</td><td></td><td></td>`; tb.appendChild(tr);
+    const r = await call(ep, v);
+    const okay = r.status === 200, pend = okay && pending(r.json);
+    const note = !okay ? (r.json.error || r.json.detail || '') : pend ? 'Job submitted; poll again for data' : '';
+    tr.innerHTML = `<td>${ep.name}</td><td class="${okay?(pend?'wait':'ok'):'bad'}">${okay?(pend?'200 pending':'200 pass'):(r.status||'ERR')+' fail'}</td><td>${r.ms} ms</td><td></td>`;
+    tr.lastElementChild.textContent = String(note).slice(0, 160);
+  }
+  $('#runAll').disabled = false;
+};
+
+renderNav(); renderPanel();
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crop Gateway Tester</title>
+<style>
+:root{--bg:#f3f5ef;--card:#fff;--ink:#1c2a1f;--mute:#667367;--line:#dde4d8;--acc:#2d6a3e;--ink2:#fff;--ok:#2b8a49;--warn:#b5750a;--bad:#c3412d;--code:#101c14;--codeink:#d6efdc}
+@media(prefers-color-scheme:dark){:root{--bg:#0f140f;--card:#171e18;--ink:#e5ece3;--mute:#8e9c8e;--line:#263027;--acc:#7fcf8c;--ink2:#0d1f10;--ok:#6fd08a;--warn:#f0b04f;--bad:#ff8a73;--code:#0a100b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{padding:20px 24px 0}h1{margin:0;font:700 24px Georgia,serif}header p{margin:2px 0 0;color:var(--mute)}
+label{display:block;font-size:12.5px;color:var(--mute);margin-bottom:3px}
+input{width:100%;padding:8px 9px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--ink);font:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+.conn{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 24px 0;max-width:1180px}
+.wrap{display:grid;grid-template-columns:230px 1fr;gap:16px;padding:16px 24px 40px;max-width:1228px}
+@media(max-width:800px){.wrap{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+nav button{display:block;width:100%;text-align:left;padding:8px 10px;margin-bottom:4px;border:0;border-radius:7px;background:none;color:var(--ink);font:inherit;cursor:pointer}
+nav button:hover{background:var(--bg)}nav button.on{background:var(--acc);color:var(--ink2)}
+nav h3{margin:12px 0 5px;font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:10px 0}.row>div{flex:1 1 130px}
+.btn{padding:8px 14px;border:0;border-radius:7px;background:var(--acc);color:var(--ink2);font:inherit;font-weight:600;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:wait}
+.meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0;font-size:13px;color:var(--mute)}
+.chip{padding:2px 9px;border-radius:99px;font-weight:700;border:1px solid currentColor}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+pre{margin:0;padding:12px;background:var(--code);color:var(--codeink);border-radius:7px;max-height:420px;overflow:auto;font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line)}th{color:var(--mute);font-weight:600}
+.bar{height:8px;border-radius:4px;background:var(--line);min-width:90px}.bar i{display:block;height:100%;border-radius:4px;background:var(--acc)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:10px 0}
+.tile{border:1px solid var(--line);border-radius:9px;padding:10px 12px}.tile b{display:block;font:700 22px Georgia,serif}.tile span{font-size:13px;color:var(--mute)}
+h2{font-size:17px;margin:0 0 2px}.hint{color:var(--mute);font-size:13px;margin:0}
+</style>
+</head>
+<body>
+<header><h1>Crop Gateway Tester</h1><p>Crop suitability, water and nutrient needs, and soil impact for any location.</p></header>
+<div class="conn">
+  <div><label for="base">Server URL</label><input id="base"></div>
+  <div><label for="key">API key</label><input id="key" type="password" placeholder="cg_..."></div>
+  <div><label for="admin">Admin key</label><input id="admin" type="password"></div>
+  <div><label for="lat">Latitude</label><input id="lat" type="number" step="any" value="23.8103"></div>
+  <div><label for="lon">Longitude</label><input id="lon" type="number" step="any" value="90.4125"></div>
+</div>
+<datalist id="crops"></datalist>
+<div class="wrap">
+  <nav class="box" id="nav" aria-label="Endpoints"></nav>
+  <main>
+    <section class="box" id="panel"></section>
+    <section class="box" style="margin-top:16px">
+      <h2>Smoke test</h2><p class="hint">Calls every analysis endpoint once with the location above. The first call for a new location also fetches NASA and SoilGrids data and can take 15 seconds.</p>
+      <div class="row"><button class="btn" id="runAll">Run all tests</button></div>
+      <table id="results" hidden><thead><tr><th>Endpoint</th><th>Result</th><th>Time</th><th>Note</th></tr></thead><tbody></tbody></table>
+    </section>
+  </main>
+</div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const SOIL=[['ph',''],['soc',''],['n',''],['sand',''],['silt',''],['clay','']];
+const EPS=[
+ {g:'Crops',id:'crops',name:'Crop list',p:'/v1/crops',q:[['category',''],['q','']]},
+ {g:'Crops',id:'crop',name:'Crop profile',p:'/v1/crops/{crop}',q:[['crop','rice']]},
+ {g:'Location',id:'loc',name:'Location data',p:'/v1/location',loc:1,soil:1},
+ {g:'Analysis',id:'plan',name:'Full plan',p:'/v1/plan',loc:1,soil:1,q:[['crop','rice'],['planting_month',''],['area_ha','1'],['yield_t_ha',''],['irrigated','false']]},
+ {g:'Analysis',id:'suit',name:'Suitability ranking',p:'/v1/suitability',loc:1,soil:1,q:[['category',''],['irrigated','false'],['limit','15']]},
+ {g:'Analysis',id:'water',name:'Water needs',p:'/v1/water',loc:1,soil:1,q:[['crop','rice'],['planting_month',''],['area_ha','1'],['efficiency','0.6']]},
+ {g:'Analysis',id:'nut',name:'Nutrition',p:'/v1/nutrition',loc:1,soil:1,q:[['crop','rice'],['yield_t_ha',''],['area_ha','1']]},
+ {g:'Analysis',id:'imp',name:'Soil impact',p:'/v1/soil-impact',loc:1,soil:1,q:[['crop','rice'],['yield_t_ha',''],['irrigated','false']]},
+ {g:'Account',id:'usage',name:'My usage',p:'/v1/usage'},
+ {g:'Account',id:'health',name:'Health',p:'/health',noauth:1},
+ {g:'Admin',id:'mk',name:'Create API key',m:'POST',p:'/admin/keys',admin:1,body:[['name','my-app'],['rpm','60']]},
+ {g:'Admin',id:'ls',name:'List API keys',p:'/admin/keys',admin:1}];
+let cur=EPS[3];
+const LS={get:k=>{try{return localStorage.getItem('cg_'+k)||''}catch{return ''}},set:(k,v)=>{try{localStorage.setItem('cg_'+k,v)}catch{}}};
+$('#base').value=LS.get('base')||(location.protocol.startsWith('http')?location.origin:'http://127.0.0.1:8100');$('#key').value=LS.get('key');$('#admin').value=LS.get('admin');
+['base','key','admin'].forEach(k=>$('#'+k).addEventListener('change',()=>{LS.set(k,$('#'+k).value);if(k==='key'||k==='base')loadCrops()}));
+
+function nav(){let h='',g='';EPS.forEach(e=>{if(e.g!==g){g=e.g;h+=`<h3>${g}</h3>`}h+=`<button data-id="${e.id}" class="${e===cur?'on':''}">${e.name}</button>`});$('#nav').innerHTML=h;
+ $('#nav').querySelectorAll('button').forEach(b=>b.onclick=()=>{cur=EPS.find(x=>x.id===b.dataset.id);nav();panel()})}
+const fields=e=>[...(e.q||[]),...(e.body||[]),...(e.soil?SOIL:[])];
+function panel(){const f=fields(cur);
+ $('#panel').innerHTML=`<h2>${cur.name}</h2><p class="hint">${cur.m||'GET'} ${cur.p}${cur.soil?' · optional soil test values below override satellite soil data (sand, silt, clay in %; soc and n in g/kg)':''}</p>
+ <div class="row">${f.map(([k,v])=>`<div><label for="f_${k}">${k}</label><input id="f_${k}" value="${v}" ${k==='crop'?'list="crops"':''}></div>`).join('')}</div>
+ <div class="row"><div style="flex:0 0 auto"><button class="btn" id="go">Send request</button></div></div><div class="meta" id="meta"></div><div id="sum"></div><pre id="out">Press "Send request".</pre>`;
+ $('#go').onclick=run}
+async function call(ep,v){const base=$('#base').value.replace(/\/$/,'');let path=ep.p;const qs=new URLSearchParams();
+ if(ep.loc){qs.set('lat',$('#lat').value);qs.set('lon',$('#lon').value)}
+ [...(ep.q||[]),...(ep.soil?SOIL:[])].forEach(([k])=>{if(path.includes('{'+k+'}'))path=path.replace('{'+k+'}',encodeURIComponent(v[k]));else if(v[k]!=='')qs.set(k,v[k])});
+ const h={};if(ep.admin)h['X-Admin-Key']=$('#admin').value;else if(!ep.noauth)h['X-API-Key']=$('#key').value;
+ const o={method:ep.m||'GET',headers:h};if(ep.body){h['Content-Type']='application/json';const b={};ep.body.forEach(([k])=>b[k]=k==='rpm'?+v[k]:v[k]);o.body=JSON.stringify(b)}
+ const url=base+path+(qs.toString()?'?'+qs:''),t=performance.now();
+ try{const r=await fetch(url,o),txt=await r.text();let j;try{j=JSON.parse(txt)}catch{j=txt}return{status:r.status,ms:Math.round(performance.now()-t),json:j,url}}
+ catch(e){return{status:0,ms:Math.round(performance.now()-t),json:{error:'Could not reach the server. Check the Server URL and that it is running.'},url}}}
+const defaults=ep=>{const v={};fields(ep).forEach(([k,d])=>v[k]=d);return v};
+const vals=()=>{const v={};fields(cur).forEach(([k])=>v[k]=$('#f_'+k).value.trim());return v};
+function summary(id,j){if(!j||typeof j!=='object')return'';
+ if(id==='suit'&&j.results)return `<table><thead><tr><th>Crop</th><th>Fit</th><th>Score</th><th>Class</th><th>Best start</th></tr></thead><tbody>${j.results.map(r=>`<tr><td>${esc(r.name)}</td><td><div class="bar"><i style="width:${r.score}%"></i></div></td><td>${r.score}</td><td>${r.class}</td><td>${r.best_planting_month_name}</td></tr>`).join('')}</tbody></table>`;
+ if(id==='plan'&&j.water){const s=j.suitability,w=j.water,n=j.nutrition,p=n.fertilizer_products_kg_ha,i=j.soil_impact;
+  return `<div class="tiles"><div class="tile"><b>${s.score} · ${s.class}</b><span>Suitability, best start ${s.planting_windows[0].month_name}</span></div>
+  <div class="tile"><b>${w.net_irrigation_mm} mm</b><span>Net irrigation · ${w.for_area_m3.net} m³ for ${w.area_ha} ha</span></div>
+  <div class="tile"><b>${p.urea} / ${p.tsp} / ${p.mop}</b><span>Urea / TSP / MOP, kg per ha</span></div>
+  <div class="tile"><b>${i.depletion.level}</b><span>Soil nutrient depletion (${i.depletion.score}/100)</span></div></div>`}
+ return''}
+function show(res,id){const ok=res.status>=200&&res.status<300;
+ $('#meta').innerHTML=`<span class="chip ${ok?'ok':'bad'}">${res.status||'ERR'}</span><span>${res.ms} ms</span><span style="word-break:break-all">${esc(res.url)}</span>`;
+ $('#sum').innerHTML=ok?summary(id,res.json):'';$('#out').textContent=typeof res.json==='string'?res.json:JSON.stringify(res.json,null,2);
+ if(id==='mk'&&res.json.api_key){$('#key').value=res.json.api_key;LS.set('key',res.json.api_key);$('#meta').innerHTML+='<span class="ok">Key copied into the API key field.</span>'}}
+async function run(){const b=$('#go');b.disabled=true;const res=await call(cur,vals());b.disabled=false;show(res,cur.id)}
+async function loadCrops(){if(!$('#key').value)return;const r=await call(EPS[0],{category:'',q:''});
+ if(r.status===200)$('#crops').innerHTML=r.json.crops.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('')}
+$('#runAll').onclick=async()=>{const tb=$('#results tbody');$('#results').hidden=false;tb.innerHTML='';$('#runAll').disabled=true;
+ for(const id of ['health','usage','crops','crop','loc','suit','water','nut','imp','plan']){const ep=EPS.find(e=>e.id===id),tr=document.createElement('tr');
+  tr.innerHTML=`<td>${ep.name}</td><td class="warn">running…</td><td></td><td></td>`;tb.appendChild(tr);const r=await call(ep,defaults(ep)),ok=r.status===200,w=ok&&r.json.warnings&&r.json.warnings[0];
+  tr.innerHTML=`<td>${ep.name}</td><td class="${ok?(w?'warn':'ok'):'bad'}">${ok?'200 pass':(r.status||'ERR')+' fail'}</td><td>${r.ms} ms</td><td></td>`;
+  tr.lastElementChild.textContent=String(!ok?(r.json.detail||r.json.error||''):(w||'')).slice(0,170)}
+ $('#runAll').disabled=false};
+nav();panel();loadCrops();
+</script>
+</body>
+</html>
