@@ -21,12 +21,142 @@ def init():
             created REAL, UNIQUE(key_id, name));
         CREATE TABLE IF NOT EXISTS snapshots(id INTEGER PRIMARY KEY, loc_id INTEGER, ts REAL, score REAL, level TEXT, payload TEXT);
         CREATE INDEX IF NOT EXISTS snap_loc ON snapshots(loc_id, ts);
+        CREATE TABLE IF NOT EXISTS climate_10years_monthly(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            area_type TEXT NOT NULL,
+            district TEXT NOT NULL,
+            area_name TEXT NOT NULL,
+            area_id TEXT,
+            lat REAL, lon REAL,
+            year_month TEXT NOT NULL,
+            year INTEGER NOT NULL,
+            month INTEGER NOT NULL,
+            temp_mean_c REAL, temp_max_c REAL, temp_min_c REAL,
+            precip_mm REAL, rootzone_wetness REAL, topsoil_wetness REAL,
+            water_stress_score REAL, water_stress_level TEXT
+        );
+        CREATE INDEX IF NOT EXISTS idx_climate_ym ON climate_10years_monthly(year_month);
+        CREATE INDEX IF NOT EXISTS idx_climate_area ON climate_10years_monthly(area_type, area_name);
+        CREATE INDEX IF NOT EXISTS idx_climate_dist ON climate_10years_monthly(district, year_month);
+
+        CREATE TABLE IF NOT EXISTS rajshahi_10years_monthly(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            area_type TEXT NOT NULL,
+            district TEXT NOT NULL,
+            area_name TEXT NOT NULL,
+            area_id TEXT,
+            lat REAL, lon REAL,
+            year_month TEXT NOT NULL,
+            year INTEGER NOT NULL,
+            month INTEGER NOT NULL,
+            temp_mean_c REAL, temp_max_c REAL, temp_min_c REAL,
+            precip_mm REAL, rootzone_wetness REAL, topsoil_wetness REAL,
+            water_stress_score REAL, water_stress_level TEXT
+        );
+        CREATE INDEX IF NOT EXISTS idx_raj_ym ON rajshahi_10years_monthly(year_month);
+        CREATE INDEX IF NOT EXISTS idx_raj_area ON rajshahi_10years_monthly(area_name);
+
+        CREATE TABLE IF NOT EXISTS bangladesh_10years_monthly(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            division TEXT NOT NULL,
+            district TEXT NOT NULL,
+            lat REAL, lon REAL,
+            year_month TEXT NOT NULL,
+            year INTEGER NOT NULL,
+            month INTEGER NOT NULL,
+            temp_mean_c REAL, temp_max_c REAL, temp_min_c REAL,
+            precip_mm REAL, rootzone_wetness REAL, topsoil_wetness REAL,
+            water_stress_score REAL, water_stress_level TEXT
+        );
+        CREATE INDEX IF NOT EXISTS idx_bd_ym ON bangladesh_10years_monthly(year_month);
+        CREATE INDEX IF NOT EXISTS idx_bd_dist ON bangladesh_10years_monthly(district, year_month);
+        CREATE INDEX IF NOT EXISTS idx_bd_div ON bangladesh_10years_monthly(division, year_month);
         """)
         try:  # upgrade databases created by the first version
             _db.execute("ALTER TABLE cache ADD COLUMN created REAL")
         except sqlite3.OperationalError:
             pass
         _db.commit()
+        try:
+            _seed_from_csv()
+        except Exception as e:
+            pass
+
+
+def _seed_from_csv():
+    import csv
+    cur = _db.cursor()
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    try:
+        c_bd = cur.execute("SELECT COUNT(*) FROM bangladesh_10years_monthly").fetchone()[0]
+    except Exception:
+        c_bd = 0
+    if c_bd == 0:
+        bd_csv = os.path.join(base_dir, "bangladesh_10years_monthly.csv")
+        if os.path.exists(bd_csv):
+            with open(bd_csv, "r", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                rows = []
+                for r in reader:
+                    rows.append((
+                        r["Division"], r["District"],
+                        float(r["Latitude"]) if r.get("Latitude") else None,
+                        float(r["Longitude"]) if r.get("Longitude") else None,
+                        r["YearMonth"], int(r["Year"]), int(r["Month"]),
+                        float(r["TempMean_C"]) if r.get("TempMean_C") else None,
+                        float(r["TempMax_C"]) if r.get("TempMax_C") else None,
+                        float(r["TempMin_C"]) if r.get("TempMin_C") else None,
+                        float(r["Precip_mm"]) if r.get("Precip_mm") else None,
+                        float(r["RootzoneWetness"]) if r.get("RootzoneWetness") else None,
+                        float(r["TopsoilWetness"]) if r.get("TopsoilWetness") else None,
+                        float(r["WaterStressScore"]) if r.get("WaterStressScore") else None,
+                        r.get("WaterStressLevel")
+                    ))
+                if rows:
+                    cur.executemany("""
+                    INSERT INTO bangladesh_10years_monthly (
+                        division, district, lat, lon, year_month, year, month,
+                        temp_mean_c, temp_max_c, temp_min_c, precip_mm,
+                        rootzone_wetness, topsoil_wetness, water_stress_score, water_stress_level
+                    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                    """, rows)
+                    _db.commit()
+
+    try:
+        c_raj = cur.execute("SELECT COUNT(*) FROM rajshahi_10years_monthly").fetchone()[0]
+    except Exception:
+        c_raj = 0
+    if c_raj == 0:
+        raj_csv = os.path.join(base_dir, "rajshahi_10years_monthly.csv")
+        if os.path.exists(raj_csv):
+            with open(raj_csv, "r", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                rows = []
+                for r in reader:
+                    rows.append((
+                        r["AreaType"], r["District"], r["AreaName"],
+                        r.get("AreaId"),
+                        float(r["Latitude"]) if r.get("Latitude") else None,
+                        float(r["Longitude"]) if r.get("Longitude") else None,
+                        r["YearMonth"], int(r["Year"]), int(r["Month"]),
+                        float(r["TempMean_C"]) if r.get("TempMean_C") else None,
+                        float(r["TempMax_C"]) if r.get("TempMax_C") else None,
+                        float(r["TempMin_C"]) if r.get("TempMin_C") else None,
+                        float(r["Precip_mm"]) if r.get("Precip_mm") else None,
+                        float(r["RootzoneWetness"]) if r.get("RootzoneWetness") else None,
+                        float(r["TopsoilWetness"]) if r.get("TopsoilWetness") else None,
+                        float(r["WaterStressScore"]) if r.get("WaterStressScore") else None,
+                        r.get("WaterStressLevel")
+                    ))
+                if rows:
+                    cur.executemany("""
+                    INSERT INTO rajshahi_10years_monthly (
+                        area_type, district, area_name, area_id, lat, lon, year_month, year, month,
+                        temp_mean_c, temp_max_c, temp_min_c, precip_mm,
+                        rootzone_wetness, topsoil_wetness, water_stress_score, water_stress_level
+                    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                    """, rows)
+                    _db.commit()
 
 
 def _q(sql, args=()):
@@ -182,3 +312,92 @@ def snap_list(loc_id, limit=365):
     rows = _q("SELECT ts,score,level,payload FROM snapshots WHERE loc_id=? ORDER BY ts DESC LIMIT ?", (loc_id, limit))
     return [{"ts": r["ts"], "date": time.strftime("%Y-%m-%d %H:%M", time.gmtime(r["ts"])),
              "score": r["score"], "level": r["level"], "payload": json.loads(r["payload"])} for r in reversed(rows)]
+
+
+# ---- 10-year monthly climate records (2016-2026) ----
+def climate_query(area_name=None, district=None, year_month=None, year=None, area_type=None, limit=2000):
+    conditions, args = [], []
+    if area_name:
+        conditions.append("area_name = ?")
+        args.append(area_name)
+    if district:
+        conditions.append("district = ?")
+        args.append(district)
+    if year_month:
+        conditions.append("year_month = ?")
+        args.append(year_month)
+    if year:
+        conditions.append("year = ?")
+        args.append(year)
+    if area_type:
+        conditions.append("area_type = ?")
+        args.append(area_type)
+    where = ("WHERE " + " AND ".join(conditions)) if conditions else ""
+    args.append(limit)
+    rows = _q(f"SELECT * FROM climate_10years_monthly {where} ORDER BY year_month, area_type, area_name LIMIT ?", tuple(args))
+    return [dict(r) for r in rows]
+
+
+def rajshahi_climate_query(area_name=None, district=None, year_month=None, year=None, area_type=None, limit=2000):
+    conditions, args = [], []
+    if area_name:
+        conditions.append("area_name = ?")
+        args.append(area_name)
+    if district:
+        conditions.append("district = ?")
+        args.append(district)
+    if year_month:
+        conditions.append("year_month = ?")
+        args.append(year_month)
+    if year:
+        conditions.append("year = ?")
+        args.append(year)
+    if area_type:
+        conditions.append("area_type = ?")
+        args.append(area_type)
+    where = ("WHERE " + " AND ".join(conditions)) if conditions else ""
+    args.append(limit)
+    rows = _q(f"SELECT * FROM rajshahi_10years_monthly {where} ORDER BY year_month, area_type, area_name LIMIT ?", tuple(args))
+    return [dict(r) for r in rows]
+
+
+def bangladesh_climate_query(division=None, district=None, year_month=None, year=None, limit=2000):
+    conditions, args = [], []
+    if division:
+        conditions.append("division = ?")
+        args.append(division)
+    if district:
+        conditions.append("district = ?")
+        args.append(district)
+    if year_month:
+        conditions.append("year_month = ?")
+        args.append(year_month)
+    if year:
+        conditions.append("year = ?")
+        args.append(year)
+    where = ("WHERE " + " AND ".join(conditions)) if conditions else ""
+    args.append(limit)
+    rows = _q(f"SELECT * FROM bangladesh_10years_monthly {where} ORDER BY year_month, division, district LIMIT ?", tuple(args))
+    return [dict(r) for r in rows]
+
+
+def bangladesh_upazila_climate_query(upazila=None, district=None, division=None, year_month=None, limit=2000):
+    conditions, args = [], []
+    if upazila:
+        conditions.append("upazila_name = ?")
+        args.append(upazila)
+    if district:
+        conditions.append("district = ?")
+        args.append(district)
+    if division:
+        conditions.append("division = ?")
+        args.append(division)
+    if year_month:
+        conditions.append("year_month = ?")
+        args.append(year_month)
+    where = ("WHERE " + " AND ".join(conditions)) if conditions else ""
+    args.append(limit)
+    rows = _q(f"SELECT * FROM bangladesh_upazilas_10years_monthly {where} ORDER BY year_month, division, district, upazila_name LIMIT ?", tuple(args))
+    return [dict(r) for r in rows]
+
+

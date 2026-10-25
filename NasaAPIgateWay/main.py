@@ -305,7 +305,16 @@ async def revoke(key_id: int):
     return {"revoked": key_id}
 
 
+NO_CACHE = {"Cache-Control": "no-cache, no-store, must-revalidate, max-age=0", "Pragma": "no-cache", "Expires": "0"}
+
+
 @app.get("/", include_in_schema=False)
+async def home_map():
+    f = Path(__file__).parent / "map.html"
+    return FileResponse(f, headers=NO_CACHE) if f.exists() else {"message": "Data Engine running. See /docs"}
+
+
+@app.get("/tester", include_in_schema=False)
 async def tester():
     f = Path(__file__).parent / "tester.html"
     return FileResponse(f) if f.exists() else {"message": "Data Engine running. See /docs"}
@@ -316,6 +325,161 @@ async def dashboard():
     f = Path(__file__).parent / "dashboard.html"
     return FileResponse(f) if f.exists() else JSONResponse({"error": "dashboard.html not found"}, status_code=404)
 
+
+@app.get("/map", include_in_schema=False)
+async def map_viewer():
+    f = Path(__file__).parent / "map.html"
+    return FileResponse(f, headers=NO_CACHE) if f.exists() else JSONResponse({"error": "map.html not found"}, status_code=404)
+
+
+@app.get("/rajshahi_nasa_vector.geojson", include_in_schema=False)
+async def get_vector_geojson():
+    f = Path(__file__).parent / "rajshahi_nasa_vector.geojson"
+    return FileResponse(f) if f.exists() else JSONResponse({"error": "geojson not found"}, status_code=404)
+
+
+@app.get("/rajshahi_nasa_polygons.geojson", include_in_schema=False)
+async def get_polygons_geojson():
+    f = Path(__file__).parent / "rajshahi_nasa_polygons.geojson"
+    return FileResponse(f) if f.exists() else JSONResponse({"error": "geojson not found"}, status_code=404)
+
+
+@app.get("/rajshahi_upazilas_vector.geojson", include_in_schema=False)
+async def get_upazilas_vector_geojson():
+    f = Path(__file__).parent / "rajshahi_upazilas_vector.geojson"
+    return FileResponse(f) if f.exists() else JSONResponse({"error": "geojson not found"}, status_code=404)
+
+
+@app.get("/rajshahi_upazilas_polygons.geojson", include_in_schema=False)
+async def get_upazilas_polygons_geojson():
+    f = Path(__file__).parent / "rajshahi_upazilas_polygons.geojson"
+    return FileResponse(f) if f.exists() else JSONResponse({"error": "geojson not found"}, status_code=404)
+
+
+@app.get("/rajshahi_districts_10years_monthly.json", include_in_schema=False)
+async def get_districts_monthly():
+    f = Path(__file__).parent / "rajshahi_districts_10years_monthly.json"
+    return FileResponse(f) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/rajshahi_upazilas_10years_monthly.json", include_in_schema=False)
+async def get_upazilas_monthly():
+    f = Path(__file__).parent / "rajshahi_upazilas_10years_monthly.json"
+    return FileResponse(f) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/rajshahi_10years_monthly.csv", include_in_schema=False)
+async def get_monthly_csv():
+    f = Path(__file__).parent / "rajshahi_10years_monthly.csv"
+    return FileResponse(f, media_type="text/csv", filename="rajshahi_10years_monthly.csv") if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/rajshahi_satellite_vegetation_all.csv", include_in_schema=False)
+async def get_satellite_veg_csv():
+    f = Path(__file__).parent / "rajshahi_satellite_vegetation_all.csv"
+    return FileResponse(f, media_type="text/csv", filename="rajshahi_satellite_vegetation_all.csv") if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/bangladesh_districts_boundaries.geojson", include_in_schema=False)
+async def get_bd_boundaries_geojson():
+    f = Path(__file__).parent / "bangladesh_districts_boundaries.geojson"
+    if not f.exists():
+        f = Path(__file__).parent / "bangladesh_districts_vector.geojson"
+    return FileResponse(f, headers=NO_CACHE) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/bangladesh_districts_vector.geojson", include_in_schema=False)
+async def get_bd_vector_geojson():
+    f = Path(__file__).parent / "bangladesh_districts_vector.geojson"
+    return FileResponse(f, headers=NO_CACHE) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/bangladesh_districts_vector.js", include_in_schema=False)
+async def get_bd_vector_js():
+    f = Path(__file__).parent / "bangladesh_districts_vector.js"
+    return FileResponse(f, media_type="application/javascript", headers=NO_CACHE) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+
+
+@app.get("/bangladesh_districts_10years_monthly.json", include_in_schema=False)
+async def get_bd_districts_monthly():
+    f = Path(__file__).parent / "bangladesh_districts_10years_monthly.json"
+    return FileResponse(f, headers=NO_CACHE) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/bangladesh_10years_monthly.csv", include_in_schema=False)
+async def get_bd_monthly_csv():
+    f = Path(__file__).parent / "bangladesh_10years_monthly.csv"
+    return FileResponse(f, media_type="text/csv", filename="bangladesh_10years_monthly.csv") if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/bangladesh_divisions_summary.json", include_in_schema=False)
+async def get_bd_divisions_summary():
+    f = Path(__file__).parent / "bangladesh_divisions_summary.json"
+    return FileResponse(f) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/bangladesh_upazilas_vector.geojson", include_in_schema=False)
+async def get_bd_upazilas_vector_geojson():
+    f = Path(__file__).parent / "bangladesh_upazilas_vector.geojson"
+    return FileResponse(f, headers=NO_CACHE) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/bangladesh_upazilas_vector.js", include_in_schema=False)
+async def get_bd_upazilas_vector_js():
+    f = Path(__file__).parent / "bangladesh_upazilas_vector.js"
+    return FileResponse(f, media_type="application/javascript", headers=NO_CACHE) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/bangladesh_upazilas_10years_monthly.json", include_in_schema=False)
+async def get_bd_upazilas_monthly():
+    f = Path(__file__).parent / "bangladesh_upazilas_10years_monthly.json"
+    return FileResponse(f, headers=NO_CACHE) if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/bangladesh_upazilas_10years_monthly.csv", include_in_schema=False)
+async def get_bd_upazilas_monthly_csv():
+    f = Path(__file__).parent / "bangladesh_upazilas_10years_monthly.csv"
+    return FileResponse(f, media_type="text/csv", filename="bangladesh_upazilas_10years_monthly.csv") if f.exists() else JSONResponse({"error": "file not found"}, status_code=404)
+
+
+@app.get("/v1/climate/monthly", tags=["data"], summary="Query 10-year monthly climate records (2016-2026)")
+async def get_climate_monthly(
+    area: Optional[str] = Query(None, description="Area name (e.g. Rajshahi or Bagmara)"),
+    district: Optional[str] = Query(None, description="District name"),
+    year_month: Optional[str] = Query(None, description="Year-month string (e.g. 2026-09)"),
+    year: Optional[int] = Query(None, ge=2016, le=2026, description="Year (2016-2026)"),
+    area_type: Optional[Literal["District", "Upazila"]] = Query(None),
+    limit: int = Query(500, ge=1, le=5000)
+):
+    rows = store.climate_query(area_name=area, district=district, year_month=year_month, year=year, area_type=area_type, limit=limit)
+    return {"total": len(rows), "records": rows}
+
+
+@app.get("/v1/rajshahi/monthly", tags=["data"], summary="Query 10-year monthly climate records specifically for Rajshahi Division (2016-2026)")
+async def get_rajshahi_monthly(
+    area: Optional[str] = Query(None, description="District or Upazila name"),
+    district: Optional[str] = Query(None, description="District name"),
+    year_month: Optional[str] = Query(None, description="Year-month string (e.g. 2026-09)"),
+    year: Optional[int] = Query(None, ge=2016, le=2026, description="Year (2016-2026)"),
+    area_type: Optional[Literal["District", "Upazila"]] = Query(None),
+    limit: int = Query(500, ge=1, le=5000)
+):
+    rows = store.rajshahi_climate_query(area_name=area, district=district, year_month=year_month, year=year, area_type=area_type, limit=limit)
+    return {"total": len(rows), "records": rows}
+
+
+@app.get("/v1/bangladesh/monthly", tags=["data"], summary="Query 10-year monthly climate records for all 64 districts in Bangladesh (2016-2026)")
+async def get_bangladesh_monthly(
+    division: Optional[str] = Query(None, description="Division name (e.g. Dhaka, Chattogram, Rajshahi, etc.)"),
+    district: Optional[str] = Query(None, description="District name (e.g. Dhaka, Sylhet, Comilla, etc.)"),
+    year_month: Optional[str] = Query(None, description="Year-month string (e.g. 2026-09)"),
+    year: Optional[int] = Query(None, ge=2016, le=2026, description="Year (2016-2026)"),
+    limit: int = Query(500, ge=1, le=5000)
+):
+    rows = store.bangladesh_climate_query(division=division, district=district, year_month=year_month, year=year, limit=limit)
+    return {"total": len(rows), "records": rows}
 
 
 # ------------------------------------------------- saved locations & history

@@ -82,8 +82,8 @@ async def soilgrids(lat, lon):
         if wait > 0:
             await asyncio.sleep(wait)
         try:
-            async with httpx.AsyncClient(timeout=90) as c:
-                r = await _request(c, "GET", SOILGRIDS, params={
+            async with httpx.AsyncClient(timeout=15) as c:
+                r = await _request(c, "GET", SOILGRIDS, retries=1, params={
                     "lat": lat, "lon": lon,
                     "property": ["phh2o", "soc", "nitrogen", "clay", "sand", "silt"],
                     "depth": list(DEPTH_W), "value": "mean"})

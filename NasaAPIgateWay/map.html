@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NASA Earth Gateway — Bangladesh & Rajshahi 10-Year Climate Map</title>
+  <meta name="description" content="Interactive 10-year month-by-month NASA POWER climate vector map for all 64 Districts of Bangladesh and 70 Upazilas of Rajshahi Division (2016-2026).">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Cache Control -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <!-- Pre-bundled Bangladesh Districts Vectors -->
+  <script src="bangladesh_districts_vector.js?v=20261022_final"></script>
+  <!-- Pre-bundled Bangladesh Upazilas Vectors -->
+  <script src="bangladesh_upazilas_vector.js?v=20261022_final"></script>
+
+  <style>
+    :root {
+      --bg-dark: #070b09;
+      --panel-bg: rgba(13, 20, 16, 0.90);
+      --panel-border: rgba(46, 75, 58, 0.55);
+      --panel-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+      --accent-green: #10b981;
+      --accent-emerald: #059669;
+      --accent-cyan: #06b6d4;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --card-bg: rgba(18, 28, 23, 0.75);
+      --badge-bg: rgba(16, 185, 129, 0.15);
+      --badge-border: rgba(16, 185, 129, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header Bar */
+    header {
+      height: 60px;
+      background: rgba(9, 14, 11, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--panel-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #06241a;
+      font-size: 15px;
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.5);
+      flex-shrink: 0;
+    }
+
+    .brand-title h1 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      background: linear-gradient(to right, #ffffff, #a7f3d0, #67e8f9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+    }
+
+    .brand-title p {
+      font-size: 10px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
+
+    /* Mode Switcher Tabs */
+    .mode-switch {
+      display: flex;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 3px;
+      border-radius: 10px;
+      border: 1px solid var(--panel-border);
+      gap: 2px;
+    }
+
+    .mode-tab {
+      padding: 5px 12px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .mode-tab.active {
+      background: var(--accent-emerald);
+      color: #fff;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 7px;
+      color: #34d399;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: rgba(16, 185, 129, 0.3);
+      border-color: #10b981;
+      color: #fff;
+    }
+
+    /* Main Workspace */
+    .workspace {
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      height: calc(100vh - 60px);
+      position: relative;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      background: #050806;
+    }
+
+    /* Floating Timeline Player */
+    .timeline-container {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 504px;
+      z-index: 999;
+      background: var(--panel-bg);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      padding: 12px 18px;
+      box-shadow: var(--panel-glow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .timeline-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .timeline-date-badge {
+      font-size: 19px;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: #10b981;
+      letter-spacing: -0.02em;
+    }
+
+    .timeline-season-tag {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+    }
+
+    .metric-toggle-group {
+      display: flex;
+      gap: 5px;
+    }
+
+    .metric-toggle-btn {
+      padding: 4px 9px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .metric-toggle-btn.active {
+      background: var(--accent-cyan);
+      color: #042426;
+      border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+    }
+
+    .timeline-controls-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .play-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      border: none;
+      color: #fff;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+    }
+    .play-btn:hover { transform: scale(1.08); background: var(--accent-green); }
+
+    .step-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--panel-border);
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .timeline-slider-track {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .timeline-slider {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.15);
+      outline: none;
+      cursor: pointer;
+    }
+    .timeline-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #10b981;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px #10b981;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+    .timeline-slider::-webkit-slider-thumb:hover { transform: scale(1.25); }
+
+    /* Map Floating Layer Controls */
+    .map-overlay-controls {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 999;
+      display: flex;
+      gap: 6px;
+    }
+
+    .layer-selector {
+      background: var(--panel-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      padding: 5px 8px;
+      display: flex;
+      gap: 5px;
+    }
+
+    .layer-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      border-radius: 6px;
+      padding: 4px 9px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .layer-btn.active {
+      background: var(--accent-emerald);
+      color: #fff;
+      border-color: var(--accent-green);
+    }
+
+    /* Sidebar / Inspector Panel */
+    .sidebar {
+      background: var(--panel-bg);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--panel-border);
+      height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 14px;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(10, 16, 13, 0.8);
+      border: 1px solid var(--panel-border);
+      padding: 7px 12px;
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 12px;
+      outline: none;
+    }
+    .search-input:focus { border-color: var(--accent-green); }
+
+    /* Division Pills Filter */
+    .division-bar {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: thin;
+    }
+    .division-bar::-webkit-scrollbar { height: 4px; }
+    .division-bar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 2px; }
+
+    .div-pill {
+      white-space: nowrap;
+      padding: 3px 8px;
+      font-size: 10.5px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--panel-border);
+      color: var(--text-muted);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .div-pill:hover, .div-pill.active {
+      background: rgba(6, 182, 212, 0.2);
+      border-color: var(--accent-cyan);
+      color: #fff;
+    }
+
+    .items-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      max-height: 80px;
+      overflow-y: auto;
+    }
+
+    .chip {
+      background: var(--card-bg);
+      border: 1px solid var(--panel-border);
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 10.5px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .chip:hover, .chip.active {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: var(--accent-green);
+      color: #fff;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      box-shadow: var(--panel-glow);
+    }
+
+    .card-title {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-sub {
+      font-size: 11.5px;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .metric-box {
+      background: rgba(10, 16, 13, 0.6);
+      border: 1px solid rgba(46, 75, 58, 0.4);
+      border-radius: 8px;
+      padding: 7px 9px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .metric-label {
+      font-size: 9.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .metric-value {
+      font-size: 17px;
+      font-weight: 700;
+      color: #f9fafb;
+    }
+
+    .metric-sub {
+      font-size: 9.5px;
+      color: var(--accent-green);
+    }
+
+    /* Scrollable Month Table */
+    .table-container {
+      max-height: 150px;
+      overflow-y: auto;
+      margin-top: 6px;
+      border: 1px solid var(--panel-border);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: #0d1612;
+      color: var(--text-dim);
+      font-weight: 600;
+      padding: 5px 7px;
+      text-align: left;
+      border-bottom: 1px solid var(--panel-border);
+    }
+
+    td {
+      padding: 4px 7px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+    }
+
+    tr:hover { background: rgba(16, 185, 129, 0.1); cursor: pointer; }
+    tr.selected-month { background: rgba(16, 185, 129, 0.25); color: #fff; font-weight: 600; }
+
+    .chart-box {
+      height: 120px;
+      position: relative;
+      margin-top: 4px;
+    }
+
+    .popup-card {
+      font-family: 'Outfit', sans-serif;
+      padding: 2px;
+    }
+    .popup-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #10b981;
+      margin-bottom: 2px;
+    }
+    .popup-card p {
+      font-size: 10.5px;
+      color: #6b7280;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 6px;
+    }
+    .popup-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 11px;
+      margin-bottom: 2px;
+      color: #374151;
+    }
+    .popup-row span { color: #6b7280; }
+    .popup-row b { color: #111827; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-logo">NASA</div>
+      <div class="brand-title">
+        <h1 id="headerMainTitle">Bangladesh & Rajshahi Climate Intelligence</h1>
+        <p id="headerSubtitle">130 Months (2016-2026) &bull; 64 Districts &bull; 8 Divisions &bull; NASA POWER</p>
+      </div>
+    </div>
+
+    <!-- Mode Switcher -->
+    <div class="mode-switch">
+      <button class="mode-tab active" id="tabBangladesh" onclick="switchMode('bangladesh')">🇧🇩 Districts (64)</button>
+      <button class="mode-tab" id="tabBdUpazilas" onclick="switchMode('bangladesh_upazilas')">📍 All BD Upazilas (544)</button>
+      <button class="mode-tab" id="tabDistricts" onclick="switchMode('rajshahi_districts')">🌾 Rajshahi (8)</button>
+      <button class="mode-tab" id="tabUpazilas" onclick="switchMode('rajshahi_upazilas')">🔍 Rajshahi Upazilas (70)</button>
+    </div>
+
+    <div class="header-actions">
+      <a href="/dashboard" target="_blank" class="btn">
+        <span>Field Monitor</span> &nearr;
+      </a>
+      <a href="/bangladesh_10years_monthly.csv" download="bangladesh_10years_monthly.csv" class="btn" title="Download Full Bangladesh 64-District 10Y Monthly CSV">
+        <span>Export Districts CSV</span> &darr;
+      </a>
+      <a href="/bangladesh_upazilas_10years_monthly.csv" download="bangladesh_upazilas_10years_monthly.csv" class="btn" title="Download Full Bangladesh 544-Upazila 10Y Monthly CSV">
+        <span>Export Upazilas CSV</span> &darr;
+      </a>
+      <a href="/rajshahi_10years_monthly.csv" download="rajshahi_10years_monthly.csv" class="btn" title="Download Rajshahi Division 10Y Monthly CSV">
+        <span>Export Rajshahi CSV</span> &darr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Workspace -->
+  <div class="workspace">
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Map Floating Controls -->
+    <div class="map-overlay-controls">
+      <div class="layer-selector">
+        <button class="layer-btn active" onclick="setBaseTile('carto', this)">Dark Canvas</button>
+        <button class="layer-btn" onclick="setBaseTile('esri', this)">NASA Satellite</button>
+        <button class="layer-btn" onclick="setBaseTile('osm', this)">Street Map</button>
+      </div>
+    </div>
+
+    <!-- Floating Month-by-Month Timeline Scrubber & Animation -->
+    <div class="timeline-container">
+      <div class="timeline-header">
+        <div class="timeline-title-group">
+          <span class="timeline-date-badge" id="currentDateDisplay">2026-09</span>
+          <span class="timeline-season-tag" id="currentSeasonDisplay">Monsoon Transition</span>
+        </div>
+        <div class="metric-toggle-group">
+          <button class="metric-toggle-btn active" onclick="setMetric('stress', this)">Water Stress</button>
+          <button class="metric-toggle-btn" onclick="setMetric('temp', this)">Temperature</button>
+          <button class="metric-toggle-btn" onclick="setMetric('rain', this)">Rainfall</button>
+          <button class="metric-toggle-btn" onclick="setMetric('wetness', this)">Soil Wetness</button>
+        </div>
+      </div>
+      <div class="timeline-controls-row">
+        <button class="step-btn" onclick="stepMonth(-1)" title="Previous Month">&lsaquo;</button>
+        <button class="play-btn" id="playBtn" onclick="togglePlay()" title="Play / Pause 10-Year Time Series">&#9658;</button>
+        <button class="step-btn" onclick="stepMonth(1)" title="Next Month">&rsaquo;</button>
+        <div class="timeline-slider-track">
+          <input type="range" id="timelineSlider" class="timeline-slider" min="0" max="129" value="128" oninput="onSliderMove(this.value)">
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Panel -->
+    <aside class="sidebar">
+      <!-- Search & Filters -->
+      <div class="filter-bar">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search any District or Upazila..." oninput="onSearch(this.value)">
+        
+        <!-- Division Filter Pills (Active in All Bangladesh Mode) -->
+        <div class="division-bar" id="divisionBar">
+          <button class="div-pill active" onclick="filterDivision('ALL', this)">All Divisions (64)</button>
+          <button class="div-pill" onclick="filterDivision('Dhaka', this)">Dhaka</button>
+          <button class="div-pill" onclick="filterDivision('Chattogram', this)">Chattogram</button>
+          <button class="div-pill" onclick="filterDivision('Rajshahi', this)">Rajshahi</button>
+          <button class="div-pill" onclick="filterDivision('Khulna', this)">Khulna</button>
+          <button class="div-pill" onclick="filterDivision('Barishal', this)">Barishal</button>
+          <button class="div-pill" onclick="filterDivision('Sylhet', this)">Sylhet</button>
+          <button class="div-pill" onclick="filterDivision('Rangpur', this)">Rangpur</button>
+          <button class="div-pill" onclick="filterDivision('Mymensingh', this)">Mymensingh</button>
+        </div>
+
+        <div class="items-chip-list" id="chipContainer"></div>
+      </div>
+
+      <!-- Feature Details Hero -->
+      <div class="card">
+        <div class="card-title" id="heroTag">SELECTED DISTRICT (130-MONTH TIME SERIES)</div>
+        <div class="hero-name" id="heroName">Dhaka</div>
+        <div class="hero-sub" id="heroSub">&#127793; Division: Dhaka &bull; Central Floodplain</div>
+        
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <span class="metric-label" id="lblMonthSelected">Month Status</span>
+            <span class="metric-value" id="valStressScore" style="color: #10b981;">18.0</span>
+            <span class="metric-sub" id="valStressLvl">LOW STRESS</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Mean Temp</span>
+            <span class="metric-value" id="valTemp">28.4 °C</span>
+            <span class="metric-sub" id="valTempExtremes">Max 33.1° &bull; Min 24.2°</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Precipitation</span>
+            <span class="metric-value" id="valRain">7.8 mm</span>
+            <span class="metric-sub">Monthly rate</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-label">Rootzone Wetness</span>
+            <span class="metric-value" id="valWetness">0.82</span>
+            <span class="metric-sub">GWETROOT (0-1)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10-Year Trend Chart -->
+      <div class="card">
+        <div class="card-title">10-YEAR MONTH-BY-MONTH CLIMATE CURVE</div>
+        <div class="chart-box">
+          <canvas id="trendChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Scrollable 130 Months Table -->
+      <div class="card">
+        <div class="card-title">ALL 130 MONTHS RECORD (CLICK ANY ROW TO VIEW)</div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Temp</th>
+                <th>Rain</th>
+                <th>Wetness</th>
+                <th>Stress</th>
+              </tr>
+            </thead>
+            <tbody id="monthTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    let currentMode = 'bangladesh'; // 'bangladesh', 'bangladesh_upazilas', 'rajshahi_districts', or 'rajshahi_upazilas'
+    let currentMetric = 'stress'; // 'stress', 'temp', 'rain', 'wetness'
+    let currentDivisionFilter = 'ALL';
+    let map, baseTiles = {}, polygonLayer, markerLayer;
+
+    // Datasets
+    let bangladeshMonthly = {};
+    let bdPolygons = [];
+    let bdUpazilasMonthly = {};
+    let bdUpzPolygons = [];
+    let districtsMonthly = {};
+    let distPolygons = [];
+    let upazilasMonthly = {};
+    let upzPolygons = [];
+
+    let allMonths = []; // list of 'YYYY-MM' strings
+    let currentMonthIndex = 128; // default to 2026-09
+    let selectedItemKey = 'Dhaka';
+    let isPlaying = false, playInterval = null;
+    let chartInstance = null;
+
+    let hasLoadedRajshahi = false;
+    let hasLoadedBdUpazilas = false;
+
+    async function initMap() {
+      // Base view initialized to Bangladesh center
+      map = L.map('map', { zoomControl: true, attributionControl: false }).setView([23.85, 90.25], 7);
+      baseTiles.carto = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, attribution: 'Esri' }).addTo(map);
+      baseTiles.esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 });
+      baseTiles.osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 });
+
+      polygonLayer = L.layerGroup().addTo(map);
+      markerLayer = L.layerGroup().addTo(map);
+
+      // 1. Immediately initialize Bangladesh boundary vectors from bundled scripts
+      if (window.BD_DISTRICTS_GEOJSON && Array.isArray(window.BD_DISTRICTS_GEOJSON.features)) {
+        bdPolygons = window.BD_DISTRICTS_GEOJSON.features;
+      }
+      if (window.BD_UPAZILAS_GEOJSON && Array.isArray(window.BD_UPAZILAS_GEOJSON.features)) {
+        bdUpzPolygons = window.BD_UPAZILAS_GEOJSON.features;
+      }
+
+      // Fast Load: Fetch monthly climate data with cache-busting
+      const cb = '?v=' + Date.now();
+      try {
+        const fetchTasks = [
+          fetch('bangladesh_districts_10years_monthly.json' + cb).then(r => r.json())
+        ];
+        if (!bdPolygons || bdPolygons.length === 0) {
+          fetchTasks.push(fetch('bangladesh_districts_vector.geojson' + cb).then(r => r.json()).catch(() => ({ features: [] })));
+        }
+
+        const [bdMonthly, fallbackPoly] = await Promise.all(fetchTasks);
+        bangladeshMonthly = bdMonthly || {};
+        if (fallbackPoly && Array.isArray(fallbackPoly.features) && fallbackPoly.features.length > 0) {
+          bdPolygons = fallbackPoly.features;
+        }
+
+        // Build list of months from Dhaka or first available district
+        const refSeries = bangladeshMonthly['Dhaka'] ? bangladeshMonthly['Dhaka'].series : (Object.values(bangladeshMonthly)[0] || {}).series || [];
+        allMonths = refSeries.map(r => r.date);
+        document.getElementById('timelineSlider').max = Math.max(0, allMonths.length - 1);
+        currentMonthIndex = Math.max(0, allMonths.length - 2); // default to 2026-09
+        document.getElementById('timelineSlider').value = currentMonthIndex;
+
+        renderChips();
+        updateTimelineUI();
+        renderMap();
+        updateInspector();
+
+        if (bdPolygons && bdPolygons.length > 0) {
+          const tempGeo = L.geoJSON({ type: 'FeatureCollection', features: bdPolygons });
+          if (tempGeo.getBounds().isValid()) {
+            map.fitBounds(tempGeo.getBounds(), { padding: [15, 15] });
+          }
+        }
+      } catch (err) {
+        console.error("Error loading primary Bangladesh dataset:", err);
+      }
+
+      // Pre-load All Bangladesh Upazilas in the background
+      fetch('bangladesh_upazilas_10years_monthly.json' + cb)
+        .then(r => r.json())
+        .then(data => {
+          bdUpazilasMonthly = data || {};
+          hasLoadedBdUpazilas = true;
+          if (!bdUpzPolygons || bdUpzPolygons.length === 0) {
+            fetch('bangladesh_upazilas_vector.geojson' + cb).then(r => r.json()).then(g => {
+              if (g && g.features) bdUpzPolygons = g.features;
+            }).catch(() => {});
+          }
+        }).catch(err => console.warn("Bangladesh Upazilas background load:", err));
+
+      // Load Rajshahi sub-zone in the background
+      Promise.all([
+        fetch('rajshahi_districts_10years_monthly.json' + cb).then(r => r.json()).catch(() => ({})),
+        fetch('rajshahi_upazilas_10years_monthly.json' + cb).then(r => r.json()).catch(() => ({})),
+        fetch('rajshahi_nasa_polygons.geojson' + cb).then(r => r.json()).catch(() => ({ features: [] })),
+        fetch('rajshahi_upazilas_polygons.geojson' + cb).then(r => r.json()).catch(() => ({ features: [] }))
+      ]).then(([dMonthly, uMonthly, dPoly, uPoly]) => {
+        districtsMonthly = dMonthly || {};
+        upazilasMonthly = uMonthly || {};
+        distPolygons = (dPoly && dPoly.features) ? dPoly.features : [];
+        upzPolygons = (uPoly && uPoly.features) ? uPoly.features : [];
+        hasLoadedRajshahi = true;
+      }).catch(err => console.warn("Rajshahi background load:", err));
+    }
+
+    function setBaseTile(name, btn) {
+      Object.values(baseTiles).forEach(t => map.removeLayer(t));
+      if (baseTiles[name]) baseTiles[name].addTo(map);
+      document.querySelectorAll('.layer-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    function setMetric(m, btn) {
+      currentMetric = m;
+      document.querySelectorAll('.metric-toggle-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderMap();
+      updateInspector();
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('tabBangladesh').classList.toggle('active', mode === 'bangladesh');
+      const tabBdUpz = document.getElementById('tabBdUpazilas');
+      if (tabBdUpz) tabBdUpz.classList.toggle('active', mode === 'bangladesh_upazilas');
+      document.getElementById('tabDistricts').classList.toggle('active', mode === 'rajshahi_districts');
+      document.getElementById('tabUpazilas').classList.toggle('active', mode === 'rajshahi_upazilas');
+      
+      const divBar = document.getElementById('divisionBar');
+      currentDivisionFilter = 'ALL';
+      document.querySelectorAll('.div-pill').forEach((p, idx) => {
+        p.classList.toggle('active', idx === 0);
+      });
+
+      if (mode === 'bangladesh') {
+        const firstPill = document.querySelector('.div-pill');
+        if (firstPill) firstPill.textContent = 'All Divisions (64)';
+        divBar.style.display = 'flex';
+        selectedItemKey = 'Dhaka';
+        document.getElementById('headerSubtitle').textContent = "130 Months (2016-2026) • 64 Districts • 8 Divisions • NASA POWER";
+        if (bdPolygons.length > 0) {
+          const tempGeo = L.geoJSON({ type: 'FeatureCollection', features: bdPolygons });
+          if (tempGeo.getBounds().isValid()) {
+            map.fitBounds(tempGeo.getBounds(), { padding: [15, 15] });
+          }
+        } else {
+          map.setView([23.85, 90.25], 7, { animate: true });
+        }
+      } else if (mode === 'bangladesh_upazilas') {
+        const firstPill = document.querySelector('.div-pill');
+        if (firstPill) firstPill.textContent = 'All Divisions (544)';
+        divBar.style.display = 'flex';
+        selectedItemKey = 'Savar';
+        document.getElementById('headerSubtitle').textContent = "130 Months (2016-2026) • 544 All BD Upazilas • 64 Districts • NASA POWER";
+        
+        if (window.BD_UPAZILAS_GEOJSON && window.BD_UPAZILAS_GEOJSON.features && (!bdUpzPolygons || bdUpzPolygons.length === 0)) {
+          bdUpzPolygons = window.BD_UPAZILAS_GEOJSON.features;
+        }
+
+        const renderUpzState = () => {
+          if (bdUpzPolygons && bdUpzPolygons.length > 0) {
+            const tempGeo = L.geoJSON({ type: 'FeatureCollection', features: bdUpzPolygons });
+            if (tempGeo.getBounds().isValid()) {
+              map.fitBounds(tempGeo.getBounds(), { padding: [15, 15] });
+            }
+          } else {
+            map.setView([23.85, 90.25], 7, { animate: true });
+          }
+          renderChips();
+          renderMap();
+          updateInspector();
+        };
+
+        // Render polygons immediately without delay
+        renderUpzState();
+
+        if (!hasLoadedBdUpazilas || Object.keys(bdUpazilasMonthly).length === 0) {
+          const cb = '?v=' + Date.now();
+          fetch('bangladesh_upazilas_10years_monthly.json' + cb)
+            .then(r => r.json())
+            .then(uMonthly => {
+              bdUpazilasMonthly = uMonthly || {};
+              hasLoadedBdUpazilas = true;
+              renderChips();
+              renderMap();
+              updateInspector();
+            }).catch(err => console.error("Failed to load BD Upazilas monthly:", err));
+        }
+        return;
+      } else if (mode === 'rajshahi_districts') {
+        divBar.style.display = 'none';
+        selectedItemKey = 'D_RAJ';
+        map.setView([24.55, 88.95], 9, { animate: true });
+        document.getElementById('headerSubtitle').textContent = "130 Months (2016-2026) • 8 Rajshahi Districts • Barind Tract Sub-Zone";
+      } else {
+        divBar.style.display = 'none';
+        selectedItemKey = Object.keys(upazilasMonthly)[0] || 'Godagari';
+        map.setView([24.55, 88.95], 9, { animate: true });
+        document.getElementById('headerSubtitle').textContent = "130 Months (2016-2026) • 70 Rajshahi Upazilas • Local Agricultural Vectors";
+      }
+
+      renderChips();
+      renderMap();
+      updateInspector();
+    }
+
+    function filterDivision(div, btn) {
+      currentDivisionFilter = div;
+      document.querySelectorAll('.div-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderChips();
+      renderMap();
+    }
+
+    function onSliderMove(val) {
+      currentMonthIndex = parseInt(val);
+      updateTimelineUI();
+      renderMap();
+      updateInspector();
+    }
+
+    function stepMonth(delta) {
+      const next = currentMonthIndex + delta;
+      if (next >= 0 && next < allMonths.length) {
+        currentMonthIndex = next;
+        document.getElementById('timelineSlider').value = next;
+        updateTimelineUI();
+        renderMap();
+        updateInspector();
+      }
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      document.getElementById('playBtn').innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9658;';
+      if (isPlaying) {
+        playInterval = setInterval(() => {
+          if (currentMonthIndex < allMonths.length - 1) {
+            stepMonth(1);
+          } else {
+            currentMonthIndex = 0;
+            document.getElementById('timelineSlider').value = 0;
+            updateTimelineUI();
+            renderMap();
+            updateInspector();
+          }
+        }, 500); // 500ms per month
+      } else {
+        clearInterval(playInterval);
+      }
+    }
+
+    function updateTimelineUI() {
+      const ym = allMonths[currentMonthIndex] || '2026-09';
+      document.getElementById('currentDateDisplay').textContent = ym;
+
+      const m = parseInt(ym.split('-')[1]);
+      let season = 'Dry / Winter';
+      if (m >= 3 && m <= 5) season = 'Pre-Monsoon (Summer)';
+      else if (m >= 6 && m <= 9) season = 'Monsoon (Heavy Rain)';
+      else if (m >= 10 && m <= 11) season = 'Post-Monsoon (Autumn)';
+      document.getElementById('currentSeasonDisplay').textContent = season;
+    }
+
+    function getMonthDataForArea(areaObj, dateStr) {
+      if (!areaObj || !areaObj.series) return null;
+      return areaObj.series.find(r => r.date === dateStr) || areaObj.series[areaObj.series.length - 1];
+    }
+
+    function getColorForValue(val) {
+      if (currentMetric === 'stress') {
+        return val > 50 ? '#f43f5e' : val > 30 ? '#f59e0b' : '#10b981';
+      } else if (currentMetric === 'temp') {
+        return val > 32 ? '#f43f5e' : val > 26 ? '#f59e0b' : val > 20 ? '#10b981' : '#38bdf8';
+      } else if (currentMetric === 'rain') {
+        return val > 15 ? '#0284c7' : val > 6 ? '#06b6d4' : val > 1 ? '#10b981' : '#f59e0b';
+      } else {
+        return val > 0.80 ? '#059669' : val > 0.6 ? '#10b981' : val > 0.4 ? '#f59e0b' : '#f43f5e';
+      }
+    }
+
+    function renderMap() {
+      polygonLayer.clearLayers();
+      markerLayer.clearLayers();
+
+      const ym = allMonths[currentMonthIndex];
+      let polygons = [];
+      let sourceDict = {};
+
+      if (currentMode === 'bangladesh') {
+        polygons = (bdPolygons && Array.isArray(bdPolygons)) ? bdPolygons : [];
+        sourceDict = bangladeshMonthly || {};
+        if (currentDivisionFilter !== 'ALL') {
+          polygons = polygons.filter(f => f && f.properties && f.properties.division === currentDivisionFilter);
+        }
+      } else if (currentMode === 'bangladesh_upazilas') {
+        polygons = (bdUpzPolygons && Array.isArray(bdUpzPolygons)) ? bdUpzPolygons : [];
+        sourceDict = bdUpazilasMonthly || {};
+        if (currentDivisionFilter !== 'ALL') {
+          polygons = polygons.filter(f => f && f.properties && f.properties.division === currentDivisionFilter);
+        }
+      } else if (currentMode === 'rajshahi_districts') {
+        polygons = (distPolygons && Array.isArray(distPolygons)) ? distPolygons : [];
+        sourceDict = districtsMonthly || {};
+      } else {
+        polygons = (upzPolygons && Array.isArray(upzPolygons)) ? upzPolygons : [];
+        sourceDict = upazilasMonthly || {};
+      }
+
+      const geo = L.geoJSON({ type: 'FeatureCollection', features: polygons }, {
+        style: feature => {
+          const p = (feature && feature.properties) ? feature.properties : {};
+          const name = p.shapeName || p.upazila_name || p.district_name || '';
+          let areaData = null;
+
+          if (currentMode === 'bangladesh') {
+            areaData = bangladeshMonthly[name] || bangladeshMonthly[p.district_name];
+            if (!areaData) {
+              const lower = name.toLowerCase();
+              const foundKey = Object.keys(bangladeshMonthly).find(k => k.toLowerCase() === lower);
+              if (foundKey) areaData = bangladeshMonthly[foundKey];
+            }
+          } else if (currentMode === 'bangladesh_upazilas') {
+            areaData = bdUpazilasMonthly[name] || bdUpazilasMonthly[p.upazila_name];
+            if (!areaData) {
+              const lower = name.toLowerCase();
+              const foundKey = Object.keys(bdUpazilasMonthly).find(k => k.toLowerCase() === lower);
+              if (foundKey) areaData = bdUpazilasMonthly[foundKey];
+            }
+          } else if (currentMode === 'rajshahi_districts') {
+            const did = Object.keys(districtsMonthly).find(k => districtsMonthly[k].name.toLowerCase().includes(name.toLowerCase()));
+            areaData = districtsMonthly[did];
+          } else {
+            areaData = upazilasMonthly[name];
+          }
+
+          const mData = getMonthDataForArea(areaData, ym);
+          let val = 20;
+          if (mData) {
+            val = currentMetric === 'stress' ? mData.water_stress_score :
+                  currentMetric === 'temp' ? mData.temp_mean_c :
+                  currentMetric === 'rain' ? mData.precip_mm : mData.rootzone_wetness;
+          }
+
+          return {
+            fillColor: getColorForValue(val),
+            weight: currentMode === 'bangladesh' ? 1.8 : currentMode === 'bangladesh_upazilas' ? 1.2 : currentMode === 'rajshahi_districts' ? 2.5 : 1.4,
+            opacity: 0.85,
+            color: currentMode === 'bangladesh_upazilas' ? '#10b981' : '#34d399',
+            dashArray: currentMode === 'rajshahi_districts' ? '3' : null,
+            fillOpacity: currentMode === 'bangladesh' ? 0.42 : currentMode === 'bangladesh_upazilas' ? 0.48 : currentMode === 'rajshahi_districts' ? 0.35 : 0.45
+          };
+        },
+        onEachFeature: (feature, layer) => {
+          const p = feature.properties;
+          const name = p.shapeName || p.upazila_name || p.district_name || 'Area';
+          const subInfo = currentMode === 'bangladesh_upazilas' ? ` (${p.district || ''}, ${p.division || ''})` : (p.division ? ` (${p.division})` : '');
+
+          layer.bindTooltip(name + subInfo, { permanent: false, direction: 'center', className: 'poly-label' });
+          layer.on('mouseover', () => layer.setStyle({ fillOpacity: 0.72, weight: 2.5, color: '#fff' }));
+          layer.on('mouseout', () => geo.resetStyle(layer));
+          layer.on('click', () => {
+            selectItem(name);
+          });
+        }
+      }).addTo(polygonLayer);
+
+      // Automatically adjust camera viewport to encompass all displayed polygons
+      if ((currentMode === 'bangladesh' || currentMode === 'bangladesh_upazilas') && polygons.length > 0) {
+        try {
+          const b = geo.getBounds();
+          if (b.isValid()) {
+            map.fitBounds(b, { padding: [15, 15] });
+          }
+        } catch (e) {}
+      }
+
+      // Centroid Circle Markers
+      const keysToRender = Object.keys(sourceDict).filter(k => {
+        if ((currentMode === 'bangladesh' || currentMode === 'bangladesh_upazilas') && currentDivisionFilter !== 'ALL') {
+          return sourceDict[k].division === currentDivisionFilter;
+        }
+        return true;
+      });
+
+      keysToRender.forEach(key => {
+        const item = sourceDict[key];
+        const mData = getMonthDataForArea(item, ym);
+        if (!item.lat || !item.lon || !mData) return;
+
+        const val = currentMetric === 'stress' ? mData.water_stress_score :
+                    currentMetric === 'temp' ? mData.temp_mean_c :
+                    currentMetric === 'rain' ? mData.precip_mm : mData.rootzone_wetness;
+
+        const marker = L.circleMarker([item.lat, item.lon], {
+          radius: currentMode === 'bangladesh' ? 6 : currentMode === 'bangladesh_upazilas' ? 3.5 : currentMode === 'rajshahi_districts' ? 8 : 4.5,
+          fillColor: getColorForValue(val),
+          color: '#ffffff',
+          weight: currentMode === 'bangladesh_upazilas' ? 1.0 : 1.5,
+          opacity: 0.95,
+          fillOpacity: 1
+        }).addTo(markerLayer);
+
+        const subTag = currentMode === 'bangladesh' ? `Division: ${item.division}` : currentMode === 'bangladesh_upazilas' ? `District: ${item.district} | Div: ${item.division}` : currentMode === 'rajshahi_upazilas' ? `District: ${item.district || ''}` : item.zone || '';
+
+        marker.bindPopup(`
+          <div class="popup-card">
+            <h3>${item.upazila || item.district || item.name}</h3>
+            <p>${ym} (${subTag})</p>
+            <div class="popup-row"><span>Temp:</span><b>${mData.temp_mean_c !== null ? mData.temp_mean_c + ' °C' : '–'}</b></div>
+            <div class="popup-row"><span>Rain:</span><b>${mData.precip_mm !== null ? mData.precip_mm + ' mm' : '–'}</b></div>
+            <div class="popup-row"><span>Root Wetness:</span><b>${mData.rootzone_wetness !== null ? mData.rootzone_wetness : '–'}</b></div>
+            <div class="popup-row"><span>Stress:</span><b>${mData.water_stress_score} (${mData.water_stress_level ? mData.water_stress_level.toUpperCase() : ''})</b></div>
+          </div>
+        `);
+        marker.on('click', () => selectItem(key));
+      });
+    }
+
+    function selectItem(keyOrName) {
+      if (currentMode === 'bangladesh') {
+        const match = Object.keys(bangladeshMonthly).find(k => k.toLowerCase() === keyOrName.toLowerCase());
+        if (match) selectedItemKey = match;
+      } else if (currentMode === 'bangladesh_upazilas') {
+        const match = Object.keys(bdUpazilasMonthly).find(k => k.toLowerCase() === keyOrName.toLowerCase());
+        if (match) selectedItemKey = match;
+      } else if (currentMode === 'rajshahi_districts') {
+        const match = Object.keys(districtsMonthly).find(k => k === keyOrName || districtsMonthly[k].name.toLowerCase() === keyOrName.toLowerCase());
+        if (match) selectedItemKey = match;
+      } else {
+        const match = Object.keys(upazilasMonthly).find(k => k.toLowerCase() === keyOrName.toLowerCase());
+        if (match) selectedItemKey = match;
+      }
+
+      renderChips();
+      updateInspector();
+
+      let item = null;
+      if (currentMode === 'bangladesh') item = bangladeshMonthly[selectedItemKey];
+      else if (currentMode === 'bangladesh_upazilas') item = bdUpazilasMonthly[selectedItemKey];
+      else if (currentMode === 'rajshahi_districts') item = districtsMonthly[selectedItemKey];
+      else item = upazilasMonthly[selectedItemKey];
+
+      if (item && item.lat && item.lon) {
+        map.flyTo([item.lat, item.lon], (currentMode === 'bangladesh' || currentMode === 'bangladesh_upazilas') ? 11 : currentMode === 'rajshahi_upazilas' ? 11 : 10, { duration: 0.6 });
+      }
+    }
+
+    function renderChips() {
+      const container = document.getElementById('chipContainer');
+      let source = {};
+
+      if (currentMode === 'bangladesh') {
+        source = bangladeshMonthly;
+      } else if (currentMode === 'bangladesh_upazilas') {
+        source = bdUpazilasMonthly;
+      } else if (currentMode === 'rajshahi_districts') {
+        source = districtsMonthly;
+      } else {
+        source = upazilasMonthly;
+      }
+
+      let keys = Object.keys(source);
+      if ((currentMode === 'bangladesh' || currentMode === 'bangladesh_upazilas') && currentDivisionFilter !== 'ALL') {
+        keys = keys.filter(k => source[k].division === currentDivisionFilter);
+      }
+
+      container.innerHTML = keys.map(k => {
+        const item = source[k];
+        const displayName = item.upazila || item.district || item.name;
+        const isSel = k === selectedItemKey || displayName === selectedItemKey;
+        const safeKey = k.replace(/'/g, "\\'");
+        return `<button class="chip ${isSel ? 'active' : ''}" onclick="selectItem('${safeKey}')">${displayName}</button>`;
+      }).join('');
+    }
+
+    function onSearch(term) {
+      term = term.toLowerCase().trim();
+      let source = {};
+      if (currentMode === 'bangladesh') source = bangladeshMonthly;
+      else if (currentMode === 'bangladesh_upazilas') source = bdUpazilasMonthly;
+      else if (currentMode === 'rajshahi_districts') source = districtsMonthly;
+      else source = upazilasMonthly;
+
+      let keys = Object.keys(source);
+      if ((currentMode === 'bangladesh' || currentMode === 'bangladesh_upazilas') && currentDivisionFilter !== 'ALL') {
+        keys = keys.filter(k => source[k].division === currentDivisionFilter);
+      }
+
+      const filtered = keys.filter(k => {
+        const item = source[k];
+        const name = (item.upazila || item.district || item.name || '').toLowerCase();
+        const dist = (item.district || '').toLowerCase();
+        const div = (item.division || '').toLowerCase();
+        return name.includes(term) || dist.includes(term) || div.includes(term);
+      });
+
+      const container = document.getElementById('chipContainer');
+      container.innerHTML = filtered.map(k => {
+        const item = source[k];
+        const displayName = item.upazila || item.district || item.name;
+        const safeKey = k.replace(/'/g, "\\'");
+        return `<button class="chip" onclick="selectItem('${safeKey}')">${displayName}</button>`;
+      }).join('');
+    }
+
+    function updateInspector() {
+      let item = null;
+      if (currentMode === 'bangladesh') item = bangladeshMonthly[selectedItemKey];
+      else if (currentMode === 'bangladesh_upazilas') item = bdUpazilasMonthly[selectedItemKey];
+      else if (currentMode === 'rajshahi_districts') item = districtsMonthly[selectedItemKey];
+      else item = upazilasMonthly[selectedItemKey];
+
+      if (!item) return;
+
+      const ym = allMonths[currentMonthIndex];
+      const mData = getMonthDataForArea(item, ym);
+      if (!mData) return;
+
+      const displayName = item.upazila || item.district || item.name;
+      document.getElementById('heroName').textContent = displayName;
+
+      if (currentMode === 'bangladesh') {
+        document.getElementById('heroTag').textContent = 'BANGLADESH DISTRICT (130-MONTH TIME SERIES)';
+        document.getElementById('heroSub').textContent = `🌱 Division: ${item.division} • Centroid: ${item.lat}, ${item.lon}`;
+      } else if (currentMode === 'bangladesh_upazilas') {
+        document.getElementById('heroTag').textContent = 'BANGLADESH UPAZILA (130-MONTH TIME SERIES)';
+        document.getElementById('heroSub').textContent = `🌱 District: ${item.district} • Division: ${item.division} • Centroid: ${item.lat}, ${item.lon}`;
+      } else if (currentMode === 'rajshahi_districts') {
+        document.getElementById('heroTag').textContent = 'RAJSHAHI DISTRICT (130-MONTH TIME SERIES)';
+        document.getElementById('heroSub').textContent = `🌱 Zone: ${item.zone || 'Rajshahi Division'}`;
+      } else {
+        document.getElementById('heroTag').textContent = 'RAJSHAHI UPAZILA (130-MONTH TIME SERIES)';
+        document.getElementById('heroSub').textContent = `🌱 District: ${item.district || 'Rajshahi Division'}`;
+      }
+
+      document.getElementById('lblMonthSelected').textContent = `${ym} STATUS`;
+      document.getElementById('valStressScore').textContent = mData.water_stress_score.toFixed(1);
+      document.getElementById('valStressScore').style.color = getColorForValue(mData.water_stress_score);
+      document.getElementById('valStressLvl').textContent = `${(mData.water_stress_level || 'LOW').toUpperCase()} STRESS`;
+
+      document.getElementById('valTemp').textContent = `${mData.temp_mean_c !== null ? mData.temp_mean_c.toFixed(1) : '–'} °C`;
+      document.getElementById('valTempExtremes').textContent = `Max ${mData.temp_max_c !== null ? mData.temp_max_c.toFixed(1) : '–'}° • Min ${mData.temp_min_c !== null ? mData.temp_min_c.toFixed(1) : '–'}°`;
+      document.getElementById('valRain').textContent = `${mData.precip_mm !== null ? mData.precip_mm.toFixed(1) : '–'} mm`;
+      document.getElementById('valWetness').textContent = mData.rootzone_wetness !== null ? mData.rootzone_wetness.toFixed(2) : '–';
+
+      renderMonthTable(item.series);
+      renderTrendChart(item.series, displayName);
+    }
+
+    function renderMonthTable(series) {
+      const tbody = document.getElementById('monthTableBody');
+      const ym = allMonths[currentMonthIndex];
+
+      tbody.innerHTML = [...series].reverse().map(r => {
+        const isCur = r.date === ym;
+        return `
+          <tr class="${isCur ? 'selected-month' : ''}" onclick="jumpToMonth('${r.date}')">
+            <td>${r.date}</td>
+            <td>${r.temp_mean_c !== null ? r.temp_mean_c + '°C' : '–'}</td>
+            <td>${r.precip_mm !== null ? r.precip_mm : '–'}</td>
+            <td>${r.rootzone_wetness !== null ? r.rootzone_wetness : '–'}</td>
+            <td style="color:${getColorForValue(r.water_stress_score)}">${r.water_stress_score}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function jumpToMonth(dateStr) {
+      const idx = allMonths.indexOf(dateStr);
+      if (idx !== -1) {
+        currentMonthIndex = idx;
+        document.getElementById('timelineSlider').value = idx;
+        updateTimelineUI();
+        renderMap();
+        updateInspector();
+      }
+    }
+
+    function renderTrendChart(series, title) {
+      const ctx = document.getElementById('trendChart').getContext('2d');
+      if (chartInstance) chartInstance.destroy();
+
+      const labels = series.map(r => r.date);
+      const temps = series.map(r => r.temp_mean_c);
+      const rains = series.map(r => r.precip_mm);
+
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Temp (°C)',
+              data: temps,
+              borderColor: '#f59e0b',
+              backgroundColor: 'rgba(245, 158, 11, 0.08)',
+              yAxisID: 'yTemp',
+              borderWidth: 1.5,
+              pointRadius: 0,
+              tension: 0.2
+            },
+            {
+              label: 'Rain (mm)',
+              data: rains,
+              borderColor: '#06b6d4',
+              backgroundColor: 'rgba(6, 182, 212, 0.15)',
+              yAxisID: 'yRain',
+              borderWidth: 1.5,
+              pointRadius: 0,
+              fill: true,
+              tension: 0.2
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#9ca3af', font: { size: 9 } } } },
+          scales: {
+            x: {
+              ticks: {
+                color: '#6b7280',
+                font: { size: 8 },
+                maxTicksLimit: 12
+              },
+              grid: { color: 'rgba(255,255,255,0.02)' }
+            },
+            yTemp: {
+              type: 'linear',
+              position: 'left',
+              ticks: { color: '#f59e0b', font: { size: 9 } },
+              grid: { color: 'rgba(255,255,255,0.02)' }
+            },
+            yRain: {
+              type: 'linear',
+              position: 'right',
+              ticks: { color: '#06b6d4', font: { size: 9 } },
+              grid: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', initMap);
+  </script>
+</body>
+</html>

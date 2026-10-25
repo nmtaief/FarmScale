@@ -1,0 +1,332 @@
+{
+  "type": "FeatureCollection",
+  "name": "rajshahi_nasa_vector",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.6042,
+          24.3745
+        ]
+      },
+      "properties": {
+        "id": "D_RAJ",
+        "name": "Rajshahi",
+        "zone": "High Barind Tract",
+        "lat": 24.3745,
+        "lon": 88.6042,
+        "fetched_at": "2026-10-21T13:09:05.145237+00:00",
+        "source": "NASA POWER / AppEEARS SMAP & MODIS Gateway",
+        "weather.latest.date": "202609",
+        "weather.latest.GWETROOT": 0.89,
+        "weather.latest.GWETTOP": 0.87,
+        "weather.latest.PRECTOTCORR": 8.4,
+        "weather.latest.T2M": 28.02,
+        "weather.latest.T2M_MAX": 32.71,
+        "weather.latest.T2M_MIN": 23.53,
+        "weather.total_monthly_records": 130,
+        "weather.temp_mean_c": 28.02,
+        "weather.temp_max_c": 32.71,
+        "weather.temp_min_c": 23.53,
+        "weather.precip_mm": 8.4,
+        "weather.rootzone_wetness": 0.89,
+        "soil_moisture.status": "pending",
+        "soil_moisture.product": "NASA SPL4SMGP.008",
+        "vegetation.status": "pending",
+        "vegetation.product": "NASA MOD13Q1.061",
+        "water_stress.score": 11.0,
+        "water_stress.level": "low",
+        "water_stress.components.root_zone_wetness_model": 11.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.3777,
+          24.8465
+        ]
+      },
+      "properties": {
+        "id": "D_BOG",
+        "name": "Bogura",
+        "zone": "Karatoa-Bangali Floodplain",
+        "lat": 24.8465,
+        "lon": 89.3777,
+        "fetched_at": "2026-10-21T13:09:05.145237+00:00",
+        "source": "NASA POWER / AppEEARS SMAP & MODIS Gateway",
+        "weather.latest.date": "202609",
+        "weather.latest.GWETROOT": 0.9,
+        "weather.latest.GWETTOP": 0.87,
+        "weather.latest.PRECTOTCORR": 7.25,
+        "weather.latest.T2M": 28.23,
+        "weather.latest.T2M_MAX": 32.87,
+        "weather.latest.T2M_MIN": 23.89,
+        "weather.total_monthly_records": 130,
+        "weather.temp_mean_c": 28.23,
+        "weather.temp_max_c": 32.87,
+        "weather.temp_min_c": 23.89,
+        "weather.precip_mm": 7.25,
+        "weather.rootzone_wetness": 0.9,
+        "soil_moisture.status": "pending",
+        "soil_moisture.task_id": "bffc2cdd-454b-4985-8db5-a541cb29f59c",
+        "soil_moisture.product": "NASA SPL4SMGP.008",
+        "vegetation.status": "pending",
+        "vegetation.task_id": "24b49c25-6b97-4809-ac24-1697971e41a4",
+        "vegetation.product": "NASA MOD13Q1.061",
+        "water_stress.score": 10.0,
+        "water_stress.level": "low",
+        "water_stress.components.root_zone_wetness_model": 10.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.2483,
+          24.0064
+        ]
+      },
+      "properties": {
+        "id": "D_PAB",
+        "name": "Pabna",
+        "zone": "Ganges River Floodplain",
+        "lat": 24.0064,
+        "lon": 89.2483,
+        "fetched_at": "2026-10-21T13:09:05.145237+00:00",
+        "source": "NASA POWER / AppEEARS SMAP & MODIS Gateway",
+        "weather.latest.date": "202609",
+        "weather.latest.GWETROOT": 0.95,
+        "weather.latest.GWETTOP": 0.91,
+        "weather.latest.PRECTOTCORR": 9.55,
+        "weather.latest.T2M": 28.16,
+        "weather.latest.T2M_MAX": 32.94,
+        "weather.latest.T2M_MIN": 24.28,
+        "weather.total_monthly_records": 130,
+        "weather.temp_mean_c": 28.16,
+        "weather.temp_max_c": 32.94,
+        "weather.temp_min_c": 24.28,
+        "weather.precip_mm": 9.55,
+        "weather.rootzone_wetness": 0.95,
+        "soil_moisture.status": "pending",
+        "soil_moisture.task_id": "f3f8dbb5-53e9-4fc0-9736-cda04d67cdbe",
+        "soil_moisture.product": "NASA SPL4SMGP.008",
+        "vegetation.status": "pending",
+        "vegetation.task_id": "7d50cf4b-cb83-45f8-afda-d3d9c32b156a",
+        "vegetation.product": "NASA MOD13Q1.061",
+        "water_stress.score": 5.0,
+        "water_stress.level": "low",
+        "water_stress.components.root_zone_wetness_model": 5.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.9515,
+          24.8138
+        ]
+      },
+      "properties": {
+        "id": "D_NAO",
+        "name": "Naogaon",
+        "zone": "Barind Tract and Atrai Basin",
+        "lat": 24.8138,
+        "lon": 88.9515,
+        "fetched_at": "2026-10-21T13:09:05.145237+00:00",
+        "source": "NASA POWER / AppEEARS SMAP & MODIS Gateway",
+        "weather.latest.date": "202609",
+        "weather.latest.GWETROOT": 0.88,
+        "weather.latest.GWETTOP": 0.86,
+        "weather.latest.PRECTOTCORR": 7.09,
+        "weather.latest.T2M": 27.96,
+        "weather.latest.T2M_MAX": 32.98,
+        "weather.latest.T2M_MIN": 23.12,
+        "weather.total_monthly_records": 130,
+        "weather.temp_mean_c": 27.96,
+        "weather.temp_max_c": 32.98,
+        "weather.temp_min_c": 23.12,
+        "weather.precip_mm": 7.09,
+        "weather.rootzone_wetness": 0.88,
+        "soil_moisture.status": "pending",
+        "soil_moisture.task_id": "e74eec2f-83cd-43a7-8c0e-66ef00596700",
+        "soil_moisture.product": "NASA SPL4SMGP.008",
+        "vegetation.status": "pending",
+        "vegetation.task_id": "4e5648e7-9983-4fd8-a98b-2f5f009ec5b5",
+        "vegetation.product": "NASA MOD13Q1.061",
+        "water_stress.score": 12.0,
+        "water_stress.level": "low",
+        "water_stress.components.root_zone_wetness_model": 12.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.9959,
+          24.4172
+        ]
+      },
+      "properties": {
+        "id": "D_NAT",
+        "name": "Natore",
+        "zone": "Chalan Beel Depression",
+        "lat": 24.4172,
+        "lon": 88.9959,
+        "fetched_at": "2026-10-21T13:09:05.145237+00:00",
+        "source": "NASA POWER / AppEEARS SMAP & MODIS Gateway",
+        "weather.latest.date": "202609",
+        "weather.latest.GWETROOT": 0.89,
+        "weather.latest.GWETTOP": 0.87,
+        "weather.latest.PRECTOTCORR": 8.4,
+        "weather.latest.T2M": 28.02,
+        "weather.latest.T2M_MAX": 32.71,
+        "weather.latest.T2M_MIN": 23.53,
+        "weather.total_monthly_records": 130,
+        "weather.temp_mean_c": 28.02,
+        "weather.temp_max_c": 32.71,
+        "weather.temp_min_c": 23.53,
+        "weather.precip_mm": 8.4,
+        "weather.rootzone_wetness": 0.89,
+        "soil_moisture.status": "pending",
+        "soil_moisture.task_id": "fb55b527-feed-4af6-96a7-8be45dfef8b1",
+        "soil_moisture.product": "NASA SPL4SMGP.008",
+        "vegetation.status": "pending",
+        "vegetation.task_id": "e3bafe2a-6e59-4f15-ac60-2a66ac4f2839",
+        "vegetation.product": "NASA MOD13Q1.061",
+        "water_stress.score": 11.0,
+        "water_stress.level": "low",
+        "water_stress.components.root_zone_wetness_model": 11.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.0279,
+          25.0947
+        ]
+      },
+      "properties": {
+        "id": "D_JOY",
+        "name": "Joypurhat",
+        "zone": "Level Barind Tract",
+        "lat": 25.0947,
+        "lon": 89.0279,
+        "fetched_at": "2026-10-21T13:09:05.145237+00:00",
+        "source": "NASA POWER / AppEEARS SMAP & MODIS Gateway",
+        "weather.latest.date": "202609",
+        "weather.latest.GWETROOT": 0.88,
+        "weather.latest.GWETTOP": 0.86,
+        "weather.latest.PRECTOTCORR": 7.09,
+        "weather.latest.T2M": 27.96,
+        "weather.latest.T2M_MAX": 32.98,
+        "weather.latest.T2M_MIN": 23.12,
+        "weather.total_monthly_records": 130,
+        "weather.temp_mean_c": 27.96,
+        "weather.temp_max_c": 32.98,
+        "weather.temp_min_c": 23.12,
+        "weather.precip_mm": 7.09,
+        "weather.rootzone_wetness": 0.88,
+        "soil_moisture.status": "pending",
+        "soil_moisture.task_id": "5e573718-28e7-4077-8ea0-2fd0a03182b6",
+        "soil_moisture.product": "NASA SPL4SMGP.008",
+        "vegetation.status": "pending",
+        "vegetation.task_id": "ad8511ed-61af-4036-a47a-5d35cd18d64e",
+        "vegetation.product": "NASA MOD13Q1.061",
+        "water_stress.score": 12.0,
+        "water_stress.level": "low",
+        "water_stress.components.root_zone_wetness_model": 12.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.2775,
+          24.5965
+        ]
+      },
+      "properties": {
+        "id": "D_CHA",
+        "name": "Chapainawabganj",
+        "zone": "Mahananda River Basin",
+        "lat": 24.5965,
+        "lon": 88.2775,
+        "fetched_at": "2026-10-21T13:09:05.145237+00:00",
+        "source": "NASA POWER / AppEEARS SMAP & MODIS Gateway",
+        "weather.latest.date": "202609",
+        "weather.latest.GWETROOT": 0.79,
+        "weather.latest.GWETTOP": 0.81,
+        "weather.latest.PRECTOTCORR": 9.62,
+        "weather.latest.T2M": 28.1,
+        "weather.latest.T2M_MAX": 32.65,
+        "weather.latest.T2M_MIN": 23.44,
+        "weather.total_monthly_records": 130,
+        "weather.temp_mean_c": 28.1,
+        "weather.temp_max_c": 32.65,
+        "weather.temp_min_c": 23.44,
+        "weather.precip_mm": 9.62,
+        "weather.rootzone_wetness": 0.79,
+        "soil_moisture.status": "pending",
+        "soil_moisture.task_id": "f12f9af0-4837-4de1-afb1-5821e546647b",
+        "soil_moisture.product": "NASA SPL4SMGP.008",
+        "vegetation.status": "pending",
+        "vegetation.task_id": "53a3e142-8c85-427e-8a7d-d6ae0a37a6eb",
+        "vegetation.product": "NASA MOD13Q1.061",
+        "water_stress.score": 21.0,
+        "water_stress.level": "low",
+        "water_stress.components.root_zone_wetness_model": 21.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.7008,
+          24.4534
+        ]
+      },
+      "properties": {
+        "id": "D_SIR",
+        "name": "Sirajganj",
+        "zone": "Jamuna River Floodplain",
+        "lat": 24.4534,
+        "lon": 89.7008,
+        "fetched_at": "2026-10-21T13:09:05.145237+00:00",
+        "source": "NASA POWER / AppEEARS SMAP & MODIS Gateway",
+        "weather.latest.date": "202609",
+        "weather.latest.GWETROOT": 0.89,
+        "weather.latest.GWETTOP": 0.87,
+        "weather.latest.PRECTOTCORR": 7.98,
+        "weather.latest.T2M": 28.3,
+        "weather.latest.T2M_MAX": 33.13,
+        "weather.latest.T2M_MIN": 24.2,
+        "weather.total_monthly_records": 130,
+        "weather.temp_mean_c": 28.3,
+        "weather.temp_max_c": 33.13,
+        "weather.temp_min_c": 24.2,
+        "weather.precip_mm": 7.98,
+        "weather.rootzone_wetness": 0.89,
+        "soil_moisture.status": "pending",
+        "soil_moisture.task_id": "8f2a98ec-9b9c-44d0-98af-c27a6243eb70",
+        "soil_moisture.product": "NASA SPL4SMGP.008",
+        "vegetation.status": "pending",
+        "vegetation.task_id": "59787d05-dbd6-4c79-8139-7fc01fae3852",
+        "vegetation.product": "NASA MOD13Q1.061",
+        "water_stress.score": 11.0,
+        "water_stress.level": "low",
+        "water_stress.components.root_zone_wetness_model": 11.0
+      }
+    }
+  ]
+}

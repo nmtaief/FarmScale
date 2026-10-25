@@ -1,0 +1,1826 @@
+{
+  "type": "FeatureCollection",
+  "name": "rajshahi_upazilas_vector",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.0677,
+          24.7892
+        ]
+      },
+      "properties": {
+        "id": "UPZ_ADAM",
+        "name": "Adamdighi",
+        "district": "Bogra",
+        "lat": 24.7892,
+        "lon": 89.0677,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.0461,
+          24.9353
+        ]
+      },
+      "properties": {
+        "id": "UPZ_AKKE",
+        "name": "Akkelpur",
+        "district": "Joypurhat",
+        "lat": 24.9353,
+        "lon": 89.0461,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.2802,
+          24.112
+        ]
+      },
+      "properties": {
+        "id": "UPZ_ATGH",
+        "name": "Atgharia",
+        "district": "Pabna",
+        "lat": 24.112,
+        "lon": 89.2802,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.9889,
+          24.6326
+        ]
+      },
+      "properties": {
+        "id": "UPZ_ATRA",
+        "name": "Atrai",
+        "district": "Naogaon",
+        "lat": 24.6326,
+        "lon": 88.9889,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.9361,
+          24.9688
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BADA",
+        "name": "Badalgachhi",
+        "district": "Naogaon",
+        "lat": 24.9688,
+        "lon": 88.9361,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.937,
+          24.3202
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BAGA",
+        "name": "Bagati Para",
+        "district": "Natore",
+        "lat": 24.3202,
+        "lon": 88.937,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.8413,
+          24.2157
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BAGH",
+        "name": "Bagha",
+        "district": "Rajshahi",
+        "lat": 24.2157,
+        "lon": 88.8413,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.92,
+        "temp_min_c": 23.83,
+        "precip_mm": 9.73,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.9,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.7985,
+          24.5916
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BAGH",
+        "name": "Baghmara",
+        "district": "Rajshahi",
+        "lat": 24.5916,
+        "lon": 88.7985,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.1516,
+          24.2813
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BARA",
+        "name": "Baraigram",
+        "district": "Natore",
+        "lat": 24.2813,
+        "lon": 89.1516,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.7007,
+          24.295
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BELK",
+        "name": "Belkuchi",
+        "district": "Sirajganj",
+        "lat": 24.295,
+        "lon": 89.7007,
+        "temp_mean_c": 28.3,
+        "temp_max_c": 33.13,
+        "temp_min_c": 24.2,
+        "precip_mm": 7.98,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.6641,
+          23.9533
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BERA",
+        "name": "Bera",
+        "district": "Pabna",
+        "lat": 23.9533,
+        "lon": 89.6641,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.4018,
+          24.2441
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BHAN",
+        "name": "Bhangura",
+        "district": "Pabna",
+        "lat": 24.2441,
+        "lon": 89.4018,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.2232,
+          24.8491
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BHOL",
+        "name": "Bholahat",
+        "district": "Nawabganj",
+        "lat": 24.8491,
+        "lon": 88.2232,
+        "temp_mean_c": 28.13,
+        "temp_max_c": 33.02,
+        "temp_min_c": 23.23,
+        "precip_mm": 7.81,
+        "rootzone_wetness": 0.74,
+        "topsoil_wetness": 0.77,
+        "water_stress_score": 26.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.6123,
+          24.3799
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BOAL",
+        "name": "Boalia",
+        "district": "Rajshahi",
+        "lat": 24.3799,
+        "lon": 88.6123,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.3532,
+          24.9007
+        ]
+      },
+      "properties": {
+        "id": "UPZ_BOGR",
+        "name": "Bogra Sadar",
+        "district": "Bogra",
+        "lat": 24.9007,
+        "lon": 89.3532,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.7799,
+          24.3119
+        ]
+      },
+      "properties": {
+        "id": "UPZ_CHAR",
+        "name": "Charghat",
+        "district": "Rajshahi",
+        "lat": 24.3119,
+        "lon": 88.7799,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.2979,
+          24.2117
+        ]
+      },
+      "properties": {
+        "id": "UPZ_CHAT",
+        "name": "Chatmohar",
+        "district": "Pabna",
+        "lat": 24.2117,
+        "lon": 89.2979,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.7479,
+          24.1379
+        ]
+      },
+      "properties": {
+        "id": "UPZ_CHAU",
+        "name": "Chauhali",
+        "district": "Sirajganj",
+        "lat": 24.1379,
+        "lon": 89.7479,
+        "temp_mean_c": 28.22,
+        "temp_max_c": 33.05,
+        "temp_min_c": 24.17,
+        "precip_mm": 9.09,
+        "rootzone_wetness": 0.91,
+        "topsoil_wetness": 0.89,
+        "water_stress_score": 9.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.8168,
+          25.1022
+        ]
+      },
+      "properties": {
+        "id": "UPZ_DHAM",
+        "name": "Dhamoirhat",
+        "district": "Naogaon",
+        "lat": 25.1022,
+        "lon": 88.8168,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.5482,
+          24.69
+        ]
+      },
+      "properties": {
+        "id": "UPZ_DHUN",
+        "name": "Dhunat",
+        "district": "Bogra",
+        "lat": 24.69,
+        "lon": 89.5482,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.1398,
+          24.8791
+        ]
+      },
+      "properties": {
+        "id": "UPZ_DHUP",
+        "name": "Dhupchanchia",
+        "district": "Bogra",
+        "lat": 24.8791,
+        "lon": 89.1398,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.7632,
+          24.4588
+        ]
+      },
+      "properties": {
+        "id": "UPZ_DURG",
+        "name": "Durgapur",
+        "district": "Rajshahi",
+        "lat": 24.4588,
+        "lon": 88.7632,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.4472,
+          24.1642
+        ]
+      },
+      "properties": {
+        "id": "UPZ_FARI",
+        "name": "Faridpur",
+        "district": "Pabna",
+        "lat": 24.1642,
+        "lon": 89.4472,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.4675,
+          24.8896
+        ]
+      },
+      "properties": {
+        "id": "UPZ_GABT",
+        "name": "Gabtali",
+        "district": "Bogra",
+        "lat": 24.8896,
+        "lon": 89.4675,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.4453,
+          24.5171
+        ]
+      },
+      "properties": {
+        "id": "UPZ_GODA",
+        "name": "Godagari",
+        "district": "Rajshahi",
+        "lat": 24.5171,
+        "lon": 88.4453,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.3413,
+          24.8388
+        ]
+      },
+      "properties": {
+        "id": "UPZ_GOMA",
+        "name": "Gomastapur",
+        "district": "Nawabganj",
+        "lat": 24.8388,
+        "lon": 88.3413,
+        "temp_mean_c": 28.13,
+        "temp_max_c": 33.02,
+        "temp_min_c": 23.23,
+        "precip_mm": 7.81,
+        "rootzone_wetness": 0.74,
+        "topsoil_wetness": 0.77,
+        "water_stress_score": 26.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.1917,
+          24.3697
+        ]
+      },
+      "properties": {
+        "id": "UPZ_GURU",
+        "name": "Gurudaspur",
+        "district": "Natore",
+        "lat": 24.3697,
+        "lon": 89.1917,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.1113,
+          24.0966
+        ]
+      },
+      "properties": {
+        "id": "UPZ_ISHW",
+        "name": "Ishwardi",
+        "district": "Pabna",
+        "lat": 24.0966,
+        "lon": 89.1113,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.0371,
+          25.1112
+        ]
+      },
+      "properties": {
+        "id": "UPZ_JOYP",
+        "name": "Joypurhat Sadar",
+        "district": "Joypurhat",
+        "lat": 25.1112,
+        "lon": 89.0371,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.2427,
+          24.8303
+        ]
+      },
+      "properties": {
+        "id": "UPZ_KAHA",
+        "name": "Kahaloo",
+        "district": "Bogra",
+        "lat": 24.8303,
+        "lon": 89.2427,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.1929,
+          25.0762
+        ]
+      },
+      "properties": {
+        "id": "UPZ_KALA",
+        "name": "Kalai",
+        "district": "Joypurhat",
+        "lat": 25.0762,
+        "lon": 89.1929,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.638,
+          24.386
+        ]
+      },
+      "properties": {
+        "id": "UPZ_KAMA",
+        "name": "Kamarkhanda",
+        "district": "Sirajganj",
+        "lat": 24.386,
+        "lon": 89.638,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.6913,
+          24.6687
+        ]
+      },
+      "properties": {
+        "id": "UPZ_KAZI",
+        "name": "Kazipur",
+        "district": "Sirajganj",
+        "lat": 24.6687,
+        "lon": 89.6913,
+        "temp_mean_c": 28.3,
+        "temp_max_c": 33.13,
+        "temp_min_c": 24.2,
+        "precip_mm": 7.98,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.127,
+          25.026
+        ]
+      },
+      "properties": {
+        "id": "UPZ_KHET",
+        "name": "Khetlal",
+        "district": "Joypurhat",
+        "lat": 25.026,
+        "lon": 89.127,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.9701,
+          24.1877
+        ]
+      },
+      "properties": {
+        "id": "UPZ_LALP",
+        "name": "Lalpur",
+        "district": "Natore",
+        "lat": 24.1877,
+        "lon": 88.9701,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.92,
+        "temp_min_c": 23.83,
+        "precip_mm": 9.73,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.9,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.7659,
+          24.9221
+        ]
+      },
+      "properties": {
+        "id": "UPZ_MAHA",
+        "name": "Mahadebpur",
+        "district": "Naogaon",
+        "lat": 24.9221,
+        "lon": 88.7659,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.7162,
+          24.7376
+        ]
+      },
+      "properties": {
+        "id": "UPZ_MAND",
+        "name": "Manda",
+        "district": "Naogaon",
+        "lat": 24.7376,
+        "lon": 88.7162,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.6448,
+          24.3677
+        ]
+      },
+      "properties": {
+        "id": "UPZ_MATI",
+        "name": "Matihar",
+        "district": "Rajshahi",
+        "lat": 24.3677,
+        "lon": 88.6448,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.6437,
+          24.5627
+        ]
+      },
+      "properties": {
+        "id": "UPZ_MOHA",
+        "name": "Mohanpur",
+        "district": "Rajshahi",
+        "lat": 24.5627,
+        "lon": 88.6437,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.4048,
+          24.7224
+        ]
+      },
+      "properties": {
+        "id": "UPZ_NACH",
+        "name": "Nachole",
+        "district": "Nawabganj",
+        "lat": 24.7224,
+        "lon": 88.4048,
+        "temp_mean_c": 28.1,
+        "temp_max_c": 32.65,
+        "temp_min_c": 23.44,
+        "precip_mm": 9.62,
+        "rootzone_wetness": 0.79,
+        "topsoil_wetness": 0.81,
+        "water_stress_score": 21.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.2172,
+          24.6736
+        ]
+      },
+      "properties": {
+        "id": "UPZ_NAND",
+        "name": "Nandigram",
+        "district": "Bogra",
+        "lat": 24.6736,
+        "lon": 89.2172,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.9015,
+          24.8211
+        ]
+      },
+      "properties": {
+        "id": "UPZ_NAOG",
+        "name": "Naogaon Sadar",
+        "district": "Naogaon",
+        "lat": 24.8211,
+        "lon": 88.9015,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.9788,
+          24.4281
+        ]
+      },
+      "properties": {
+        "id": "UPZ_NATO",
+        "name": "Natore Sadar",
+        "district": "Natore",
+        "lat": 24.4281,
+        "lon": 88.9788,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.2794,
+          24.615
+        ]
+      },
+      "properties": {
+        "id": "UPZ_NAWA",
+        "name": "Nawabganj Sadar",
+        "district": "Nawabganj",
+        "lat": 24.615,
+        "lon": 88.2794,
+        "temp_mean_c": 28.1,
+        "temp_max_c": 32.65,
+        "temp_min_c": 23.44,
+        "precip_mm": 9.62,
+        "rootzone_wetness": 0.79,
+        "topsoil_wetness": 0.81,
+        "water_stress_score": 21.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.54,
+          24.8338
+        ]
+      },
+      "properties": {
+        "id": "UPZ_NIAM",
+        "name": "Niamatpur",
+        "district": "Naogaon",
+        "lat": 24.8338,
+        "lon": 88.54,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.6086,
+          24.4191
+        ]
+      },
+      "properties": {
+        "id": "UPZ_PABA",
+        "name": "Paba",
+        "district": "Rajshahi",
+        "lat": 24.4191,
+        "lon": 88.6086,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.2802,
+          24.0113
+        ]
+      },
+      "properties": {
+        "id": "UPZ_PABN",
+        "name": "Pabna Sadar",
+        "district": "Pabna",
+        "lat": 24.0113,
+        "lon": 89.2802,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.0804,
+          25.1902
+        ]
+      },
+      "properties": {
+        "id": "UPZ_PANC",
+        "name": "Panchbibi",
+        "district": "Joypurhat",
+        "lat": 25.1902,
+        "lon": 89.0804,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.7285,
+          25.071
+        ]
+      },
+      "properties": {
+        "id": "UPZ_PATN",
+        "name": "Patnitala",
+        "district": "Naogaon",
+        "lat": 25.071,
+        "lon": 88.7285,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.5433,
+          24.9811
+        ]
+      },
+      "properties": {
+        "id": "UPZ_PORS",
+        "name": "Porsha",
+        "district": "Naogaon",
+        "lat": 24.9811,
+        "lon": 88.5433,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.8108,
+          24.4062
+        ]
+      },
+      "properties": {
+        "id": "UPZ_PUTH",
+        "name": "Puthia",
+        "district": "Rajshahi",
+        "lat": 24.4062,
+        "lon": 88.8108,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.5671,
+          24.3754
+        ]
+      },
+      "properties": {
+        "id": "UPZ_RAJP",
+        "name": "Rajpara",
+        "district": "Rajshahi",
+        "lat": 24.3754,
+        "lon": 88.5671,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.0333,
+          24.7105
+        ]
+      },
+      "properties": {
+        "id": "UPZ_RANI",
+        "name": "Raninagar",
+        "district": "Naogaon",
+        "lat": 24.7105,
+        "lon": 89.0333,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.515,
+          24.4896
+        ]
+      },
+      "properties": {
+        "id": "UPZ_ROYG",
+        "name": "Royganj",
+        "district": "Sirajganj",
+        "lat": 24.4896,
+        "lon": 89.515,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.4957,
+          24.0471
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SANT",
+        "name": "Santhia",
+        "district": "Pabna",
+        "lat": 24.0471,
+        "lon": 89.4957,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.5668,
+          25.0881
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SAPA",
+        "name": "Sapahar",
+        "district": "Naogaon",
+        "lat": 25.0881,
+        "lon": 88.5668,
+        "temp_mean_c": 27.96,
+        "temp_max_c": 32.98,
+        "temp_min_c": 23.12,
+        "precip_mm": 7.09,
+        "rootzone_wetness": 0.88,
+        "topsoil_wetness": 0.86,
+        "water_stress_score": 12.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.5986,
+          24.8818
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SARI",
+        "name": "Sariakandi",
+        "district": "Bogra",
+        "lat": 24.8818,
+        "lon": 89.5986,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.6114,
+          24.3999
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SHAH",
+        "name": "Shah Makhdum",
+        "district": "Rajshahi",
+        "lat": 24.3999,
+        "lon": 88.6114,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.6328,
+          24.1628
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SHAH",
+        "name": "Shahjadpur",
+        "district": "Sirajganj",
+        "lat": 24.1628,
+        "lon": 89.6328,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.375,
+          24.7596
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SHAJ",
+        "name": "Shajahanpur",
+        "district": "Bogra",
+        "lat": 24.7596,
+        "lon": 89.375,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.4238,
+          24.627
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SHER",
+        "name": "Sherpur",
+        "district": "Bogra",
+        "lat": 24.627,
+        "lon": 89.4238,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.3147,
+          25.0211
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SHIB",
+        "name": "Shibganj",
+        "district": "Bogra",
+        "lat": 25.0211,
+        "lon": 89.3147,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.2129,
+          24.6871
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SHIB",
+        "name": "Shibganj",
+        "district": "Nawabganj",
+        "lat": 24.6871,
+        "lon": 88.2129,
+        "temp_mean_c": 28.1,
+        "temp_max_c": 32.65,
+        "temp_min_c": 23.44,
+        "precip_mm": 9.62,
+        "rootzone_wetness": 0.79,
+        "topsoil_wetness": 0.81,
+        "water_stress_score": 21.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.1877,
+          24.5639
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SING",
+        "name": "Singra",
+        "district": "Natore",
+        "lat": 24.5639,
+        "lon": 89.1877,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.6919,
+          24.4951
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SIRA",
+        "name": "Sirajganj Sadar",
+        "district": "Sirajganj",
+        "lat": 24.4951,
+        "lon": 89.6919,
+        "temp_mean_c": 28.3,
+        "temp_max_c": 33.13,
+        "temp_min_c": 24.2,
+        "precip_mm": 7.98,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.5113,
+          24.9931
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SONA",
+        "name": "Sonatola",
+        "district": "Bogra",
+        "lat": 24.9931,
+        "lon": 89.5113,
+        "temp_mean_c": 28.23,
+        "temp_max_c": 32.87,
+        "temp_min_c": 23.89,
+        "precip_mm": 7.25,
+        "rootzone_wetness": 0.9,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 10.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.5098,
+          23.9212
+        ]
+      },
+      "properties": {
+        "id": "UPZ_SUJA",
+        "name": "Sujanagar",
+        "district": "Pabna",
+        "lat": 23.9212,
+        "lon": 89.5098,
+        "temp_mean_c": 28.16,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.28,
+        "precip_mm": 9.55,
+        "rootzone_wetness": 0.95,
+        "topsoil_wetness": 0.91,
+        "water_stress_score": 5.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.524,
+          24.6169
+        ]
+      },
+      "properties": {
+        "id": "UPZ_TANO",
+        "name": "Tanore",
+        "district": "Rajshahi",
+        "lat": 24.6169,
+        "lon": 88.524,
+        "temp_mean_c": 28.02,
+        "temp_max_c": 32.71,
+        "temp_min_c": 23.53,
+        "precip_mm": 8.4,
+        "rootzone_wetness": 0.89,
+        "topsoil_wetness": 0.87,
+        "water_stress_score": 11.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.3567,
+          24.4465
+        ]
+      },
+      "properties": {
+        "id": "UPZ_TARA",
+        "name": "Tarash",
+        "district": "Sirajganj",
+        "lat": 24.4465,
+        "lon": 89.3567,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.5059,
+          24.3126
+        ]
+      },
+      "properties": {
+        "id": "UPZ_ULLA",
+        "name": "Ullah Para",
+        "district": "Sirajganj",
+        "lat": 24.3126,
+        "lon": 89.5059,
+        "temp_mean_c": 28.31,
+        "temp_max_c": 32.94,
+        "temp_min_c": 24.2,
+        "precip_mm": 8.11,
+        "rootzone_wetness": 0.92,
+        "topsoil_wetness": 0.88,
+        "water_stress_score": 8.0,
+        "water_stress_level": "low",
+        "source": "NASA POWER / AppEEARS Gateway"
+      }
+    }
+  ]
+}

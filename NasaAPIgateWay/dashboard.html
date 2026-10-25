@@ -917,8 +917,12 @@
     $('#key').addEventListener('change', () => { LS.set('key', $('#key').value); loadLocs() });
 
     /* ---------- start ---------- */
+    const DEFAULT_KEY = 'ge_PdJ8xUk4Y0BnTiHmh4B0a3PePOyiLrh6';
     $('#base').value = LS.get('base') || (location.protocol.startsWith('http') ? location.origin : 'http://127.0.0.1:8000');
-    $('#key').value = LS.get('key'); $('#lat').value = LS.get('lat') || '23.8103'; $('#lon').value = LS.get('lon') || '90.4125';
+    $('#key').value = LS.get('key') || DEFAULT_KEY;
+    if (!LS.get('key')) LS.set('key', DEFAULT_KEY);
+    $('#lat').value = LS.get('lat') || '24.3745';
+    $('#lon').value = LS.get('lon') || '88.6042';
     theme(LS.get('theme') || (matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light'));
     initMap(); tab(LS.get('tab') || 'overview'); setRange(S.range); renderOverview(); renderHist(); setInterval(renderChips, 1000);
     loadLocs().then(() => { if ($('#key').value) loadAll(false) });

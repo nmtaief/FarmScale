@@ -92,9 +92,14 @@ const EPS = [
 let cur = EPS[0], timer = null;
 
 function store(k, v){ try{ if(v===undefined) return localStorage.getItem(k)||''; localStorage.setItem(k,v);}catch{ return ''; } }
+const DEFAULT_KEY = 'ge_PdJ8xUk4Y0BnTiHmh4B0a3PePOyiLrh6';
+const DEFAULT_ADMIN = '#1#2Nuzha(\/)Zaman';
 $('#base').value = store('de_base') || (location.protocol.startsWith('http') ? location.origin : 'http://127.0.0.1:8000');
-$('#key').value = store('de_key'); $('#admin').value = store('de_admin');
-['base','key','admin'].forEach(id => $('#'+id).addEventListener('change', e => store('de_'+id, e.target.value)));
+$('#key').value = store('de_key') || DEFAULT_KEY;
+$('#admin').value = store('de_admin') || DEFAULT_ADMIN;
+$('#lat').value = store('de_lat') || '24.3745';
+$('#lon').value = store('de_lon') || '88.6042';
+['base','key','admin','lat','lon'].forEach(id => $('#'+id).addEventListener('change', e => store('de_'+id, e.target.value)));
 
 function renderNav(){
   let html = '', g = '';

@@ -25,3 +25,8 @@ Thumbs.db
 .idea/
 .vscode/
 *.log
+
+# Large raw unsimplified GeoJSON dumps (>100MB exceeds GitHub hard limit; vector geojson files are tracked instead)
+*_raw.geojson
+*boundaries.geojson
+
