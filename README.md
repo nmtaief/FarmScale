@@ -10,6 +10,12 @@
 
 ---
 
+> ### 🚀 **Live Demo:** [https://farmscale-web.vercel.app](https://farmscale-web.vercel.app)
+> **🇧🇩 Direct Bangla Interface:** [https://farmscale-web.vercel.app/bn](https://farmscale-web.vercel.app/bn)
+> *Hosted on Vercel Production — Optimized for mid-range Android mobile viewports (360px).*
+
+---
+
 ## 🌐 Live Application & Repositories
 
 | Component | URL | Description |
@@ -80,7 +86,7 @@ FarmScale turns **NASA Earth Observation data** and **Machine Learning** into on
 4. **Comprehensive Stage-by-Stage Farming Plan:**
    - Detailed date-wise and growth-stage instructions (জমি তৈরি ➔ বীজ বপন ➔ সেচ ও সার ➔ নিড়ানি ➔ ফসল তোলা) for all 3 seasons.
    - Exact BARI/DAE fertilizer dosage per bigha (Urea, TSP, MoP, Gypsum, Zinc).
-   - Grounded interactive AI Farm Advisor for voice/text Q&A in natural Bangla.
+   - Grounded interactive AI Farm Advisor for natural Bangla guidance.
 
 ---
 
