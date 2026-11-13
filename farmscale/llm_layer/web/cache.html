@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FarmScale — Local Data & Offline Cache</title>
+  <style>
+    :root {
+      --bg: #f6f8f5;
+      --surface: #ffffff;
+      --surface-2: #eef2ec;
+      --text: #1b241c;
+      --muted: #5a695c;
+      --border: #d4ddd2;
+      --accent: #256d3a;
+      --accent-2: #1b522b;
+      --warn-bg: #fff4d6;
+      --warn-text: #7a4b00;
+      --warn-border: #f0c36d;
+      --err-bg: #fde8e8;
+      --err-text: #9b1c1c;
+      --ok-bg: #e6f4ea;
+      --ok-text: #137333;
+      --radius: 10px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #111612;
+        --surface: #1a211b;
+        --surface-2: #232c24;
+        --text: #e8efe8;
+        --muted: #9fb0a1;
+        --border: #324034;
+        --accent: #4caf68;
+        --accent-2: #3d9456;
+        --warn-bg: #3b2d12;
+        --warn-text: #ffd88a;
+        --warn-border: #8a641b;
+        --err-bg: #3a1919;
+        --err-text: #fca5a5;
+        --ok-bg: #163320;
+        --ok-text: #86efac;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #111612;
+      --surface: #1a211b;
+      --surface-2: #232c24;
+      --text: #e8efe8;
+      --muted: #9fb0a1;
+      --border: #324034;
+      --accent: #4caf68;
+      --accent-2: #3d9456;
+      --warn-bg: #3b2d12;
+      --warn-text: #ffd88a;
+      --warn-border: #8a641b;
+      --err-bg: #3a1919;
+      --err-text: #fca5a5;
+      --ok-bg: #163320;
+      --ok-text: #86efac;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .brand { font-weight: 700; font-size: 1.1rem; color: var(--accent); }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    main { max-width: 1024px; margin: 16px auto; padding: 0 12px 40px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    h2, h3 { margin-top: 0; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; color: var(--muted); }
+    input, select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { background: var(--accent-2); }
+    .btn-danger { background: var(--err-bg); color: var(--err-text); border-color: transparent; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .stat-box {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .stat-val { font-size: 1.3rem; font-weight: 700; color: var(--accent); }
+    .stat-lbl { font-size: 0.8rem; color: var(--muted); }
+    .alert { padding: 10px 12px; border-radius: 8px; margin: 10px 0; font-size: 0.9rem; }
+    .alert-ok { background: var(--ok-bg); color: var(--ok-text); }
+    .alert-warn { background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-border); }
+    .hidden { display: none !important; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; }
+    th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); }
+    th { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; }
+    pre {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      overflow-x: auto;
+      font-size: 0.8rem;
+      max-height: 320px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">FarmScale — Local Data & Offline Cache</div>
+    <div class="toolbar">
+      <a class="btn" href="/">Advisor & Settings</a>
+      <button class="btn" id="btn-theme" type="button">Theme</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- SUMMARY STATS -->
+    <div class="card">
+      <h3>Local Browser Cache Status (IndexedDB)</h3>
+      <div class="grid-4">
+        <div class="stat-box">
+          <div class="stat-val" id="stat-items">0</div>
+          <div class="stat-lbl">Cached Entries</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-size">0 KB</div>
+          <div class="stat-lbl">Approx. Size</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-bundle">No</div>
+          <div class="stat-lbl">Layer 2 Bundle Stored</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="stat-updated">—</div>
+          <div class="stat-lbl">Last Cached</div>
+        </div>
+      </div>
+      <div id="status-banner" class="alert alert-ok hidden"></div>
+    </div>
+
+    <!-- LAYER 2 DOWNLOAD & STORE -->
+    <div class="card">
+      <h3>1. Layer 2 Crop & Gazetteer Data</h3>
+      <p style="color:var(--muted); margin-top:0;">
+        Download raw JSON datasets to disk or store the complete offline bundle in this browser.
+      </p>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-store-bundle" type="button">Fetch & Store Offline Bundle</button>
+        <a class="btn" href="/v1/cache/bundle?download=1" download="farmscale-offline-bundle.json">Download Full Bundle (.json)</a>
+        <a class="btn" href="/v1/cache/dataset/crops?download=1" download="crops.json">Download crops.json</a>
+        <a class="btn" href="/v1/cache/dataset/local_crops?download=1" download="local_crops.json">Download local_crops.json</a>
+        <a class="btn" href="/v1/cache/dataset/gazetteer?download=1" download="gazetteer.json">Download gazetteer.json</a>
+        <a class="btn" href="/v1/cache/dataset/crop_id_map?download=1" download="crop_id_map.json">Download crop_id_map.json</a>
+      </div>
+    </div>
+
+    <!-- PRE-FETCH RECOMMENDATIONS -->
+    <div class="card">
+      <h3>2. Pre-fetch & Cache Recommendations</h3>
+      <p style="color:var(--muted); margin-top:0;">
+        Fetch crop rotation recommendations (using Mock/Demo pipeline) and save them locally for offline lookup.
+      </p>
+      <div class="grid-4">
+        <div>
+          <label for="cache-district">District</label>
+          <select id="cache-district"></select>
+        </div>
+        <div>
+          <label for="cache-upazila">Upazila</label>
+          <select id="cache-upazila"></select>
+        </div>
+        <div>
+          <label for="cache-goal">Goal</label>
+          <select id="cache-goal"></select>
+        </div>
+        <div>
+          <label for="cache-lang">Language</label>
+          <select id="cache-lang">
+            <option value="en">English (en)</option>
+            <option value="bn">Bangla (bn)</option>
+          </select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="btn-cache-one" type="button">Fetch & Cache Upazila</button>
+        <button class="btn" id="btn-cache-district" type="button">Cache All Upazilas in District</button>
+      </div>
+    </div>
+
+    <!-- STORED CACHE TABLE & EXPORT/IMPORT -->
+    <div class="card">
+      <h3>3. Stored Local Entries</h3>
+      <div class="btn-row">
+        <button class="btn" id="btn-export-all" type="button">Export All Cached Data (.json)</button>
+        <label class="btn" style="margin:0; cursor:pointer;">
+          Import Cache (.json)
+          <input id="import-file" type="file" accept="application/json" class="hidden" />
+        </label>
+        <button class="btn btn-danger" id="btn-clear-all" type="button">Clear All Cache</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Type</th>
+            <th>Size</th>
+            <th>Saved At</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="cache-tbody"></tbody>
+      </table>
+      <div id="preview-wrap" class="hidden" style="margin-top:14px;">
+        <h4 id="preview-title">Preview</h4>
+        <pre id="preview-pre"></pre>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const DB_NAME = "farmscale_local_cache";
+    const STORE_NAME = "entries";
+    const $ = (id) => document.getElementById(id);
+    let gazetteer = null;
+
+    function openDb() {
+      return new Promise((resolve, reject) => {
+        const req = indexedDB.open(DB_NAME, 1);
+        req.onupgradeneeded = () => {
+          const db = req.result;
+          if (!db.objectStoreNames.contains(STORE_NAME)) {
+            db.createObjectStore(STORE_NAME, { keyPath: "key" });
+          }
+        };
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+      });
+    }
+
+    async function putEntry(key, type, data) {
+      const db = await openDb();
+      const jsonStr = JSON.stringify(data);
+      const record = {
+        key,
+        type,
+        data,
+        sizeBytes: new Blob([jsonStr]).size,
+        savedAt: new Date().toISOString(),
+      };
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, "readwrite");
+        tx.objectStore(STORE_NAME).put(record);
+        tx.oncomplete = () => resolve(record);
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    async function getAllEntries() {
+      const db = await openDb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, "readonly");
+        const req = tx.objectStore(STORE_NAME).getAll();
+        req.onsuccess = () => resolve(req.result || []);
+        req.onerror = () => reject(req.error);
+      });
+    }
+
+    async function deleteEntry(key) {
+      const db = await openDb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, "readwrite");
+        tx.objectStore(STORE_NAME).delete(key);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    async function clearAllEntries() {
+      const db = await openDb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(STORE_NAME, "readwrite");
+        tx.objectStore(STORE_NAME).clear();
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+
+    function showStatus(msg) {
+      const el = $("status-banner");
+      el.textContent = msg;
+      el.classList.remove("hidden");
+    }
+
+    function downloadJson(filename, obj) {
+      const blob = new Blob([JSON.stringify(obj, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    async function renderCacheTable() {
+      const entries = await getAllEntries();
+      $("stat-items").textContent = String(entries.length);
+      const totalBytes = entries.reduce((acc, e) => acc + (e.sizeBytes || 0), 0);
+      $("stat-size").textContent = `${(totalBytes / 1024).toFixed(1)} KB`;
+      const hasBundle = entries.some((e) => e.key === "layer2:offline_bundle");
+      $("stat-bundle").textContent = hasBundle ? "Yes" : "No";
+      const latest = entries.map((e) => e.savedAt).sort().pop();
+      $("stat-updated").textContent = latest ? new Date(latest).toLocaleTimeString() : "—";
+
+      const tbody = $("cache-tbody");
+      tbody.innerHTML = "";
+      entries.forEach((e) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td><code>${e.key}</code></td>
+          <td>${e.type}</td>
+          <td>${((e.sizeBytes || 0) / 1024).toFixed(1)} KB</td>
+          <td>${new Date(e.savedAt).toLocaleString()}</td>
+          <td>
+            <button class="btn" type="button" data-act="view">View</button>
+            <button class="btn" type="button" data-act="dl">Download</button>
+            <button class="btn btn-danger" type="button" data-act="del">Delete</button>
+          </td>
+        `;
+        tr.querySelector('[data-act="view"]').onclick = () => {
+          $("preview-wrap").classList.remove("hidden");
+          $("preview-title").textContent = `Preview: ${e.key}`;
+          $("preview-pre").textContent = JSON.stringify(e.data, null, 2);
+        };
+        tr.querySelector('[data-act="dl"]').onclick = () => {
+          downloadJson(`${e.key.replace(/[^a-zA-Z0-9_-]/g, "_")}.json`, e.data);
+        };
+        tr.querySelector('[data-act="del"]').onclick = async () => {
+          await deleteEntry(e.key);
+          await renderCacheTable();
+          showStatus(`Deleted ${e.key} from local cache.`);
+        };
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function initSelectors() {
+      const [gRes, goalRes] = await Promise.all([fetch("/v1/gazetteer"), fetch("/v1/goals")]);
+      gazetteer = await gRes.json();
+      const goalsData = await goalRes.json();
+
+      const dSel = $("cache-district");
+      dSel.innerHTML = "";
+      (gazetteer.districts || []).forEach((d) => {
+        const opt = document.createElement("option");
+        opt.value = d.district;
+        opt.textContent = d.district;
+        dSel.appendChild(opt);
+      });
+      renderUpazilas();
+
+      const goalSel = $("cache-goal");
+      goalSel.innerHTML = "";
+      (goalsData.goals || []).filter((g) => g.supported_by_ml).forEach((g) => {
+        const opt = document.createElement("option");
+        opt.value = g.id;
+        opt.textContent = `${g.label_en} (${g.id})`;
+        goalSel.appendChild(opt);
+      });
+    }
+
+    function renderUpazilas() {
+      const dName = $("cache-district").value;
+      const dObj = (gazetteer?.districts || []).find((d) => d.district === dName);
+      const uSel = $("cache-upazila");
+      uSel.innerHTML = "";
+      (dObj?.upazilas || []).forEach((u) => {
+        const opt = document.createElement("option");
+        opt.value = u.upazila;
+        opt.textContent = u.upazila;
+        uSel.appendChild(opt);
+      });
+    }
+
+    async function fetchAndStoreAdvice(district, upazila, goalId, lang) {
+      const res = await fetch("/v1/advise", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: `Recommend ${goalId} in ${upazila}, ${district}`,
+          goal_id: goalId,
+          location: { district, upazila },
+          language: lang,
+          season: "annual",
+          provider: "mock",
+          model: "mock-farmscale-v1",
+          ml_mode: "mock",
+        }),
+      });
+      const data = await res.json();
+      const key = `advice:${district}:${upazila}:${goalId}:${lang}`;
+      await putEntry(key, "advice_result", data);
+      return key;
+    }
+
+    $("btn-store-bundle").onclick = async () => {
+      const res = await fetch("/v1/cache/bundle");
+      const bundle = await res.json();
+      await putEntry("layer2:offline_bundle", "layer2_bundle", bundle);
+      await renderCacheTable();
+      showStatus("Stored complete Layer 2 offline bundle in IndexedDB.");
+    };
+
+    $("btn-cache-one").onclick = async () => {
+      const d = $("cache-district").value;
+      const u = $("cache-upazila").value;
+      const g = $("cache-goal").value;
+      const l = $("cache-lang").value;
+      const key = await fetchAndStoreAdvice(d, u, g, l);
+      await renderCacheTable();
+      showStatus(`Cached recommendation: ${key}`);
+    };
+
+    $("btn-cache-district").onclick = async () => {
+      const d = $("cache-district").value;
+      const g = $("cache-goal").value;
+      const l = $("cache-lang").value;
+      const dObj = (gazetteer?.districts || []).find((x) => x.district === d);
+      const upazilas = dObj?.upazilas || [];
+      for (const u of upazilas) {
+        await fetchAndStoreAdvice(d, u.upazila, g, l);
+      }
+      await renderCacheTable();
+      showStatus(`Cached ${upazilas.length} upazilas in ${d} (${g}, ${l}).`);
+    };
+
+    $("btn-export-all").onclick = async () => {
+      const entries = await getAllEntries();
+      downloadJson("farmscale-local-cache-export.json", { exported_at: new Date().toISOString(), entries });
+    };
+
+    $("import-file").onchange = async (ev) => {
+      const file = ev.target.files?.[0];
+      if (!file) return;
+      const text = await file.text();
+      const parsed = JSON.parse(text);
+      const list = parsed.entries || [];
+      for (const item of list) {
+        if (item.key && item.data) {
+          await putEntry(item.key, item.type || "imported", item.data);
+        }
+      }
+      await renderCacheTable();
+      showStatus(`Imported ${list.length} entries into local cache.`);
+    };
+
+    $("btn-clear-all").onclick = async () => {
+      await clearAllEntries();
+      $("preview-wrap").classList.add("hidden");
+      await renderCacheTable();
+      showStatus("Cleared all local cache entries.");
+    };
+
+    $("cache-district").onchange = renderUpazilas;
+    $("btn-theme").onclick = () => {
+      const cur = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+    };
+
+    initSelectors();
+    renderCacheTable();
+  </script>
+</body>
+</html>

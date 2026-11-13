@@ -1,0 +1,113 @@
+{
+  "metadata": {
+    "description": "Local core crops by Agro-Ecological Zone (AEZ) and upazila in Rajshahi Division, Bangladesh",
+    "source": "draft",
+    "updated_at": "2026-11-12",
+    "confidence": "low",
+    "units": "season_crop_list"
+  },
+  "aez_defaults": {
+    "High Barind Tract": {
+      "Rabi": ["chickpea", "lentil", "mustard", "wheat", "tomato", "boro_rice"],
+      "Kharif-I": ["aus_rice", "mungbean", "sesame", "maize"],
+      "Kharif-II": ["aman_rice", "blackgram"],
+      "notes": "Drought-prone terrace; pulses and oilseeds conserve residual moisture after T. Aman.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    },
+    "Level Barind Tract": {
+      "Rabi": ["boro_rice", "potato", "mustard", "wheat", "maize"],
+      "Kharif-I": ["aus_rice", "maize", "mungbean"],
+      "Kharif-II": ["aman_rice"],
+      "notes": "Intensive Boro-Aman and Potato-Maize-Aman systems.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    },
+    "High Ganges River Floodplain": {
+      "Rabi": ["lentil", "wheat", "onion", "garlic", "mustard", "potato", "chickpea"],
+      "Kharif-I": ["jute", "aus_rice", "mungbean", "sesame", "watermelon"],
+      "Kharif-II": ["aman_rice", "blackgram"],
+      "notes": "Calcareous floodplain; major spice (onion, garlic), pulse, and jute belt.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    },
+    "Chalan Beel": {
+      "Rabi": ["boro_rice", "mustard", "garlic", "onion", "wheat", "watermelon"],
+      "Kharif-I": ["jute", "sesame", "aus_rice"],
+      "Kharif-II": ["aman_rice"],
+      "notes": "Deeply flooded basin; Mustard-Boro and Garlic-Jute-Aman are common.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    },
+    "Active Brahmaputra-Jamuna Floodplain": {
+      "Rabi": ["mustard", "boro_rice", "chili", "onion", "maize", "groundnut"],
+      "Kharif-I": ["jute", "sesame", "aus_rice", "maize"],
+      "Kharif-II": ["aman_rice", "blackgram"],
+      "notes": "Char and active floodplain soils; mustard, chili, maize, and jute thrive.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    },
+    "Tista Meander Floodplain": {
+      "Rabi": ["potato", "boro_rice", "maize", "mustard", "chili", "wheat"],
+      "Kharif-I": ["maize", "jute", "aus_rice"],
+      "Kharif-II": ["aman_rice"],
+      "notes": "Loamy soils suited to Potato-Boro/Maize-Aman.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    }
+  },
+  "upazila_overrides": {
+    "Rajshahi:Godagari": {
+      "Rabi": ["tomato", "chickpea", "lentil", "mustard", "wheat", "watermelon"],
+      "Kharif-I": ["aus_rice", "mungbean", "maize"],
+      "Kharif-II": ["aman_rice", "blackgram"],
+      "notes": "High Barind flagship zone for winter tomato, chickpea, mustard, and watermelon.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    },
+    "Naogaon:Niamatpur": {
+      "Rabi": ["chickpea", "lentil", "mustard", "boro_rice", "wheat"],
+      "Kharif-I": ["aus_rice", "mungbean", "sesame"],
+      "Kharif-II": ["aman_rice"],
+      "notes": "High Barind drought-prone upazila; Aman-Chickpea/Mustard-Mungbean improves soil fertility.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    },
+    "Natore:Singra": {
+      "Rabi": ["boro_rice", "mustard", "garlic", "watermelon"],
+      "Kharif-I": ["jute", "sesame"],
+      "Kharif-II": ["aman_rice"],
+      "notes": "Heart of Chalan Beel; Mustard-Boro-Fallow and Garlic-Jute-Aman.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    },
+    "Bogura:Bogura Sadar": {
+      "Rabi": ["potato", "boro_rice", "mustard", "chili", "tomato"],
+      "Kharif-I": ["maize", "aus_rice", "mungbean"],
+      "Kharif-II": ["aman_rice"],
+      "notes": "Intensive vegetable and potato belt.",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    }
+  }
+}

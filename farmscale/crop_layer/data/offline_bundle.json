@@ -1,0 +1,2156 @@
+{
+  "generated_at": "2026-11-12T07:34:09.291777+00:00",
+  "crops": {
+    "metadata": {
+      "description": "Crop profiles for Rajshahi Division, Bangladesh",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": {
+        "stage_lengths": "days",
+        "temperature": "celsius",
+        "typical_yield": "t/ha",
+        "nutrient_uptake_per_tonne": "kg/t",
+        "nitrogen_fixation_share": "fraction_0_to_1"
+      }
+    },
+    "crops": [
+      {
+        "id": "aman_rice",
+        "name_en": "T. Aman Rice",
+        "name_bn": "আমন ধান",
+        "category": "cereal",
+        "stage_lengths": {
+          "initial": 25,
+          "development": 35,
+          "mid": 45,
+          "late": 25,
+          "total_days": 130
+        },
+        "crop_coefficients": {
+          "kc_ini": 1.05,
+          "kc_mid": 1.2,
+          "kc_end": 0.9
+        },
+        "temperature": {
+          "min_c": 18,
+          "opt_min_c": 24,
+          "opt_max_c": 32,
+          "max_c": 38
+        },
+        "ph": {
+          "min": 4.5,
+          "opt_min": 5.5,
+          "opt_max": 7.0,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "clay",
+          "clay_loam",
+          "silty_clay_loam",
+          "loam"
+        ],
+        "typical_yield": 4.2,
+        "nutrient_uptake_per_tonne": {
+          "N": 20.0,
+          "P2O5": 8.5,
+          "K2O": 22.0
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "high",
+        "soil_effects": {
+          "organic_matter": "neutral_to_slight_loss",
+          "erosion": "low_when_bunded"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 35.0,
+          "grain_filling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "boro_rice",
+        "name_en": "Boro Rice",
+        "name_bn": "বোরো ধান",
+        "category": "cereal",
+        "stage_lengths": {
+          "initial": 30,
+          "development": 40,
+          "mid": 50,
+          "late": 30,
+          "total_days": 150
+        },
+        "crop_coefficients": {
+          "kc_ini": 1.05,
+          "kc_mid": 1.2,
+          "kc_end": 0.9
+        },
+        "temperature": {
+          "min_c": 14,
+          "opt_min_c": 22,
+          "opt_max_c": 32,
+          "max_c": 38
+        },
+        "ph": {
+          "min": 4.5,
+          "opt_min": 5.5,
+          "opt_max": 7.0,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "clay",
+          "clay_loam",
+          "silty_clay_loam"
+        ],
+        "typical_yield": 6.0,
+        "nutrient_uptake_per_tonne": {
+          "N": 21.0,
+          "P2O5": 9.0,
+          "K2O": 24.0
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "very_high",
+        "soil_effects": {
+          "organic_matter": "neutral",
+          "erosion": "low_when_bunded"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 35.0,
+          "grain_filling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "aus_rice",
+        "name_en": "Aus Rice",
+        "name_bn": "আউশ ধান",
+        "category": "cereal",
+        "stage_lengths": {
+          "initial": 20,
+          "development": 30,
+          "mid": 35,
+          "late": 20,
+          "total_days": 105
+        },
+        "crop_coefficients": {
+          "kc_ini": 1.0,
+          "kc_mid": 1.15,
+          "kc_end": 0.85
+        },
+        "temperature": {
+          "min_c": 20,
+          "opt_min_c": 25,
+          "opt_max_c": 34,
+          "max_c": 40
+        },
+        "ph": {
+          "min": 5.0,
+          "opt_min_c": null,
+          "opt_min": 5.5,
+          "opt_max": 7.0,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "sandy_loam",
+          "clay_loam"
+        ],
+        "typical_yield": 3.4,
+        "nutrient_uptake_per_tonne": {
+          "N": 19.0,
+          "P2O5": 8.0,
+          "K2O": 20.0
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "medium",
+        "soil_effects": {
+          "organic_matter": "slight_loss",
+          "erosion": "low"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 36.0,
+          "grain_filling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "wheat",
+        "name_en": "Wheat",
+        "name_bn": "গম",
+        "category": "cereal",
+        "stage_lengths": {
+          "initial": 20,
+          "development": 30,
+          "mid": 40,
+          "late": 25,
+          "total_days": 115
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.35,
+          "kc_mid": 1.15,
+          "kc_end": 0.3
+        },
+        "temperature": {
+          "min_c": 8,
+          "opt_min_c": 15,
+          "opt_max_c": 24,
+          "max_c": 32
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.5,
+          "max": 8.2
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "silt_loam",
+          "clay_loam"
+        ],
+        "typical_yield": 3.5,
+        "nutrient_uptake_per_tonne": {
+          "N": 25.0,
+          "P2O5": 10.0,
+          "K2O": 22.0
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "medium",
+        "soil_effects": {
+          "organic_matter": "slight_loss",
+          "erosion": "low"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 30.0,
+          "grain_filling_max_c": 32.0
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "maize",
+        "name_en": "Maize",
+        "name_bn": "ভুট্টা",
+        "category": "cereal",
+        "stage_lengths": {
+          "initial": 20,
+          "development": 35,
+          "mid": 45,
+          "late": 30,
+          "total_days": 130
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.35,
+          "kc_mid": 1.2,
+          "kc_end": 0.5
+        },
+        "temperature": {
+          "min_c": 12,
+          "opt_min_c": 20,
+          "opt_max_c": 30,
+          "max_c": 38
+        },
+        "ph": {
+          "min": 5.2,
+          "opt_min": 5.8,
+          "opt_max": 7.2,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "sandy_loam",
+          "silt_loam"
+        ],
+        "typical_yield": 7.5,
+        "nutrient_uptake_per_tonne": {
+          "N": 22.0,
+          "P2O5": 9.5,
+          "K2O": 20.0
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "medium",
+        "soil_effects": {
+          "organic_matter": "depleting_without_residue",
+          "erosion": "moderate"
+        },
+        "heat_stress_thresholds": {
+          "tasseling_max_c": 35.0,
+          "grain_filling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "mustard",
+        "name_en": "Mustard",
+        "name_bn": "সরিষা",
+        "category": "oilseed",
+        "stage_lengths": {
+          "initial": 15,
+          "development": 25,
+          "mid": 30,
+          "late": 15,
+          "total_days": 85
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.35,
+          "kc_mid": 1.1,
+          "kc_end": 0.35
+        },
+        "temperature": {
+          "min_c": 10,
+          "opt_min_c": 15,
+          "opt_max_c": 25,
+          "max_c": 32
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.5,
+          "max": 8.2
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "silt_loam",
+          "sandy_loam",
+          "clay_loam"
+        ],
+        "typical_yield": 1.4,
+        "nutrient_uptake_per_tonne": {
+          "N": 35.0,
+          "P2O5": 15.0,
+          "K2O": 28.0
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "low",
+        "soil_effects": {
+          "organic_matter": "neutral",
+          "erosion": "low"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 30.0,
+          "pod_filling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "lentil",
+        "name_en": "Lentil",
+        "name_bn": "মসুর ডাল",
+        "category": "pulse",
+        "stage_lengths": {
+          "initial": 20,
+          "development": 30,
+          "mid": 35,
+          "late": 20,
+          "total_days": 105
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.4,
+          "kc_mid": 1.1,
+          "kc_end": 0.3
+        },
+        "temperature": {
+          "min_c": 8,
+          "opt_min_c": 15,
+          "opt_max_c": 24,
+          "max_c": 30
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.5,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "silt_loam",
+          "clay_loam"
+        ],
+        "typical_yield": 1.3,
+        "nutrient_uptake_per_tonne": {
+          "N": 45.0,
+          "P2O5": 12.0,
+          "K2O": 25.0
+        },
+        "nitrogen_fixation_share": 0.65,
+        "drought_sensitivity": "low",
+        "soil_effects": {
+          "organic_matter": "improves",
+          "erosion": "low"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 29.0,
+          "pod_filling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "chickpea",
+        "name_en": "Chickpea",
+        "name_bn": "ছোলা",
+        "category": "pulse",
+        "stage_lengths": {
+          "initial": 20,
+          "development": 30,
+          "mid": 40,
+          "late": 25,
+          "total_days": 115
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.4,
+          "kc_mid": 1.0,
+          "kc_end": 0.35
+        },
+        "temperature": {
+          "min_c": 10,
+          "opt_min_c": 16,
+          "opt_max_c": 26,
+          "max_c": 32
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.8,
+          "max": 8.4
+        },
+        "preferred_soil_texture": [
+          "clay_loam",
+          "loam",
+          "silt_loam"
+        ],
+        "typical_yield": 1.5,
+        "nutrient_uptake_per_tonne": {
+          "N": 42.0,
+          "P2O5": 11.0,
+          "K2O": 24.0
+        },
+        "nitrogen_fixation_share": 0.7,
+        "drought_sensitivity": "very_low",
+        "soil_effects": {
+          "organic_matter": "improves",
+          "erosion": "low"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 31.0,
+          "pod_filling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "mungbean",
+        "name_en": "Mungbean",
+        "name_bn": "মুগ ডাল",
+        "category": "pulse",
+        "stage_lengths": {
+          "initial": 15,
+          "development": 20,
+          "mid": 20,
+          "late": 15,
+          "total_days": 70
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.4,
+          "kc_mid": 1.05,
+          "kc_end": 0.35
+        },
+        "temperature": {
+          "min_c": 20,
+          "opt_min_c": 25,
+          "opt_max_c": 35,
+          "max_c": 40
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.5,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "sandy_loam",
+          "silt_loam"
+        ],
+        "typical_yield": 1.1,
+        "nutrient_uptake_per_tonne": {
+          "N": 40.0,
+          "P2O5": 10.0,
+          "K2O": 22.0
+        },
+        "nitrogen_fixation_share": 0.65,
+        "drought_sensitivity": "low",
+        "soil_effects": {
+          "organic_matter": "improves",
+          "erosion": "low_good_cover"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 38.0,
+          "pod_filling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "blackgram",
+        "name_en": "Blackgram",
+        "name_bn": "মাষকলাই",
+        "category": "pulse",
+        "stage_lengths": {
+          "initial": 15,
+          "development": 20,
+          "mid": 25,
+          "late": 15,
+          "total_days": 75
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.4,
+          "kc_mid": 1.05,
+          "kc_end": 0.35
+        },
+        "temperature": {
+          "min_c": 20,
+          "opt_min_c": 25,
+          "opt_max_c": 34,
+          "max_c": 39
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.5,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "silt_loam",
+          "sandy_loam"
+        ],
+        "typical_yield": 1.1,
+        "nutrient_uptake_per_tonne": {
+          "N": 40.0,
+          "P2O5": 10.0,
+          "K2O": 22.0
+        },
+        "nitrogen_fixation_share": 0.65,
+        "drought_sensitivity": "low",
+        "soil_effects": {
+          "organic_matter": "improves",
+          "erosion": "low_good_cover"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": null,
+          "pod_filling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "potato",
+        "name_en": "Potato",
+        "name_bn": "আলু",
+        "category": "vegetable",
+        "stage_lengths": {
+          "initial": 20,
+          "development": 25,
+          "mid": 30,
+          "late": 15,
+          "total_days": 90
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.5,
+          "kc_mid": 1.15,
+          "kc_end": 0.75
+        },
+        "temperature": {
+          "min_c": 10,
+          "opt_min_c": 15,
+          "opt_max_c": 22,
+          "max_c": 29
+        },
+        "ph": {
+          "min": 5.0,
+          "opt_min": 5.5,
+          "opt_max": 6.5,
+          "max": 7.5
+        },
+        "preferred_soil_texture": [
+          "sandy_loam",
+          "loam",
+          "silt_loam"
+        ],
+        "typical_yield": 22.0,
+        "nutrient_uptake_per_tonne": {
+          "N": 4.5,
+          "P2O5": 2.0,
+          "K2O": 6.5
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "high",
+        "soil_effects": {
+          "organic_matter": "depleting",
+          "erosion": "moderate_high"
+        },
+        "heat_stress_thresholds": {
+          "tuber_initiation_max_c": 25.0,
+          "bulking_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "onion",
+        "name_en": "Onion",
+        "name_bn": "পেঁয়াজ",
+        "category": "spice",
+        "stage_lengths": {
+          "initial": 20,
+          "development": 30,
+          "mid": 45,
+          "late": 20,
+          "total_days": 115
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.5,
+          "kc_mid": 1.05,
+          "kc_end": 0.75
+        },
+        "temperature": {
+          "min_c": 12,
+          "opt_min_c": 18,
+          "opt_max_c": 26,
+          "max_c": 33
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.2,
+          "max": 7.8
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "sandy_loam",
+          "silt_loam"
+        ],
+        "typical_yield": 12.0,
+        "nutrient_uptake_per_tonne": {
+          "N": 4.0,
+          "P2O5": 1.8,
+          "K2O": 4.5
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "high",
+        "soil_effects": {
+          "organic_matter": "slight_loss",
+          "erosion": "moderate"
+        },
+        "heat_stress_thresholds": {
+          "bulbing_max_c": null,
+          "maturity_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "garlic",
+        "name_en": "Garlic",
+        "name_bn": "রসুন",
+        "category": "spice",
+        "stage_lengths": {
+          "initial": 20,
+          "development": 35,
+          "mid": 45,
+          "late": 25,
+          "total_days": 125
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.5,
+          "kc_mid": 1.0,
+          "kc_end": 0.7
+        },
+        "temperature": {
+          "min_c": 10,
+          "opt_min_c": 15,
+          "opt_max_c": 24,
+          "max_c": 32
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.5,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "silt_loam",
+          "clay_loam"
+        ],
+        "typical_yield": 8.5,
+        "nutrient_uptake_per_tonne": {
+          "N": 6.0,
+          "P2O5": 2.5,
+          "K2O": 5.5
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "medium",
+        "soil_effects": {
+          "organic_matter": "slight_loss",
+          "erosion": "moderate"
+        },
+        "heat_stress_thresholds": {
+          "bulbing_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "watermelon",
+        "name_en": "Watermelon",
+        "name_bn": "তরমুজ",
+        "category": "cash_crop",
+        "stage_lengths": {
+          "initial": 15,
+          "development": 25,
+          "mid": 30,
+          "late": 20,
+          "total_days": 90
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.4,
+          "kc_mid": 1.0,
+          "kc_end": 0.75
+        },
+        "temperature": {
+          "min_c": 18,
+          "opt_min_c": 24,
+          "opt_max_c": 32,
+          "max_c": 38
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.2,
+          "max": 7.8
+        },
+        "preferred_soil_texture": [
+          "sandy_loam",
+          "loam",
+          "silt_loam"
+        ],
+        "typical_yield": 30.0,
+        "nutrient_uptake_per_tonne": {
+          "N": 2.5,
+          "P2O5": 1.0,
+          "K2O": 3.5
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "medium",
+        "soil_effects": {
+          "organic_matter": "slight_loss",
+          "erosion": "low_moderate_vine_cover"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 36.0,
+          "fruit_set_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "jute",
+        "name_en": "Jute",
+        "name_bn": "পাট",
+        "category": "fiber",
+        "stage_lengths": {
+          "initial": 20,
+          "development": 30,
+          "mid": 45,
+          "late": 25,
+          "total_days": 120
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.5,
+          "kc_mid": 1.15,
+          "kc_end": 0.8
+        },
+        "temperature": {
+          "min_c": 20,
+          "opt_min_c": 26,
+          "opt_max_c": 35,
+          "max_c": 40
+        },
+        "ph": {
+          "min": 5.0,
+          "opt_min": 5.8,
+          "opt_max": 7.5,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "silt_loam",
+          "sandy_loam"
+        ],
+        "typical_yield": 2.4,
+        "nutrient_uptake_per_tonne": {
+          "N": 28.0,
+          "P2O5": 12.0,
+          "K2O": 40.0
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "medium",
+        "soil_effects": {
+          "organic_matter": "improves_via_leaf_fall",
+          "erosion": "low"
+        },
+        "heat_stress_thresholds": {
+          "seedling_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "sesame",
+        "name_en": "Sesame",
+        "name_bn": "তিল",
+        "category": "oilseed",
+        "stage_lengths": {
+          "initial": 15,
+          "development": 25,
+          "mid": 30,
+          "late": 15,
+          "total_days": 85
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.35,
+          "kc_mid": 1.1,
+          "kc_end": 0.25
+        },
+        "temperature": {
+          "min_c": 20,
+          "opt_min_c": 25,
+          "opt_max_c": 35,
+          "max_c": 40
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.5,
+          "max": 8.0
+        },
+        "preferred_soil_texture": [
+          "sandy_loam",
+          "loam",
+          "silt_loam"
+        ],
+        "typical_yield": 1.0,
+        "nutrient_uptake_per_tonne": {
+          "N": 32.0,
+          "P2O5": 14.0,
+          "K2O": 24.0
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "very_low",
+        "soil_effects": {
+          "organic_matter": "neutral",
+          "erosion": "low"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": null
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "tomato",
+        "name_en": "Tomato",
+        "name_bn": "টমেটো",
+        "category": "vegetable",
+        "stage_lengths": {
+          "initial": 25,
+          "development": 30,
+          "mid": 40,
+          "late": 25,
+          "total_days": 120
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.6,
+          "kc_mid": 1.15,
+          "kc_end": 0.8
+        },
+        "temperature": {
+          "min_c": 14,
+          "opt_min_c": 20,
+          "opt_max_c": 27,
+          "max_c": 34
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.0,
+          "max": 7.5
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "sandy_loam",
+          "silt_loam"
+        ],
+        "typical_yield": 35.0,
+        "nutrient_uptake_per_tonne": {
+          "N": 3.0,
+          "P2O5": 1.2,
+          "K2O": 4.2
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "high",
+        "soil_effects": {
+          "organic_matter": "depleting",
+          "erosion": "moderate"
+        },
+        "heat_stress_thresholds": {
+          "fruit_set_max_c": 32.0
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      },
+      {
+        "id": "chili",
+        "name_en": "Chili",
+        "name_bn": "মরিচ",
+        "category": "spice",
+        "stage_lengths": {
+          "initial": 25,
+          "development": 35,
+          "mid": 45,
+          "late": 30,
+          "total_days": 135
+        },
+        "crop_coefficients": {
+          "kc_ini": 0.6,
+          "kc_mid": 1.05,
+          "kc_end": 0.9
+        },
+        "temperature": {
+          "min_c": 16,
+          "opt_min_c": 22,
+          "opt_max_c": 30,
+          "max_c": 36
+        },
+        "ph": {
+          "min": 5.5,
+          "opt_min": 6.0,
+          "opt_max": 7.2,
+          "max": 7.8
+        },
+        "preferred_soil_texture": [
+          "loam",
+          "sandy_loam",
+          "silt_loam"
+        ],
+        "typical_yield": 2.5,
+        "nutrient_uptake_per_tonne": {
+          "N": 25.0,
+          "P2O5": 10.0,
+          "K2O": 28.0
+        },
+        "nitrogen_fixation_share": 0.0,
+        "drought_sensitivity": "medium",
+        "soil_effects": {
+          "organic_matter": "slight_loss",
+          "erosion": "moderate"
+        },
+        "heat_stress_thresholds": {
+          "flowering_max_c": 34.0
+        },
+        "price": {
+          "value": null,
+          "currency": "BDT/kg",
+          "status": "missing"
+        },
+        "production_cost": {
+          "value": null,
+          "currency": "BDT/ha",
+          "status": "missing"
+        },
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": {
+          "yield": "t/ha",
+          "uptake": "kg/t",
+          "temp": "C",
+          "days": "days"
+        }
+      }
+    ]
+  },
+  "local_crops": {
+    "metadata": {
+      "description": "Local core crops by Agro-Ecological Zone (AEZ) and upazila in Rajshahi Division, Bangladesh",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "season_crop_list"
+    },
+    "aez_defaults": {
+      "High Barind Tract": {
+        "Rabi": [
+          "chickpea",
+          "lentil",
+          "mustard",
+          "wheat",
+          "tomato",
+          "boro_rice"
+        ],
+        "Kharif-I": [
+          "aus_rice",
+          "mungbean",
+          "sesame",
+          "maize"
+        ],
+        "Kharif-II": [
+          "aman_rice",
+          "blackgram"
+        ],
+        "notes": "Drought-prone terrace; pulses and oilseeds conserve residual moisture after T. Aman.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      },
+      "Level Barind Tract": {
+        "Rabi": [
+          "boro_rice",
+          "potato",
+          "mustard",
+          "wheat",
+          "maize"
+        ],
+        "Kharif-I": [
+          "aus_rice",
+          "maize",
+          "mungbean"
+        ],
+        "Kharif-II": [
+          "aman_rice"
+        ],
+        "notes": "Intensive Boro-Aman and Potato-Maize-Aman systems.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      },
+      "High Ganges River Floodplain": {
+        "Rabi": [
+          "lentil",
+          "wheat",
+          "onion",
+          "garlic",
+          "mustard",
+          "potato",
+          "chickpea"
+        ],
+        "Kharif-I": [
+          "jute",
+          "aus_rice",
+          "mungbean",
+          "sesame",
+          "watermelon"
+        ],
+        "Kharif-II": [
+          "aman_rice",
+          "blackgram"
+        ],
+        "notes": "Calcareous floodplain; major spice (onion, garlic), pulse, and jute belt.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      },
+      "Chalan Beel": {
+        "Rabi": [
+          "boro_rice",
+          "mustard",
+          "garlic",
+          "onion",
+          "wheat",
+          "watermelon"
+        ],
+        "Kharif-I": [
+          "jute",
+          "sesame",
+          "aus_rice"
+        ],
+        "Kharif-II": [
+          "aman_rice"
+        ],
+        "notes": "Deeply flooded basin; Mustard-Boro and Garlic-Jute-Aman are common.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      },
+      "Active Brahmaputra-Jamuna Floodplain": {
+        "Rabi": [
+          "mustard",
+          "boro_rice",
+          "chili",
+          "onion",
+          "maize",
+          "groundnut"
+        ],
+        "Kharif-I": [
+          "jute",
+          "sesame",
+          "aus_rice",
+          "maize"
+        ],
+        "Kharif-II": [
+          "aman_rice",
+          "blackgram"
+        ],
+        "notes": "Char and active floodplain soils; mustard, chili, maize, and jute thrive.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      },
+      "Tista Meander Floodplain": {
+        "Rabi": [
+          "potato",
+          "boro_rice",
+          "maize",
+          "mustard",
+          "chili",
+          "wheat"
+        ],
+        "Kharif-I": [
+          "maize",
+          "jute",
+          "aus_rice"
+        ],
+        "Kharif-II": [
+          "aman_rice"
+        ],
+        "notes": "Loamy soils suited to Potato-Boro/Maize-Aman.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      }
+    },
+    "upazila_overrides": {
+      "Rajshahi:Godagari": {
+        "Rabi": [
+          "tomato",
+          "chickpea",
+          "lentil",
+          "mustard",
+          "wheat",
+          "watermelon"
+        ],
+        "Kharif-I": [
+          "aus_rice",
+          "mungbean",
+          "maize"
+        ],
+        "Kharif-II": [
+          "aman_rice",
+          "blackgram"
+        ],
+        "notes": "High Barind flagship zone for winter tomato, chickpea, mustard, and watermelon.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      },
+      "Naogaon:Niamatpur": {
+        "Rabi": [
+          "chickpea",
+          "lentil",
+          "mustard",
+          "boro_rice",
+          "wheat"
+        ],
+        "Kharif-I": [
+          "aus_rice",
+          "mungbean",
+          "sesame"
+        ],
+        "Kharif-II": [
+          "aman_rice"
+        ],
+        "notes": "High Barind drought-prone upazila; Aman-Chickpea/Mustard-Mungbean improves soil fertility.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      },
+      "Natore:Singra": {
+        "Rabi": [
+          "boro_rice",
+          "mustard",
+          "garlic",
+          "watermelon"
+        ],
+        "Kharif-I": [
+          "jute",
+          "sesame"
+        ],
+        "Kharif-II": [
+          "aman_rice"
+        ],
+        "notes": "Heart of Chalan Beel; Mustard-Boro-Fallow and Garlic-Jute-Aman.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      },
+      "Bogura:Bogura Sadar": {
+        "Rabi": [
+          "potato",
+          "boro_rice",
+          "mustard",
+          "chili",
+          "tomato"
+        ],
+        "Kharif-I": [
+          "maize",
+          "aus_rice",
+          "mungbean"
+        ],
+        "Kharif-II": [
+          "aman_rice"
+        ],
+        "notes": "Intensive vegetable and potato belt.",
+        "source": "draft",
+        "updated_at": "2026-11-12",
+        "confidence": "low",
+        "units": "season_crop_list"
+      }
+    }
+  },
+  "gazetteer": {
+    "metadata": {
+      "division": "Rajshahi",
+      "division_bn": "রাজশাহী",
+      "description": "Gazetteer of all 8 districts and upazilas in Rajshahi Division, Bangladesh with approximate centroids and primary Agro-Ecological Zones (AEZ).",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": {
+        "latitude": "decimal_degrees_N",
+        "longitude": "decimal_degrees_E"
+      }
+    },
+    "districts": [
+      {
+        "district": "Rajshahi",
+        "district_bn": "রাজশাহী",
+        "upazilas": [
+          {
+            "upazila": "Bagha",
+            "upazila_bn": "বাঘা",
+            "latitude": 24.194,
+            "longitude": 88.836,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Bagmara",
+            "upazila_bn": "বাগমারা",
+            "latitude": 24.564,
+            "longitude": 88.811,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Charghat",
+            "upazila_bn": "চারঘাট",
+            "latitude": 24.286,
+            "longitude": 88.774,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Durgapur",
+            "upazila_bn": "দুর্গাপুর",
+            "latitude": 24.455,
+            "longitude": 88.765,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Godagari",
+            "upazila_bn": "গোদাগাড়ী",
+            "latitude": 24.466,
+            "longitude": 88.33,
+            "aez": "High Barind Tract"
+          },
+          {
+            "upazila": "Mohanpur",
+            "upazila_bn": "মোহনপুর",
+            "latitude": 24.563,
+            "longitude": 88.65,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Paba",
+            "upazila_bn": "পবা",
+            "latitude": 24.42,
+            "longitude": 88.625,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Puthia",
+            "upazila_bn": "পুঠিয়া",
+            "latitude": 24.365,
+            "longitude": 88.838,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Tanore",
+            "upazila_bn": "তানোর",
+            "latitude": 24.597,
+            "longitude": 88.583,
+            "aez": "High Barind Tract"
+          }
+        ]
+      },
+      {
+        "district": "Naogaon",
+        "district_bn": "নওগাঁ",
+        "upazilas": [
+          {
+            "upazila": "Atrai",
+            "upazila_bn": "আত্রাই",
+            "latitude": 24.618,
+            "longitude": 88.967,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Badalgachhi",
+            "upazila_bn": "বদলগাছী",
+            "latitude": 24.967,
+            "longitude": 88.902,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Dhamoirhat",
+            "upazila_bn": "ধামইরহাট",
+            "latitude": 25.133,
+            "longitude": 88.85,
+            "aez": "High Barind Tract"
+          },
+          {
+            "upazila": "Manda",
+            "upazila_bn": "মান্দা",
+            "latitude": 24.775,
+            "longitude": 88.67,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Mohadevpur",
+            "upazila_bn": "মহাদেবপুর",
+            "latitude": 24.916,
+            "longitude": 88.742,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Naogaon Sadar",
+            "upazila_bn": "নওগাঁ সদর",
+            "latitude": 24.805,
+            "longitude": 88.943,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Niamatpur",
+            "upazila_bn": "নিয়ামতপুর",
+            "latitude": 24.855,
+            "longitude": 88.575,
+            "aez": "High Barind Tract"
+          },
+          {
+            "upazila": "Patnitala",
+            "upazila_bn": "পত্নীতলা",
+            "latitude": 25.043,
+            "longitude": 88.738,
+            "aez": "High Barind Tract"
+          },
+          {
+            "upazila": "Porsha",
+            "upazila_bn": "পোরশা",
+            "latitude": 25.025,
+            "longitude": 88.49,
+            "aez": "High Barind Tract"
+          },
+          {
+            "upazila": "Raninagar",
+            "upazila_bn": "রাণীনগর",
+            "latitude": 24.725,
+            "longitude": 88.967,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Sapahar",
+            "upazila_bn": "সাপাহার",
+            "latitude": 25.125,
+            "longitude": 88.583,
+            "aez": "High Barind Tract"
+          }
+        ]
+      },
+      {
+        "district": "Natore",
+        "district_bn": "নাটোর",
+        "upazilas": [
+          {
+            "upazila": "Bagatipara",
+            "upazila_bn": "বাগাতিপাড়া",
+            "latitude": 24.331,
+            "longitude": 88.947,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Baraigram",
+            "upazila_bn": "বড়াইগ্রাম",
+            "latitude": 24.316,
+            "longitude": 89.156,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Gurudaspur",
+            "upazila_bn": "গুরুদাসপুর",
+            "latitude": 24.369,
+            "longitude": 89.25,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Lalpur",
+            "upazila_bn": "লালপুর",
+            "latitude": 24.185,
+            "longitude": 88.977,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Naldanga",
+            "upazila_bn": "নলডাঙ্গা",
+            "latitude": 24.492,
+            "longitude": 88.967,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Natore Sadar",
+            "upazila_bn": "নাটোর সদর",
+            "latitude": 24.413,
+            "longitude": 88.983,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Singra",
+            "upazila_bn": "সিংড়া",
+            "latitude": 24.499,
+            "longitude": 89.146,
+            "aez": "Chalan Beel"
+          }
+        ]
+      },
+      {
+        "district": "Chapainawabganj",
+        "district_bn": "চাঁপাইনবাবগঞ্জ",
+        "upazilas": [
+          {
+            "upazila": "Bholahat",
+            "upazila_bn": "ভোলাহাট",
+            "latitude": 24.855,
+            "longitude": 88.215,
+            "aez": "High Barind Tract"
+          },
+          {
+            "upazila": "Chapainawabganj Sadar",
+            "upazila_bn": "চাঁপাইনবাবগঞ্জ সদর",
+            "latitude": 24.596,
+            "longitude": 88.274,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Gomastapur",
+            "upazila_bn": "গোমস্তাপুর",
+            "latitude": 24.783,
+            "longitude": 88.283,
+            "aez": "High Barind Tract"
+          },
+          {
+            "upazila": "Nachole",
+            "upazila_bn": "নাচোল",
+            "latitude": 24.731,
+            "longitude": 88.422,
+            "aez": "High Barind Tract"
+          },
+          {
+            "upazila": "Shibganj",
+            "upazila_bn": "শিবগঞ্জ",
+            "latitude": 24.683,
+            "longitude": 88.158,
+            "aez": "High Ganges River Floodplain"
+          }
+        ]
+      },
+      {
+        "district": "Bogura",
+        "district_bn": "বগুড়া",
+        "upazilas": [
+          {
+            "upazila": "Adamdighi",
+            "upazila_bn": "আদমদীঘি",
+            "latitude": 24.8,
+            "longitude": 89.033,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Bogura Sadar",
+            "upazila_bn": "বগুড়া সদর",
+            "latitude": 24.848,
+            "longitude": 89.371,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Dhunat",
+            "upazila_bn": "ধুনট",
+            "latitude": 24.683,
+            "longitude": 89.533,
+            "aez": "Active Brahmaputra-Jamuna Floodplain"
+          },
+          {
+            "upazila": "Dupchanchia",
+            "upazila_bn": "দুপচাঁচিয়া",
+            "latitude": 24.872,
+            "longitude": 89.17,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Gabtali",
+            "upazila_bn": "গাবতলী",
+            "latitude": 24.878,
+            "longitude": 89.458,
+            "aez": "Tista Meander Floodplain"
+          },
+          {
+            "upazila": "Kahaloo",
+            "upazila_bn": "কাহালু",
+            "latitude": 24.825,
+            "longitude": 89.267,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Nandigram",
+            "upazila_bn": "নন্দীগ্রাম",
+            "latitude": 24.658,
+            "longitude": 89.225,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Sariakandi",
+            "upazila_bn": "সারিয়াকান্দি",
+            "latitude": 24.889,
+            "longitude": 89.567,
+            "aez": "Active Brahmaputra-Jamuna Floodplain"
+          },
+          {
+            "upazila": "Shajahanpur",
+            "upazila_bn": "শাজাহানপুর",
+            "latitude": 24.77,
+            "longitude": 89.383,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Sherpur",
+            "upazila_bn": "শেরপুর",
+            "latitude": 24.667,
+            "longitude": 89.417,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Shibganj",
+            "upazila_bn": "শিবগঞ্জ",
+            "latitude": 25.008,
+            "longitude": 89.325,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Sonatala",
+            "upazila_bn": "সোনাতলা",
+            "latitude": 25.025,
+            "longitude": 89.5,
+            "aez": "Tista Meander Floodplain"
+          }
+        ]
+      },
+      {
+        "district": "Joypurhat",
+        "district_bn": "জয়পুরহাট",
+        "upazilas": [
+          {
+            "upazila": "Akkelpur",
+            "upazila_bn": "আক্কেলপুর",
+            "latitude": 24.975,
+            "longitude": 89.017,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Joypurhat Sadar",
+            "upazila_bn": "জয়পুরহাট সদর",
+            "latitude": 25.095,
+            "longitude": 89.02,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Kalai",
+            "upazila_bn": "কালাই",
+            "latitude": 25.067,
+            "longitude": 89.183,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Khetlal",
+            "upazila_bn": "ক্ষেতলাল",
+            "latitude": 25.025,
+            "longitude": 89.108,
+            "aez": "Level Barind Tract"
+          },
+          {
+            "upazila": "Panchbibi",
+            "upazila_bn": "পাঁচবিবি",
+            "latitude": 25.188,
+            "longitude": 89.022,
+            "aez": "Level Barind Tract"
+          }
+        ]
+      },
+      {
+        "district": "Pabna",
+        "district_bn": "পাবনা",
+        "upazilas": [
+          {
+            "upazila": "Atghoria",
+            "upazila_bn": "আটঘরিয়া",
+            "latitude": 24.117,
+            "longitude": 89.242,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Bera",
+            "upazila_bn": "বেড়া",
+            "latitude": 24.078,
+            "longitude": 89.625,
+            "aez": "Active Brahmaputra-Jamuna Floodplain"
+          },
+          {
+            "upazila": "Bhangura",
+            "upazila_bn": "ভাঙ্গুড়া",
+            "latitude": 24.225,
+            "longitude": 89.392,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Chatmohar",
+            "upazila_bn": "চাটমোহর",
+            "latitude": 24.225,
+            "longitude": 89.292,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Faridpur",
+            "upazila_bn": "ফরিদপুর",
+            "latitude": 24.167,
+            "longitude": 89.45,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Ishwardi",
+            "upazila_bn": "ঈশ্বরদী",
+            "latitude": 24.129,
+            "longitude": 89.066,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Pabna Sadar",
+            "upazila_bn": "পাবনা সদর",
+            "latitude": 24.006,
+            "longitude": 89.249,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Santhia",
+            "upazila_bn": "সাঁথিয়া",
+            "latitude": 24.058,
+            "longitude": 89.525,
+            "aez": "High Ganges River Floodplain"
+          },
+          {
+            "upazila": "Sujanagar",
+            "upazila_bn": "সুজানগর",
+            "latitude": 23.917,
+            "longitude": 89.433,
+            "aez": "High Ganges River Floodplain"
+          }
+        ]
+      },
+      {
+        "district": "Sirajganj",
+        "district_bn": "সিরাজগঞ্জ",
+        "upazilas": [
+          {
+            "upazila": "Belkuchi",
+            "upazila_bn": "বেলকুচি",
+            "latitude": 24.292,
+            "longitude": 89.7,
+            "aez": "Active Brahmaputra-Jamuna Floodplain"
+          },
+          {
+            "upazila": "Chauhali",
+            "upazila_bn": "চৌহালী",
+            "latitude": 24.208,
+            "longitude": 89.758,
+            "aez": "Active Brahmaputra-Jamuna Floodplain"
+          },
+          {
+            "upazila": "Kamarkhanda",
+            "upazila_bn": "কামারখন্দ",
+            "latitude": 24.367,
+            "longitude": 89.625,
+            "aez": "Active Brahmaputra-Jamuna Floodplain"
+          },
+          {
+            "upazila": "Kazipur",
+            "upazila_bn": "কাজীপুর",
+            "latitude": 24.642,
+            "longitude": 89.65,
+            "aez": "Active Brahmaputra-Jamuna Floodplain"
+          },
+          {
+            "upazila": "Raiganj",
+            "upazila_bn": "রায়গঞ্জ",
+            "latitude": 24.492,
+            "longitude": 89.525,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Shahjadpur",
+            "upazila_bn": "শাহজাদপুর",
+            "latitude": 24.175,
+            "longitude": 89.592,
+            "aez": "Active Brahmaputra-Jamuna Floodplain"
+          },
+          {
+            "upazila": "Sirajganj Sadar",
+            "upazila_bn": "সিরাজগঞ্জ সদর",
+            "latitude": 24.453,
+            "longitude": 89.701,
+            "aez": "Active Brahmaputra-Jamuna Floodplain"
+          },
+          {
+            "upazila": "Tarash",
+            "upazila_bn": "তাড়াশ",
+            "latitude": 24.433,
+            "longitude": 89.367,
+            "aez": "Chalan Beel"
+          },
+          {
+            "upazila": "Ullapara",
+            "upazila_bn": "উল্লাপাড়া",
+            "latitude": 24.317,
+            "longitude": 89.567,
+            "aez": "Chalan Beel"
+          }
+        ]
+      }
+    ]
+  },
+  "crop_id_map": {
+    "metadata": {
+      "description": "Mapping between external/ML crop IDs and canonical crops.json IDs",
+      "source": "draft",
+      "updated_at": "2026-11-12",
+      "confidence": "low",
+      "units": "id_mapping"
+    },
+    "ml_to_canonical": {
+      "rice": "aman_rice",
+      "t_aman": "aman_rice",
+      "t.aman": "aman_rice",
+      "aman": "aman_rice",
+      "aman_rice": "aman_rice",
+      "boro": "boro_rice",
+      "boro_rice": "boro_rice",
+      "aus": "aus_rice",
+      "aus_rice": "aus_rice",
+      "wheat": "wheat",
+      "maize": "maize",
+      "corn": "maize",
+      "mustard": "mustard",
+      "lentil": "lentil",
+      "chickpea": "chickpea",
+      "gram": "chickpea",
+      "mungbean": "mungbean",
+      "mung": "mungbean",
+      "blackgram": "blackgram",
+      "mashkalai": "blackgram",
+      "potato": "potato",
+      "onion": "onion",
+      "garlic": "garlic",
+      "watermelon": "watermelon",
+      "jute": "jute",
+      "sesame": "sesame",
+      "til": "sesame",
+      "tomato": "tomato",
+      "chili": "chili",
+      "chilli": "chili"
+    }
+  },
+  "goals": [
+    {
+      "id": "soil_fertility",
+      "ml_goal": "soil_fertility",
+      "supported_by_ml": true,
+      "label_en": "Improve my soil fertility",
+      "label_bn": "আমার জমির উর্বরতা বাড়াতে চাই",
+      "phrase_en": "improves soil fertility",
+      "phrase_bn": "জমির উর্বরতা বাড়ায়",
+      "template_en": "I farm in {upazila}, {district}. I want a crop rotation that improves soil fertility for the {season} season. {constraints}",
+      "template_bn": "আমি {district} জেলার {upazila} উপজেলায় চাষ করি। {season} মৌসুমে এমন শস্য পর্যায় চাই যা আমার জমির উর্বরতা বাড়ায়। {constraints}"
+    },
+    {
+      "id": "cash_crop",
+      "ml_goal": "cash_crop",
+      "supported_by_ml": true,
+      "label_en": "Most profit",
+      "label_bn": "সবচেয়ে বেশি লাভ চাই",
+      "phrase_en": "maximizes profit",
+      "phrase_bn": "সবচেয়ে বেশি লাভ দেয়",
+      "template_en": "I farm in {upazila}, {district}. I want a crop rotation that maximizes profit for the {season} season. {constraints}",
+      "template_bn": "আমি {district} জেলার {upazila} উপজেলায় চাষ করি। {season} মৌসুমে সবচেয়ে বেশি লাভ দেয় এমন শস্য পর্যায় চাই। {constraints}"
+    },
+    {
+      "id": "land_preservation",
+      "ml_goal": "land_preservation",
+      "supported_by_ml": true,
+      "label_en": "Protect my land",
+      "label_bn": "আমার জমি রক্ষা করতে চাই",
+      "phrase_en": "protects my land from degradation",
+      "phrase_bn": "আমার জমি রক্ষা করে",
+      "template_en": "I farm in {upazila}, {district}. I want a crop rotation that protects my land for the {season} season. {constraints}",
+      "template_bn": "আমি {district} জেলার {upazila} উপজেলায় চাষ করি। {season} মৌসুমে আমার জমি রক্ষা করে এমন শস্য পর্যায় চাই। {constraints}"
+    },
+    {
+      "id": "cultivability",
+      "ml_goal": "cultivability",
+      "supported_by_ml": true,
+      "label_en": "Make my land easier to cultivate",
+      "label_bn": "জমি চাষের উপযোগী করতে চাই",
+      "phrase_en": "makes my land easier to cultivate",
+      "phrase_bn": "জমি চাষের উপযোগী করে",
+      "template_en": "I farm in {upazila}, {district}. I want a crop rotation that makes my land easier to cultivate for the {season} season. {constraints}",
+      "template_bn": "আমি {district} জেলার {upazila} উপজেলায় চাষ করি। {season} মৌসুমে জমি চাষের উপযোগী করে এমন শস্য পর্যায় চাই। {constraints}"
+    },
+    {
+      "id": "max_production",
+      "ml_goal": null,
+      "supported_by_ml": false,
+      "label_en": "Most production",
+      "label_bn": "সবচেয়ে বেশি ফলন চাই",
+      "phrase_en": "maximizes total production",
+      "phrase_bn": "সবচেয়ে বেশি ফলন দেয়",
+      "template_en": "I farm in {upazila}, {district}. I want a crop rotation that maximizes total production for the {season} season. {constraints}",
+      "template_bn": "আমি {district} জেলার {upazila} উপজেলায় চাষ করি। {season} মৌসুমে সবচেয়ে বেশি ফলন দেয় এমন শস্য পর্যায় চাই। {constraints}",
+      "disabled_reason": "No ML goal yet for max_production (see Open Question 1)."
+    }
+  ]
+}

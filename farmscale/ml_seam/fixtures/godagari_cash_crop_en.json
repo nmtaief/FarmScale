@@ -1,0 +1,132 @@
+{
+  "status": "success",
+  "tool_name": "farmscale_rank_rotations",
+  "arguments_used": {
+    "district": "Rajshahi",
+    "upazila": "Godagari",
+    "latitude": 24.466,
+    "longitude": 88.33,
+    "goal": "cash_crop",
+    "season": "annual",
+    "language": "en",
+    "top_k": 3
+  },
+  "query_analysis": {
+    "aez": "High Barind Tract",
+    "goal": "cash_crop",
+    "water_regime": "drought_prone_terrace"
+  },
+  "telemetry_used": {
+    "nasa_power_weather": {
+      "temp_mean_c": 25.8,
+      "precip_mm": 3.9,
+      "rootzone_wetness": 0.56
+    },
+    "smap_soil_moisture": {
+      "sm_rootzone_m3_m3": 0.24,
+      "sm_rootzone_pctl": 42.0
+    },
+    "modis_vegetation": {
+      "ndvi": 0.54,
+      "ndvi_vci": 61.0
+    },
+    "soilgrids_soil": {
+      "ph": 6.2,
+      "soc_g_kg": 9.4,
+      "n_g_kg": 0.95,
+      "sand": 24.0,
+      "silt": 44.0,
+      "clay": 32.0,
+      "texture_group": "clay_loam"
+    }
+  },
+  "ml_metadata": {
+    "version": "mock-0.1.0",
+    "model_type": "MOCK",
+    "telemetry_date": "2026-10-31",
+    "data_status": "ready"
+  },
+  "ranked_rotations": [
+    {
+      "id": "rot_godagari_cash_1",
+      "name": "T. Aman Rice -> Winter Tomato -> Mungbean",
+      "bengali_name": "আমন ধান -> শীতকালীন টমেটো -> মুগ ডাল",
+      "pattern": ["aman_rice", "tomato", "mungbean"],
+      "seasons": ["Kharif-II", "Rabi", "Kharif-I"],
+      "score": 0.91,
+      "ml_score": 0.91,
+      "rank": 1,
+      "primary_fit": "High-value winter tomato paired with monsoon rice and short-duration mungbean",
+      "suitable_zones": ["High Barind Tract"],
+      "metrics": {
+        "total_duration_days": 320,
+        "total_yield_t_ha": 40.3,
+        "net_n_balance_kg_ha": -18.5,
+        "soil_cover_score": 0.78,
+        "drought_resilience": 0.68,
+        "diversity_score": 0.85
+      },
+      "environmental_factors": {
+        "thermal_comfort_pct": 88.0,
+        "ph_suitability_pct": 92.0,
+        "water_adequacy_pct": 76.0,
+        "stress_vulnerability": "moderate"
+      }
+    },
+    {
+      "id": "rot_godagari_cash_2",
+      "name": "T. Aman Rice -> Mustard -> Watermelon",
+      "bengali_name": "আমন ধান -> সরিষা -> তরমুজ",
+      "pattern": ["aman_rice", "mustard", "watermelon"],
+      "seasons": ["Kharif-II", "Rabi", "Kharif-I"],
+      "score": 0.86,
+      "ml_score": 0.86,
+      "rank": 2,
+      "primary_fit": "Fast-turnaround mustard oilseed followed by high-return summer watermelon",
+      "suitable_zones": ["High Barind Tract"],
+      "metrics": {
+        "total_duration_days": 305,
+        "total_yield_t_ha": 35.6,
+        "net_n_balance_kg_ha": -42.0,
+        "soil_cover_score": 0.72,
+        "drought_resilience": 0.74,
+        "diversity_score": 0.82
+      },
+      "environmental_factors": {
+        "thermal_comfort_pct": 85.0,
+        "ph_suitability_pct": 90.0,
+        "water_adequacy_pct": 79.0,
+        "stress_vulnerability": "low_to_moderate"
+      }
+    },
+    {
+      "id": "rot_godagari_cash_3",
+      "name": "T. Aman Rice -> Chickpea -> Maize",
+      "bengali_name": "আমন ধান -> ছোলা -> ভুট্টা",
+      "pattern": ["aman_rice", "chickpea", "maize"],
+      "seasons": ["Kharif-II", "Rabi", "Kharif-I"],
+      "score": 0.81,
+      "ml_score": 0.81,
+      "rank": 3,
+      "primary_fit": "Drought-tolerant chickpea with high-yielding summer maize",
+      "suitable_zones": ["High Barind Tract"],
+      "metrics": {
+        "total_duration_days": 375,
+        "total_yield_t_ha": 13.2,
+        "net_n_balance_kg_ha": 12.0,
+        "soil_cover_score": 0.81,
+        "drought_resilience": 0.83,
+        "diversity_score": 0.80
+      },
+      "environmental_factors": {
+        "thermal_comfort_pct": 84.0,
+        "ph_suitability_pct": 89.0,
+        "water_adequacy_pct": 82.0,
+        "stress_vulnerability": "low"
+      }
+    }
+  ],
+  "plain_language_answer": "Templated mock summary (do not rely on this over metrics).",
+  "llm_prompt_context": "Mock context for Godagari cash_crop.",
+  "instruction_for_llm": "Present options in exact rank order using verified metrics."
+}

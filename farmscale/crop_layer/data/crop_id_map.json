@@ -1,0 +1,41 @@
+{
+  "metadata": {
+    "description": "Mapping between external/ML crop IDs and canonical crops.json IDs",
+    "source": "draft",
+    "updated_at": "2026-11-12",
+    "confidence": "low",
+    "units": "id_mapping"
+  },
+  "ml_to_canonical": {
+    "rice": "aman_rice",
+    "t_aman": "aman_rice",
+    "t.aman": "aman_rice",
+    "aman": "aman_rice",
+    "aman_rice": "aman_rice",
+    "boro": "boro_rice",
+    "boro_rice": "boro_rice",
+    "aus": "aus_rice",
+    "aus_rice": "aus_rice",
+    "wheat": "wheat",
+    "maize": "maize",
+    "corn": "maize",
+    "mustard": "mustard",
+    "lentil": "lentil",
+    "chickpea": "chickpea",
+    "gram": "chickpea",
+    "mungbean": "mungbean",
+    "mung": "mungbean",
+    "blackgram": "blackgram",
+    "mashkalai": "blackgram",
+    "potato": "potato",
+    "onion": "onion",
+    "garlic": "garlic",
+    "watermelon": "watermelon",
+    "jute": "jute",
+    "sesame": "sesame",
+    "til": "sesame",
+    "tomato": "tomato",
+    "chili": "chili",
+    "chilli": "chili"
+  }
+}

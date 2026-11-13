@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FarmScale ML Response Payload",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "status",
+    "ranked_rotations",
+    "telemetry_used",
+    "ml_metadata"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["success", "error"]
+    },
+    "tool_name": {"type": "string"},
+    "arguments_used": {"type": "object", "additionalProperties": true},
+    "query_analysis": {"type": "object", "additionalProperties": true},
+    "plain_language_answer": {"type": ["string", "null"]},
+    "llm_prompt_context": {"type": ["string", "null"]},
+    "instruction_for_llm": {"type": ["string", "null"]},
+    "ml_metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["version", "model_type"],
+      "properties": {
+        "version": {"type": "string"},
+        "model_type": {"type": "string"},
+        "data_status": {"type": "string"},
+        "telemetry_date": {"type": "string"}
+      }
+    },
+    "telemetry_used": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "nasa_power_weather",
+        "smap_soil_moisture",
+        "modis_vegetation",
+        "soilgrids_soil"
+      ],
+      "properties": {
+        "nasa_power_weather": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["temp_mean_c", "precip_mm", "rootzone_wetness"],
+          "properties": {
+            "temp_mean_c": {"type": "number"},
+            "precip_mm": {"type": "number"},
+            "rootzone_wetness": {"type": "number"}
+          }
+        },
+        "smap_soil_moisture": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["sm_rootzone_m3_m3", "sm_rootzone_pctl"],
+          "properties": {
+            "sm_rootzone_m3_m3": {"type": "number"},
+            "sm_rootzone_pctl": {"type": "number"}
+          }
+        },
+        "modis_vegetation": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["ndvi", "ndvi_vci"],
+          "properties": {
+            "ndvi": {"type": "number"},
+            "ndvi_vci": {"type": "number"}
+          }
+        },
+        "soilgrids_soil": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["ph", "soc_g_kg", "n_g_kg", "sand", "silt", "clay", "texture_group"],
+          "properties": {
+            "ph": {"type": "number"},
+            "soc_g_kg": {"type": "number"},
+            "n_g_kg": {"type": "number"},
+            "sand": {"type": "number"},
+            "silt": {"type": "number"},
+            "clay": {"type": "number"},
+            "texture_group": {"type": "string"}
+          }
+        }
+      }
+    },
+    "ranked_rotations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "id",
+          "name",
+          "pattern",
+          "seasons",
+          "score",
+          "rank",
+          "metrics",
+          "environmental_factors"
+        ],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "bengali_name": {"type": ["string", "null"]},
+          "pattern": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string"}
+          },
+          "seasons": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "string"}
+          },
+          "score": {"type": "number"},
+          "ml_score": {"type": "number"},
+          "rank": {"type": "integer", "minimum": 1},
+          "primary_fit": {"type": ["string", "null"]},
+          "suitable_zones": {"type": "array", "items": {"type": "string"}},
+          "description": {"type": ["string", "null"]},
+          "crops": {"type": "array"},
+          "metrics": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "total_duration_days",
+              "total_yield_t_ha",
+              "net_n_balance_kg_ha",
+              "soil_cover_score",
+              "drought_resilience",
+              "diversity_score"
+            ],
+            "properties": {
+              "total_duration_days": {"type": "number"},
+              "total_yield_t_ha": {"type": "number"},
+              "net_n_balance_kg_ha": {"type": "number"},
+              "soil_cover_score": {"type": "number"},
+              "drought_resilience": {"type": "number"},
+              "diversity_score": {"type": "number"}
+            }
+          },
+          "environmental_factors": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": [
+              "thermal_comfort_pct",
+              "ph_suitability_pct",
+              "water_adequacy_pct",
+              "stress_vulnerability"
+            ],
+            "properties": {
+              "thermal_comfort_pct": {"type": "number"},
+              "ph_suitability_pct": {"type": "number"},
+              "water_adequacy_pct": {"type": "number"},
+              "stress_vulnerability": {"type": ["number", "string"]}
+            }
+          }
+        }
+      }
+    }
+  }
+}

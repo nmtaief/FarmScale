@@ -1,9 +1,35 @@
-# FarmScale — NASA Space Apps & Crop Data Gateway
+# FarmScale — Full-Stack Agro-Intelligence Platform
 
-An integrated agricultural intelligence platform consisting of two complementary microservices:
+An integrated, end-to-end agricultural intelligence platform connecting:
+1. **Layer 1: LLM Natural Language Advisor (`farmscale/llm_layer/`)** — Natural language prompt interface powered by OpenRouter / OpenAI / Anthropic / Gemini, extracting farmer intent, location, constraints, and generating plain-language guidance in Bangla and English.
+2. **Layer 2: Crop Data Layer (`farmscale/crop_layer/`)** — Agronomic data, local core crops, water budgeting, and offline caching.
+3. **Layer 3: XGBoost ML Engine (`NasaAPIgateWay/ml/`)** — 335-tree gradient boosted crop rotation scoring and ranking engine, trained on real NASA satellite telemetry.
+4. **NASA Earth Data Gateway (`NasaAPIgateWay/`)** — Satellite telemetry engine with 10-year (2016–2026, 130 months) historical climate database (`engine.db`), interactive vector map, and REST APIs.
 
-1. **NASA API Gateway (`NasaAPIgateWay/`)** — High-performance satellite data engine aggregating NASA POWER weather, ISRIC SoilGrids soil profile, NASA AppEEARS SMAP rootzone soil moisture, and MODIS vegetation indices (NDVI/EVI). Includes a comprehensive 10-year (2016–2026, 130 months) month-by-month climate dataset and interactive vector map for all 64 districts and upazilas of Bangladesh.
-2. **Crop Data API (`Crop Data API/`)** — Agronomic intelligence service providing location-based crop suitability scoring, water budgeting by growth stage, nutrient removal calculations, and crop rotation planning.
+---
+
+## Quick Start (Run the Full Unified System)
+
+To run the complete system (Layer 1 LLM + Layer 2 Crop Data + Layer 3 XGBoost ML):
+
+```bash
+# 1. Install dependencies
+pip install -r NasaAPIgateWay/requirements.txt
+pip install fastapi uvicorn httpx pydantic pyyaml xgboost scikit-learn
+
+# 2. Run the unified application
+python run_farmscale.py
+```
+
+- **Unified Web Tester & Prompt Space:** Open [http://127.0.0.1:8000/tester.html](http://127.0.0.1:8000/tester.html)
+- **API Documentation:** Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- **NASA Climate Map Viewer:** Open [http://127.0.0.1:8000/map](http://127.0.0.1:8000/map)
+
+### Configuring OpenRouter / LLM
+In the Web Tester (`/tester.html`), click **LLM Settings** (top-right gear icon) to enter your OpenRouter API key and preferred model (e.g. `openai/gpt-4o-mini`, `google/gemini-2.0-flash`), or export it in your environment:
+```bash
+export OPENROUTER_API_KEY="your-openrouter-key"
+```
 
 ---
 
@@ -11,30 +37,31 @@ An integrated agricultural intelligence platform consisting of two complementary
 
 ```
 FarmScale/
-├── Crop Data API/                     # Port 8100: Crop suitability & agronomic engine
-│   ├── main.py                        # FastAPI application
-│   ├── engine.py                      # Suitability algorithms & water/nutrient models
-│   ├── crops.json                     # Agronomic rules and crop parameters
-│   └── tester.html                    # Interactive API testing interface
+├── farmscale/                         # Integrated LLM & Crop Data Package
+│   ├── llm_layer/                     # Layer 1: Prompt interpreter, intent parser, providers
+│   │   ├── web/tester.html            # Clean natural language prompt UI
+│   │   ├── providers/                 # OpenRouter, Anthropic, Gemini, OpenAI clients
+│   │   └── pipeline.py                # Pipeline coordinator
+│   ├── crop_layer/                    # Layer 2: Crop database, local core crop lookups
+│   ├── ml_seam/                       # Integration bridge connecting to Layer 3 ML
+│   │   ├── inprocess_client.py        # Direct zero-latency ML client
+│   │   └── contract_check.py          # Payload schema validation
+│   └── tests/                         # Full automated test suite (42 tests)
 │
-└── NasaAPIgateWay/                    # Port 8000: NASA Earth data engine & vector maps
-    ├── main.py                        # FastAPI application & dataset endpoints
-    ├── providers.py                   # NASA POWER, SoilGrids, and AppEEARS clients
-    ├── store.py                       # SQLite cache, API key auth, 10Y climate query
-    ├── map.html                       # 10-Year Bangladesh Climate Vector Map viewer
-    ├── dashboard.html                 # Gateway operations & location manager dashboard
-    ├── tester.html                    # Endpoint tester and request builder
-    ├── bangladesh_districts_vector.geojson  # Decimated vector polygons (64 districts)
-    ├── bangladesh_upazilas_vector.geojson   # Decimated vector polygons (544 upazilas)
-    ├── bangladesh_10years_monthly.csv       # 10Y monthly climate records (64 districts)
-    ├── bangladesh_districts_10years_monthly.json
-    ├── bangladesh_upazilas_10years_monthly.csv
-    ├── bangladesh_upazilas_10years_monthly.json
-    ├── rajshahi_10years_monthly.csv         # Rajshahi Division 10Y monthly climate records
-    ├── rajshahi_districts_10years_monthly.json
-    ├── rajshahi_nasa_polygons.geojson       # Rajshahi division polygon vector map
-    ├── rajshahi_nasa_vector.geojson         # Rajshahi district centroid points
-    └── rajshahi_satellite_vegetation_all.csv # MODIS NDVI/EVI & VCI time series
+├── NasaAPIgateWay/                    # NASA Earth Data & ML Gateway
+│   ├── ml/                            # Layer 3: XGBoost ML Model & Rotations
+│   │   ├── models/                    # Trained XGBoost models (xgb_crop_rotation.json)
+│   │   ├── service.py                 # Telemetry aggregator & scoring service
+│   │   ├── feature_pipeline.py        # Soil & telemetry feature assembler
+│   │   └── llm_tool.py                # Schema-validated tool executor
+│   ├── data/
+│   │   ├── engine.db                  # 10-Year Bangladesh NASA climate SQLite database
+│   │   └── crops.json                 # Crop parameters
+│   ├── main.py                        # NASA API gateway server
+│   └── requirements.txt               # Dependencies
+│
+├── run_farmscale.py                   # One-command full system launcher
+└── Crop Data API/                     # Legacy crop suitability microservice
 ```
 
 ---

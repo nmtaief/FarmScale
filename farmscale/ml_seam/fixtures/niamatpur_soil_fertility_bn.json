@@ -1,0 +1,132 @@
+{
+  "status": "success",
+  "tool_name": "farmscale_rank_rotations",
+  "arguments_used": {
+    "district": "Naogaon",
+    "upazila": "Niamatpur",
+    "latitude": 24.855,
+    "longitude": 88.575,
+    "goal": "soil_fertility",
+    "season": "annual",
+    "language": "bn",
+    "top_k": 3
+  },
+  "query_analysis": {
+    "aez": "High Barind Tract",
+    "goal": "soil_fertility",
+    "water_regime": "drought_prone_terrace"
+  },
+  "telemetry_used": {
+    "nasa_power_weather": {
+      "temp_mean_c": 25.4,
+      "precip_mm": 4.1,
+      "rootzone_wetness": 0.58
+    },
+    "smap_soil_moisture": {
+      "sm_rootzone_m3_m3": 0.25,
+      "sm_rootzone_pctl": 45.0
+    },
+    "modis_vegetation": {
+      "ndvi": 0.56,
+      "ndvi_vci": 64.0
+    },
+    "soilgrids_soil": {
+      "ph": 5.9,
+      "soc_g_kg": 8.8,
+      "n_g_kg": 0.88,
+      "sand": 22.0,
+      "silt": 45.0,
+      "clay": 33.0,
+      "texture_group": "clay_loam"
+    }
+  },
+  "ml_metadata": {
+    "version": "mock-0.1.0",
+    "model_type": "MOCK",
+    "telemetry_date": "2026-10-31",
+    "data_status": "ready"
+  },
+  "ranked_rotations": [
+    {
+      "id": "rot_niamatpur_fert_1",
+      "name": "T. Aman Rice -> Chickpea -> Mungbean",
+      "bengali_name": "আমন ধান -> ছোলা -> মুগ ডাল",
+      "pattern": ["aman_rice", "chickpea", "mungbean"],
+      "seasons": ["Kharif-II", "Rabi", "Kharif-I"],
+      "score": 0.94,
+      "ml_score": 0.94,
+      "rank": 1,
+      "primary_fit": "Double legume rotation maximizes biological nitrogen fixation and residue cover",
+      "suitable_zones": ["High Barind Tract"],
+      "metrics": {
+        "total_duration_days": 315,
+        "total_yield_t_ha": 6.8,
+        "net_n_balance_kg_ha": 38.5,
+        "soil_cover_score": 0.89,
+        "drought_resilience": 0.90,
+        "diversity_score": 0.91
+      },
+      "environmental_factors": {
+        "thermal_comfort_pct": 89.0,
+        "ph_suitability_pct": 88.0,
+        "water_adequacy_pct": 85.0,
+        "stress_vulnerability": "low"
+      }
+    },
+    {
+      "id": "rot_niamatpur_fert_2",
+      "name": "T. Aman Rice -> Lentil -> Mungbean",
+      "bengali_name": "আমন ধান -> মসুর ডাল -> মুগ ডাল",
+      "pattern": ["aman_rice", "lentil", "mungbean"],
+      "seasons": ["Kharif-II", "Rabi", "Kharif-I"],
+      "score": 0.90,
+      "ml_score": 0.90,
+      "rank": 2,
+      "primary_fit": "Lentil and mungbean restore soil nitrogen and organic matter",
+      "suitable_zones": ["High Barind Tract"],
+      "metrics": {
+        "total_duration_days": 305,
+        "total_yield_t_ha": 6.6,
+        "net_n_balance_kg_ha": 34.0,
+        "soil_cover_score": 0.87,
+        "drought_resilience": 0.84,
+        "diversity_score": 0.89
+      },
+      "environmental_factors": {
+        "thermal_comfort_pct": 87.0,
+        "ph_suitability_pct": 86.0,
+        "water_adequacy_pct": 81.0,
+        "stress_vulnerability": "low"
+      }
+    },
+    {
+      "id": "rot_niamatpur_fert_3",
+      "name": "T. Aman Rice -> Mustard -> Mungbean",
+      "bengali_name": "আমন ধান -> সরিষা -> মুগ ডাল",
+      "pattern": ["aman_rice", "mustard", "mungbean"],
+      "seasons": ["Kharif-II", "Rabi", "Kharif-I"],
+      "score": 0.83,
+      "ml_score": 0.83,
+      "rank": 3,
+      "primary_fit": "Balanced oilseed-pulse sequence with positive summer N contribution",
+      "suitable_zones": ["High Barind Tract"],
+      "metrics": {
+        "total_duration_days": 285,
+        "total_yield_t_ha": 6.7,
+        "net_n_balance_kg_ha": 8.5,
+        "soil_cover_score": 0.82,
+        "drought_resilience": 0.81,
+        "diversity_score": 0.86
+      },
+      "environmental_factors": {
+        "thermal_comfort_pct": 86.0,
+        "ph_suitability_pct": 85.0,
+        "water_adequacy_pct": 80.0,
+        "stress_vulnerability": "low"
+      }
+    }
+  ],
+  "plain_language_answer": "টেমপ্লেট উত্তর (মেট্রিক্সের ওপর ভিত্তি করে নয়)।",
+  "llm_prompt_context": "Mock context for Niamatpur soil_fertility.",
+  "instruction_for_llm": "Present options in exact rank order in Bangla using verified metrics."
+}

@@ -1,0 +1,128 @@
+{
+  "metadata": {
+    "division": "Rajshahi",
+    "division_bn": "রাজশাহী",
+    "description": "Gazetteer of all 8 districts and upazilas in Rajshahi Division, Bangladesh with approximate centroids and primary Agro-Ecological Zones (AEZ).",
+    "source": "draft",
+    "updated_at": "2026-11-12",
+    "confidence": "low",
+    "units": {"latitude": "decimal_degrees_N", "longitude": "decimal_degrees_E"}
+  },
+  "districts": [
+    {
+      "district": "Rajshahi",
+      "district_bn": "রাজশাহী",
+      "upazilas": [
+        {"upazila": "Bagha", "upazila_bn": "বাঘা", "latitude": 24.194, "longitude": 88.836, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Bagmara", "upazila_bn": "বাগমারা", "latitude": 24.564, "longitude": 88.811, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Charghat", "upazila_bn": "চারঘাট", "latitude": 24.286, "longitude": 88.774, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Durgapur", "upazila_bn": "দুর্গাপুর", "latitude": 24.455, "longitude": 88.765, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Godagari", "upazila_bn": "গোদাগাড়ী", "latitude": 24.466, "longitude": 88.330, "aez": "High Barind Tract"},
+        {"upazila": "Mohanpur", "upazila_bn": "মোহনপুর", "latitude": 24.563, "longitude": 88.650, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Paba", "upazila_bn": "পবা", "latitude": 24.420, "longitude": 88.625, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Puthia", "upazila_bn": "পুঠিয়া", "latitude": 24.365, "longitude": 88.838, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Tanore", "upazila_bn": "তানোর", "latitude": 24.597, "longitude": 88.583, "aez": "High Barind Tract"}
+      ]
+    },
+    {
+      "district": "Naogaon",
+      "district_bn": "নওগাঁ",
+      "upazilas": [
+        {"upazila": "Atrai", "upazila_bn": "আত্রাই", "latitude": 24.618, "longitude": 88.967, "aez": "Chalan Beel"},
+        {"upazila": "Badalgachhi", "upazila_bn": "বদলগাছী", "latitude": 24.967, "longitude": 88.902, "aez": "Level Barind Tract"},
+        {"upazila": "Dhamoirhat", "upazila_bn": "ধামইরহাট", "latitude": 25.133, "longitude": 88.850, "aez": "High Barind Tract"},
+        {"upazila": "Manda", "upazila_bn": "মান্দা", "latitude": 24.775, "longitude": 88.670, "aez": "Level Barind Tract"},
+        {"upazila": "Mohadevpur", "upazila_bn": "মহাদেবপুর", "latitude": 24.916, "longitude": 88.742, "aez": "Level Barind Tract"},
+        {"upazila": "Naogaon Sadar", "upazila_bn": "নওগাঁ সদর", "latitude": 24.805, "longitude": 88.943, "aez": "Level Barind Tract"},
+        {"upazila": "Niamatpur", "upazila_bn": "নিয়ামতপুর", "latitude": 24.855, "longitude": 88.575, "aez": "High Barind Tract"},
+        {"upazila": "Patnitala", "upazila_bn": "পত্নীতলা", "latitude": 25.043, "longitude": 88.738, "aez": "High Barind Tract"},
+        {"upazila": "Porsha", "upazila_bn": "পোরশা", "latitude": 25.025, "longitude": 88.490, "aez": "High Barind Tract"},
+        {"upazila": "Raninagar", "upazila_bn": "রাণীনগর", "latitude": 24.725, "longitude": 88.967, "aez": "Chalan Beel"},
+        {"upazila": "Sapahar", "upazila_bn": "সাপাহার", "latitude": 25.125, "longitude": 88.583, "aez": "High Barind Tract"}
+      ]
+    },
+    {
+      "district": "Natore",
+      "district_bn": "নাটোর",
+      "upazilas": [
+        {"upazila": "Bagatipara", "upazila_bn": "বাগাতিপাড়া", "latitude": 24.331, "longitude": 88.947, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Baraigram", "upazila_bn": "বড়াইগ্রাম", "latitude": 24.316, "longitude": 89.156, "aez": "Chalan Beel"},
+        {"upazila": "Gurudaspur", "upazila_bn": "গুরুদাসপুর", "latitude": 24.369, "longitude": 89.250, "aez": "Chalan Beel"},
+        {"upazila": "Lalpur", "upazila_bn": "লালপুর", "latitude": 24.185, "longitude": 88.977, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Naldanga", "upazila_bn": "নলডাঙ্গা", "latitude": 24.492, "longitude": 88.967, "aez": "Chalan Beel"},
+        {"upazila": "Natore Sadar", "upazila_bn": "নাটোর সদর", "latitude": 24.413, "longitude": 88.983, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Singra", "upazila_bn": "সিংড়া", "latitude": 24.499, "longitude": 89.146, "aez": "Chalan Beel"}
+      ]
+    },
+    {
+      "district": "Chapainawabganj",
+      "district_bn": "চাঁপাইনবাবগঞ্জ",
+      "upazilas": [
+        {"upazila": "Bholahat", "upazila_bn": "ভোলাহাট", "latitude": 24.855, "longitude": 88.215, "aez": "High Barind Tract"},
+        {"upazila": "Chapainawabganj Sadar", "upazila_bn": "চাঁপাইনবাবগঞ্জ সদর", "latitude": 24.596, "longitude": 88.274, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Gomastapur", "upazila_bn": "গোমস্তাপুর", "latitude": 24.783, "longitude": 88.283, "aez": "High Barind Tract"},
+        {"upazila": "Nachole", "upazila_bn": "নাচোল", "latitude": 24.731, "longitude": 88.422, "aez": "High Barind Tract"},
+        {"upazila": "Shibganj", "upazila_bn": "শিবগঞ্জ", "latitude": 24.683, "longitude": 88.158, "aez": "High Ganges River Floodplain"}
+      ]
+    },
+    {
+      "district": "Bogura",
+      "district_bn": "বগুড়া",
+      "upazilas": [
+        {"upazila": "Adamdighi", "upazila_bn": "আদমদীঘি", "latitude": 24.800, "longitude": 89.033, "aez": "Level Barind Tract"},
+        {"upazila": "Bogura Sadar", "upazila_bn": "বগুড়া সদর", "latitude": 24.848, "longitude": 89.371, "aez": "Level Barind Tract"},
+        {"upazila": "Dhunat", "upazila_bn": "ধুনট", "latitude": 24.683, "longitude": 89.533, "aez": "Active Brahmaputra-Jamuna Floodplain"},
+        {"upazila": "Dupchanchia", "upazila_bn": "দুপচাঁচিয়া", "latitude": 24.872, "longitude": 89.170, "aez": "Level Barind Tract"},
+        {"upazila": "Gabtali", "upazila_bn": "গাবতলী", "latitude": 24.878, "longitude": 89.458, "aez": "Tista Meander Floodplain"},
+        {"upazila": "Kahaloo", "upazila_bn": "কাহালু", "latitude": 24.825, "longitude": 89.267, "aez": "Level Barind Tract"},
+        {"upazila": "Nandigram", "upazila_bn": "নন্দীগ্রাম", "latitude": 24.658, "longitude": 89.225, "aez": "Level Barind Tract"},
+        {"upazila": "Sariakandi", "upazila_bn": "সারিয়াকান্দি", "latitude": 24.889, "longitude": 89.567, "aez": "Active Brahmaputra-Jamuna Floodplain"},
+        {"upazila": "Shajahanpur", "upazila_bn": "শাজাহানপুর", "latitude": 24.770, "longitude": 89.383, "aez": "Level Barind Tract"},
+        {"upazila": "Sherpur", "upazila_bn": "শেরপুর", "latitude": 24.667, "longitude": 89.417, "aez": "Level Barind Tract"},
+        {"upazila": "Shibganj", "upazila_bn": "শিবগঞ্জ", "latitude": 25.008, "longitude": 89.325, "aez": "Level Barind Tract"},
+        {"upazila": "Sonatala", "upazila_bn": "সোনাতলা", "latitude": 25.025, "longitude": 89.500, "aez": "Tista Meander Floodplain"}
+      ]
+    },
+    {
+      "district": "Joypurhat",
+      "district_bn": "জয়পুরহাট",
+      "upazilas": [
+        {"upazila": "Akkelpur", "upazila_bn": "আক্কেলপুর", "latitude": 24.975, "longitude": 89.017, "aez": "Level Barind Tract"},
+        {"upazila": "Joypurhat Sadar", "upazila_bn": "জয়পুরহাট সদর", "latitude": 25.095, "longitude": 89.020, "aez": "Level Barind Tract"},
+        {"upazila": "Kalai", "upazila_bn": "কালাই", "latitude": 25.067, "longitude": 89.183, "aez": "Level Barind Tract"},
+        {"upazila": "Khetlal", "upazila_bn": "ক্ষেতলাল", "latitude": 25.025, "longitude": 89.108, "aez": "Level Barind Tract"},
+        {"upazila": "Panchbibi", "upazila_bn": "পাঁচবিবি", "latitude": 25.188, "longitude": 89.022, "aez": "Level Barind Tract"}
+      ]
+    },
+    {
+      "district": "Pabna",
+      "district_bn": "পাবনা",
+      "upazilas": [
+        {"upazila": "Atghoria", "upazila_bn": "আটঘরিয়া", "latitude": 24.117, "longitude": 89.242, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Bera", "upazila_bn": "বেড়া", "latitude": 24.078, "longitude": 89.625, "aez": "Active Brahmaputra-Jamuna Floodplain"},
+        {"upazila": "Bhangura", "upazila_bn": "ভাঙ্গুড়া", "latitude": 24.225, "longitude": 89.392, "aez": "Chalan Beel"},
+        {"upazila": "Chatmohar", "upazila_bn": "চাটমোহর", "latitude": 24.225, "longitude": 89.292, "aez": "Chalan Beel"},
+        {"upazila": "Faridpur", "upazila_bn": "ফরিদপুর", "latitude": 24.167, "longitude": 89.450, "aez": "Chalan Beel"},
+        {"upazila": "Ishwardi", "upazila_bn": "ঈশ্বরদী", "latitude": 24.129, "longitude": 89.066, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Pabna Sadar", "upazila_bn": "পাবনা সদর", "latitude": 24.006, "longitude": 89.249, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Santhia", "upazila_bn": "সাঁথিয়া", "latitude": 24.058, "longitude": 89.525, "aez": "High Ganges River Floodplain"},
+        {"upazila": "Sujanagar", "upazila_bn": "সুজানগর", "latitude": 23.917, "longitude": 89.433, "aez": "High Ganges River Floodplain"}
+      ]
+    },
+    {
+      "district": "Sirajganj",
+      "district_bn": "সিরাজগঞ্জ",
+      "upazilas": [
+        {"upazila": "Belkuchi", "upazila_bn": "বেলকুচি", "latitude": 24.292, "longitude": 89.700, "aez": "Active Brahmaputra-Jamuna Floodplain"},
+        {"upazila": "Chauhali", "upazila_bn": "চৌহালী", "latitude": 24.208, "longitude": 89.758, "aez": "Active Brahmaputra-Jamuna Floodplain"},
+        {"upazila": "Kamarkhanda", "upazila_bn": "কামারখন্দ", "latitude": 24.367, "longitude": 89.625, "aez": "Active Brahmaputra-Jamuna Floodplain"},
+        {"upazila": "Kazipur", "upazila_bn": "কাজীপুর", "latitude": 24.642, "longitude": 89.650, "aez": "Active Brahmaputra-Jamuna Floodplain"},
+        {"upazila": "Raiganj", "upazila_bn": "রায়গঞ্জ", "latitude": 24.492, "longitude": 89.525, "aez": "Chalan Beel"},
+        {"upazila": "Shahjadpur", "upazila_bn": "শাহজাদপুর", "latitude": 24.175, "longitude": 89.592, "aez": "Active Brahmaputra-Jamuna Floodplain"},
+        {"upazila": "Sirajganj Sadar", "upazila_bn": "সিরাজগঞ্জ সদর", "latitude": 24.453, "longitude": 89.701, "aez": "Active Brahmaputra-Jamuna Floodplain"},
+        {"upazila": "Tarash", "upazila_bn": "তাড়াশ", "latitude": 24.433, "longitude": 89.367, "aez": "Chalan Beel"},
+        {"upazila": "Ullapara", "upazila_bn": "উল্লাপাড়া", "latitude": 24.317, "longitude": 89.567, "aez": "Chalan Beel"}
+      ]
+    }
+  ]
+}
