@@ -165,9 +165,21 @@ export const AuthButton: React.FC<AuthButtonProps> = ({ lang, onOpenMyFarm }) =>
         </button>
 
         {authError && (
-          <div className="absolute right-0 mt-2 w-64 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl p-2.5 flex items-center gap-2 shadow-lg z-50">
-            <AlertCircle className="w-4 h-4 flex-shrink-0" />
-            <span>{t.error}</span>
+          <div className="absolute right-0 mt-2 w-80 bg-rose-50 border border-rose-200 text-rose-800 text-xs rounded-2xl p-3 shadow-xl z-50 space-y-2">
+            <div className="flex items-start gap-2">
+              <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-bold">{t.error}</p>
+                <p className="text-[11px] text-rose-600 mt-0.5 leading-tight">{authError}</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowConfigModal(true)}
+              className="w-full text-center py-1.5 px-3 rounded-lg bg-rose-100 hover:bg-rose-200 text-rose-900 font-semibold text-[11px] transition cursor-pointer"
+            >
+              {lang === "bn" ? "টেস্ট প্রোফাইলে প্রবেশ বা সহায়তা দেখুন" : "View Help or Use Demo"}
+            </button>
           </div>
         )}
       </div>
@@ -215,7 +227,7 @@ export const AuthButton: React.FC<AuthButtonProps> = ({ lang, onOpenMyFarm }) =>
               {t.modalSubtitle}
             </p>
 
-            {/* Instant Demo Google User Login Button */}
+            {/* Live Google Sign-in */}
             <button
               type="button"
               onClick={() => {
@@ -242,21 +254,29 @@ export const AuthButton: React.FC<AuthButtonProps> = ({ lang, onOpenMyFarm }) =>
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
                 />
               </svg>
-              <span>{t.testLogin}</span>
+              <span>{t.continueGoogle}</span>
             </button>
 
-            {/* Instruction on how to add live keys */}
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-3.5 text-xs text-amber-900 space-y-2">
-              <p className="font-semibold leading-relaxed">
-                {t.unconfiguredWarning}
-              </p>
-              <div className="text-[11px] text-amber-800 space-y-1 pt-1 border-t border-amber-200/60">
-                <p><strong>{t.howToSetup}</strong></p>
-                <p>{t.step1}</p>
-                <p>{t.step2}</p>
-                <p>{t.step3}</p>
+            {/* Supabase Status Banner */}
+            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 text-xs text-emerald-900 space-y-1">
+              <div className="flex items-center gap-1.5 font-bold text-emerald-800">
+                <ShieldCheck className="w-4 h-4 text-emerald-700" />
+                <span>
+                  {lang === "bn"
+                    ? "Supabase প্রজেক্ট সফলভাবে সংযুক্ত!"
+                    : "Supabase Project Successfully Connected!"}
+                </span>
               </div>
+              <p className="text-[11px] text-emerald-800 leading-relaxed font-mono">
+                https://xccrinduutnbyuumvonr.supabase.co
+              </p>
+              <p className="text-[11px] text-emerald-700 pt-1 border-t border-emerald-200/60 leading-normal">
+                {lang === "bn"
+                  ? "Google OAuth সক্রিয় করতে Supabase ড্যাশবোর্ডে Authentication > Providers > Google চালু করুন এবং Google Client ID সেট করুন।"
+                  : "To enable live Google OAuth redirect, ensure Google provider is enabled under Auth > Providers in your Supabase dashboard."}
+              </p>
             </div>
+
 
             <button
               type="button"

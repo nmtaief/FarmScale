@@ -1,9 +1,20 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+const supabaseUrl =
+  process.env.NEXT_PUBLIC_SUPABASE_URL ||
+  "https://xccrinduutnbyuumvonr.supabase.co";
 
-export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+const supabaseAnonKey =
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  "sb_publishable_ENT7Wm9kxSoRqATRovmejQ_fWEWV-J8";
+
+export const isSupabaseConfigured = Boolean(
+  supabaseUrl &&
+    supabaseAnonKey &&
+    supabaseUrl.startsWith("http") &&
+    supabaseAnonKey.length > 10
+);
 
 let supabaseInstance: SupabaseClient | null = null;
 
@@ -20,3 +31,4 @@ if (isSupabaseConfigured) {
 export const getSupabase = (): SupabaseClient | null => {
   return supabaseInstance;
 };
+

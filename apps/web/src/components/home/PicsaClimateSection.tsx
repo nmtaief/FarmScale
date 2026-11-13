@@ -341,31 +341,32 @@ export const PicsaClimateSection: React.FC<PicsaClimateSectionProps> = ({
 
             {/* Visual Bar Graph */}
             <div className="pt-3 pb-1">
-              {/* Bars Row: 140px fixed height where percentage styles work cleanly */}
-              <div className="h-36 flex items-end justify-between gap-1 sm:gap-2 px-1 border-b border-slate-300">
+              {/* Bars Row: 130px fixed height container */}
+              <div className="h-[130px] flex items-end justify-between gap-1 sm:gap-2 px-1 border-b border-slate-300">
                 {data.monthly.map((m) => {
+                  const chartHeightPx = 110;
                   if (activeTab === "rainfall") {
-                    const heightPct = Math.min(Math.max(Math.round((m.precip_mm / maxPrecip) * 100), 8), 100);
+                    const barHeightPx = Math.max(Math.round((m.precip_mm / maxPrecip) * chartHeightPx), 8);
                     return (
-                      <div key={m.month} className="flex-1 h-full flex items-end justify-center group relative">
+                      <div key={m.month} className="flex-1 flex flex-col justify-end items-center group relative">
                         {/* Tooltip */}
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 bg-slate-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow pointer-events-none whitespace-nowrap z-20">
                           {toLocaleNum(m.precip_mm)} mm
                         </div>
-                        {/* Solid colored bar */}
+                        {/* Solid colored bar with guaranteed pixel height */}
                         <div
-                          className="w-full bg-blue-500 hover:bg-blue-600 rounded-t-md transition-all duration-300 shadow-2xs min-h-[6px]"
-                          style={{ height: `${heightPct}%` }}
+                          className="w-full bg-blue-500 hover:bg-blue-600 rounded-t-md transition-all duration-300 shadow-2xs"
+                          style={{ height: `${barHeightPx}px` }}
                         />
                       </div>
                     );
                   } else {
                     // Temperature Range (Min to Max)
-                    const minPct = Math.min(Math.max(Math.round((m.temp_min / 45) * 100), 8), 70);
-                    const maxPct = Math.min(Math.max(Math.round((m.temp_max / 45) * 100), 20), 100);
-                    const barHeightPct = Math.max(maxPct - minPct, 12);
+                    const minPx = Math.max(Math.round((m.temp_min / 45) * chartHeightPx), 8);
+                    const maxPx = Math.min(Math.max(Math.round((m.temp_max / 45) * chartHeightPx), 20), chartHeightPx);
+                    const barHeightPx = Math.max(maxPx - minPx, 12);
                     return (
-                      <div key={m.month} className="flex-1 h-full flex flex-col justify-end items-center group relative">
+                      <div key={m.month} className="flex-1 flex flex-col justify-end items-center group relative">
                         {/* Tooltip */}
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-10 bg-slate-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow pointer-events-none whitespace-nowrap z-20 text-center">
                           <div>{t.maxTemp}: {toLocaleNum(m.temp_max)}°C</div>
@@ -373,13 +374,13 @@ export const PicsaClimateSection: React.FC<PicsaClimateSectionProps> = ({
                         </div>
                         {/* Max Temp Bar (Orange) */}
                         <div
-                          className="w-full bg-orange-500 hover:bg-orange-600 rounded-t-md transition-all duration-300 min-h-[6px]"
-                          style={{ height: `${barHeightPct}%` }}
+                          className="w-full bg-orange-500 hover:bg-orange-600 rounded-t-md transition-all duration-300"
+                          style={{ height: `${barHeightPx}px` }}
                         />
                         {/* Min Temp Base (Sky) */}
                         <div
                           className="w-full bg-sky-300 rounded-b-sm transition-all"
-                          style={{ height: `${minPct}%` }}
+                          style={{ height: `${minPx}px` }}
                         />
                       </div>
                     );

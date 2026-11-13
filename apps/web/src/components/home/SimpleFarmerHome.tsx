@@ -555,7 +555,7 @@ export const SimpleFarmerHome: React.FC = () => {
                   >
                     <div>
                       {/* Card Header Badge */}
-                      <div className="flex items-center justify-between gap-2 mb-3">
+                      <div className="flex items-center justify-between gap-2 mb-3 min-h-[26px]">
                         <div className="flex items-center gap-2">
                           {isProfit && (
                             <span className="inline-flex items-center gap-1 text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-gold text-[#1a1300] uppercase tracking-wide">
@@ -566,6 +566,11 @@ export const SimpleFarmerHome: React.FC = () => {
                           {isShift && (
                             <span className="inline-flex items-center text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-forest text-white uppercase tracking-wide">
                               {lang === "bn" ? "পানি সাশ্রয়ী" : "Saves Water"}
+                            </span>
+                          )}
+                          {!isProfit && !isShift && (
+                            <span className="inline-flex items-center text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 uppercase tracking-wide">
+                              {lang === "bn" ? "সহজ ও সাশ্রয়ী" : "Low Cost"}
                             </span>
                           )}
                         </div>
@@ -594,7 +599,7 @@ export const SimpleFarmerHome: React.FC = () => {
                                   : "Kharif-2"}
                               </span>
                               <CropIcon crop={cropKey} size={48} className="my-0.5" />
-                              <span className="text-[13px] sm:text-[14px] font-bold text-primary mt-1 line-clamp-1">
+                              <span className="text-[12px] sm:text-[13px] font-bold text-primary mt-1 line-clamp-2 leading-tight min-h-[32px] flex items-center justify-center text-center px-0.5">
                                 {CROP_NAMES[lang][cropKey] || cropKey}
                               </span>
                             </div>
