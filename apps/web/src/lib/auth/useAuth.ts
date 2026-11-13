@@ -85,20 +85,62 @@ export function useAuth() {
     };
   }, []);
 
+  // Check if Google OAuth provider is enabled on Supabase
+  const checkGoogleProviderEnabled = async (): Promise<boolean> => {
+    try {
+      const res = await fetch(
+        "https://xccrinduutnbyuumvonr.supabase.co/auth/v1/settings",
+        {
+          headers: {
+            apikey:
+              process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+              process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+              "sb_publishable_ENT7Wm9kxSoRqATRovmejQ_fWEWV-J8",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        return Boolean(data?.external?.google);
+      }
+    } catch {}
+    return false;
+  };
+
+  const signInWithDemo = useCallback(
+    (name = "নূর মোহাম্মদ তায়েফ", email = "nmtaief.agro@gmail.com") => {
+      const demoUser: UserProfile = {
+        id: "usr_demo_taief",
+        email,
+        name,
+        avatar_url: "https://lh3.googleusercontent.com/a/default-user=s96-c",
+        language_preference: "bn",
+      };
+      try {
+        localStorage.setItem(
+          "farmscale_guest_profile",
+          JSON.stringify(demoUser)
+        );
+      } catch {}
+      setUser(demoUser);
+    },
+    []
+  );
+
   const signInWithGoogle = useCallback(async () => {
     setAuthError(null);
     const supabase = getSupabase();
     if (!supabase || !isSupabaseConfigured) {
-      // Demo Google user fallback when Supabase credentials are not yet entered in .env
-      const demoUser: UserProfile = {
-        id: "google_user_demo",
-        email: "nmtaief.agro@gmail.com",
-        name: "নূর মোহাম্মদ তায়েফ (Google)",
-        avatar_url: "https://lh3.googleusercontent.com/a/default-user=s96-c",
-        language_preference: "bn",
-      };
-      localStorage.setItem("farmscale_guest_profile", JSON.stringify(demoUser));
-      setUser(demoUser);
+      signInWithDemo();
+      return;
+    }
+
+    // Check if provider is enabled on Supabase to prevent raw JSON 400 error
+    const isGoogleEnabled = await checkGoogleProviderEnabled();
+    if (!isGoogleEnabled) {
+      setAuthError(
+        "Supabase ড্যাশবোর্ডে Google Provider এখনও চালু করা হয়নি। টেস্ট প্রোফাইল ব্যবহার করুন অথবা Supabase-এ Google চালু করুন।"
+      );
       return;
     }
 
@@ -106,14 +148,37 @@ export function useAuth() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: typeof window !== "undefined" ? window.location.origin : undefined,
+          redirectTo:
+            typeof window !== "undefined" ? window.location.origin : undefined,
         },
       });
       if (error) throw error;
     } catch (err: any) {
       setAuthError(err?.message || "Google sign in failed");
     }
-  }, []);
+  }, [signInWithDemo]);
+
+  // Direct forced OAuth (if user just enabled it in dashboard)
+  const forceSignInWithGoogle = useCallback(async () => {
+    setAuthError(null);
+    const supabase = getSupabase();
+    if (!supabase || !isSupabaseConfigured) {
+      signInWithDemo();
+      return;
+    }
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo:
+            typeof window !== "undefined" ? window.location.origin : undefined,
+        },
+      });
+      if (error) throw error;
+    } catch (err: any) {
+      setAuthError(err?.message || "Google sign in failed");
+    }
+  }, [signInWithDemo]);
 
   const signOut = useCallback(async () => {
     const supabase = getSupabase();
@@ -206,6 +271,9 @@ export function useAuth() {
     loading,
     authError,
     signInWithGoogle,
+    signInWithDemo,
+    forceSignInWithGoogle,
+    checkGoogleProviderEnabled,
     signOut,
     saveFarm,
     loadSavedFarm,

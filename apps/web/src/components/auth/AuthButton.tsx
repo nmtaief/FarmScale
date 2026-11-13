@@ -11,9 +11,19 @@ interface AuthButtonProps {
 }
 
 export const AuthButton: React.FC<AuthButtonProps> = ({ lang, onOpenMyFarm }) => {
-  const { user, loading, authError, signInWithGoogle, signOut } = useAuth();
+  const {
+    user,
+    loading,
+    authError,
+    signInWithGoogle,
+    signInWithDemo,
+    forceSignInWithGoogle,
+    checkGoogleProviderEnabled,
+    signOut,
+  } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showConfigModal, setShowConfigModal] = useState(false);
+  const [checkingProvider, setCheckingProvider] = useState(false);
 
   const t = {
     bn: {
@@ -25,15 +35,18 @@ export const AuthButton: React.FC<AuthButtonProps> = ({ lang, onOpenMyFarm }) =>
       google: "Google একাউন্ট দিয়ে প্রবেশ করুন",
       error: "লগইনে সমস্যা হয়েছে। আবার চেষ্টা করুন।",
       modalTitle: "Google Authentication (গুগল সাইন-ইন)",
-      modalSubtitle: "আপনার জমির আকার, মাটির ধরন ও ৩-ফসলি পরিকল্পনা ক্লাউডে নিরাপদে সংরক্ষণ করতে Google একাউন্টে প্রবেশ করুন।",
-      continueGoogle: "Google একাউন্ট দিয়ে চালিয়ে যান",
+      modalSubtitle:
+        "আপনার জমির আকার, মাটির ধরন ও ৩-ফসলি পরিকল্পনা ক্লাউডে নিরাপদে সংরক্ষণ করতে Google একাউন্টে প্রবেশ করুন।",
+      continueGoogle: "Google প্রোফাইল দিয়ে সরাসরি প্রবেশ (ইন্সট্যান্ট ডেমো)",
+      liveGoogleBtn: "লাইভ Google সাইন-ইন রিডাইরেক্ট (Live OAuth)",
       testLogin: "Google টেস্ট একাউন্টে প্রবেশ করুন (Instant Demo)",
       configuredNote: "Supabase Postgres ও Row Level Security (RLS) দ্বারা সংরক্ষিত।",
-      unconfiguredWarning: "⚠️ লাইভ Google OAuth চালু করতে আপনার Vercel প্রজেক্টে NEXT_PUBLIC_SUPABASE_URL এবং NEXT_PUBLIC_SUPABASE_ANON_KEY এনভায়রনমেন্ট ভেরিয়েবল সেট করতে হবে।",
-      howToSetup: "কীভাবে সেটআপ করবেন:",
-      step1: "১. Supabase.com-এ গিয়ে একটি ফ্রি প্রজেক্ট তৈরি করুন।",
-      step2: "২. Authentication -> Providers -> Google চালু করুন (Google Client ID দিন)।",
-      step3: "৩. Vercel ড্যাশবোর্ডে Environment Variables-এ দুটি কী যোগ করুন।",
+      unconfiguredWarning:
+        "⚠️ আপনার Supabase প্রজেক্টে (xccrinduutnbyuumvonr) Google Provider এখনও সক্রিয় (ON) করা হয়নি।",
+      howToSetup: "Supabase-এ আসল Google Login চালুর ৩ ধাপ:",
+      step1: "১. Google Cloud Console-এ OAuth Client ID (Web Application) তৈরি করুন।",
+      step2: "২. Authorized Redirect URI-তে দিন: https://xccrinduutnbyuumvonr.supabase.co/auth/v1/callback",
+      step3: "৩. Supabase Dashboard -> Auth -> Providers -> Google চালু করে Client ID ও Secret দিয়ে Save দিন।",
       close: "বন্ধ করুন",
     },
     en: {
@@ -45,28 +58,39 @@ export const AuthButton: React.FC<AuthButtonProps> = ({ lang, onOpenMyFarm }) =>
       google: "Sign in with your Google account",
       error: "Sign in failed. Please try again.",
       modalTitle: "Google Authentication",
-      modalSubtitle: "Sign in with your Google account to securely persist your farm size, soil type, and crop rotation plans.",
-      continueGoogle: "Continue with Google",
+      modalSubtitle:
+        "Sign in with your Google account to securely persist your farm size, soil type, and crop rotation plans.",
+      continueGoogle: "Sign in with Google Profile (Instant Demo)",
+      liveGoogleBtn: "Live Google OAuth Redirect",
       testLogin: "Sign in with Google Test Profile (Instant Demo)",
       configuredNote: "Secured with Supabase Postgres & Row-Level Security (RLS).",
-      unconfiguredWarning: "⚠️ To activate live Google OAuth redirect, add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to your Vercel Project Environment Variables.",
-      howToSetup: "How to connect Google Auth:",
-      step1: "1. Create a free project at supabase.com.",
-      step2: "2. Under Auth -> Providers, enable Google (provide Google Client ID).",
-      step3: "3. Add the project URL and Anon Key in Vercel Settings -> Environment Variables.",
+      unconfiguredWarning:
+        "⚠️ Google Provider is currently disabled in your Supabase project (xccrinduutnbyuumvonr).",
+      howToSetup: "3 Steps to enable Live Google Auth in Supabase:",
+      step1: "1. Create an OAuth Client ID in Google Cloud Console.",
+      step2: "2. Set Authorized Redirect URI: https://xccrinduutnbyuumvonr.supabase.co/auth/v1/callback",
+      step3: "3. In Supabase Dashboard -> Auth -> Providers -> Google, enable and paste credentials.",
       close: "Close",
     },
   }[lang];
 
-  const handleSignInClick = () => {
-    if (isSupabaseConfigured) {
-      signInWithGoogle();
-    } else {
+  const handleSignInClick = async () => {
+    setCheckingProvider(true);
+    try {
+      const isGoogleEnabled = await checkGoogleProviderEnabled();
+      if (isGoogleEnabled) {
+        forceSignInWithGoogle();
+      } else {
+        setShowConfigModal(true);
+      }
+    } catch {
       setShowConfigModal(true);
+    } finally {
+      setCheckingProvider(false);
     }
   };
 
-  if (loading) {
+  if (loading || checkingProvider) {
     return (
       <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-500 text-sm font-medium animate-pulse">
         <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -74,6 +98,7 @@ export const AuthButton: React.FC<AuthButtonProps> = ({ lang, onOpenMyFarm }) =>
       </div>
     );
   }
+
 
   if (user) {
     return (
@@ -227,16 +252,16 @@ export const AuthButton: React.FC<AuthButtonProps> = ({ lang, onOpenMyFarm }) =>
               {t.modalSubtitle}
             </p>
 
-            {/* Live Google Sign-in */}
+            {/* Instant Demo Google Sign-in */}
             <button
               type="button"
               onClick={() => {
-                signInWithGoogle();
+                signInWithDemo();
                 setShowConfigModal(false);
               }}
-              className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition min-h-[46px] cursor-pointer"
+              className="w-full py-3.5 px-4 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm flex items-center justify-center gap-2.5 shadow-md active:scale-[0.99] transition min-h-[50px] cursor-pointer"
             >
-              <svg className="w-4 h-4 bg-white rounded-full p-0.5" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 bg-white rounded-full p-0.5" viewBox="0 0 24 24">
                 <path
                   fill="#4285F4"
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -257,24 +282,40 @@ export const AuthButton: React.FC<AuthButtonProps> = ({ lang, onOpenMyFarm }) =>
               <span>{t.continueGoogle}</span>
             </button>
 
-            {/* Supabase Status Banner */}
-            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 text-xs text-emerald-900 space-y-1">
-              <div className="flex items-center gap-1.5 font-bold text-emerald-800">
-                <ShieldCheck className="w-4 h-4 text-emerald-700" />
-                <span>
-                  {lang === "bn"
-                    ? "Supabase প্রজেক্ট সফলভাবে সংযুক্ত!"
-                    : "Supabase Project Successfully Connected!"}
-                </span>
+            {/* Supabase Status & Setup Guide */}
+            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-xs text-amber-950 space-y-2.5">
+              <div className="flex items-center gap-1.5 font-bold text-amber-900">
+                <AlertCircle className="w-4 h-4 text-amber-700 flex-shrink-0" />
+                <span>{t.unconfiguredWarning}</span>
               </div>
-              <p className="text-[11px] text-emerald-800 leading-relaxed font-mono">
-                https://xccrinduutnbyuumvonr.supabase.co
-              </p>
-              <p className="text-[11px] text-emerald-700 pt-1 border-t border-emerald-200/60 leading-normal">
-                {lang === "bn"
-                  ? "Google OAuth সক্রিয় করতে Supabase ড্যাশবোর্ডে Authentication > Providers > Google চালু করুন এবং Google Client ID সেট করুন।"
-                  : "To enable live Google OAuth redirect, ensure Google provider is enabled under Auth > Providers in your Supabase dashboard."}
-              </p>
+
+              <div className="text-[11px] text-amber-900 space-y-1.5 pt-1.5 border-t border-amber-200">
+                <p className="font-bold">{t.howToSetup}</p>
+                <p>{t.step1}</p>
+                <div>
+                  <span className="block mb-1">{lang === "bn" ? "২. Authorized Redirect URI-তে দিন:" : "2. Authorized Redirect URI:"}</span>
+                  <code className="bg-amber-100/90 px-2 py-1 rounded text-[10px] select-all font-mono font-bold text-amber-950 block border border-amber-300 break-all">
+                    https://xccrinduutnbyuumvonr.supabase.co/auth/v1/callback
+                  </code>
+                </div>
+                <p>{t.step3}</p>
+              </div>
+
+              <div className="pt-2 border-t border-amber-200/80 flex items-center justify-between gap-2">
+                <span className="text-[11px] text-amber-800 font-medium">
+                  {lang === "bn" ? "সেটআপ শেষ করে থাকলে:" : "If already configured:"}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    forceSignInWithGoogle();
+                    setShowConfigModal(false);
+                  }}
+                  className="px-3 py-1.5 bg-white border border-amber-300 hover:bg-amber-100 text-amber-950 rounded-lg font-bold text-[11px] transition cursor-pointer"
+                >
+                  {t.liveGoogleBtn}
+                </button>
+              </div>
             </div>
 
 
