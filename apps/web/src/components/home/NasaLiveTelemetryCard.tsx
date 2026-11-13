@@ -235,3 +235,4 @@ export const NasaLiveTelemetryCard: React.FC<NasaLiveTelemetryCardProps> = ({
     </div>
   );
 };
+

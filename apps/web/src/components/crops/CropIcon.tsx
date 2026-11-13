@@ -13,6 +13,9 @@ export type CropType =
   | "sesame"
   | "groundnut"
   | "jute"
+  | "garlic"
+  | "chili"
+  | "watermelon"
   | "boro_rice"
   | "aus_rice"
   | "aman_rice"
@@ -32,6 +35,9 @@ export const CROP_NAMES: Record<"bn" | "en", Record<string, string>> = {
     sesame: "তিল",
     groundnut: "চিনাবাদাম",
     jute: "পাট",
+    garlic: "রসুন",
+    chili: "মরিচ",
+    watermelon: "তরমুজ",
     boro_rice: "বোরো ধান",
     aus_rice: "আউশ ধান",
     aman_rice: "আমন ধান",
@@ -50,6 +56,9 @@ export const CROP_NAMES: Record<"bn" | "en", Record<string, string>> = {
     sesame: "Sesame",
     groundnut: "Groundnut",
     jute: "Jute",
+    garlic: "Garlic",
+    chili: "Chili",
+    watermelon: "Watermelon",
     boro_rice: "Boro rice",
     aus_rice: "Aus rice",
     aman_rice: "Aman rice",
@@ -70,6 +79,9 @@ const CROP_BG: Record<string, string> = {
   sesame: "#E4EDE2",
   groundnut: "#F5E4D3",
   jute: "#E8F0DC",
+  garlic: "#FAF5E4",
+  chili: "#FEE2E2",
+  watermelon: "#DCFCE7",
   boro_rice: "#FBEFC2",
   aus_rice: "#FBEFC2",
   aman_rice: "#FBEFC2",
@@ -89,6 +101,9 @@ export function normalizeCropKey(raw: string): string {
   if (k.includes("sesame") || k.includes("til") || k.includes("তিল")) return "sesame";
   if (k.includes("peanut") || k.includes("groundnut") || k.includes("বাদাম")) return "groundnut";
   if (k.includes("jute") || k.includes("পাট")) return "jute";
+  if (k.includes("garlic") || k.includes("রসুন")) return "garlic";
+  if (k.includes("chili") || k.includes("মরিচ")) return "chili";
+  if (k.includes("watermelon") || k.includes("তরমুজ")) return "watermelon";
   if (k.includes("boro") || k.includes("বোরো")) return "rice";
   if (k.includes("aus") || k.includes("আউশ")) return "rice";
   if (k.includes("aman") || k.includes("আমন") || k.includes("rice") || k.includes("ধান")) return "rice";
@@ -279,6 +294,32 @@ export const CropIcon: React.FC<CropIconProps> = ({
             <ellipse cx="28" cy="25" rx="7" ry="9" />
             <path d="M20 20C24 22 24 28 20 30M28 20C24 22 24 28 28 30" stroke="#92400E" strokeWidth="1.5" />
           </g>
+        );
+
+      case "garlic":
+        return (
+          <>
+            <path d="M24 10V18" stroke="#15803D" strokeWidth="2" strokeLinecap="round" />
+            <ellipse cx="24" cy="28" rx="11" ry="10" fill="#FAF5E4" />
+            <path d="M18 20C15 25 15 32 18 36M30 20C33 25 33 32 30 36M24 18V38" stroke="#D1C7A7" strokeWidth="1.5" />
+          </>
+        );
+
+      case "chili":
+        return (
+          <>
+            <path d="M21 12C23 15 24 18 24 20" stroke="#15803D" strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M24 20C27 25 28 32 23 38C20 42 16 41 18 36C20 30 22 25 24 20Z" fill="#DC2626" />
+          </>
+        );
+
+      case "watermelon":
+        return (
+          <>
+            <ellipse cx="24" cy="26" rx="14" ry="11" fill="#15803D" />
+            <ellipse cx="24" cy="26" rx="11" ry="8" fill="#16A34A" />
+            <path d="M14 26C18 32 30 32 34 26" stroke="#166534" strokeWidth="2" strokeDasharray="3 3" />
+          </>
         );
 
       case "mungbean":

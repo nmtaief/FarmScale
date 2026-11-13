@@ -915,6 +915,473 @@
           "editable": true
         }
       }
+    },
+    "garlic": {
+      "name_en": "Garlic (Zero-tillage / BARI Roshun-1)",
+      "name_bn": "রসুন (চলনবিলের বিনা চাষে রসুন)",
+      "season": "rabi",
+      "expected_yield_kg_per_bigha": 1100,
+      "yield_range_kg_per_bigha": {
+        "worst": 900,
+        "expected": 1100,
+        "best": 1350
+      },
+      "farmgate_price_per_kg": 75.0,
+      "price_range_per_kg": {
+        "worst": 60.0,
+        "expected": 75.0,
+        "best": 95.0
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 0,
+          "source": "Zero-tillage in paddy straw (বিনা চাষ)",
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 13500,
+          "rate": "100 kg cloves @ 135 BDT/kg",
+          "source": "Grower clove rate",
+          "editable": true
+        },
+        "fertilizer": {
+          "urea": {
+            "cost_bdt": 900
+          },
+          "tsp": {
+            "cost_bdt": 800
+          },
+          "mop": {
+            "cost_bdt": 600
+          },
+          "gypsum": {
+            "cost_bdt": 250
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 1400,
+          "count": 2,
+          "rate_per_irrigation": 700
+        },
+        "labour": {
+          "planting": {
+            "cost_bdt": 3600
+          },
+          "straw_mulching": {
+            "cost_bdt": 1800
+          },
+          "harvest": {
+            "cost_bdt": 3600
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 1200
+        },
+        "transport": {
+          "cost_bdt": 800
+        },
+        "post_harvest": {
+          "cost_bdt": 600
+        },
+        "lease_rent": {
+          "cost_bdt": 3500
+        }
+      }
+    },
+    "chickpea": {
+      "name_en": "Chickpea (BARI Chhola-9)",
+      "name_bn": "ছোলা (খরা সহনশীল বারি ছোলা-৯)",
+      "season": "rabi",
+      "expected_yield_kg_per_bigha": 175,
+      "yield_range_kg_per_bigha": {
+        "worst": 140,
+        "expected": 175,
+        "best": 210
+      },
+      "farmgate_price_per_kg": 110.0,
+      "price_range_per_kg": {
+        "worst": 95.0,
+        "expected": 110.0,
+        "best": 125.0
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 1200,
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 650,
+          "rate": "6 kg @ 110 BDT/kg",
+          "editable": true
+        },
+        "fertilizer": {
+          "tsp": {
+            "cost_bdt": 400
+          },
+          "mop": {
+            "cost_bdt": 250
+          },
+          "boron": {
+            "cost_bdt": 150
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 0,
+          "source": "Zero deep tubewell water / residual moisture",
+          "editable": true
+        },
+        "labour": {
+          "sowing": {
+            "cost_bdt": 1200
+          },
+          "weeding": {
+            "cost_bdt": 600
+          },
+          "harvest": {
+            "cost_bdt": 1800
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 500
+        },
+        "transport": {
+          "cost_bdt": 400
+        },
+        "post_harvest": {
+          "cost_bdt": 350
+        },
+        "lease_rent": {
+          "cost_bdt": 2000
+        }
+      }
+    },
+    "groundnut": {
+      "name_en": "Groundnut (BARI Chinabadam-8)",
+      "name_bn": "চিনাবাদাম (যমুনার চরের চিনাবাদাম)",
+      "season": "rabi",
+      "expected_yield_kg_per_bigha": 320,
+      "yield_range_kg_per_bigha": {
+        "worst": 260,
+        "expected": 320,
+        "best": 380
+      },
+      "farmgate_price_per_kg": 85.0,
+      "price_range_per_kg": {
+        "worst": 70.0,
+        "expected": 85.0,
+        "best": 100.0
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 1400,
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 1400,
+          "rate": "14 kg pod seed @ 100 BDT/kg",
+          "editable": true
+        },
+        "fertilizer": {
+          "urea": {
+            "cost_bdt": 300
+          },
+          "tsp": {
+            "cost_bdt": 600
+          },
+          "mop": {
+            "cost_bdt": 400
+          },
+          "gypsum": {
+            "cost_bdt": 500
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 800,
+          "count": 1
+        },
+        "labour": {
+          "sowing": {
+            "cost_bdt": 1200
+          },
+          "weeding": {
+            "cost_bdt": 1200
+          },
+          "harvest_digging": {
+            "cost_bdt": 2400
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 400
+        },
+        "transport": {
+          "cost_bdt": 600
+        },
+        "post_harvest": {
+          "cost_bdt": 500
+        },
+        "lease_rent": {
+          "cost_bdt": 2000
+        }
+      }
+    },
+    "sesame": {
+      "name_en": "Sesame (BARI Til-4)",
+      "name_bn": "তিল (বারি তিল-৪)",
+      "season": "kharif1",
+      "expected_yield_kg_per_bigha": 150,
+      "yield_range_kg_per_bigha": {
+        "worst": 120,
+        "expected": 150,
+        "best": 180
+      },
+      "farmgate_price_per_kg": 105.0,
+      "price_range_per_kg": {
+        "worst": 90.0,
+        "expected": 105.0,
+        "best": 120.0
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 1000,
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 250,
+          "rate": "1.5 kg @ 160 BDT/kg",
+          "editable": true
+        },
+        "fertilizer": {
+          "urea": {
+            "cost_bdt": 400
+          },
+          "tsp": {
+            "cost_bdt": 350
+          },
+          "mop": {
+            "cost_bdt": 200
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 0,
+          "source": "Rainfed Kharif-1",
+          "editable": true
+        },
+        "labour": {
+          "sowing": {
+            "cost_bdt": 600
+          },
+          "weeding": {
+            "cost_bdt": 600
+          },
+          "harvest": {
+            "cost_bdt": 1400
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 300
+        },
+        "transport": {
+          "cost_bdt": 300
+        },
+        "post_harvest": {
+          "cost_bdt": 400
+        },
+        "lease_rent": {
+          "cost_bdt": 1500
+        }
+      }
+    },
+    "jute": {
+      "name_en": "Jute (Toshas Jute)",
+      "name_bn": "তোষা পাট",
+      "season": "kharif1",
+      "expected_yield_kg_per_bigha": 380,
+      "yield_range_kg_per_bigha": {
+        "worst": 300,
+        "expected": 380,
+        "best": 450
+      },
+      "farmgate_price_per_kg": 60.0,
+      "price_range_per_kg": {
+        "worst": 50.0,
+        "expected": 60.0,
+        "best": 70.0
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 1400,
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 350,
+          "editable": true
+        },
+        "fertilizer": {
+          "urea": {
+            "cost_bdt": 600
+          },
+          "tsp": {
+            "cost_bdt": 400
+          },
+          "mop": {
+            "cost_bdt": 300
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 600
+        },
+        "labour": {
+          "sowing": {
+            "cost_bdt": 800
+          },
+          "weeding": {
+            "cost_bdt": 1800
+          },
+          "retting_stripping": {
+            "cost_bdt": 3600
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 400
+        },
+        "transport": {
+          "cost_bdt": 600
+        },
+        "post_harvest": {
+          "cost_bdt": 500
+        },
+        "lease_rent": {
+          "cost_bdt": 2000
+        }
+      }
+    },
+    "chili": {
+      "name_en": "Red Chili (Bogura Chili)",
+      "name_bn": "বগুড়ার লাল মরিচ",
+      "season": "rabi",
+      "expected_yield_kg_per_bigha": 380,
+      "yield_range_kg_per_bigha": {
+        "worst": 300,
+        "expected": 380,
+        "best": 450
+      },
+      "farmgate_price_per_kg": 160.0,
+      "price_range_per_kg": {
+        "worst": 130.0,
+        "expected": 160.0,
+        "best": 190.0
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 1600,
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 800,
+          "editable": true
+        },
+        "fertilizer": {
+          "urea": {
+            "cost_bdt": 900
+          },
+          "tsp": {
+            "cost_bdt": 800
+          },
+          "mop": {
+            "cost_bdt": 600
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 1200
+        },
+        "labour": {
+          "planting": {
+            "cost_bdt": 1800
+          },
+          "weeding": {
+            "cost_bdt": 2400
+          },
+          "picking_drying": {
+            "cost_bdt": 4800
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 1200
+        },
+        "transport": {
+          "cost_bdt": 600
+        },
+        "post_harvest": {
+          "cost_bdt": 600
+        },
+        "lease_rent": {
+          "cost_bdt": 2500
+        }
+      }
+    },
+    "watermelon": {
+      "name_en": "Watermelon",
+      "name_bn": "তরমুজ",
+      "season": "rabi",
+      "expected_yield_kg_per_bigha": 3500,
+      "yield_range_kg_per_bigha": {
+        "worst": 2800,
+        "expected": 3500,
+        "best": 4200
+      },
+      "farmgate_price_per_kg": 16.0,
+      "price_range_per_kg": {
+        "worst": 12.0,
+        "expected": 16.0,
+        "best": 20.0
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 1600,
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 1800,
+          "editable": true
+        },
+        "fertilizer": {
+          "urea": {
+            "cost_bdt": 800
+          },
+          "tsp": {
+            "cost_bdt": 800
+          },
+          "mop": {
+            "cost_bdt": 700
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 1400
+        },
+        "labour": {
+          "planting": {
+            "cost_bdt": 1800
+          },
+          "weeding": {
+            "cost_bdt": 1800
+          },
+          "harvest": {
+            "cost_bdt": 2400
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 1000
+        },
+        "transport": {
+          "cost_bdt": 1200
+        },
+        "post_harvest": {
+          "cost_bdt": 600
+        },
+        "lease_rent": {
+          "cost_bdt": 2500
+        }
+      }
     }
   }
 }
