@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "@/i18n/routing";
 import { Navigation, Sparkles, ArrowRight, MapPin, Check, Calculator, Sprout, Droplets, ChevronRight } from "lucide-react";
 import { CropIcon, CROP_NAMES } from "@/components/crops/CropIcon";
 import { BarindMapPicker } from "./BarindMapPicker";
+import { NasaLiveTelemetryCard } from "./NasaLiveTelemetryCard";
 import { AiFarmingOutline } from "./AiFarmingOutline";
 import { PicsaClimateSection } from "./PicsaClimateSection";
 import { CostBreakdownDrawer } from "@/components/planner/CostBreakdownDrawer";
@@ -102,6 +103,7 @@ export const SimpleFarmerHome: React.FC = () => {
   const [statusMessage, setStatusMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [recommendations, setRecommendations] = useState<RecommendOption[]>([]);
+  const [activeCategory, setActiveCategory] = useState<string>("all");
   const [selectedOptionForOutline, setSelectedOptionForOutline] = useState<RecommendOption | null>(null);
   const [costBreakdownOption, setCostBreakdownOption] = useState<RecommendOption | null>(null);
   const [myFarmOpen, setMyFarmOpen] = useState<boolean>(false);
@@ -530,20 +532,77 @@ export const SimpleFarmerHome: React.FC = () => {
               <div className="flex items-center gap-2">
                 <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-white px-2.5 py-1 rounded-full border border-emerald-300 shadow-2xs">
                   <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>XGBoost ML v2.0 (R² 0.999)</span>
+                  <span>XGBoost ML v2.0 (R² 0.9998)</span>
                 </span>
                 <span className="text-xs text-secondary bg-surface px-2 py-0.5 rounded-full border border-border">
-                  {lang === "bn" ? "৩টি বিকল্প" : "3 Options"}
+                  {lang === "bn" ? `${recommendations.length}টি ফসল চক্র` : `${recommendations.length} Rotations`}
                 </span>
               </div>
             </div>
 
-            {/* Exactly 3 Recommendation Cards: Responsive 3-Column Comparison on Desktop */}
+            {/* Live NASA Earth Observation & Telemetry Feed */}
+            <div className="mb-5">
+              <NasaLiveTelemetryCard
+                lat={currentUpazila.lat}
+                lng={currentUpazila.lon}
+                upazilaNameBn={currentUpazila.upazila_bn}
+                upazilaNameEn={currentUpazila.upazila_en}
+                lang={lang}
+              />
+            </div>
+
+            {/* Crop Variety & Seasonal Filter Tabs */}
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-5 scrollbar-none">
+              {[
+                { id: "all", bn: "সবগুলো ফসল ও চক্র", en: "All Rotations" },
+                { id: "oilseed_pulse", bn: "তেলবীজ ও ডাল (সরিষা, মসুর)", en: "Oilseeds & Pulses" },
+                { id: "cereal", bn: "দানাশস্য খাদ্য (গম, ভুট্টা)", en: "Cereals (Wheat, Maize)" },
+                { id: "cash_spice", bn: "নগদ অর্থকরী ও মসলা (আলু, পেঁয়াজ)", en: "Cash & Spices" },
+                { id: "drought_resilient", bn: "স্বল্প পানি / খরা-সহনশীল", en: "Low Water / Drought Resilient" },
+              ].map((cat) => {
+                const isActive = activeCategory === cat.id;
+                const count = recommendations.filter((opt) => {
+                  if (cat.id === "all") return true;
+                  if (cat.id === "drought_resilient") return opt.water === "low";
+                  return opt.category === cat.id;
+                }).length;
+
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => setActiveCategory(cat.id)}
+                    className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition cursor-pointer flex items-center gap-1.5 ${
+                      isActive
+                        ? "bg-forest text-white shadow-sm ring-1 ring-gold"
+                        : "bg-white hover:bg-slate-50 text-slate-700 border border-slate-200"
+                    }`}
+                  >
+                    <span>{lang === "bn" ? cat.bn : cat.en}</span>
+                    <span
+                      className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
+                        isActive ? "bg-white/20 text-white" : "bg-slate-100 text-slate-600"
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Dynamic Recommendation Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-              {recommendations.map((opt) => {
+              {recommendations
+                .filter((opt) => {
+                  if (activeCategory === "all") return true;
+                  if (activeCategory === "drought_resilient") return opt.water === "low";
+                  return opt.category === activeCategory;
+                })
+                .map((opt) => {
                 const isProfit = opt.key === "profit";
                 const isShift = opt.key === "shift";
-                const cardTitle = t.titles[opt.key] || opt.title_bn || opt.title_en;
+                const cardTitle = lang === "bn" ? opt.title_bn : opt.title_en;
                 const waterLabel = t.lv[opt.water] || opt.water;
                 const reason = lang === "bn" ? opt.reason_bn : opt.reason_en;
                 const isSelectedForOutline = selectedOptionForOutline?.key === opt.key;
@@ -562,22 +621,10 @@ export const SimpleFarmerHome: React.FC = () => {
                       {/* Card Header Badge */}
                       <div className="flex items-center justify-between gap-2 mb-3 min-h-[26px]">
                         <div className="flex items-center gap-2">
-                          {isProfit && (
-                            <span className="inline-flex items-center gap-1 text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-gold text-[#1a1300] uppercase tracking-wide">
-                              <Sparkles className="w-3 h-3 fill-current" />
-                              {lang === "bn" ? "সেরা পছন্দ" : "Top Pick"}
-                            </span>
-                          )}
-                          {isShift && (
-                            <span className="inline-flex items-center text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-forest text-white uppercase tracking-wide">
-                              {lang === "bn" ? "পানি সাশ্রয়ী" : "Saves Water"}
-                            </span>
-                          )}
-                          {!isProfit && !isShift && (
-                            <span className="inline-flex items-center text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 uppercase tracking-wide">
-                              {lang === "bn" ? "সহজ ও সাশ্রয়ী" : "Low Cost"}
-                            </span>
-                          )}
+                          <span className="inline-flex items-center gap-1 text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-950 border border-emerald-300 uppercase tracking-wide">
+                            <Sparkles className="w-3 h-3 fill-current text-amber-500" />
+                            <span>{lang === "bn" ? (opt.badge_bn || "অনুমোদিত") : (opt.badge_en || "Recommended")}</span>
+                          </span>
                         </div>
                       </div>
 
@@ -675,6 +722,14 @@ export const SimpleFarmerHome: React.FC = () => {
                         </button>
                       </div>
 
+                      {/* NASA Satellite Telemetry Grounding Tag */}
+                      {opt.nasa_tag_bn && (
+                        <div className="text-[11px] font-medium text-emerald-800 bg-emerald-50/90 border border-emerald-200/80 px-2.5 py-1.5 rounded-xl flex items-center gap-1.5 my-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                          <span>{lang === "bn" ? opt.nasa_tag_bn : opt.nasa_tag_en}</span>
+                        </div>
+                      )}
+
                       {/* Short Reason Sentence */}
                       <p className="text-[13px] sm:text-[14px] text-secondary leading-relaxed m-0 mb-4 min-h-[64px]">
                         {reason}
@@ -763,7 +818,7 @@ export const SimpleFarmerHome: React.FC = () => {
           isOpen={costBreakdownOption !== null}
           onClose={() => setCostBreakdownOption(null)}
           rotationKey={costBreakdownOption.key}
-          rotationTitle={t.titles[costBreakdownOption.key] || costBreakdownOption.title_bn}
+          rotationTitle={(t.titles as Record<string, string>)[costBreakdownOption.key] || costBreakdownOption.title_bn}
           crops={costBreakdownOption.crops}
           lang={lang}
           districtName={currentUpazila.district_en}

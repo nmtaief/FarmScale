@@ -1,8 +1,8 @@
 {
   "model": "XGBoost Regressor (Layer 3)",
   "version": "2.0.0",
-  "r2_score": 0.9996,
-  "rmse_bdt": 206.76,
+  "r2_score": 0.9998,
+  "rmse_bdt": 212.12,
   "total_upazilas": 67,
   "upazilas": {
     "adamdighi": {
@@ -19,7 +19,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 44250,
-          "exact_xgb_profit_bdt": 44221.23,
+          "exact_xgb_profit_bdt": 44193.22,
           "confidence_range": {
             "lower_bdt": 43800,
             "upper_bdt": 44600
@@ -32,11 +32,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 22750,
-          "exact_xgb_profit_bdt": 22868.48,
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23176.05,
           "confidence_range": {
-            "lower_bdt": 22500,
-            "upper_bdt": 23300
+            "lower_bdt": 22800,
+            "upper_bdt": 23600
           },
           "total_cost_bdt": 27500,
           "rabi_cost_bdt": 9500,
@@ -47,7 +47,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17733.05,
+          "exact_xgb_profit_bdt": 17707.4,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -57,6 +57,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20599.63,
+          "confidence_range": {
+            "lower_bdt": 20200,
+            "upper_bdt": 21000
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1160,
+          "expected_rabi_yield_kg": 477,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30456.34,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30900
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1995,
+          "expected_rabi_yield_kg": 1312,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67721.2,
+          "confidence_range": {
+            "lower_bdt": 67300,
+            "upper_bdt": 68100
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3028,
+          "expected_rabi_yield_kg": 2345,
+          "water": "mid"
         }
       }
     },
@@ -74,10 +116,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 43000,
-          "exact_xgb_profit_bdt": 42983.58,
+          "exact_xgb_profit_bdt": 42934.21,
           "confidence_range": {
-            "lower_bdt": 42600,
-            "upper_bdt": 43400
+            "lower_bdt": 42500,
+            "upper_bdt": 43300
           },
           "total_cost_bdt": 51700,
           "rabi_cost_bdt": 33700,
@@ -87,11 +129,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 21750,
-          "exact_xgb_profit_bdt": 21828.08,
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21904.22,
           "confidence_range": {
-            "lower_bdt": 21400,
-            "upper_bdt": 22200
+            "lower_bdt": 21500,
+            "upper_bdt": 22300
           },
           "total_cost_bdt": 27570,
           "rabi_cost_bdt": 9570,
@@ -102,16 +144,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16714.08,
+          "exact_xgb_profit_bdt": 16782.41,
           "confidence_range": {
-            "lower_bdt": 16300,
-            "upper_bdt": 17100
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
           },
           "total_cost_bdt": 26850,
           "rabi_cost_bdt": 8850,
           "expected_yield_sum_kg": 825,
           "expected_rabi_yield_kg": 139,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20388.52,
+          "confidence_range": {
+            "lower_bdt": 20000,
+            "upper_bdt": 20800
+          },
+          "total_cost_bdt": 27260,
+          "rabi_cost_bdt": 9260,
+          "expected_yield_sum_kg": 1165,
+          "expected_rabi_yield_kg": 479,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27750,
+          "exact_xgb_profit_bdt": 27830.97,
+          "confidence_range": {
+            "lower_bdt": 27400,
+            "upper_bdt": 28200
+          },
+          "total_cost_bdt": 34390,
+          "rabi_cost_bdt": 16390,
+          "expected_yield_sum_kg": 1911,
+          "expected_rabi_yield_kg": 1225,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 60500,
+          "exact_xgb_profit_bdt": 60393.36,
+          "confidence_range": {
+            "lower_bdt": 60000,
+            "upper_bdt": 60800
+          },
+          "total_cost_bdt": 45080,
+          "rabi_cost_bdt": 27080,
+          "expected_yield_sum_kg": 2830,
+          "expected_rabi_yield_kg": 2144,
+          "water": "mid"
         }
       }
     },
@@ -129,7 +213,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41500,
-          "exact_xgb_profit_bdt": 41571.91,
+          "exact_xgb_profit_bdt": 41618.25,
           "confidence_range": {
             "lower_bdt": 41200,
             "upper_bdt": 42000
@@ -143,10 +227,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23834.27,
+          "exact_xgb_profit_bdt": 23850.73,
           "confidence_range": {
             "lower_bdt": 23400,
-            "upper_bdt": 24200
+            "upper_bdt": 24300
           },
           "total_cost_bdt": 27325,
           "rabi_cost_bdt": 9325,
@@ -157,7 +241,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18500,
-          "exact_xgb_profit_bdt": 18393.0,
+          "exact_xgb_profit_bdt": 18378.64,
           "confidence_range": {
             "lower_bdt": 18000,
             "upper_bdt": 18800
@@ -167,6 +251,48 @@
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20286.32,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1150,
+          "expected_rabi_yield_kg": 469,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30597.65,
+          "confidence_range": {
+            "lower_bdt": 30200,
+            "upper_bdt": 31000
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68250,
+          "exact_xgb_profit_bdt": 68342.26,
+          "confidence_range": {
+            "lower_bdt": 67900,
+            "upper_bdt": 68800
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -184,10 +310,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41000,
-          "exact_xgb_profit_bdt": 40909.1,
+          "exact_xgb_profit_bdt": 41052.04,
           "confidence_range": {
-            "lower_bdt": 40500,
-            "upper_bdt": 41300
+            "lower_bdt": 40600,
+            "upper_bdt": 41500
           },
           "total_cost_bdt": 52300,
           "rabi_cost_bdt": 34300,
@@ -198,10 +324,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21500,
-          "exact_xgb_profit_bdt": 21605.94,
+          "exact_xgb_profit_bdt": 21512.31,
           "confidence_range": {
-            "lower_bdt": 21200,
-            "upper_bdt": 22000
+            "lower_bdt": 21100,
+            "upper_bdt": 21900
           },
           "total_cost_bdt": 27780,
           "rabi_cost_bdt": 9780,
@@ -212,9 +338,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16784.97,
+          "exact_xgb_profit_bdt": 16765.07,
           "confidence_range": {
-            "lower_bdt": 16400,
+            "lower_bdt": 16300,
             "upper_bdt": 17200
           },
           "total_cost_bdt": 27000,
@@ -222,6 +348,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 141,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20000,
+          "exact_xgb_profit_bdt": 20000.15,
+          "confidence_range": {
+            "lower_bdt": 19600,
+            "upper_bdt": 20400
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1159,
+          "expected_rabi_yield_kg": 470,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27250,
+          "exact_xgb_profit_bdt": 27305.77,
+          "confidence_range": {
+            "lower_bdt": 26900,
+            "upper_bdt": 27700
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1905,
+          "expected_rabi_yield_kg": 1216,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59500,
+          "exact_xgb_profit_bdt": 59536.49,
+          "confidence_range": {
+            "lower_bdt": 59100,
+            "upper_bdt": 60000
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2816,
+          "expected_rabi_yield_kg": 2127,
+          "water": "mid"
         }
       }
     },
@@ -239,7 +407,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42250,
-          "exact_xgb_profit_bdt": 42197.76,
+          "exact_xgb_profit_bdt": 42197.26,
           "confidence_range": {
             "lower_bdt": 41800,
             "upper_bdt": 42600
@@ -253,9 +421,9 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21750,
-          "exact_xgb_profit_bdt": 21686.49,
+          "exact_xgb_profit_bdt": 21658.22,
           "confidence_range": {
-            "lower_bdt": 21300,
+            "lower_bdt": 21200,
             "upper_bdt": 22100
           },
           "total_cost_bdt": 27780,
@@ -267,7 +435,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16818.29,
+          "exact_xgb_profit_bdt": 16813.46,
           "confidence_range": {
             "lower_bdt": 16400,
             "upper_bdt": 17200
@@ -277,6 +445,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 140,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20325.26,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1170,
+          "expected_rabi_yield_kg": 480,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27534.96,
+          "confidence_range": {
+            "lower_bdt": 27100,
+            "upper_bdt": 28000
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1909,
+          "expected_rabi_yield_kg": 1219,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59750,
+          "exact_xgb_profit_bdt": 59738.98,
+          "confidence_range": {
+            "lower_bdt": 59300,
+            "upper_bdt": 60200
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2821,
+          "expected_rabi_yield_kg": 2131,
+          "water": "mid"
         }
       }
     },
@@ -294,7 +504,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 47000,
-          "exact_xgb_profit_bdt": 46982.12,
+          "exact_xgb_profit_bdt": 46986.24,
           "confidence_range": {
             "lower_bdt": 46600,
             "upper_bdt": 47400
@@ -308,7 +518,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24500,
-          "exact_xgb_profit_bdt": 24385.14,
+          "exact_xgb_profit_bdt": 24376.98,
           "confidence_range": {
             "lower_bdt": 24000,
             "upper_bdt": 24800
@@ -321,17 +531,59 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 19750,
-          "exact_xgb_profit_bdt": 19660.48,
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19559.38,
           "confidence_range": {
-            "lower_bdt": 19300,
-            "upper_bdt": 20100
+            "lower_bdt": 19100,
+            "upper_bdt": 20000
           },
           "total_cost_bdt": 26750,
           "rabi_cost_bdt": 8750,
           "expected_yield_sum_kg": 875,
           "expected_rabi_yield_kg": 152,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21858.27,
+          "confidence_range": {
+            "lower_bdt": 21400,
+            "upper_bdt": 22300
+          },
+          "total_cost_bdt": 27140,
+          "rabi_cost_bdt": 9140,
+          "expected_yield_sum_kg": 1197,
+          "expected_rabi_yield_kg": 474,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 33000,
+          "exact_xgb_profit_bdt": 33093.26,
+          "confidence_range": {
+            "lower_bdt": 32700,
+            "upper_bdt": 33500
+          },
+          "total_cost_bdt": 34210,
+          "rabi_cost_bdt": 16210,
+          "expected_yield_sum_kg": 2081,
+          "expected_rabi_yield_kg": 1358,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 73500,
+          "exact_xgb_profit_bdt": 73511.84,
+          "confidence_range": {
+            "lower_bdt": 73100,
+            "upper_bdt": 73900
+          },
+          "total_cost_bdt": 44920,
+          "rabi_cost_bdt": 26920,
+          "expected_yield_sum_kg": 3193,
+          "expected_rabi_yield_kg": 2470,
+          "water": "mid"
         }
       }
     },
@@ -348,11 +600,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 39000,
-          "exact_xgb_profit_bdt": 38908.15,
+          "predicted_profit_bdt": 39750,
+          "exact_xgb_profit_bdt": 39694.79,
           "confidence_range": {
-            "lower_bdt": 38500,
-            "upper_bdt": 39300
+            "lower_bdt": 39300,
+            "upper_bdt": 40100
           },
           "total_cost_bdt": 52500,
           "rabi_cost_bdt": 34500,
@@ -362,11 +614,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 21500,
-          "exact_xgb_profit_bdt": 21429.07,
+          "predicted_profit_bdt": 21250,
+          "exact_xgb_profit_bdt": 21314.42,
           "confidence_range": {
-            "lower_bdt": 21000,
-            "upper_bdt": 21800
+            "lower_bdt": 20900,
+            "upper_bdt": 21700
           },
           "total_cost_bdt": 27850,
           "rabi_cost_bdt": 9850,
@@ -377,9 +629,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16755.98,
+          "exact_xgb_profit_bdt": 16759.51,
           "confidence_range": {
-            "lower_bdt": 16400,
+            "lower_bdt": 16300,
             "upper_bdt": 17200
           },
           "total_cost_bdt": 27050,
@@ -387,6 +639,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 142,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19432.81,
+          "confidence_range": {
+            "lower_bdt": 19000,
+            "upper_bdt": 19800
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 1147,
+          "expected_rabi_yield_kg": 459,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27250,
+          "exact_xgb_profit_bdt": 27234.87,
+          "confidence_range": {
+            "lower_bdt": 26800,
+            "upper_bdt": 27700
+          },
+          "total_cost_bdt": 34750,
+          "rabi_cost_bdt": 16750,
+          "expected_yield_sum_kg": 1899,
+          "expected_rabi_yield_kg": 1211,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59000,
+          "exact_xgb_profit_bdt": 58894.7,
+          "confidence_range": {
+            "lower_bdt": 58500,
+            "upper_bdt": 59300
+          },
+          "total_cost_bdt": 45400,
+          "rabi_cost_bdt": 27400,
+          "expected_yield_sum_kg": 2802,
+          "expected_rabi_yield_kg": 2114,
+          "water": "mid"
         }
       }
     },
@@ -403,11 +697,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 39750,
-          "exact_xgb_profit_bdt": 39646.95,
+          "predicted_profit_bdt": 40000,
+          "exact_xgb_profit_bdt": 40040.66,
           "confidence_range": {
-            "lower_bdt": 39200,
-            "upper_bdt": 40100
+            "lower_bdt": 39600,
+            "upper_bdt": 40500
           },
           "total_cost_bdt": 52500,
           "rabi_cost_bdt": 34500,
@@ -418,10 +712,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21250,
-          "exact_xgb_profit_bdt": 21365.19,
+          "exact_xgb_profit_bdt": 21287.4,
           "confidence_range": {
-            "lower_bdt": 21000,
-            "upper_bdt": 21800
+            "lower_bdt": 20900,
+            "upper_bdt": 21700
           },
           "total_cost_bdt": 27850,
           "rabi_cost_bdt": 9850,
@@ -432,16 +726,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16739.99,
+          "exact_xgb_profit_bdt": 16749.15,
           "confidence_range": {
             "lower_bdt": 16300,
-            "upper_bdt": 17100
+            "upper_bdt": 17200
           },
           "total_cost_bdt": 27050,
           "rabi_cost_bdt": 9050,
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 142,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19750,
+          "exact_xgb_profit_bdt": 19629.21,
+          "confidence_range": {
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 1157,
+          "expected_rabi_yield_kg": 469,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27000,
+          "exact_xgb_profit_bdt": 27026.85,
+          "confidence_range": {
+            "lower_bdt": 26600,
+            "upper_bdt": 27400
+          },
+          "total_cost_bdt": 34750,
+          "rabi_cost_bdt": 16750,
+          "expected_yield_sum_kg": 1898,
+          "expected_rabi_yield_kg": 1210,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59000,
+          "exact_xgb_profit_bdt": 58918.66,
+          "confidence_range": {
+            "lower_bdt": 58500,
+            "upper_bdt": 59300
+          },
+          "total_cost_bdt": 45400,
+          "rabi_cost_bdt": 27400,
+          "expected_yield_sum_kg": 2802,
+          "expected_rabi_yield_kg": 2114,
+          "water": "mid"
         }
       }
     },
@@ -459,7 +795,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 46500,
-          "exact_xgb_profit_bdt": 46500.42,
+          "exact_xgb_profit_bdt": 46531.81,
           "confidence_range": {
             "lower_bdt": 46100,
             "upper_bdt": 46900
@@ -473,9 +809,9 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24750,
-          "exact_xgb_profit_bdt": 24714.1,
+          "exact_xgb_profit_bdt": 24637.12,
           "confidence_range": {
-            "lower_bdt": 24300,
+            "lower_bdt": 24200,
             "upper_bdt": 25100
           },
           "total_cost_bdt": 27430,
@@ -487,7 +823,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 19500,
-          "exact_xgb_profit_bdt": 19502.88,
+          "exact_xgb_profit_bdt": 19523.21,
           "confidence_range": {
             "lower_bdt": 19100,
             "upper_bdt": 19900
@@ -497,6 +833,48 @@
           "expected_yield_sum_kg": 873,
           "expected_rabi_yield_kg": 149,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21931.61,
+          "confidence_range": {
+            "lower_bdt": 21500,
+            "upper_bdt": 22300
+          },
+          "total_cost_bdt": 27140,
+          "rabi_cost_bdt": 9140,
+          "expected_yield_sum_kg": 1192,
+          "expected_rabi_yield_kg": 468,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 33500,
+          "exact_xgb_profit_bdt": 33421.83,
+          "confidence_range": {
+            "lower_bdt": 33000,
+            "upper_bdt": 33800
+          },
+          "total_cost_bdt": 34210,
+          "rabi_cost_bdt": 16210,
+          "expected_yield_sum_kg": 2093,
+          "expected_rabi_yield_kg": 1369,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 73500,
+          "exact_xgb_profit_bdt": 73404.88,
+          "confidence_range": {
+            "lower_bdt": 73000,
+            "upper_bdt": 73800
+          },
+          "total_cost_bdt": 44920,
+          "rabi_cost_bdt": 26920,
+          "expected_yield_sum_kg": 3206,
+          "expected_rabi_yield_kg": 2482,
+          "water": "mid"
         }
       }
     },
@@ -514,10 +892,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42250,
-          "exact_xgb_profit_bdt": 42332.9,
+          "exact_xgb_profit_bdt": 42335.55,
           "confidence_range": {
             "lower_bdt": 41900,
-            "upper_bdt": 42700
+            "upper_bdt": 42800
           },
           "total_cost_bdt": 50700,
           "rabi_cost_bdt": 32700,
@@ -527,11 +905,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 23500,
-          "exact_xgb_profit_bdt": 23622.61,
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23685.01,
           "confidence_range": {
-            "lower_bdt": 23200,
-            "upper_bdt": 24000
+            "lower_bdt": 23300,
+            "upper_bdt": 24100
           },
           "total_cost_bdt": 27220,
           "rabi_cost_bdt": 9220,
@@ -541,8 +919,8 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17868.34,
+          "predicted_profit_bdt": 18000,
+          "exact_xgb_profit_bdt": 17880.32,
           "confidence_range": {
             "lower_bdt": 17500,
             "upper_bdt": 18300
@@ -552,6 +930,48 @@
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20194.92,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20600
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1143,
+          "expected_rabi_yield_kg": 469,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30301.82,
+          "confidence_range": {
+            "lower_bdt": 29900,
+            "upper_bdt": 30700
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1983,
+          "expected_rabi_yield_kg": 1309,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67500,
+          "exact_xgb_profit_bdt": 67436.7,
+          "confidence_range": {
+            "lower_bdt": 67000,
+            "upper_bdt": 67900
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3014,
+          "expected_rabi_yield_kg": 2340,
+          "water": "mid"
         }
       }
     },
@@ -569,10 +989,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41500,
-          "exact_xgb_profit_bdt": 41448.87,
+          "exact_xgb_profit_bdt": 41622.93,
           "confidence_range": {
-            "lower_bdt": 41000,
-            "upper_bdt": 41900
+            "lower_bdt": 41200,
+            "upper_bdt": 42000
           },
           "total_cost_bdt": 51000,
           "rabi_cost_bdt": 33000,
@@ -583,10 +1003,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24000,
-          "exact_xgb_profit_bdt": 23894.71,
+          "exact_xgb_profit_bdt": 23952.01,
           "confidence_range": {
             "lower_bdt": 23500,
-            "upper_bdt": 24300
+            "upper_bdt": 24400
           },
           "total_cost_bdt": 27325,
           "rabi_cost_bdt": 9325,
@@ -596,8 +1016,8 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 18250,
-          "exact_xgb_profit_bdt": 18361.12,
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18400.42,
           "confidence_range": {
             "lower_bdt": 18000,
             "upper_bdt": 18800
@@ -607,6 +1027,48 @@
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20277.23,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1149,
+          "expected_rabi_yield_kg": 468,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30750,
+          "exact_xgb_profit_bdt": 30649.74,
+          "confidence_range": {
+            "lower_bdt": 30200,
+            "upper_bdt": 31100
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68250,
+          "exact_xgb_profit_bdt": 68302.85,
+          "confidence_range": {
+            "lower_bdt": 67900,
+            "upper_bdt": 68700
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -624,10 +1086,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41750,
-          "exact_xgb_profit_bdt": 41781.55,
+          "exact_xgb_profit_bdt": 41701.77,
           "confidence_range": {
-            "lower_bdt": 41400,
-            "upper_bdt": 42200
+            "lower_bdt": 41300,
+            "upper_bdt": 42100
           },
           "total_cost_bdt": 51000,
           "rabi_cost_bdt": 33000,
@@ -638,7 +1100,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24000,
-          "exact_xgb_profit_bdt": 23898.37,
+          "exact_xgb_profit_bdt": 23884.64,
           "confidence_range": {
             "lower_bdt": 23500,
             "upper_bdt": 24300
@@ -652,7 +1114,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18500,
-          "exact_xgb_profit_bdt": 18401.21,
+          "exact_xgb_profit_bdt": 18392.8,
           "confidence_range": {
             "lower_bdt": 18000,
             "upper_bdt": 18800
@@ -662,6 +1124,48 @@
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20295.99,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1152,
+          "expected_rabi_yield_kg": 471,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30608.41,
+          "confidence_range": {
+            "lower_bdt": 30200,
+            "upper_bdt": 31000
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68250,
+          "exact_xgb_profit_bdt": 68348.51,
+          "confidence_range": {
+            "lower_bdt": 67900,
+            "upper_bdt": 68800
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -679,7 +1183,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 40000,
-          "exact_xgb_profit_bdt": 40025.47,
+          "exact_xgb_profit_bdt": 39999.75,
           "confidence_range": {
             "lower_bdt": 39600,
             "upper_bdt": 40400
@@ -692,11 +1196,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 20750,
-          "exact_xgb_profit_bdt": 20650.38,
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20553.4,
           "confidence_range": {
-            "lower_bdt": 20200,
-            "upper_bdt": 21100
+            "lower_bdt": 20100,
+            "upper_bdt": 21000
           },
           "total_cost_bdt": 27920,
           "rabi_cost_bdt": 9920,
@@ -707,9 +1211,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17000,
-          "exact_xgb_profit_bdt": 16962.39,
+          "exact_xgb_profit_bdt": 16945.98,
           "confidence_range": {
-            "lower_bdt": 16600,
+            "lower_bdt": 16500,
             "upper_bdt": 17400
           },
           "total_cost_bdt": 27100,
@@ -717,6 +1221,48 @@
           "expected_yield_sum_kg": 828,
           "expected_rabi_yield_kg": 149,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19565.73,
+          "confidence_range": {
+            "lower_bdt": 19100,
+            "upper_bdt": 20000
+          },
+          "total_cost_bdt": 27560,
+          "rabi_cost_bdt": 9560,
+          "expected_yield_sum_kg": 1159,
+          "expected_rabi_yield_kg": 480,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 26250,
+          "exact_xgb_profit_bdt": 26343.05,
+          "confidence_range": {
+            "lower_bdt": 25900,
+            "upper_bdt": 26800
+          },
+          "total_cost_bdt": 34840,
+          "rabi_cost_bdt": 16840,
+          "expected_yield_sum_kg": 1877,
+          "expected_rabi_yield_kg": 1198,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 58250,
+          "exact_xgb_profit_bdt": 58258.62,
+          "confidence_range": {
+            "lower_bdt": 57800,
+            "upper_bdt": 58700
+          },
+          "total_cost_bdt": 45480,
+          "rabi_cost_bdt": 27480,
+          "expected_yield_sum_kg": 2787,
+          "expected_rabi_yield_kg": 2108,
+          "water": "mid"
         }
       }
     },
@@ -734,7 +1280,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 44250,
-          "exact_xgb_profit_bdt": 44311.34,
+          "exact_xgb_profit_bdt": 44317.94,
           "confidence_range": {
             "lower_bdt": 43900,
             "upper_bdt": 44700
@@ -748,10 +1294,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23250,
-          "exact_xgb_profit_bdt": 23135.57,
+          "exact_xgb_profit_bdt": 23185.06,
           "confidence_range": {
-            "lower_bdt": 22700,
-            "upper_bdt": 23500
+            "lower_bdt": 22800,
+            "upper_bdt": 23600
           },
           "total_cost_bdt": 27500,
           "rabi_cost_bdt": 9500,
@@ -762,7 +1308,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17707.27,
+          "exact_xgb_profit_bdt": 17692.42,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -772,6 +1318,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20750,
+          "exact_xgb_profit_bdt": 20661.77,
+          "confidence_range": {
+            "lower_bdt": 20200,
+            "upper_bdt": 21100
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1162,
+          "expected_rabi_yield_kg": 479,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30442.01,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30900
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1995,
+          "expected_rabi_yield_kg": 1312,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67724.11,
+          "confidence_range": {
+            "lower_bdt": 67300,
+            "upper_bdt": 68100
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3028,
+          "expected_rabi_yield_kg": 2345,
+          "water": "mid"
         }
       }
     },
@@ -789,7 +1377,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 44250,
-          "exact_xgb_profit_bdt": 44311.34,
+          "exact_xgb_profit_bdt": 44317.94,
           "confidence_range": {
             "lower_bdt": 43900,
             "upper_bdt": 44700
@@ -803,10 +1391,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23250,
-          "exact_xgb_profit_bdt": 23135.57,
+          "exact_xgb_profit_bdt": 23185.06,
           "confidence_range": {
-            "lower_bdt": 22700,
-            "upper_bdt": 23500
+            "lower_bdt": 22800,
+            "upper_bdt": 23600
           },
           "total_cost_bdt": 27500,
           "rabi_cost_bdt": 9500,
@@ -817,7 +1405,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17707.27,
+          "exact_xgb_profit_bdt": 17692.42,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -827,6 +1415,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20750,
+          "exact_xgb_profit_bdt": 20661.77,
+          "confidence_range": {
+            "lower_bdt": 20200,
+            "upper_bdt": 21100
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1162,
+          "expected_rabi_yield_kg": 479,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30442.01,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30900
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1995,
+          "expected_rabi_yield_kg": 1312,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67724.11,
+          "confidence_range": {
+            "lower_bdt": 67300,
+            "upper_bdt": 68100
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3028,
+          "expected_rabi_yield_kg": 2345,
+          "water": "mid"
         }
       }
     },
@@ -844,10 +1474,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 39250,
-          "exact_xgb_profit_bdt": 39130.62,
+          "exact_xgb_profit_bdt": 39209.26,
           "confidence_range": {
-            "lower_bdt": 38700,
-            "upper_bdt": 39500
+            "lower_bdt": 38800,
+            "upper_bdt": 39600
           },
           "total_cost_bdt": 52700,
           "rabi_cost_bdt": 34700,
@@ -858,7 +1488,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 20500,
-          "exact_xgb_profit_bdt": 20511.89,
+          "exact_xgb_profit_bdt": 20524.99,
           "confidence_range": {
             "lower_bdt": 20100,
             "upper_bdt": 20900
@@ -872,7 +1502,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17000,
-          "exact_xgb_profit_bdt": 16993.93,
+          "exact_xgb_profit_bdt": 16993.64,
           "confidence_range": {
             "lower_bdt": 16600,
             "upper_bdt": 17400
@@ -882,6 +1512,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19250,
+          "exact_xgb_profit_bdt": 19353.04,
+          "confidence_range": {
+            "lower_bdt": 18900,
+            "upper_bdt": 19800
+          },
+          "total_cost_bdt": 27560,
+          "rabi_cost_bdt": 9560,
+          "expected_yield_sum_kg": 1150,
+          "expected_rabi_yield_kg": 471,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 26250,
+          "exact_xgb_profit_bdt": 26143.05,
+          "confidence_range": {
+            "lower_bdt": 25700,
+            "upper_bdt": 26600
+          },
+          "total_cost_bdt": 34840,
+          "rabi_cost_bdt": 16840,
+          "expected_yield_sum_kg": 1876,
+          "expected_rabi_yield_kg": 1197,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 58250,
+          "exact_xgb_profit_bdt": 58133.31,
+          "confidence_range": {
+            "lower_bdt": 57700,
+            "upper_bdt": 58500
+          },
+          "total_cost_bdt": 45480,
+          "rabi_cost_bdt": 27480,
+          "expected_yield_sum_kg": 2786,
+          "expected_rabi_yield_kg": 2107,
+          "water": "mid"
         }
       }
     },
@@ -899,10 +1571,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 39250,
-          "exact_xgb_profit_bdt": 39130.62,
+          "exact_xgb_profit_bdt": 39209.26,
           "confidence_range": {
-            "lower_bdt": 38700,
-            "upper_bdt": 39500
+            "lower_bdt": 38800,
+            "upper_bdt": 39600
           },
           "total_cost_bdt": 52700,
           "rabi_cost_bdt": 34700,
@@ -913,7 +1585,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 20500,
-          "exact_xgb_profit_bdt": 20511.89,
+          "exact_xgb_profit_bdt": 20524.99,
           "confidence_range": {
             "lower_bdt": 20100,
             "upper_bdt": 20900
@@ -927,7 +1599,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17000,
-          "exact_xgb_profit_bdt": 16993.93,
+          "exact_xgb_profit_bdt": 16993.64,
           "confidence_range": {
             "lower_bdt": 16600,
             "upper_bdt": 17400
@@ -937,6 +1609,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19250,
+          "exact_xgb_profit_bdt": 19353.04,
+          "confidence_range": {
+            "lower_bdt": 18900,
+            "upper_bdt": 19800
+          },
+          "total_cost_bdt": 27560,
+          "rabi_cost_bdt": 9560,
+          "expected_yield_sum_kg": 1150,
+          "expected_rabi_yield_kg": 471,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 26250,
+          "exact_xgb_profit_bdt": 26143.05,
+          "confidence_range": {
+            "lower_bdt": 25700,
+            "upper_bdt": 26600
+          },
+          "total_cost_bdt": 34840,
+          "rabi_cost_bdt": 16840,
+          "expected_yield_sum_kg": 1876,
+          "expected_rabi_yield_kg": 1197,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 58250,
+          "exact_xgb_profit_bdt": 58133.31,
+          "confidence_range": {
+            "lower_bdt": 57700,
+            "upper_bdt": 58500
+          },
+          "total_cost_bdt": 45480,
+          "rabi_cost_bdt": 27480,
+          "expected_yield_sum_kg": 2786,
+          "expected_rabi_yield_kg": 2107,
+          "water": "mid"
         }
       }
     },
@@ -954,10 +1668,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 39500,
-          "exact_xgb_profit_bdt": 39395.03,
+          "exact_xgb_profit_bdt": 39441.72,
           "confidence_range": {
             "lower_bdt": 39000,
-            "upper_bdt": 39800
+            "upper_bdt": 39900
           },
           "total_cost_bdt": 52500,
           "rabi_cost_bdt": 34500,
@@ -968,7 +1682,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21250,
-          "exact_xgb_profit_bdt": 21296.41,
+          "exact_xgb_profit_bdt": 21277.15,
           "confidence_range": {
             "lower_bdt": 20900,
             "upper_bdt": 21700
@@ -982,16 +1696,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16723.3,
+          "exact_xgb_profit_bdt": 16737.0,
           "confidence_range": {
             "lower_bdt": 16300,
-            "upper_bdt": 17100
+            "upper_bdt": 17200
           },
           "total_cost_bdt": 27050,
           "rabi_cost_bdt": 9050,
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 142,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19582.91,
+          "confidence_range": {
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 1151,
+          "expected_rabi_yield_kg": 463,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27000,
+          "exact_xgb_profit_bdt": 27016.52,
+          "confidence_range": {
+            "lower_bdt": 26600,
+            "upper_bdt": 27400
+          },
+          "total_cost_bdt": 34750,
+          "rabi_cost_bdt": 16750,
+          "expected_yield_sum_kg": 1898,
+          "expected_rabi_yield_kg": 1210,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59000,
+          "exact_xgb_profit_bdt": 58881.4,
+          "confidence_range": {
+            "lower_bdt": 58500,
+            "upper_bdt": 59300
+          },
+          "total_cost_bdt": 45400,
+          "rabi_cost_bdt": 27400,
+          "expected_yield_sum_kg": 2802,
+          "expected_rabi_yield_kg": 2114,
+          "water": "mid"
         }
       }
     },
@@ -1009,10 +1765,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41750,
-          "exact_xgb_profit_bdt": 41788.19,
+          "exact_xgb_profit_bdt": 41705.14,
           "confidence_range": {
-            "lower_bdt": 41400,
-            "upper_bdt": 42200
+            "lower_bdt": 41300,
+            "upper_bdt": 42100
           },
           "total_cost_bdt": 51000,
           "rabi_cost_bdt": 33000,
@@ -1023,7 +1779,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23850.56,
+          "exact_xgb_profit_bdt": 23856.36,
           "confidence_range": {
             "lower_bdt": 23400,
             "upper_bdt": 24300
@@ -1037,7 +1793,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18500,
-          "exact_xgb_profit_bdt": 18406.04,
+          "exact_xgb_profit_bdt": 18388.26,
           "confidence_range": {
             "lower_bdt": 18000,
             "upper_bdt": 18800
@@ -1047,6 +1803,48 @@
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20295.95,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1152,
+          "expected_rabi_yield_kg": 471,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30607.28,
+          "confidence_range": {
+            "lower_bdt": 30200,
+            "upper_bdt": 31000
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68250,
+          "exact_xgb_profit_bdt": 68351.88,
+          "confidence_range": {
+            "lower_bdt": 67900,
+            "upper_bdt": 68800
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -1063,11 +1861,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 42500,
-          "exact_xgb_profit_bdt": 42406.2,
+          "predicted_profit_bdt": 42000,
+          "exact_xgb_profit_bdt": 42062.72,
           "confidence_range": {
-            "lower_bdt": 42000,
-            "upper_bdt": 42800
+            "lower_bdt": 41600,
+            "upper_bdt": 42500
           },
           "total_cost_bdt": 50700,
           "rabi_cost_bdt": 32700,
@@ -1078,10 +1876,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23638.25,
+          "exact_xgb_profit_bdt": 23687.09,
           "confidence_range": {
-            "lower_bdt": 23200,
-            "upper_bdt": 24000
+            "lower_bdt": 23300,
+            "upper_bdt": 24100
           },
           "total_cost_bdt": 27220,
           "rabi_cost_bdt": 9220,
@@ -1092,7 +1890,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17873.7,
+          "exact_xgb_profit_bdt": 17872.94,
           "confidence_range": {
             "lower_bdt": 17500,
             "upper_bdt": 18300
@@ -1102,6 +1900,48 @@
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20000,
+          "exact_xgb_profit_bdt": 20068.01,
+          "confidence_range": {
+            "lower_bdt": 19700,
+            "upper_bdt": 20500
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1140,
+          "expected_rabi_yield_kg": 466,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30159.89,
+          "confidence_range": {
+            "lower_bdt": 29700,
+            "upper_bdt": 30600
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1985,
+          "expected_rabi_yield_kg": 1311,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67500,
+          "exact_xgb_profit_bdt": 67465.98,
+          "confidence_range": {
+            "lower_bdt": 67100,
+            "upper_bdt": 67900
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3016,
+          "expected_rabi_yield_kg": 2342,
+          "water": "mid"
         }
       }
     },
@@ -1119,7 +1959,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42500,
-          "exact_xgb_profit_bdt": 42406.91,
+          "exact_xgb_profit_bdt": 42404.4,
           "confidence_range": {
             "lower_bdt": 42000,
             "upper_bdt": 42800
@@ -1133,7 +1973,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21750,
-          "exact_xgb_profit_bdt": 21653.11,
+          "exact_xgb_profit_bdt": 21640.28,
           "confidence_range": {
             "lower_bdt": 21200,
             "upper_bdt": 22100
@@ -1147,9 +1987,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16803.11,
+          "exact_xgb_profit_bdt": 16744.52,
           "confidence_range": {
-            "lower_bdt": 16400,
+            "lower_bdt": 16300,
             "upper_bdt": 17200
           },
           "total_cost_bdt": 27000,
@@ -1157,6 +1997,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 140,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20423.16,
+          "confidence_range": {
+            "lower_bdt": 20000,
+            "upper_bdt": 20800
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1173,
+          "expected_rabi_yield_kg": 483,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27556.17,
+          "confidence_range": {
+            "lower_bdt": 27100,
+            "upper_bdt": 28000
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1909,
+          "expected_rabi_yield_kg": 1219,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59750,
+          "exact_xgb_profit_bdt": 59750.57,
+          "confidence_range": {
+            "lower_bdt": 59300,
+            "upper_bdt": 60200
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2821,
+          "expected_rabi_yield_kg": 2131,
+          "water": "mid"
         }
       }
     },
@@ -1173,11 +2055,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 43750,
-          "exact_xgb_profit_bdt": 43850.91,
+          "predicted_profit_bdt": 44000,
+          "exact_xgb_profit_bdt": 44060.49,
           "confidence_range": {
-            "lower_bdt": 43400,
-            "upper_bdt": 44300
+            "lower_bdt": 43600,
+            "upper_bdt": 44500
           },
           "total_cost_bdt": 51500,
           "rabi_cost_bdt": 33500,
@@ -1188,10 +2070,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23250,
-          "exact_xgb_profit_bdt": 23279.24,
+          "exact_xgb_profit_bdt": 23193.14,
           "confidence_range": {
-            "lower_bdt": 22900,
-            "upper_bdt": 23700
+            "lower_bdt": 22800,
+            "upper_bdt": 23600
           },
           "total_cost_bdt": 27500,
           "rabi_cost_bdt": 9500,
@@ -1202,7 +2084,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17714.17,
+          "exact_xgb_profit_bdt": 17730.28,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -1212,6 +2094,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20577.94,
+          "confidence_range": {
+            "lower_bdt": 20200,
+            "upper_bdt": 21000
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1157,
+          "expected_rabi_yield_kg": 474,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30457.2,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30900
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1994,
+          "expected_rabi_yield_kg": 1311,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67636.48,
+          "confidence_range": {
+            "lower_bdt": 67200,
+            "upper_bdt": 68100
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3027,
+          "expected_rabi_yield_kg": 2344,
+          "water": "mid"
         }
       }
     },
@@ -1228,11 +2152,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 44500,
-          "exact_xgb_profit_bdt": 44413.63,
+          "predicted_profit_bdt": 44250,
+          "exact_xgb_profit_bdt": 44140.82,
           "confidence_range": {
-            "lower_bdt": 44000,
-            "upper_bdt": 44800
+            "lower_bdt": 43700,
+            "upper_bdt": 44600
           },
           "total_cost_bdt": 51500,
           "rabi_cost_bdt": 33500,
@@ -1242,8 +2166,8 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 23000,
-          "exact_xgb_profit_bdt": 23057.95,
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23132.36,
           "confidence_range": {
             "lower_bdt": 22700,
             "upper_bdt": 23500
@@ -1257,9 +2181,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17697.59,
+          "exact_xgb_profit_bdt": 17648.42,
           "confidence_range": {
-            "lower_bdt": 17300,
+            "lower_bdt": 17200,
             "upper_bdt": 18100
           },
           "total_cost_bdt": 26800,
@@ -1267,6 +2191,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20750,
+          "exact_xgb_profit_bdt": 20627.18,
+          "confidence_range": {
+            "lower_bdt": 20200,
+            "upper_bdt": 21000
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1162,
+          "expected_rabi_yield_kg": 479,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30423.77,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30800
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1995,
+          "expected_rabi_yield_kg": 1312,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67697.3,
+          "confidence_range": {
+            "lower_bdt": 67300,
+            "upper_bdt": 68100
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3028,
+          "expected_rabi_yield_kg": 2345,
+          "water": "mid"
         }
       }
     },
@@ -1283,11 +2249,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 39750,
-          "exact_xgb_profit_bdt": 39789.68,
+          "predicted_profit_bdt": 40000,
+          "exact_xgb_profit_bdt": 39907.99,
           "confidence_range": {
-            "lower_bdt": 39400,
-            "upper_bdt": 40200
+            "lower_bdt": 39500,
+            "upper_bdt": 40300
           },
           "total_cost_bdt": 52500,
           "rabi_cost_bdt": 34500,
@@ -1298,10 +2264,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21250,
-          "exact_xgb_profit_bdt": 21348.85,
+          "exact_xgb_profit_bdt": 21255.96,
           "confidence_range": {
-            "lower_bdt": 20900,
-            "upper_bdt": 21800
+            "lower_bdt": 20800,
+            "upper_bdt": 21700
           },
           "total_cost_bdt": 27850,
           "rabi_cost_bdt": 9850,
@@ -1312,7 +2278,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16753.11,
+          "exact_xgb_profit_bdt": 16736.61,
           "confidence_range": {
             "lower_bdt": 16300,
             "upper_bdt": 17200
@@ -1322,6 +2288,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 142,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19591.42,
+          "confidence_range": {
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 1155,
+          "expected_rabi_yield_kg": 467,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27000,
+          "exact_xgb_profit_bdt": 27012.82,
+          "confidence_range": {
+            "lower_bdt": 26600,
+            "upper_bdt": 27400
+          },
+          "total_cost_bdt": 34750,
+          "rabi_cost_bdt": 16750,
+          "expected_yield_sum_kg": 1898,
+          "expected_rabi_yield_kg": 1210,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59000,
+          "exact_xgb_profit_bdt": 58904.64,
+          "confidence_range": {
+            "lower_bdt": 58500,
+            "upper_bdt": 59300
+          },
+          "total_cost_bdt": 45400,
+          "rabi_cost_bdt": 27400,
+          "expected_yield_sum_kg": 2802,
+          "expected_rabi_yield_kg": 2114,
+          "water": "mid"
         }
       }
     },
@@ -1338,11 +2346,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 41500,
-          "exact_xgb_profit_bdt": 41617.02,
+          "predicted_profit_bdt": 41750,
+          "exact_xgb_profit_bdt": 41636.66,
           "confidence_range": {
             "lower_bdt": 41200,
-            "upper_bdt": 42000
+            "upper_bdt": 42100
           },
           "total_cost_bdt": 51000,
           "rabi_cost_bdt": 33000,
@@ -1353,7 +2361,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24000,
-          "exact_xgb_profit_bdt": 23903.92,
+          "exact_xgb_profit_bdt": 23900.38,
           "confidence_range": {
             "lower_bdt": 23500,
             "upper_bdt": 24300
@@ -1367,7 +2375,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18500,
-          "exact_xgb_profit_bdt": 18391.47,
+          "exact_xgb_profit_bdt": 18384.06,
           "confidence_range": {
             "lower_bdt": 18000,
             "upper_bdt": 18800
@@ -1377,6 +2385,48 @@
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20291.74,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1151,
+          "expected_rabi_yield_kg": 470,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30750,
+          "exact_xgb_profit_bdt": 30628.78,
+          "confidence_range": {
+            "lower_bdt": 30200,
+            "upper_bdt": 31000
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68250,
+          "exact_xgb_profit_bdt": 68336.2,
+          "confidence_range": {
+            "lower_bdt": 67900,
+            "upper_bdt": 68800
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -1394,10 +2444,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 44500,
-          "exact_xgb_profit_bdt": 44393.51,
+          "exact_xgb_profit_bdt": 44472.15,
           "confidence_range": {
-            "lower_bdt": 44000,
-            "upper_bdt": 44800
+            "lower_bdt": 44100,
+            "upper_bdt": 44900
           },
           "total_cost_bdt": 51500,
           "rabi_cost_bdt": 33500,
@@ -1408,9 +2458,9 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23250,
-          "exact_xgb_profit_bdt": 23304.83,
+          "exact_xgb_profit_bdt": 23248.63,
           "confidence_range": {
-            "lower_bdt": 22900,
+            "lower_bdt": 22800,
             "upper_bdt": 23700
           },
           "total_cost_bdt": 27500,
@@ -1422,7 +2472,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17731.3,
+          "exact_xgb_profit_bdt": 17711.21,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -1432,6 +2482,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20750,
+          "exact_xgb_profit_bdt": 20696.36,
+          "confidence_range": {
+            "lower_bdt": 20300,
+            "upper_bdt": 21100
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1162,
+          "expected_rabi_yield_kg": 479,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30494.3,
+          "confidence_range": {
+            "lower_bdt": 30100,
+            "upper_bdt": 30900
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1995,
+          "expected_rabi_yield_kg": 1312,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67736.63,
+          "confidence_range": {
+            "lower_bdt": 67300,
+            "upper_bdt": 68200
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3028,
+          "expected_rabi_yield_kg": 2345,
+          "water": "mid"
         }
       }
     },
@@ -1449,7 +2541,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 39750,
-          "exact_xgb_profit_bdt": 39829.45,
+          "exact_xgb_profit_bdt": 39832.74,
           "confidence_range": {
             "lower_bdt": 39400,
             "upper_bdt": 40200
@@ -1463,10 +2555,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21000,
-          "exact_xgb_profit_bdt": 20992.75,
+          "exact_xgb_profit_bdt": 21053.25,
           "confidence_range": {
             "lower_bdt": 20600,
-            "upper_bdt": 21400
+            "upper_bdt": 21500
           },
           "total_cost_bdt": 27850,
           "rabi_cost_bdt": 9850,
@@ -1477,16 +2569,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16742.45,
+          "exact_xgb_profit_bdt": 16753.17,
           "confidence_range": {
             "lower_bdt": 16300,
-            "upper_bdt": 17100
+            "upper_bdt": 17200
           },
           "total_cost_bdt": 27050,
           "rabi_cost_bdt": 9050,
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 142,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19581.12,
+          "confidence_range": {
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 1155,
+          "expected_rabi_yield_kg": 467,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27000,
+          "exact_xgb_profit_bdt": 27007.4,
+          "confidence_range": {
+            "lower_bdt": 26600,
+            "upper_bdt": 27400
+          },
+          "total_cost_bdt": 34750,
+          "rabi_cost_bdt": 16750,
+          "expected_yield_sum_kg": 1898,
+          "expected_rabi_yield_kg": 1210,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59000,
+          "exact_xgb_profit_bdt": 58894.68,
+          "confidence_range": {
+            "lower_bdt": 58500,
+            "upper_bdt": 59300
+          },
+          "total_cost_bdt": 45400,
+          "rabi_cost_bdt": 27400,
+          "expected_yield_sum_kg": 2802,
+          "expected_rabi_yield_kg": 2114,
+          "water": "mid"
         }
       }
     },
@@ -1504,7 +2638,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 39750,
-          "exact_xgb_profit_bdt": 39778.95,
+          "exact_xgb_profit_bdt": 39797.5,
           "confidence_range": {
             "lower_bdt": 39400,
             "upper_bdt": 40200
@@ -1518,7 +2652,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 20500,
-          "exact_xgb_profit_bdt": 20588.06,
+          "exact_xgb_profit_bdt": 20584.25,
           "confidence_range": {
             "lower_bdt": 20200,
             "upper_bdt": 21000
@@ -1532,9 +2666,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17000,
-          "exact_xgb_profit_bdt": 16956.28,
+          "exact_xgb_profit_bdt": 16954.84,
           "confidence_range": {
-            "lower_bdt": 16600,
+            "lower_bdt": 16500,
             "upper_bdt": 17400
           },
           "total_cost_bdt": 27100,
@@ -1542,6 +2676,48 @@
           "expected_yield_sum_kg": 828,
           "expected_rabi_yield_kg": 149,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19500.69,
+          "confidence_range": {
+            "lower_bdt": 19100,
+            "upper_bdt": 19900
+          },
+          "total_cost_bdt": 27560,
+          "rabi_cost_bdt": 9560,
+          "expected_yield_sum_kg": 1156,
+          "expected_rabi_yield_kg": 477,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 26250,
+          "exact_xgb_profit_bdt": 26227.97,
+          "confidence_range": {
+            "lower_bdt": 25800,
+            "upper_bdt": 26600
+          },
+          "total_cost_bdt": 34840,
+          "rabi_cost_bdt": 16840,
+          "expected_yield_sum_kg": 1877,
+          "expected_rabi_yield_kg": 1198,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 58250,
+          "exact_xgb_profit_bdt": 58180.95,
+          "confidence_range": {
+            "lower_bdt": 57800,
+            "upper_bdt": 58600
+          },
+          "total_cost_bdt": 45480,
+          "rabi_cost_bdt": 27480,
+          "expected_yield_sum_kg": 2787,
+          "expected_rabi_yield_kg": 2108,
+          "water": "mid"
         }
       }
     },
@@ -1558,8 +2734,8 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 46750,
-          "exact_xgb_profit_bdt": 46874.79,
+          "predicted_profit_bdt": 47000,
+          "exact_xgb_profit_bdt": 46926.0,
           "confidence_range": {
             "lower_bdt": 46500,
             "upper_bdt": 47300
@@ -1573,10 +2749,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24750,
-          "exact_xgb_profit_bdt": 24776.49,
+          "exact_xgb_profit_bdt": 24678.03,
           "confidence_range": {
-            "lower_bdt": 24400,
-            "upper_bdt": 25200
+            "lower_bdt": 24300,
+            "upper_bdt": 25100
           },
           "total_cost_bdt": 27430,
           "rabi_cost_bdt": 9430,
@@ -1587,16 +2763,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 19500,
-          "exact_xgb_profit_bdt": 19498.66,
+          "exact_xgb_profit_bdt": 19539.5,
           "confidence_range": {
             "lower_bdt": 19100,
-            "upper_bdt": 19900
+            "upper_bdt": 20000
           },
           "total_cost_bdt": 26750,
           "rabi_cost_bdt": 8750,
           "expected_yield_sum_kg": 873,
           "expected_rabi_yield_kg": 149,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21947.96,
+          "confidence_range": {
+            "lower_bdt": 21500,
+            "upper_bdt": 22400
+          },
+          "total_cost_bdt": 27140,
+          "rabi_cost_bdt": 9140,
+          "expected_yield_sum_kg": 1196,
+          "expected_rabi_yield_kg": 472,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 33500,
+          "exact_xgb_profit_bdt": 33425.7,
+          "confidence_range": {
+            "lower_bdt": 33000,
+            "upper_bdt": 33800
+          },
+          "total_cost_bdt": 34210,
+          "rabi_cost_bdt": 16210,
+          "expected_yield_sum_kg": 2093,
+          "expected_rabi_yield_kg": 1369,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 74000,
+          "exact_xgb_profit_bdt": 73956.32,
+          "confidence_range": {
+            "lower_bdt": 73500,
+            "upper_bdt": 74400
+          },
+          "total_cost_bdt": 44920,
+          "rabi_cost_bdt": 26920,
+          "expected_yield_sum_kg": 3206,
+          "expected_rabi_yield_kg": 2482,
+          "water": "mid"
         }
       }
     },
@@ -1614,7 +2832,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41500,
-          "exact_xgb_profit_bdt": 41598.54,
+          "exact_xgb_profit_bdt": 41599.8,
           "confidence_range": {
             "lower_bdt": 41200,
             "upper_bdt": 42000
@@ -1628,10 +2846,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23709.86,
+          "exact_xgb_profit_bdt": 23778.27,
           "confidence_range": {
-            "lower_bdt": 23300,
-            "upper_bdt": 24100
+            "lower_bdt": 23400,
+            "upper_bdt": 24200
           },
           "total_cost_bdt": 27325,
           "rabi_cost_bdt": 9325,
@@ -1641,17 +2859,59 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 18500,
-          "exact_xgb_profit_bdt": 18385.76,
+          "predicted_profit_bdt": 18250,
+          "exact_xgb_profit_bdt": 18305.19,
           "confidence_range": {
-            "lower_bdt": 18000,
-            "upper_bdt": 18800
+            "lower_bdt": 17900,
+            "upper_bdt": 18700
           },
           "total_cost_bdt": 26675,
           "rabi_cost_bdt": 8675,
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20256.33,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1150,
+          "expected_rabi_yield_kg": 469,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30543.99,
+          "confidence_range": {
+            "lower_bdt": 30100,
+            "upper_bdt": 31000
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68250,
+          "exact_xgb_profit_bdt": 68320.01,
+          "confidence_range": {
+            "lower_bdt": 67900,
+            "upper_bdt": 68700
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -1669,10 +2929,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 43250,
-          "exact_xgb_profit_bdt": 43277.98,
+          "exact_xgb_profit_bdt": 43167.12,
           "confidence_range": {
-            "lower_bdt": 42900,
-            "upper_bdt": 43700
+            "lower_bdt": 42800,
+            "upper_bdt": 43600
           },
           "total_cost_bdt": 51700,
           "rabi_cost_bdt": 33700,
@@ -1682,11 +2942,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 22000,
-          "exact_xgb_profit_bdt": 21986.78,
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21869.13,
           "confidence_range": {
-            "lower_bdt": 21600,
-            "upper_bdt": 22400
+            "lower_bdt": 21500,
+            "upper_bdt": 22300
           },
           "total_cost_bdt": 27570,
           "rabi_cost_bdt": 9570,
@@ -1697,7 +2957,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16743.07,
+          "exact_xgb_profit_bdt": 16673.18,
           "confidence_range": {
             "lower_bdt": 16300,
             "upper_bdt": 17100
@@ -1707,6 +2967,48 @@
           "expected_yield_sum_kg": 825,
           "expected_rabi_yield_kg": 139,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20476.79,
+          "confidence_range": {
+            "lower_bdt": 20100,
+            "upper_bdt": 20900
+          },
+          "total_cost_bdt": 27260,
+          "rabi_cost_bdt": 9260,
+          "expected_yield_sum_kg": 1168,
+          "expected_rabi_yield_kg": 482,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27750,
+          "exact_xgb_profit_bdt": 27849.18,
+          "confidence_range": {
+            "lower_bdt": 27400,
+            "upper_bdt": 28300
+          },
+          "total_cost_bdt": 34390,
+          "rabi_cost_bdt": 16390,
+          "expected_yield_sum_kg": 1911,
+          "expected_rabi_yield_kg": 1225,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 60500,
+          "exact_xgb_profit_bdt": 60396.63,
+          "confidence_range": {
+            "lower_bdt": 60000,
+            "upper_bdt": 60800
+          },
+          "total_cost_bdt": 45080,
+          "rabi_cost_bdt": 27080,
+          "expected_yield_sum_kg": 2830,
+          "expected_rabi_yield_kg": 2144,
+          "water": "mid"
         }
       }
     },
@@ -1724,10 +3026,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 43250,
-          "exact_xgb_profit_bdt": 43277.98,
+          "exact_xgb_profit_bdt": 43167.12,
           "confidence_range": {
-            "lower_bdt": 42900,
-            "upper_bdt": 43700
+            "lower_bdt": 42800,
+            "upper_bdt": 43600
           },
           "total_cost_bdt": 51700,
           "rabi_cost_bdt": 33700,
@@ -1737,11 +3039,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 22000,
-          "exact_xgb_profit_bdt": 21986.78,
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21869.13,
           "confidence_range": {
-            "lower_bdt": 21600,
-            "upper_bdt": 22400
+            "lower_bdt": 21500,
+            "upper_bdt": 22300
           },
           "total_cost_bdt": 27570,
           "rabi_cost_bdt": 9570,
@@ -1752,7 +3054,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16743.07,
+          "exact_xgb_profit_bdt": 16673.18,
           "confidence_range": {
             "lower_bdt": 16300,
             "upper_bdt": 17100
@@ -1762,6 +3064,48 @@
           "expected_yield_sum_kg": 825,
           "expected_rabi_yield_kg": 139,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20476.79,
+          "confidence_range": {
+            "lower_bdt": 20100,
+            "upper_bdt": 20900
+          },
+          "total_cost_bdt": 27260,
+          "rabi_cost_bdt": 9260,
+          "expected_yield_sum_kg": 1168,
+          "expected_rabi_yield_kg": 482,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27750,
+          "exact_xgb_profit_bdt": 27849.18,
+          "confidence_range": {
+            "lower_bdt": 27400,
+            "upper_bdt": 28300
+          },
+          "total_cost_bdt": 34390,
+          "rabi_cost_bdt": 16390,
+          "expected_yield_sum_kg": 1911,
+          "expected_rabi_yield_kg": 1225,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 60500,
+          "exact_xgb_profit_bdt": 60396.63,
+          "confidence_range": {
+            "lower_bdt": 60000,
+            "upper_bdt": 60800
+          },
+          "total_cost_bdt": 45080,
+          "rabi_cost_bdt": 27080,
+          "expected_yield_sum_kg": 2830,
+          "expected_rabi_yield_kg": 2144,
+          "water": "mid"
         }
       }
     },
@@ -1779,9 +3123,9 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 44250,
-          "exact_xgb_profit_bdt": 44323.68,
+          "exact_xgb_profit_bdt": 44251.44,
           "confidence_range": {
-            "lower_bdt": 43900,
+            "lower_bdt": 43800,
             "upper_bdt": 44700
           },
           "total_cost_bdt": 51500,
@@ -1792,11 +3136,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 23000,
-          "exact_xgb_profit_bdt": 23118.32,
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23177.62,
           "confidence_range": {
-            "lower_bdt": 22700,
-            "upper_bdt": 23500
+            "lower_bdt": 22800,
+            "upper_bdt": 23600
           },
           "total_cost_bdt": 27500,
           "rabi_cost_bdt": 9500,
@@ -1807,7 +3151,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17701.21,
+          "exact_xgb_profit_bdt": 17702.9,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -1817,6 +3161,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20620.71,
+          "confidence_range": {
+            "lower_bdt": 20200,
+            "upper_bdt": 21000
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1161,
+          "expected_rabi_yield_kg": 478,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30457.88,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30900
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1995,
+          "expected_rabi_yield_kg": 1312,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67735.16,
+          "confidence_range": {
+            "lower_bdt": 67300,
+            "upper_bdt": 68200
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3028,
+          "expected_rabi_yield_kg": 2345,
+          "water": "mid"
         }
       }
     },
@@ -1834,7 +3220,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42750,
-          "exact_xgb_profit_bdt": 42664.93,
+          "exact_xgb_profit_bdt": 42690.96,
           "confidence_range": {
             "lower_bdt": 42300,
             "upper_bdt": 43100
@@ -1848,10 +3234,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 22000,
-          "exact_xgb_profit_bdt": 22070.35,
+          "exact_xgb_profit_bdt": 21996.0,
           "confidence_range": {
-            "lower_bdt": 21700,
-            "upper_bdt": 22500
+            "lower_bdt": 21600,
+            "upper_bdt": 22400
           },
           "total_cost_bdt": 27570,
           "rabi_cost_bdt": 9570,
@@ -1862,7 +3248,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16723.79,
+          "exact_xgb_profit_bdt": 16673.16,
           "confidence_range": {
             "lower_bdt": 16300,
             "upper_bdt": 17100
@@ -1872,6 +3258,48 @@
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 137,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20321.74,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27260,
+          "rabi_cost_bdt": 9260,
+          "expected_yield_sum_kg": 1162,
+          "expected_rabi_yield_kg": 475,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 28250,
+          "exact_xgb_profit_bdt": 28147.38,
+          "confidence_range": {
+            "lower_bdt": 27700,
+            "upper_bdt": 28600
+          },
+          "total_cost_bdt": 34390,
+          "rabi_cost_bdt": 16390,
+          "expected_yield_sum_kg": 1920,
+          "expected_rabi_yield_kg": 1233,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 60750,
+          "exact_xgb_profit_bdt": 60718.22,
+          "confidence_range": {
+            "lower_bdt": 60300,
+            "upper_bdt": 61100
+          },
+          "total_cost_bdt": 45080,
+          "rabi_cost_bdt": 27080,
+          "expected_yield_sum_kg": 2840,
+          "expected_rabi_yield_kg": 2153,
+          "water": "mid"
         }
       }
     },
@@ -1889,10 +3317,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42500,
-          "exact_xgb_profit_bdt": 42507.79,
+          "exact_xgb_profit_bdt": 42543.32,
           "confidence_range": {
             "lower_bdt": 42100,
-            "upper_bdt": 42900
+            "upper_bdt": 43000
           },
           "total_cost_bdt": 50700,
           "rabi_cost_bdt": 32700,
@@ -1902,8 +3330,8 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23631.3,
+          "predicted_profit_bdt": 23500,
+          "exact_xgb_profit_bdt": 23607.99,
           "confidence_range": {
             "lower_bdt": 23200,
             "upper_bdt": 24000
@@ -1916,10 +3344,10 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 18000,
-          "exact_xgb_profit_bdt": 17938.27,
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17859.78,
           "confidence_range": {
-            "lower_bdt": 17500,
+            "lower_bdt": 17400,
             "upper_bdt": 18300
           },
           "total_cost_bdt": 26600,
@@ -1927,6 +3355,48 @@
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 151,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20159.26,
+          "confidence_range": {
+            "lower_bdt": 19700,
+            "upper_bdt": 20600
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1144,
+          "expected_rabi_yield_kg": 471,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30254.19,
+          "confidence_range": {
+            "lower_bdt": 29800,
+            "upper_bdt": 30700
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1980,
+          "expected_rabi_yield_kg": 1307,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67250,
+          "exact_xgb_profit_bdt": 67321.68,
+          "confidence_range": {
+            "lower_bdt": 66900,
+            "upper_bdt": 67700
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3010,
+          "expected_rabi_yield_kg": 2337,
+          "water": "mid"
         }
       }
     },
@@ -1943,11 +3413,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 42500,
-          "exact_xgb_profit_bdt": 42604.75,
+          "predicted_profit_bdt": 42750,
+          "exact_xgb_profit_bdt": 42705.86,
           "confidence_range": {
-            "lower_bdt": 42200,
-            "upper_bdt": 43000
+            "lower_bdt": 42300,
+            "upper_bdt": 43100
           },
           "total_cost_bdt": 50700,
           "rabi_cost_bdt": 32700,
@@ -1958,7 +3428,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23705.66,
+          "exact_xgb_profit_bdt": 23675.57,
           "confidence_range": {
             "lower_bdt": 23300,
             "upper_bdt": 24100
@@ -1972,7 +3442,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18000,
-          "exact_xgb_profit_bdt": 17890.27,
+          "exact_xgb_profit_bdt": 17914.95,
           "confidence_range": {
             "lower_bdt": 17500,
             "upper_bdt": 18300
@@ -1982,6 +3452,48 @@
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20375.77,
+          "confidence_range": {
+            "lower_bdt": 20000,
+            "upper_bdt": 20800
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1152,
+          "expected_rabi_yield_kg": 478,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30336.65,
+          "confidence_range": {
+            "lower_bdt": 29900,
+            "upper_bdt": 30800
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1983,
+          "expected_rabi_yield_kg": 1309,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67500,
+          "exact_xgb_profit_bdt": 67473.2,
+          "confidence_range": {
+            "lower_bdt": 67100,
+            "upper_bdt": 67900
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3014,
+          "expected_rabi_yield_kg": 2340,
+          "water": "mid"
         }
       }
     },
@@ -1998,11 +3510,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 42750,
-          "exact_xgb_profit_bdt": 42737.68,
+          "predicted_profit_bdt": 42500,
+          "exact_xgb_profit_bdt": 42571.18,
           "confidence_range": {
-            "lower_bdt": 42300,
-            "upper_bdt": 43100
+            "lower_bdt": 42200,
+            "upper_bdt": 43000
           },
           "total_cost_bdt": 51700,
           "rabi_cost_bdt": 33700,
@@ -2013,9 +3525,9 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 22000,
-          "exact_xgb_profit_bdt": 21960.94,
+          "exact_xgb_profit_bdt": 21952.06,
           "confidence_range": {
-            "lower_bdt": 21600,
+            "lower_bdt": 21500,
             "upper_bdt": 22400
           },
           "total_cost_bdt": 27570,
@@ -2027,16 +3539,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16659.41,
+          "exact_xgb_profit_bdt": 16760.17,
           "confidence_range": {
             "lower_bdt": 16300,
-            "upper_bdt": 17100
+            "upper_bdt": 17200
           },
           "total_cost_bdt": 26850,
           "rabi_cost_bdt": 8850,
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 137,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20305.54,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27260,
+          "rabi_cost_bdt": 9260,
+          "expected_yield_sum_kg": 1160,
+          "expected_rabi_yield_kg": 473,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 28250,
+          "exact_xgb_profit_bdt": 28143.13,
+          "confidence_range": {
+            "lower_bdt": 27700,
+            "upper_bdt": 28600
+          },
+          "total_cost_bdt": 34390,
+          "rabi_cost_bdt": 16390,
+          "expected_yield_sum_kg": 1920,
+          "expected_rabi_yield_kg": 1233,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 60750,
+          "exact_xgb_profit_bdt": 60689.86,
+          "confidence_range": {
+            "lower_bdt": 60300,
+            "upper_bdt": 61100
+          },
+          "total_cost_bdt": 45080,
+          "rabi_cost_bdt": 27080,
+          "expected_yield_sum_kg": 2840,
+          "expected_rabi_yield_kg": 2153,
+          "water": "mid"
         }
       }
     },
@@ -2053,11 +3607,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 46500,
-          "exact_xgb_profit_bdt": 46560.12,
+          "predicted_profit_bdt": 46250,
+          "exact_xgb_profit_bdt": 46321.82,
           "confidence_range": {
-            "lower_bdt": 46200,
-            "upper_bdt": 47000
+            "lower_bdt": 45900,
+            "upper_bdt": 46700
           },
           "total_cost_bdt": 51300,
           "rabi_cost_bdt": 33300,
@@ -2068,7 +3622,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24500,
-          "exact_xgb_profit_bdt": 24436.44,
+          "exact_xgb_profit_bdt": 24414.1,
           "confidence_range": {
             "lower_bdt": 24000,
             "upper_bdt": 24800
@@ -2082,9 +3636,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 19500,
-          "exact_xgb_profit_bdt": 19573.01,
+          "exact_xgb_profit_bdt": 19535.31,
           "confidence_range": {
-            "lower_bdt": 19200,
+            "lower_bdt": 19100,
             "upper_bdt": 20000
           },
           "total_cost_bdt": 26750,
@@ -2092,6 +3646,48 @@
           "expected_yield_sum_kg": 874,
           "expected_rabi_yield_kg": 151,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21691.83,
+          "confidence_range": {
+            "lower_bdt": 21300,
+            "upper_bdt": 22100
+          },
+          "total_cost_bdt": 27140,
+          "rabi_cost_bdt": 9140,
+          "expected_yield_sum_kg": 1191,
+          "expected_rabi_yield_kg": 468,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 33250,
+          "exact_xgb_profit_bdt": 33132.61,
+          "confidence_range": {
+            "lower_bdt": 32700,
+            "upper_bdt": 33500
+          },
+          "total_cost_bdt": 34210,
+          "rabi_cost_bdt": 16210,
+          "expected_yield_sum_kg": 2082,
+          "expected_rabi_yield_kg": 1359,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 73250,
+          "exact_xgb_profit_bdt": 73328.67,
+          "confidence_range": {
+            "lower_bdt": 72900,
+            "upper_bdt": 73700
+          },
+          "total_cost_bdt": 44920,
+          "rabi_cost_bdt": 26920,
+          "expected_yield_sum_kg": 3193,
+          "expected_rabi_yield_kg": 2470,
+          "water": "mid"
         }
       }
     },
@@ -2108,11 +3704,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 41250,
-          "exact_xgb_profit_bdt": 41259.68,
+          "predicted_profit_bdt": 41000,
+          "exact_xgb_profit_bdt": 41105.05,
           "confidence_range": {
-            "lower_bdt": 40900,
-            "upper_bdt": 41700
+            "lower_bdt": 40700,
+            "upper_bdt": 41500
           },
           "total_cost_bdt": 52300,
           "rabi_cost_bdt": 34300,
@@ -2122,8 +3718,8 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 21250,
-          "exact_xgb_profit_bdt": 21364.84,
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21401.96,
           "confidence_range": {
             "lower_bdt": 21000,
             "upper_bdt": 21800
@@ -2137,7 +3733,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16787.93,
+          "exact_xgb_profit_bdt": 16787.72,
           "confidence_range": {
             "lower_bdt": 16400,
             "upper_bdt": 17200
@@ -2147,6 +3743,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 141,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20000,
+          "exact_xgb_profit_bdt": 19991.4,
+          "confidence_range": {
+            "lower_bdt": 19600,
+            "upper_bdt": 20400
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1162,
+          "expected_rabi_yield_kg": 473,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27250,
+          "exact_xgb_profit_bdt": 27300.21,
+          "confidence_range": {
+            "lower_bdt": 26900,
+            "upper_bdt": 27700
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1905,
+          "expected_rabi_yield_kg": 1216,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59500,
+          "exact_xgb_profit_bdt": 59582.21,
+          "confidence_range": {
+            "lower_bdt": 59200,
+            "upper_bdt": 60000
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2816,
+          "expected_rabi_yield_kg": 2127,
+          "water": "mid"
         }
       }
     },
@@ -2164,7 +3802,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42000,
-          "exact_xgb_profit_bdt": 41998.86,
+          "exact_xgb_profit_bdt": 42022.41,
           "confidence_range": {
             "lower_bdt": 41600,
             "upper_bdt": 42400
@@ -2178,10 +3816,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21500,
-          "exact_xgb_profit_bdt": 21535.56,
+          "exact_xgb_profit_bdt": 21555.53,
           "confidence_range": {
             "lower_bdt": 21100,
-            "upper_bdt": 21900
+            "upper_bdt": 22000
           },
           "total_cost_bdt": 27780,
           "rabi_cost_bdt": 9780,
@@ -2192,7 +3830,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16797.76,
+          "exact_xgb_profit_bdt": 16806.11,
           "confidence_range": {
             "lower_bdt": 16400,
             "upper_bdt": 17200
@@ -2202,6 +3840,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 140,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20266.96,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1169,
+          "expected_rabi_yield_kg": 479,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27528.27,
+          "confidence_range": {
+            "lower_bdt": 27100,
+            "upper_bdt": 27900
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1909,
+          "expected_rabi_yield_kg": 1219,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59750,
+          "exact_xgb_profit_bdt": 59724.36,
+          "confidence_range": {
+            "lower_bdt": 59300,
+            "upper_bdt": 60100
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2821,
+          "expected_rabi_yield_kg": 2131,
+          "water": "mid"
         }
       }
     },
@@ -2219,7 +3899,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 40000,
-          "exact_xgb_profit_bdt": 39963.34,
+          "exact_xgb_profit_bdt": 39983.21,
           "confidence_range": {
             "lower_bdt": 39600,
             "upper_bdt": 40400
@@ -2233,10 +3913,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21250,
-          "exact_xgb_profit_bdt": 21257.61,
+          "exact_xgb_profit_bdt": 21196.47,
           "confidence_range": {
-            "lower_bdt": 20900,
-            "upper_bdt": 21700
+            "lower_bdt": 20800,
+            "upper_bdt": 21600
           },
           "total_cost_bdt": 27850,
           "rabi_cost_bdt": 9850,
@@ -2247,9 +3927,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16759.6,
+          "exact_xgb_profit_bdt": 16750.71,
           "confidence_range": {
-            "lower_bdt": 16400,
+            "lower_bdt": 16300,
             "upper_bdt": 17200
           },
           "total_cost_bdt": 27050,
@@ -2257,6 +3937,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 142,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19623.51,
+          "confidence_range": {
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 1157,
+          "expected_rabi_yield_kg": 469,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27000,
+          "exact_xgb_profit_bdt": 27021.07,
+          "confidence_range": {
+            "lower_bdt": 26600,
+            "upper_bdt": 27400
+          },
+          "total_cost_bdt": 34750,
+          "rabi_cost_bdt": 16750,
+          "expected_yield_sum_kg": 1898,
+          "expected_rabi_yield_kg": 1210,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59000,
+          "exact_xgb_profit_bdt": 58912.88,
+          "confidence_range": {
+            "lower_bdt": 58500,
+            "upper_bdt": 59300
+          },
+          "total_cost_bdt": 45400,
+          "rabi_cost_bdt": 27400,
+          "expected_yield_sum_kg": 2802,
+          "expected_rabi_yield_kg": 2114,
+          "water": "mid"
         }
       }
     },
@@ -2273,11 +3995,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 39250,
-          "exact_xgb_profit_bdt": 39298.23,
+          "predicted_profit_bdt": 39500,
+          "exact_xgb_profit_bdt": 39419.39,
           "confidence_range": {
-            "lower_bdt": 38900,
-            "upper_bdt": 39700
+            "lower_bdt": 39000,
+            "upper_bdt": 39800
           },
           "total_cost_bdt": 52700,
           "rabi_cost_bdt": 34700,
@@ -2288,7 +4010,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 20750,
-          "exact_xgb_profit_bdt": 20680.9,
+          "exact_xgb_profit_bdt": 20676.27,
           "confidence_range": {
             "lower_bdt": 20300,
             "upper_bdt": 21100
@@ -2302,7 +4024,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17000,
-          "exact_xgb_profit_bdt": 17042.11,
+          "exact_xgb_profit_bdt": 17014.65,
           "confidence_range": {
             "lower_bdt": 16600,
             "upper_bdt": 17400
@@ -2312,6 +4034,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19515.36,
+          "confidence_range": {
+            "lower_bdt": 19100,
+            "upper_bdt": 19900
+          },
+          "total_cost_bdt": 27560,
+          "rabi_cost_bdt": 9560,
+          "expected_yield_sum_kg": 1153,
+          "expected_rabi_yield_kg": 474,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 26250,
+          "exact_xgb_profit_bdt": 26322.01,
+          "confidence_range": {
+            "lower_bdt": 25900,
+            "upper_bdt": 26700
+          },
+          "total_cost_bdt": 34840,
+          "rabi_cost_bdt": 16840,
+          "expected_yield_sum_kg": 1876,
+          "expected_rabi_yield_kg": 1197,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 58250,
+          "exact_xgb_profit_bdt": 58168.07,
+          "confidence_range": {
+            "lower_bdt": 57800,
+            "upper_bdt": 58600
+          },
+          "total_cost_bdt": 45480,
+          "rabi_cost_bdt": 27480,
+          "expected_yield_sum_kg": 2786,
+          "expected_rabi_yield_kg": 2107,
+          "water": "mid"
         }
       }
     },
@@ -2328,11 +4092,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 47000,
-          "exact_xgb_profit_bdt": 47106.39,
+          "predicted_profit_bdt": 47250,
+          "exact_xgb_profit_bdt": 47231.82,
           "confidence_range": {
-            "lower_bdt": 46700,
-            "upper_bdt": 47500
+            "lower_bdt": 46800,
+            "upper_bdt": 47600
           },
           "total_cost_bdt": 51300,
           "rabi_cost_bdt": 33300,
@@ -2343,10 +4107,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24500,
-          "exact_xgb_profit_bdt": 24426.57,
+          "exact_xgb_profit_bdt": 24465.24,
           "confidence_range": {
             "lower_bdt": 24000,
-            "upper_bdt": 24800
+            "upper_bdt": 24900
           },
           "total_cost_bdt": 27430,
           "rabi_cost_bdt": 9430,
@@ -2357,9 +4121,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 19750,
-          "exact_xgb_profit_bdt": 19668.39,
+          "exact_xgb_profit_bdt": 19647.49,
           "confidence_range": {
-            "lower_bdt": 19300,
+            "lower_bdt": 19200,
             "upper_bdt": 20100
           },
           "total_cost_bdt": 26750,
@@ -2367,6 +4131,48 @@
           "expected_yield_sum_kg": 875,
           "expected_rabi_yield_kg": 152,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21931.65,
+          "confidence_range": {
+            "lower_bdt": 21500,
+            "upper_bdt": 22300
+          },
+          "total_cost_bdt": 27140,
+          "rabi_cost_bdt": 9140,
+          "expected_yield_sum_kg": 1201,
+          "expected_rabi_yield_kg": 478,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 33250,
+          "exact_xgb_profit_bdt": 33164.83,
+          "confidence_range": {
+            "lower_bdt": 32700,
+            "upper_bdt": 33600
+          },
+          "total_cost_bdt": 34210,
+          "rabi_cost_bdt": 16210,
+          "expected_yield_sum_kg": 2081,
+          "expected_rabi_yield_kg": 1358,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 74000,
+          "exact_xgb_profit_bdt": 73904.8,
+          "confidence_range": {
+            "lower_bdt": 73500,
+            "upper_bdt": 74300
+          },
+          "total_cost_bdt": 44920,
+          "rabi_cost_bdt": 26920,
+          "expected_yield_sum_kg": 3193,
+          "expected_rabi_yield_kg": 2470,
+          "water": "mid"
         }
       }
     },
@@ -2383,11 +4189,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 44250,
-          "exact_xgb_profit_bdt": 44196.63,
+          "predicted_profit_bdt": 43750,
+          "exact_xgb_profit_bdt": 43796.81,
           "confidence_range": {
-            "lower_bdt": 43800,
-            "upper_bdt": 44600
+            "lower_bdt": 43400,
+            "upper_bdt": 44200
           },
           "total_cost_bdt": 51500,
           "rabi_cost_bdt": 33500,
@@ -2397,11 +4203,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 23250,
-          "exact_xgb_profit_bdt": 23172.12,
+          "predicted_profit_bdt": 23000,
+          "exact_xgb_profit_bdt": 23099.6,
           "confidence_range": {
-            "lower_bdt": 22800,
-            "upper_bdt": 23600
+            "lower_bdt": 22700,
+            "upper_bdt": 23500
           },
           "total_cost_bdt": 27500,
           "rabi_cost_bdt": 9500,
@@ -2412,7 +4218,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17706.8,
+          "exact_xgb_profit_bdt": 17675.38,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -2422,6 +4228,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20513.21,
+          "confidence_range": {
+            "lower_bdt": 20100,
+            "upper_bdt": 20900
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1156,
+          "expected_rabi_yield_kg": 473,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30397.01,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30800
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1994,
+          "expected_rabi_yield_kg": 1311,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67500,
+          "exact_xgb_profit_bdt": 67606.88,
+          "confidence_range": {
+            "lower_bdt": 67200,
+            "upper_bdt": 68000
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3027,
+          "expected_rabi_yield_kg": 2344,
+          "water": "mid"
         }
       }
     },
@@ -2439,10 +4287,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41750,
-          "exact_xgb_profit_bdt": 41706.22,
+          "exact_xgb_profit_bdt": 41780.77,
           "confidence_range": {
-            "lower_bdt": 41300,
-            "upper_bdt": 42100
+            "lower_bdt": 41400,
+            "upper_bdt": 42200
           },
           "total_cost_bdt": 52300,
           "rabi_cost_bdt": 34300,
@@ -2452,11 +4300,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 21750,
-          "exact_xgb_profit_bdt": 21690.51,
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21595.06,
           "confidence_range": {
-            "lower_bdt": 21300,
-            "upper_bdt": 22100
+            "lower_bdt": 21200,
+            "upper_bdt": 22000
           },
           "total_cost_bdt": 27780,
           "rabi_cost_bdt": 9780,
@@ -2467,7 +4315,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16811.0,
+          "exact_xgb_profit_bdt": 16792.61,
           "confidence_range": {
             "lower_bdt": 16400,
             "upper_bdt": 17200
@@ -2477,6 +4325,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 140,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20195.28,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20600
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1166,
+          "expected_rabi_yield_kg": 476,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27535.77,
+          "confidence_range": {
+            "lower_bdt": 27100,
+            "upper_bdt": 28000
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1909,
+          "expected_rabi_yield_kg": 1219,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59750,
+          "exact_xgb_profit_bdt": 59625.7,
+          "confidence_range": {
+            "lower_bdt": 59200,
+            "upper_bdt": 60000
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2821,
+          "expected_rabi_yield_kg": 2131,
+          "water": "mid"
         }
       }
     },
@@ -2494,10 +4384,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41750,
-          "exact_xgb_profit_bdt": 41706.22,
+          "exact_xgb_profit_bdt": 41780.77,
           "confidence_range": {
-            "lower_bdt": 41300,
-            "upper_bdt": 42100
+            "lower_bdt": 41400,
+            "upper_bdt": 42200
           },
           "total_cost_bdt": 52300,
           "rabi_cost_bdt": 34300,
@@ -2507,11 +4397,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 21750,
-          "exact_xgb_profit_bdt": 21690.51,
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21595.06,
           "confidence_range": {
-            "lower_bdt": 21300,
-            "upper_bdt": 22100
+            "lower_bdt": 21200,
+            "upper_bdt": 22000
           },
           "total_cost_bdt": 27780,
           "rabi_cost_bdt": 9780,
@@ -2522,7 +4412,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16811.0,
+          "exact_xgb_profit_bdt": 16792.61,
           "confidence_range": {
             "lower_bdt": 16400,
             "upper_bdt": 17200
@@ -2532,6 +4422,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 140,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20195.28,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20600
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1166,
+          "expected_rabi_yield_kg": 476,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27535.77,
+          "confidence_range": {
+            "lower_bdt": 27100,
+            "upper_bdt": 28000
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1909,
+          "expected_rabi_yield_kg": 1219,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59750,
+          "exact_xgb_profit_bdt": 59625.7,
+          "confidence_range": {
+            "lower_bdt": 59200,
+            "upper_bdt": 60000
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2821,
+          "expected_rabi_yield_kg": 2131,
+          "water": "mid"
         }
       }
     },
@@ -2548,11 +4480,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 47250,
-          "exact_xgb_profit_bdt": 47132.77,
+          "predicted_profit_bdt": 47000,
+          "exact_xgb_profit_bdt": 47007.83,
           "confidence_range": {
-            "lower_bdt": 46700,
-            "upper_bdt": 47500
+            "lower_bdt": 46600,
+            "upper_bdt": 47400
           },
           "total_cost_bdt": 51300,
           "rabi_cost_bdt": 33300,
@@ -2563,7 +4495,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24500,
-          "exact_xgb_profit_bdt": 24468.78,
+          "exact_xgb_profit_bdt": 24520.25,
           "confidence_range": {
             "lower_bdt": 24100,
             "upper_bdt": 24900
@@ -2576,17 +4508,59 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 19750,
-          "exact_xgb_profit_bdt": 19662.44,
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19608.46,
           "confidence_range": {
-            "lower_bdt": 19300,
-            "upper_bdt": 20100
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
           },
           "total_cost_bdt": 26750,
           "rabi_cost_bdt": 8750,
           "expected_yield_sum_kg": 875,
           "expected_rabi_yield_kg": 152,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21945.19,
+          "confidence_range": {
+            "lower_bdt": 21500,
+            "upper_bdt": 22400
+          },
+          "total_cost_bdt": 27140,
+          "rabi_cost_bdt": 9140,
+          "expected_yield_sum_kg": 1199,
+          "expected_rabi_yield_kg": 476,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 33250,
+          "exact_xgb_profit_bdt": 33220.39,
+          "confidence_range": {
+            "lower_bdt": 32800,
+            "upper_bdt": 33600
+          },
+          "total_cost_bdt": 34210,
+          "rabi_cost_bdt": 16210,
+          "expected_yield_sum_kg": 2081,
+          "expected_rabi_yield_kg": 1358,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 73500,
+          "exact_xgb_profit_bdt": 73512.79,
+          "confidence_range": {
+            "lower_bdt": 73100,
+            "upper_bdt": 73900
+          },
+          "total_cost_bdt": 44920,
+          "rabi_cost_bdt": 26920,
+          "expected_yield_sum_kg": 3193,
+          "expected_rabi_yield_kg": 2470,
+          "water": "mid"
         }
       }
     },
@@ -2603,11 +4577,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 47250,
-          "exact_xgb_profit_bdt": 47132.77,
+          "predicted_profit_bdt": 47000,
+          "exact_xgb_profit_bdt": 47007.83,
           "confidence_range": {
-            "lower_bdt": 46700,
-            "upper_bdt": 47500
+            "lower_bdt": 46600,
+            "upper_bdt": 47400
           },
           "total_cost_bdt": 51300,
           "rabi_cost_bdt": 33300,
@@ -2618,7 +4592,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24500,
-          "exact_xgb_profit_bdt": 24468.78,
+          "exact_xgb_profit_bdt": 24520.25,
           "confidence_range": {
             "lower_bdt": 24100,
             "upper_bdt": 24900
@@ -2631,17 +4605,59 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 19750,
-          "exact_xgb_profit_bdt": 19662.44,
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19608.46,
           "confidence_range": {
-            "lower_bdt": 19300,
-            "upper_bdt": 20100
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
           },
           "total_cost_bdt": 26750,
           "rabi_cost_bdt": 8750,
           "expected_yield_sum_kg": 875,
           "expected_rabi_yield_kg": 152,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21945.19,
+          "confidence_range": {
+            "lower_bdt": 21500,
+            "upper_bdt": 22400
+          },
+          "total_cost_bdt": 27140,
+          "rabi_cost_bdt": 9140,
+          "expected_yield_sum_kg": 1199,
+          "expected_rabi_yield_kg": 476,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 33250,
+          "exact_xgb_profit_bdt": 33220.39,
+          "confidence_range": {
+            "lower_bdt": 32800,
+            "upper_bdt": 33600
+          },
+          "total_cost_bdt": 34210,
+          "rabi_cost_bdt": 16210,
+          "expected_yield_sum_kg": 2081,
+          "expected_rabi_yield_kg": 1358,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 73500,
+          "exact_xgb_profit_bdt": 73512.79,
+          "confidence_range": {
+            "lower_bdt": 73100,
+            "upper_bdt": 73900
+          },
+          "total_cost_bdt": 44920,
+          "rabi_cost_bdt": 26920,
+          "expected_yield_sum_kg": 3193,
+          "expected_rabi_yield_kg": 2470,
+          "water": "mid"
         }
       }
     },
@@ -2659,7 +4675,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42000,
-          "exact_xgb_profit_bdt": 41889.35,
+          "exact_xgb_profit_bdt": 41913.02,
           "confidence_range": {
             "lower_bdt": 41500,
             "upper_bdt": 42300
@@ -2673,10 +4689,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21500,
-          "exact_xgb_profit_bdt": 21423.03,
+          "exact_xgb_profit_bdt": 21486.72,
           "confidence_range": {
-            "lower_bdt": 21000,
-            "upper_bdt": 21800
+            "lower_bdt": 21100,
+            "upper_bdt": 21900
           },
           "total_cost_bdt": 27780,
           "rabi_cost_bdt": 9780,
@@ -2687,7 +4703,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16798.18,
+          "exact_xgb_profit_bdt": 16804.52,
           "confidence_range": {
             "lower_bdt": 16400,
             "upper_bdt": 17200
@@ -2697,6 +4713,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 140,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20253.38,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1168,
+          "expected_rabi_yield_kg": 478,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27527.06,
+          "confidence_range": {
+            "lower_bdt": 27100,
+            "upper_bdt": 27900
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1909,
+          "expected_rabi_yield_kg": 1219,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59750,
+          "exact_xgb_profit_bdt": 59682.72,
+          "confidence_range": {
+            "lower_bdt": 59300,
+            "upper_bdt": 60100
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2821,
+          "expected_rabi_yield_kg": 2131,
+          "water": "mid"
         }
       }
     },
@@ -2714,10 +4772,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 39750,
-          "exact_xgb_profit_bdt": 39846.07,
+          "exact_xgb_profit_bdt": 39766.27,
           "confidence_range": {
             "lower_bdt": 39400,
-            "upper_bdt": 40300
+            "upper_bdt": 40200
           },
           "total_cost_bdt": 52500,
           "rabi_cost_bdt": 34500,
@@ -2728,7 +4786,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21250,
-          "exact_xgb_profit_bdt": 21166.07,
+          "exact_xgb_profit_bdt": 21185.09,
           "confidence_range": {
             "lower_bdt": 20800,
             "upper_bdt": 21600
@@ -2742,16 +4800,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16726.84,
+          "exact_xgb_profit_bdt": 16742.78,
           "confidence_range": {
             "lower_bdt": 16300,
-            "upper_bdt": 17100
+            "upper_bdt": 17200
           },
           "total_cost_bdt": 27050,
           "rabi_cost_bdt": 9050,
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 142,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19581.2,
+          "confidence_range": {
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 1154,
+          "expected_rabi_yield_kg": 466,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27000,
+          "exact_xgb_profit_bdt": 27011.5,
+          "confidence_range": {
+            "lower_bdt": 26600,
+            "upper_bdt": 27400
+          },
+          "total_cost_bdt": 34750,
+          "rabi_cost_bdt": 16750,
+          "expected_yield_sum_kg": 1898,
+          "expected_rabi_yield_kg": 1210,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59000,
+          "exact_xgb_profit_bdt": 58903.32,
+          "confidence_range": {
+            "lower_bdt": 58500,
+            "upper_bdt": 59300
+          },
+          "total_cost_bdt": 45400,
+          "rabi_cost_bdt": 27400,
+          "expected_yield_sum_kg": 2802,
+          "expected_rabi_yield_kg": 2114,
+          "water": "mid"
         }
       }
     },
@@ -2768,11 +4868,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 41500,
-          "exact_xgb_profit_bdt": 41475.76,
+          "predicted_profit_bdt": 41250,
+          "exact_xgb_profit_bdt": 41272.97,
           "confidence_range": {
-            "lower_bdt": 41100,
-            "upper_bdt": 41900
+            "lower_bdt": 40900,
+            "upper_bdt": 41700
           },
           "total_cost_bdt": 51000,
           "rabi_cost_bdt": 33000,
@@ -2783,7 +4883,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23822.47,
+          "exact_xgb_profit_bdt": 23832.63,
           "confidence_range": {
             "lower_bdt": 23400,
             "upper_bdt": 24200
@@ -2796,10 +4896,10 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 18500,
-          "exact_xgb_profit_bdt": 18391.63,
+          "predicted_profit_bdt": 18250,
+          "exact_xgb_profit_bdt": 18360.68,
           "confidence_range": {
-            "lower_bdt": 18000,
+            "lower_bdt": 17900,
             "upper_bdt": 18800
           },
           "total_cost_bdt": 26675,
@@ -2807,6 +4907,48 @@
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20187.06,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20600
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1147,
+          "expected_rabi_yield_kg": 466,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30576.17,
+          "confidence_range": {
+            "lower_bdt": 30200,
+            "upper_bdt": 31000
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68250,
+          "exact_xgb_profit_bdt": 68246.91,
+          "confidence_range": {
+            "lower_bdt": 67800,
+            "upper_bdt": 68700
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -2823,11 +4965,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 41500,
-          "exact_xgb_profit_bdt": 41475.76,
+          "predicted_profit_bdt": 41250,
+          "exact_xgb_profit_bdt": 41272.97,
           "confidence_range": {
-            "lower_bdt": 41100,
-            "upper_bdt": 41900
+            "lower_bdt": 40900,
+            "upper_bdt": 41700
           },
           "total_cost_bdt": 51000,
           "rabi_cost_bdt": 33000,
@@ -2838,7 +4980,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23822.47,
+          "exact_xgb_profit_bdt": 23832.63,
           "confidence_range": {
             "lower_bdt": 23400,
             "upper_bdt": 24200
@@ -2851,10 +4993,10 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 18500,
-          "exact_xgb_profit_bdt": 18391.63,
+          "predicted_profit_bdt": 18250,
+          "exact_xgb_profit_bdt": 18360.68,
           "confidence_range": {
-            "lower_bdt": 18000,
+            "lower_bdt": 17900,
             "upper_bdt": 18800
           },
           "total_cost_bdt": 26675,
@@ -2862,6 +5004,48 @@
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20187.06,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20600
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1147,
+          "expected_rabi_yield_kg": 466,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30576.17,
+          "confidence_range": {
+            "lower_bdt": 30200,
+            "upper_bdt": 31000
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68250,
+          "exact_xgb_profit_bdt": 68246.91,
+          "confidence_range": {
+            "lower_bdt": 67800,
+            "upper_bdt": 68700
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -2879,7 +5063,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 43000,
-          "exact_xgb_profit_bdt": 42967.63,
+          "exact_xgb_profit_bdt": 42975.22,
           "confidence_range": {
             "lower_bdt": 42600,
             "upper_bdt": 43400
@@ -2893,10 +5077,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 22000,
-          "exact_xgb_profit_bdt": 21905.84,
+          "exact_xgb_profit_bdt": 21948.47,
           "confidence_range": {
             "lower_bdt": 21500,
-            "upper_bdt": 22300
+            "upper_bdt": 22400
           },
           "total_cost_bdt": 27570,
           "rabi_cost_bdt": 9570,
@@ -2907,9 +5091,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16738.79,
+          "exact_xgb_profit_bdt": 16653.69,
           "confidence_range": {
-            "lower_bdt": 16300,
+            "lower_bdt": 16200,
             "upper_bdt": 17100
           },
           "total_cost_bdt": 26850,
@@ -2917,6 +5101,48 @@
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 137,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20417.08,
+          "confidence_range": {
+            "lower_bdt": 20000,
+            "upper_bdt": 20800
+          },
+          "total_cost_bdt": 27260,
+          "rabi_cost_bdt": 9260,
+          "expected_yield_sum_kg": 1165,
+          "expected_rabi_yield_kg": 478,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 28000,
+          "exact_xgb_profit_bdt": 28090.57,
+          "confidence_range": {
+            "lower_bdt": 27700,
+            "upper_bdt": 28500
+          },
+          "total_cost_bdt": 34390,
+          "rabi_cost_bdt": 16390,
+          "expected_yield_sum_kg": 1920,
+          "expected_rabi_yield_kg": 1233,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 60750,
+          "exact_xgb_profit_bdt": 60747.07,
+          "confidence_range": {
+            "lower_bdt": 60300,
+            "upper_bdt": 61200
+          },
+          "total_cost_bdt": 45080,
+          "rabi_cost_bdt": 27080,
+          "expected_yield_sum_kg": 2840,
+          "expected_rabi_yield_kg": 2153,
+          "water": "mid"
         }
       }
     },
@@ -2934,7 +5160,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42250,
-          "exact_xgb_profit_bdt": 42298.96,
+          "exact_xgb_profit_bdt": 42300.12,
           "confidence_range": {
             "lower_bdt": 41900,
             "upper_bdt": 42700
@@ -2948,10 +5174,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21500,
-          "exact_xgb_profit_bdt": 21540.63,
+          "exact_xgb_profit_bdt": 21566.15,
           "confidence_range": {
-            "lower_bdt": 21100,
-            "upper_bdt": 21900
+            "lower_bdt": 21200,
+            "upper_bdt": 22000
           },
           "total_cost_bdt": 27780,
           "rabi_cost_bdt": 9780,
@@ -2962,7 +5188,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16801.21,
+          "exact_xgb_profit_bdt": 16816.81,
           "confidence_range": {
             "lower_bdt": 16400,
             "upper_bdt": 17200
@@ -2972,6 +5198,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 140,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20278.93,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1172,
+          "expected_rabi_yield_kg": 482,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27530.97,
+          "confidence_range": {
+            "lower_bdt": 27100,
+            "upper_bdt": 27900
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1909,
+          "expected_rabi_yield_kg": 1219,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59750,
+          "exact_xgb_profit_bdt": 59761.36,
+          "confidence_range": {
+            "lower_bdt": 59300,
+            "upper_bdt": 60200
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2821,
+          "expected_rabi_yield_kg": 2131,
+          "water": "mid"
         }
       }
     },
@@ -2989,7 +5257,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42250,
-          "exact_xgb_profit_bdt": 42255.61,
+          "exact_xgb_profit_bdt": 42277.67,
           "confidence_range": {
             "lower_bdt": 41900,
             "upper_bdt": 42700
@@ -3003,9 +5271,9 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21500,
-          "exact_xgb_profit_bdt": 21452.68,
+          "exact_xgb_profit_bdt": 21512.32,
           "confidence_range": {
-            "lower_bdt": 21000,
+            "lower_bdt": 21100,
             "upper_bdt": 21900
           },
           "total_cost_bdt": 27780,
@@ -3017,7 +5285,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16800.76,
+          "exact_xgb_profit_bdt": 16820.74,
           "confidence_range": {
             "lower_bdt": 16400,
             "upper_bdt": 17200
@@ -3027,6 +5295,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 140,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20282.87,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1172,
+          "expected_rabi_yield_kg": 482,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27530.97,
+          "confidence_range": {
+            "lower_bdt": 27100,
+            "upper_bdt": 27900
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1909,
+          "expected_rabi_yield_kg": 1219,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59750,
+          "exact_xgb_profit_bdt": 59761.36,
+          "confidence_range": {
+            "lower_bdt": 59300,
+            "upper_bdt": 60200
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2821,
+          "expected_rabi_yield_kg": 2131,
+          "water": "mid"
         }
       }
     },
@@ -3044,10 +5354,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 39750,
-          "exact_xgb_profit_bdt": 39743.31,
+          "exact_xgb_profit_bdt": 39787.68,
           "confidence_range": {
-            "lower_bdt": 39300,
-            "upper_bdt": 40100
+            "lower_bdt": 39400,
+            "upper_bdt": 40200
           },
           "total_cost_bdt": 52500,
           "rabi_cost_bdt": 34500,
@@ -3058,7 +5368,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21500,
-          "exact_xgb_profit_bdt": 21404.08,
+          "exact_xgb_profit_bdt": 21376.31,
           "confidence_range": {
             "lower_bdt": 21000,
             "upper_bdt": 21800
@@ -3072,16 +5382,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16737.43,
+          "exact_xgb_profit_bdt": 16750.17,
           "confidence_range": {
             "lower_bdt": 16300,
-            "upper_bdt": 17100
+            "upper_bdt": 17200
           },
           "total_cost_bdt": 27050,
           "rabi_cost_bdt": 9050,
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 142,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19750,
+          "exact_xgb_profit_bdt": 19668.79,
+          "confidence_range": {
+            "lower_bdt": 19300,
+            "upper_bdt": 20100
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 1153,
+          "expected_rabi_yield_kg": 465,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27000,
+          "exact_xgb_profit_bdt": 27017.28,
+          "confidence_range": {
+            "lower_bdt": 26600,
+            "upper_bdt": 27400
+          },
+          "total_cost_bdt": 34750,
+          "rabi_cost_bdt": 16750,
+          "expected_yield_sum_kg": 1898,
+          "expected_rabi_yield_kg": 1210,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59000,
+          "exact_xgb_profit_bdt": 58909.11,
+          "confidence_range": {
+            "lower_bdt": 58500,
+            "upper_bdt": 59300
+          },
+          "total_cost_bdt": 45400,
+          "rabi_cost_bdt": 27400,
+          "expected_yield_sum_kg": 2802,
+          "expected_rabi_yield_kg": 2114,
+          "water": "mid"
         }
       }
     },
@@ -3099,10 +5451,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42750,
-          "exact_xgb_profit_bdt": 42853.54,
+          "exact_xgb_profit_bdt": 42741.89,
           "confidence_range": {
-            "lower_bdt": 42400,
-            "upper_bdt": 43300
+            "lower_bdt": 42300,
+            "upper_bdt": 43200
           },
           "total_cost_bdt": 50700,
           "rabi_cost_bdt": 32700,
@@ -3112,11 +5464,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23684.57,
+          "predicted_profit_bdt": 23500,
+          "exact_xgb_profit_bdt": 23617.25,
           "confidence_range": {
-            "lower_bdt": 23300,
-            "upper_bdt": 24100
+            "lower_bdt": 23200,
+            "upper_bdt": 24000
           },
           "total_cost_bdt": 27220,
           "rabi_cost_bdt": 9220,
@@ -3127,16 +5479,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18000,
-          "exact_xgb_profit_bdt": 17980.74,
+          "exact_xgb_profit_bdt": 17920.01,
           "confidence_range": {
-            "lower_bdt": 17600,
-            "upper_bdt": 18400
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
           },
           "total_cost_bdt": 26600,
           "rabi_cost_bdt": 8600,
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 151,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20269.19,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1148,
+          "expected_rabi_yield_kg": 475,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30295.65,
+          "confidence_range": {
+            "lower_bdt": 29900,
+            "upper_bdt": 30700
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1980,
+          "expected_rabi_yield_kg": 1307,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67250,
+          "exact_xgb_profit_bdt": 67359.14,
+          "confidence_range": {
+            "lower_bdt": 66900,
+            "upper_bdt": 67800
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3010,
+          "expected_rabi_yield_kg": 2337,
+          "water": "mid"
         }
       }
     },
@@ -3154,9 +5548,9 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41250,
-          "exact_xgb_profit_bdt": 41157.48,
+          "exact_xgb_profit_bdt": 41140.58,
           "confidence_range": {
-            "lower_bdt": 40800,
+            "lower_bdt": 40700,
             "upper_bdt": 41600
           },
           "total_cost_bdt": 52300,
@@ -3167,10 +5561,10 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 21750,
-          "exact_xgb_profit_bdt": 21628.98,
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21534.48,
           "confidence_range": {
-            "lower_bdt": 21200,
+            "lower_bdt": 21100,
             "upper_bdt": 22000
           },
           "total_cost_bdt": 27780,
@@ -3182,7 +5576,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16797.92,
+          "exact_xgb_profit_bdt": 16788.07,
           "confidence_range": {
             "lower_bdt": 16400,
             "upper_bdt": 17200
@@ -3192,6 +5586,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 141,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20000,
+          "exact_xgb_profit_bdt": 20042.72,
+          "confidence_range": {
+            "lower_bdt": 19600,
+            "upper_bdt": 20500
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1161,
+          "expected_rabi_yield_kg": 472,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27425.55,
+          "confidence_range": {
+            "lower_bdt": 27000,
+            "upper_bdt": 27800
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1905,
+          "expected_rabi_yield_kg": 1216,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59500,
+          "exact_xgb_profit_bdt": 59584.94,
+          "confidence_range": {
+            "lower_bdt": 59200,
+            "upper_bdt": 60000
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2816,
+          "expected_rabi_yield_kg": 2127,
+          "water": "mid"
         }
       }
     },
@@ -3209,10 +5645,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 41500,
-          "exact_xgb_profit_bdt": 41435.93,
+          "exact_xgb_profit_bdt": 41492.35,
           "confidence_range": {
-            "lower_bdt": 41000,
-            "upper_bdt": 41800
+            "lower_bdt": 41100,
+            "upper_bdt": 41900
           },
           "total_cost_bdt": 51000,
           "rabi_cost_bdt": 33000,
@@ -3223,7 +5659,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24000,
-          "exact_xgb_profit_bdt": 23895.74,
+          "exact_xgb_profit_bdt": 23922.29,
           "confidence_range": {
             "lower_bdt": 23500,
             "upper_bdt": 24300
@@ -3237,7 +5673,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18500,
-          "exact_xgb_profit_bdt": 18386.9,
+          "exact_xgb_profit_bdt": 18393.12,
           "confidence_range": {
             "lower_bdt": 18000,
             "upper_bdt": 18800
@@ -3247,6 +5683,48 @@
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20257.1,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1149,
+          "expected_rabi_yield_kg": 468,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30623.74,
+          "confidence_range": {
+            "lower_bdt": 30200,
+            "upper_bdt": 31000
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68250,
+          "exact_xgb_profit_bdt": 68322.45,
+          "confidence_range": {
+            "lower_bdt": 67900,
+            "upper_bdt": 68700
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -3263,11 +5741,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 42250,
-          "exact_xgb_profit_bdt": 42352.5,
+          "predicted_profit_bdt": 42500,
+          "exact_xgb_profit_bdt": 42452.88,
           "confidence_range": {
-            "lower_bdt": 41900,
-            "upper_bdt": 42800
+            "lower_bdt": 42000,
+            "upper_bdt": 42900
           },
           "total_cost_bdt": 52300,
           "rabi_cost_bdt": 34300,
@@ -3278,7 +5756,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21500,
-          "exact_xgb_profit_bdt": 21444.83,
+          "exact_xgb_profit_bdt": 21457.94,
           "confidence_range": {
             "lower_bdt": 21000,
             "upper_bdt": 21900
@@ -3292,9 +5770,9 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16798.46,
+          "exact_xgb_profit_bdt": 16737.1,
           "confidence_range": {
-            "lower_bdt": 16400,
+            "lower_bdt": 16300,
             "upper_bdt": 17200
           },
           "total_cost_bdt": 27000,
@@ -3302,6 +5780,48 @@
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 140,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20442.15,
+          "confidence_range": {
+            "lower_bdt": 20000,
+            "upper_bdt": 20900
+          },
+          "total_cost_bdt": 27440,
+          "rabi_cost_bdt": 9440,
+          "expected_yield_sum_kg": 1174,
+          "expected_rabi_yield_kg": 484,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27500,
+          "exact_xgb_profit_bdt": 27525.55,
+          "confidence_range": {
+            "lower_bdt": 27100,
+            "upper_bdt": 27900
+          },
+          "total_cost_bdt": 34660,
+          "rabi_cost_bdt": 16660,
+          "expected_yield_sum_kg": 1909,
+          "expected_rabi_yield_kg": 1219,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59750,
+          "exact_xgb_profit_bdt": 59760.16,
+          "confidence_range": {
+            "lower_bdt": 59300,
+            "upper_bdt": 60200
+          },
+          "total_cost_bdt": 45320,
+          "rabi_cost_bdt": 27320,
+          "expected_yield_sum_kg": 2821,
+          "expected_rabi_yield_kg": 2131,
+          "water": "mid"
         }
       }
     },
@@ -3319,9 +5839,9 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 44500,
-          "exact_xgb_profit_bdt": 44451.35,
+          "exact_xgb_profit_bdt": 44479.09,
           "confidence_range": {
-            "lower_bdt": 44000,
+            "lower_bdt": 44100,
             "upper_bdt": 44900
           },
           "total_cost_bdt": 51500,
@@ -3332,11 +5852,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 23500,
-          "exact_xgb_profit_bdt": 23375.24,
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23305.33,
           "confidence_range": {
-            "lower_bdt": 23000,
-            "upper_bdt": 23800
+            "lower_bdt": 22900,
+            "upper_bdt": 23700
           },
           "total_cost_bdt": 27500,
           "rabi_cost_bdt": 9500,
@@ -3347,7 +5867,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17721.67,
+          "exact_xgb_profit_bdt": 17721.03,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -3357,6 +5877,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20750,
+          "exact_xgb_profit_bdt": 20730.42,
+          "confidence_range": {
+            "lower_bdt": 20300,
+            "upper_bdt": 21100
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1162,
+          "expected_rabi_yield_kg": 479,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30529.29,
+          "confidence_range": {
+            "lower_bdt": 30100,
+            "upper_bdt": 30900
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1995,
+          "expected_rabi_yield_kg": 1312,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67735.06,
+          "confidence_range": {
+            "lower_bdt": 67300,
+            "upper_bdt": 68200
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3028,
+          "expected_rabi_yield_kg": 2345,
+          "water": "mid"
         }
       }
     },
@@ -3373,11 +5935,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 42000,
-          "exact_xgb_profit_bdt": 41952.49,
+          "predicted_profit_bdt": 41750,
+          "exact_xgb_profit_bdt": 41849.0,
           "confidence_range": {
-            "lower_bdt": 41500,
-            "upper_bdt": 42400
+            "lower_bdt": 41400,
+            "upper_bdt": 42300
           },
           "total_cost_bdt": 50700,
           "rabi_cost_bdt": 32700,
@@ -3387,11 +5949,11 @@
         },
         "shift": {
           "rotation_key": "shift",
-          "predicted_profit_bdt": 23500,
-          "exact_xgb_profit_bdt": 23586.68,
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23644.17,
           "confidence_range": {
             "lower_bdt": 23200,
-            "upper_bdt": 24000
+            "upper_bdt": 24100
           },
           "total_cost_bdt": 27220,
           "rabi_cost_bdt": 9220,
@@ -3401,8 +5963,8 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 18000,
-          "exact_xgb_profit_bdt": 17881.78,
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17874.77,
           "confidence_range": {
             "lower_bdt": 17500,
             "upper_bdt": 18300
@@ -3412,6 +5974,48 @@
           "expected_yield_sum_kg": 823,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20184.64,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20600
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1139,
+          "expected_rabi_yield_kg": 466,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30312.88,
+          "confidence_range": {
+            "lower_bdt": 29900,
+            "upper_bdt": 30700
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1981,
+          "expected_rabi_yield_kg": 1308,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67706.39,
+          "confidence_range": {
+            "lower_bdt": 67300,
+            "upper_bdt": 68100
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3013,
+          "expected_rabi_yield_kg": 2340,
+          "water": "mid"
         }
       }
     },
@@ -3429,7 +6033,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 44250,
-          "exact_xgb_profit_bdt": 44176.03,
+          "exact_xgb_profit_bdt": 44226.43,
           "confidence_range": {
             "lower_bdt": 43800,
             "upper_bdt": 44600
@@ -3443,7 +6047,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23250,
-          "exact_xgb_profit_bdt": 23206.18,
+          "exact_xgb_profit_bdt": 23200.33,
           "confidence_range": {
             "lower_bdt": 22800,
             "upper_bdt": 23600
@@ -3457,7 +6061,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17711.35,
+          "exact_xgb_profit_bdt": 17707.5,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -3467,6 +6071,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20621.46,
+          "confidence_range": {
+            "lower_bdt": 20200,
+            "upper_bdt": 21000
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1160,
+          "expected_rabi_yield_kg": 477,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30459.07,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30900
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1995,
+          "expected_rabi_yield_kg": 1312,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67732.51,
+          "confidence_range": {
+            "lower_bdt": 67300,
+            "upper_bdt": 68100
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3028,
+          "expected_rabi_yield_kg": 2345,
+          "water": "mid"
         }
       }
     },
@@ -3483,11 +6129,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 43750,
-          "exact_xgb_profit_bdt": 43798.63,
+          "predicted_profit_bdt": 44000,
+          "exact_xgb_profit_bdt": 43910.99,
           "confidence_range": {
-            "lower_bdt": 43400,
-            "upper_bdt": 44200
+            "lower_bdt": 43500,
+            "upper_bdt": 44300
           },
           "total_cost_bdt": 51500,
           "rabi_cost_bdt": 33500,
@@ -3498,9 +6144,9 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23250,
-          "exact_xgb_profit_bdt": 23221.07,
+          "exact_xgb_profit_bdt": 23137.08,
           "confidence_range": {
-            "lower_bdt": 22800,
+            "lower_bdt": 22700,
             "upper_bdt": 23600
           },
           "total_cost_bdt": 27500,
@@ -3512,7 +6158,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17702.73,
+          "exact_xgb_profit_bdt": 17697.34,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -3522,6 +6168,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20538.57,
+          "confidence_range": {
+            "lower_bdt": 20100,
+            "upper_bdt": 21000
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1156,
+          "expected_rabi_yield_kg": 473,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30393.94,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30800
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1994,
+          "expected_rabi_yield_kg": 1311,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67500,
+          "exact_xgb_profit_bdt": 67616.99,
+          "confidence_range": {
+            "lower_bdt": 67200,
+            "upper_bdt": 68000
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3027,
+          "expected_rabi_yield_kg": 2344,
+          "water": "mid"
         }
       }
     },
@@ -3539,10 +6227,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 39250,
-          "exact_xgb_profit_bdt": 39146.73,
+          "exact_xgb_profit_bdt": 39333.54,
           "confidence_range": {
-            "lower_bdt": 38700,
-            "upper_bdt": 39600
+            "lower_bdt": 38900,
+            "upper_bdt": 39700
           },
           "total_cost_bdt": 52700,
           "rabi_cost_bdt": 34700,
@@ -3553,7 +6241,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 20500,
-          "exact_xgb_profit_bdt": 20531.3,
+          "exact_xgb_profit_bdt": 20530.16,
           "confidence_range": {
             "lower_bdt": 20100,
             "upper_bdt": 20900
@@ -3567,7 +6255,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17000,
-          "exact_xgb_profit_bdt": 17018.19,
+          "exact_xgb_profit_bdt": 17008.97,
           "confidence_range": {
             "lower_bdt": 16600,
             "upper_bdt": 17400
@@ -3577,6 +6265,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19250,
+          "exact_xgb_profit_bdt": 19372.01,
+          "confidence_range": {
+            "lower_bdt": 19000,
+            "upper_bdt": 19800
+          },
+          "total_cost_bdt": 27560,
+          "rabi_cost_bdt": 9560,
+          "expected_yield_sum_kg": 1152,
+          "expected_rabi_yield_kg": 473,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 26250,
+          "exact_xgb_profit_bdt": 26157.55,
+          "confidence_range": {
+            "lower_bdt": 25700,
+            "upper_bdt": 26600
+          },
+          "total_cost_bdt": 34840,
+          "rabi_cost_bdt": 16840,
+          "expected_yield_sum_kg": 1876,
+          "expected_rabi_yield_kg": 1197,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 58250,
+          "exact_xgb_profit_bdt": 58174.1,
+          "confidence_range": {
+            "lower_bdt": 57800,
+            "upper_bdt": 58600
+          },
+          "total_cost_bdt": 45480,
+          "rabi_cost_bdt": 27480,
+          "expected_yield_sum_kg": 2786,
+          "expected_rabi_yield_kg": 2107,
+          "water": "mid"
         }
       }
     },
@@ -3594,9 +6324,9 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 47000,
-          "exact_xgb_profit_bdt": 46952.69,
+          "exact_xgb_profit_bdt": 47003.73,
           "confidence_range": {
-            "lower_bdt": 46500,
+            "lower_bdt": 46600,
             "upper_bdt": 47400
           },
           "total_cost_bdt": 51300,
@@ -3608,9 +6338,9 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24750,
-          "exact_xgb_profit_bdt": 24728.03,
+          "exact_xgb_profit_bdt": 24639.16,
           "confidence_range": {
-            "lower_bdt": 24300,
+            "lower_bdt": 24200,
             "upper_bdt": 25100
           },
           "total_cost_bdt": 27430,
@@ -3622,16 +6352,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 19500,
-          "exact_xgb_profit_bdt": 19493.68,
+          "exact_xgb_profit_bdt": 19544.08,
           "confidence_range": {
             "lower_bdt": 19100,
-            "upper_bdt": 19900
+            "upper_bdt": 20000
           },
           "total_cost_bdt": 26750,
           "rabi_cost_bdt": 8750,
           "expected_yield_sum_kg": 873,
           "expected_rabi_yield_kg": 149,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21940.9,
+          "confidence_range": {
+            "lower_bdt": 21500,
+            "upper_bdt": 22400
+          },
+          "total_cost_bdt": 27140,
+          "rabi_cost_bdt": 9140,
+          "expected_yield_sum_kg": 1196,
+          "expected_rabi_yield_kg": 472,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 33500,
+          "exact_xgb_profit_bdt": 33431.68,
+          "confidence_range": {
+            "lower_bdt": 33000,
+            "upper_bdt": 33800
+          },
+          "total_cost_bdt": 34210,
+          "rabi_cost_bdt": 16210,
+          "expected_yield_sum_kg": 2093,
+          "expected_rabi_yield_kg": 1369,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 74000,
+          "exact_xgb_profit_bdt": 73935.3,
+          "confidence_range": {
+            "lower_bdt": 73500,
+            "upper_bdt": 74400
+          },
+          "total_cost_bdt": 44920,
+          "rabi_cost_bdt": 26920,
+          "expected_yield_sum_kg": 3206,
+          "expected_rabi_yield_kg": 2482,
+          "water": "mid"
         }
       }
     },
@@ -3649,7 +6421,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42750,
-          "exact_xgb_profit_bdt": 42721.58,
+          "exact_xgb_profit_bdt": 42668.2,
           "confidence_range": {
             "lower_bdt": 42300,
             "upper_bdt": 43100
@@ -3663,7 +6435,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23708.16,
+          "exact_xgb_profit_bdt": 23691.25,
           "confidence_range": {
             "lower_bdt": 23300,
             "upper_bdt": 24100
@@ -3677,7 +6449,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18000,
-          "exact_xgb_profit_bdt": 17885.59,
+          "exact_xgb_profit_bdt": 17889.79,
           "confidence_range": {
             "lower_bdt": 17500,
             "upper_bdt": 18300
@@ -3687,6 +6459,48 @@
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20275.29,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1147,
+          "expected_rabi_yield_kg": 473,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30306.31,
+          "confidence_range": {
+            "lower_bdt": 29900,
+            "upper_bdt": 30700
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1983,
+          "expected_rabi_yield_kg": 1309,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67500,
+          "exact_xgb_profit_bdt": 67444.86,
+          "confidence_range": {
+            "lower_bdt": 67000,
+            "upper_bdt": 67900
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3014,
+          "expected_rabi_yield_kg": 2340,
+          "water": "mid"
         }
       }
     },
@@ -3704,7 +6518,7 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 42750,
-          "exact_xgb_profit_bdt": 42721.58,
+          "exact_xgb_profit_bdt": 42668.2,
           "confidence_range": {
             "lower_bdt": 42300,
             "upper_bdt": 43100
@@ -3718,7 +6532,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23750,
-          "exact_xgb_profit_bdt": 23708.16,
+          "exact_xgb_profit_bdt": 23691.25,
           "confidence_range": {
             "lower_bdt": 23300,
             "upper_bdt": 24100
@@ -3732,7 +6546,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18000,
-          "exact_xgb_profit_bdt": 17885.59,
+          "exact_xgb_profit_bdt": 17889.79,
           "confidence_range": {
             "lower_bdt": 17500,
             "upper_bdt": 18300
@@ -3742,6 +6556,48 @@
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 150,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20275.29,
+          "confidence_range": {
+            "lower_bdt": 19900,
+            "upper_bdt": 20700
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1147,
+          "expected_rabi_yield_kg": 473,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30306.31,
+          "confidence_range": {
+            "lower_bdt": 29900,
+            "upper_bdt": 30700
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1983,
+          "expected_rabi_yield_kg": 1309,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67500,
+          "exact_xgb_profit_bdt": 67444.86,
+          "confidence_range": {
+            "lower_bdt": 67000,
+            "upper_bdt": 67900
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3014,
+          "expected_rabi_yield_kg": 2340,
+          "water": "mid"
         }
       }
     },
@@ -3759,10 +6615,10 @@
         "profit": {
           "rotation_key": "profit",
           "predicted_profit_bdt": 44500,
-          "exact_xgb_profit_bdt": 44484.24,
+          "exact_xgb_profit_bdt": 44622.09,
           "confidence_range": {
-            "lower_bdt": 44100,
-            "upper_bdt": 44900
+            "lower_bdt": 44200,
+            "upper_bdt": 45000
           },
           "total_cost_bdt": 51500,
           "rabi_cost_bdt": 33500,
@@ -3773,7 +6629,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23250,
-          "exact_xgb_profit_bdt": 23309.99,
+          "exact_xgb_profit_bdt": 23312.19,
           "confidence_range": {
             "lower_bdt": 22900,
             "upper_bdt": 23700
@@ -3787,7 +6643,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 17750,
-          "exact_xgb_profit_bdt": 17727.55,
+          "exact_xgb_profit_bdt": 17730.3,
           "confidence_range": {
             "lower_bdt": 17300,
             "upper_bdt": 18100
@@ -3797,6 +6653,48 @@
           "expected_yield_sum_kg": 829,
           "expected_rabi_yield_kg": 146,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20750,
+          "exact_xgb_profit_bdt": 20747.98,
+          "confidence_range": {
+            "lower_bdt": 20300,
+            "upper_bdt": 21200
+          },
+          "total_cost_bdt": 27200,
+          "rabi_cost_bdt": 9200,
+          "expected_yield_sum_kg": 1165,
+          "expected_rabi_yield_kg": 482,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30500,
+          "exact_xgb_profit_bdt": 30552.41,
+          "confidence_range": {
+            "lower_bdt": 30100,
+            "upper_bdt": 31000
+          },
+          "total_cost_bdt": 34300,
+          "rabi_cost_bdt": 16300,
+          "expected_yield_sum_kg": 1995,
+          "expected_rabi_yield_kg": 1312,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67750,
+          "exact_xgb_profit_bdt": 67793.62,
+          "confidence_range": {
+            "lower_bdt": 67400,
+            "upper_bdt": 68200
+          },
+          "total_cost_bdt": 45000,
+          "rabi_cost_bdt": 27000,
+          "expected_yield_sum_kg": 3028,
+          "expected_rabi_yield_kg": 2345,
+          "water": "mid"
         }
       }
     },
@@ -3813,11 +6711,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 41500,
-          "exact_xgb_profit_bdt": 41456.46,
+          "predicted_profit_bdt": 41000,
+          "exact_xgb_profit_bdt": 41072.6,
           "confidence_range": {
-            "lower_bdt": 41100,
-            "upper_bdt": 41900
+            "lower_bdt": 40700,
+            "upper_bdt": 41500
           },
           "total_cost_bdt": 51000,
           "rabi_cost_bdt": 33000,
@@ -3828,7 +6726,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 24000,
-          "exact_xgb_profit_bdt": 23898.91,
+          "exact_xgb_profit_bdt": 23893.94,
           "confidence_range": {
             "lower_bdt": 23500,
             "upper_bdt": 24300
@@ -3842,7 +6740,7 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18500,
-          "exact_xgb_profit_bdt": 18396.04,
+          "exact_xgb_profit_bdt": 18397.81,
           "confidence_range": {
             "lower_bdt": 18000,
             "upper_bdt": 18800
@@ -3852,6 +6750,48 @@
           "expected_yield_sum_kg": 835,
           "expected_rabi_yield_kg": 154,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20000,
+          "exact_xgb_profit_bdt": 20108.65,
+          "confidence_range": {
+            "lower_bdt": 19700,
+            "upper_bdt": 20500
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 1145,
+          "expected_rabi_yield_kg": 464,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30367.26,
+          "confidence_range": {
+            "lower_bdt": 30000,
+            "upper_bdt": 30800
+          },
+          "total_cost_bdt": 34075,
+          "rabi_cost_bdt": 16075,
+          "expected_yield_sum_kg": 1998,
+          "expected_rabi_yield_kg": 1317,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 68000,
+          "exact_xgb_profit_bdt": 68040.76,
+          "confidence_range": {
+            "lower_bdt": 67600,
+            "upper_bdt": 68500
+          },
+          "total_cost_bdt": 44800,
+          "rabi_cost_bdt": 26800,
+          "expected_yield_sum_kg": 3044,
+          "expected_rabi_yield_kg": 2363,
+          "water": "mid"
         }
       }
     },
@@ -3868,11 +6808,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 39750,
-          "exact_xgb_profit_bdt": 39719.27,
+          "predicted_profit_bdt": 40000,
+          "exact_xgb_profit_bdt": 40035.59,
           "confidence_range": {
-            "lower_bdt": 39300,
-            "upper_bdt": 40100
+            "lower_bdt": 39600,
+            "upper_bdt": 40500
           },
           "total_cost_bdt": 52500,
           "rabi_cost_bdt": 34500,
@@ -3883,7 +6823,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 21250,
-          "exact_xgb_profit_bdt": 21171.04,
+          "exact_xgb_profit_bdt": 21176.39,
           "confidence_range": {
             "lower_bdt": 20800,
             "upper_bdt": 21600
@@ -3897,16 +6837,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 16750,
-          "exact_xgb_profit_bdt": 16738.15,
+          "exact_xgb_profit_bdt": 16754.65,
           "confidence_range": {
             "lower_bdt": 16300,
-            "upper_bdt": 17100
+            "upper_bdt": 17200
           },
           "total_cost_bdt": 27050,
           "rabi_cost_bdt": 9050,
           "expected_yield_sum_kg": 830,
           "expected_rabi_yield_kg": 142,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19623.51,
+          "confidence_range": {
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 1158,
+          "expected_rabi_yield_kg": 470,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 27000,
+          "exact_xgb_profit_bdt": 27021.07,
+          "confidence_range": {
+            "lower_bdt": 26600,
+            "upper_bdt": 27400
+          },
+          "total_cost_bdt": 34750,
+          "rabi_cost_bdt": 16750,
+          "expected_yield_sum_kg": 1898,
+          "expected_rabi_yield_kg": 1210,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 59000,
+          "exact_xgb_profit_bdt": 58912.88,
+          "confidence_range": {
+            "lower_bdt": 58500,
+            "upper_bdt": 59300
+          },
+          "total_cost_bdt": 45400,
+          "rabi_cost_bdt": 27400,
+          "expected_yield_sum_kg": 2802,
+          "expected_rabi_yield_kg": 2114,
+          "water": "mid"
         }
       }
     },
@@ -3923,11 +6905,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 42750,
-          "exact_xgb_profit_bdt": 42656.17,
+          "predicted_profit_bdt": 42500,
+          "exact_xgb_profit_bdt": 42611.71,
           "confidence_range": {
-            "lower_bdt": 42300,
-            "upper_bdt": 43100
+            "lower_bdt": 42200,
+            "upper_bdt": 43000
           },
           "total_cost_bdt": 50700,
           "rabi_cost_bdt": 32700,
@@ -3938,10 +6920,10 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23500,
-          "exact_xgb_profit_bdt": 23449.29,
+          "exact_xgb_profit_bdt": 23611.88,
           "confidence_range": {
-            "lower_bdt": 23000,
-            "upper_bdt": 23900
+            "lower_bdt": 23200,
+            "upper_bdt": 24000
           },
           "total_cost_bdt": 27220,
           "rabi_cost_bdt": 9220,
@@ -3952,16 +6934,58 @@
         "easy": {
           "rotation_key": "easy",
           "predicted_profit_bdt": 18000,
-          "exact_xgb_profit_bdt": 17921.55,
+          "exact_xgb_profit_bdt": 17934.65,
           "confidence_range": {
             "lower_bdt": 17500,
-            "upper_bdt": 18300
+            "upper_bdt": 18400
           },
           "total_cost_bdt": 26600,
           "rabi_cost_bdt": 8600,
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 151,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20184.95,
+          "confidence_range": {
+            "lower_bdt": 19800,
+            "upper_bdt": 20600
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1146,
+          "expected_rabi_yield_kg": 473,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30264.47,
+          "confidence_range": {
+            "lower_bdt": 29800,
+            "upper_bdt": 30700
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1980,
+          "expected_rabi_yield_kg": 1307,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67250,
+          "exact_xgb_profit_bdt": 67356.13,
+          "confidence_range": {
+            "lower_bdt": 66900,
+            "upper_bdt": 67800
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3010,
+          "expected_rabi_yield_kg": 2337,
+          "water": "mid"
         }
       }
     },
@@ -3978,11 +7002,11 @@
       "rotations": {
         "profit": {
           "rotation_key": "profit",
-          "predicted_profit_bdt": 42500,
-          "exact_xgb_profit_bdt": 42408.65,
+          "predicted_profit_bdt": 42750,
+          "exact_xgb_profit_bdt": 42625.57,
           "confidence_range": {
-            "lower_bdt": 42000,
-            "upper_bdt": 42800
+            "lower_bdt": 42200,
+            "upper_bdt": 43000
           },
           "total_cost_bdt": 50700,
           "rabi_cost_bdt": 32700,
@@ -3993,7 +7017,7 @@
         "shift": {
           "rotation_key": "shift",
           "predicted_profit_bdt": 23500,
-          "exact_xgb_profit_bdt": 23583.02,
+          "exact_xgb_profit_bdt": 23616.21,
           "confidence_range": {
             "lower_bdt": 23200,
             "upper_bdt": 24000
@@ -4006,8 +7030,8 @@
         },
         "easy": {
           "rotation_key": "easy",
-          "predicted_profit_bdt": 18000,
-          "exact_xgb_profit_bdt": 17938.29,
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17874.11,
           "confidence_range": {
             "lower_bdt": 17500,
             "upper_bdt": 18300
@@ -4017,6 +7041,48 @@
           "expected_yield_sum_kg": 824,
           "expected_rabi_yield_kg": 151,
           "water": "low"
+        },
+        "wheat_cereal": {
+          "rotation_key": "wheat_cereal",
+          "predicted_profit_bdt": 20250,
+          "exact_xgb_profit_bdt": 20164.13,
+          "confidence_range": {
+            "lower_bdt": 19700,
+            "upper_bdt": 20600
+          },
+          "total_cost_bdt": 26960,
+          "rabi_cost_bdt": 8960,
+          "expected_yield_sum_kg": 1143,
+          "expected_rabi_yield_kg": 470,
+          "water": "low"
+        },
+        "maize_commercial": {
+          "rotation_key": "maize_commercial",
+          "predicted_profit_bdt": 30250,
+          "exact_xgb_profit_bdt": 30288.0,
+          "confidence_range": {
+            "lower_bdt": 29900,
+            "upper_bdt": 30700
+          },
+          "total_cost_bdt": 33940,
+          "rabi_cost_bdt": 15940,
+          "expected_yield_sum_kg": 1980,
+          "expected_rabi_yield_kg": 1307,
+          "water": "mid"
+        },
+        "onion_spices": {
+          "rotation_key": "onion_spices",
+          "predicted_profit_bdt": 67250,
+          "exact_xgb_profit_bdt": 67354.77,
+          "confidence_range": {
+            "lower_bdt": 66900,
+            "upper_bdt": 67800
+          },
+          "total_cost_bdt": 44680,
+          "rabi_cost_bdt": 26680,
+          "expected_yield_sum_kg": 3010,
+          "expected_rabi_yield_kg": 2337,
+          "water": "mid"
         }
       }
     }

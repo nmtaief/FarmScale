@@ -573,6 +573,348 @@
           "editable": true
         }
       }
+    },
+    "wheat": {
+      "name_en": "Wheat (BARI Gom-33)",
+      "name_bn": "গম (বারি গম-৩৩ / ব্লাস্ট প্রতিরোধী)",
+      "season": "rabi",
+      "expected_yield_kg_per_bigha": 450,
+      "yield_range_kg_per_bigha": {
+        "worst": 380,
+        "expected": 450,
+        "best": 520
+      },
+      "farmgate_price_per_kg": 36.0,
+      "price_range_per_kg": {
+        "worst": 32.0,
+        "expected": 36.0,
+        "best": 40.0
+      },
+      "sources": {
+        "yield": "BBS Agricultural Statistics 2024",
+        "price": "DAM Rajshahi Wholesale November 2026"
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 1600,
+          "source": "Tractor 3 passes @ 530 BDT",
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 880,
+          "rate": "16 kg @ 55 BDT/kg",
+          "source": "BADC Certified Seed Rate",
+          "editable": true
+        },
+        "fertilizer": {
+          "urea": {
+            "cost_bdt": 840,
+            "dose_kg": 28,
+            "rate_per_kg": 30,
+            "source": "BARC FRG High Barind"
+          },
+          "tsp": {
+            "cost_bdt": 576,
+            "dose_kg": 18,
+            "rate_per_kg": 32,
+            "source": "BARC FRG"
+          },
+          "mop": {
+            "cost_bdt": 300,
+            "dose_kg": 12,
+            "rate_per_kg": 25,
+            "source": "BARC FRG"
+          },
+          "gypsum": {
+            "cost_bdt": 200,
+            "dose_kg": 10,
+            "rate_per_kg": 20,
+            "source": "BARC FRG"
+          },
+          "boron": {
+            "cost_bdt": 200,
+            "dose_kg": 1,
+            "rate_per_kg": 200,
+            "source": "BARC FRG"
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 1400,
+          "count": 2,
+          "rate_per_irrigation": 700,
+          "source": "BMDA DTW Rate (2 light irrigations vs 18 for Boro)",
+          "editable": true
+        },
+        "labour": {
+          "sowing": {
+            "cost_bdt": 1200,
+            "mandays": 2,
+            "daily_wage": 600,
+            "source": "Local Barind Farm Labor Survey"
+          },
+          "weeding": {
+            "cost_bdt": 1200,
+            "mandays": 2,
+            "daily_wage": 600,
+            "source": "Local Barind Farm Labor Survey"
+          },
+          "harvest_threshing": {
+            "cost_bdt": 2400,
+            "mandays": 4,
+            "daily_wage": 600,
+            "source": "Local Barind Farm Labor Survey"
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 800,
+          "details": "Nativo/Folicur blast preventive spray",
+          "source": "DAE Plant Protection Guide"
+        },
+        "transport": {
+          "cost_bdt": 600,
+          "details": "Field to local market",
+          "source": "Local freight"
+        },
+        "post_harvest": {
+          "cost_bdt": 500,
+          "details": "Winnowing, bagging, storage",
+          "source": "Market standard"
+        },
+        "lease_rent": {
+          "cost_bdt": 2500,
+          "details": "Seasonal land lease (if tenant farmer)",
+          "source": "Average rental rate",
+          "editable": true
+        }
+      }
+    },
+    "maize": {
+      "name_en": "Maize (BARI Hybrid Maize-9)",
+      "name_bn": "ভুট্টা (বারি হাইব্রিড ভুট্টা-৯)",
+      "season": "rabi",
+      "expected_yield_kg_per_bigha": 1250,
+      "yield_range_kg_per_bigha": {
+        "worst": 1050,
+        "expected": 1250,
+        "best": 1450
+      },
+      "farmgate_price_per_kg": 26.0,
+      "price_range_per_kg": {
+        "worst": 23.0,
+        "expected": 26.0,
+        "best": 30.0
+      },
+      "sources": {
+        "yield": "BBS Agricultural Statistics 2024",
+        "price": "Feed Mill Gate Price Bogura/Pabna 2026"
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 1800,
+          "source": "Deep tillage 4 passes",
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 1500,
+          "rate": "3 kg hybrid seed @ 500 BDT/kg",
+          "source": "DAE Seed Rate",
+          "editable": true
+        },
+        "fertilizer": {
+          "urea": {
+            "cost_bdt": 1350,
+            "dose_kg": 45,
+            "rate_per_kg": 30,
+            "source": "BARC FRG High Barind"
+          },
+          "tsp": {
+            "cost_bdt": 800,
+            "dose_kg": 25,
+            "rate_per_kg": 32,
+            "source": "BARC FRG"
+          },
+          "mop": {
+            "cost_bdt": 500,
+            "dose_kg": 20,
+            "rate_per_kg": 25,
+            "source": "BARC FRG"
+          },
+          "gypsum": {
+            "cost_bdt": 300,
+            "dose_kg": 15,
+            "rate_per_kg": 20,
+            "source": "BARC FRG"
+          },
+          "zinc": {
+            "cost_bdt": 320,
+            "dose_kg": 2,
+            "rate_per_kg": 160,
+            "source": "BARC FRG"
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 2100,
+          "count": 3,
+          "rate_per_irrigation": 700,
+          "source": "BMDA DTW Rate",
+          "editable": true
+        },
+        "labour": {
+          "planting": {
+            "cost_bdt": 1800,
+            "mandays": 3,
+            "daily_wage": 600,
+            "source": "Manual dibbling labor"
+          },
+          "weeding_earthing": {
+            "cost_bdt": 2400,
+            "mandays": 4,
+            "daily_wage": 600,
+            "source": "Earthing up ridges"
+          },
+          "harvest_cobbing": {
+            "cost_bdt": 3000,
+            "mandays": 5,
+            "daily_wage": 600,
+            "source": "Harvesting & cob peeling"
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 900,
+          "details": "Fall Armyworm pheromone trap & bio-control",
+          "source": "DAE Guide"
+        },
+        "transport": {
+          "cost_bdt": 1000,
+          "details": "Heavy grain freight to feed mill",
+          "source": "Truck tariff"
+        },
+        "post_harvest": {
+          "cost_bdt": 800,
+          "details": "Cob sheller machine & sun drying",
+          "source": "Local mechanization rate"
+        },
+        "lease_rent": {
+          "cost_bdt": 3000,
+          "details": "Seasonal land lease",
+          "source": "Average rate",
+          "editable": true
+        }
+      }
+    },
+    "onion": {
+      "name_en": "Onion (Taherpuri / BARI Piaj-4)",
+      "name_bn": "পেঁয়াজ (তাহেরপুরী / বারি পেঁয়াজ-৪)",
+      "season": "rabi",
+      "expected_yield_kg_per_bigha": 2200,
+      "yield_range_kg_per_bigha": {
+        "worst": 1800,
+        "expected": 2200,
+        "best": 2650
+      },
+      "farmgate_price_per_kg": 35.0,
+      "price_range_per_kg": {
+        "worst": 28.0,
+        "expected": 35.0,
+        "best": 45.0
+      },
+      "sources": {
+        "yield": "DAE Pabna/Rajshahi 2024",
+        "price": "DAM Santhia/Taherpur Market Nov 2026"
+      },
+      "cost_breakdown_bigha": {
+        "land_preparation": {
+          "cost_bdt": 1800,
+          "source": "Fine tilth 4 passes + bed preparation",
+          "editable": true
+        },
+        "seed": {
+          "cost_bdt": 10500,
+          "rate": "Bulblets/seedlings for 33 decimals",
+          "source": "Local grower rate",
+          "editable": true
+        },
+        "fertilizer": {
+          "urea": {
+            "cost_bdt": 1050,
+            "dose_kg": 35,
+            "rate_per_kg": 30,
+            "source": "BARC FRG"
+          },
+          "tsp": {
+            "cost_bdt": 960,
+            "dose_kg": 30,
+            "rate_per_kg": 32,
+            "source": "BARC FRG"
+          },
+          "mop": {
+            "cost_bdt": 625,
+            "dose_kg": 25,
+            "rate_per_kg": 25,
+            "source": "BARC FRG"
+          },
+          "gypsum": {
+            "cost_bdt": 300,
+            "dose_kg": 15,
+            "rate_per_kg": 20,
+            "source": "BARC FRG"
+          },
+          "cowdung": {
+            "cost_bdt": 1200,
+            "dose_kg": 400,
+            "rate_per_kg": 3,
+            "source": "Decomposed cowdung"
+          }
+        },
+        "irrigation": {
+          "cost_bdt": 2400,
+          "count": 4,
+          "rate_per_irrigation": 600,
+          "source": "Light furrow irrigations",
+          "editable": true
+        },
+        "labour": {
+          "transplanting": {
+            "cost_bdt": 3000,
+            "mandays": 5,
+            "daily_wage": 600,
+            "source": "Intensive manual planting"
+          },
+          "weeding": {
+            "cost_bdt": 2400,
+            "mandays": 4,
+            "daily_wage": 600,
+            "source": "2x hand weeding"
+          },
+          "harvest_curing": {
+            "cost_bdt": 3600,
+            "mandays": 6,
+            "daily_wage": 600,
+            "source": "Uprooting, grading & curing"
+          }
+        },
+        "pesticide_fungicide": {
+          "cost_bdt": 1500,
+          "details": "Rovral (Purple blotch) + Thrips control",
+          "source": "DAE Guide"
+        },
+        "transport": {
+          "cost_bdt": 1200,
+          "details": "Field to Taherpur/Santhia hat",
+          "source": "Local van/trolley"
+        },
+        "post_harvest": {
+          "cost_bdt": 800,
+          "details": "Shade curing & bamboo loft rack storage",
+          "source": "Traditional air curing"
+        },
+        "lease_rent": {
+          "cost_bdt": 3500,
+          "details": "High value vegetable lease",
+          "source": "Average rate",
+          "editable": true
+        }
+      }
     }
   }
 }

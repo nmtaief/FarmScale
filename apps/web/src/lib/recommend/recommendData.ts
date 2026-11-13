@@ -61,8 +61,13 @@ export const PILOT_AREAS: PilotArea[] = [
   { id: "paba", name_bn: "পবা", name_en: "Paba", district_bn: "রাজশাহী", district_en: "Rajshahi", lat: 24.43, lng: 88.55, yieldFactor: 0.98 },
 ];
 
+export type CropCategory = "all" | "oilseed_pulse" | "cereal" | "cash_spice" | "drought_resilient";
+
 export interface RecommendOption {
-  key: "profit" | "shift" | "easy";
+  key: string;
+  category?: CropCategory;
+  badge_bn?: string;
+  badge_en?: string;
   title_bn: string;
   title_en: string;
   crops: string[];
@@ -78,6 +83,8 @@ export interface RecommendOption {
   expected_rabi_yield_kg?: number;
   expected_yield_sum_kg?: number;
   total_rotation_cost_bdt?: number;
+  nasa_tag_bn?: string;
+  nasa_tag_en?: string;
 }
 
 export interface RecommendResponse {

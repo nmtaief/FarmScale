@@ -1,51 +1,51 @@
 {
   "model_type": "XGBoost Regressor (Layer 3)",
   "version": "2.0.0",
-  "dataset_samples": 201,
-  "train_samples": 139,
-  "val_samples": 31,
-  "test_samples": 31,
+  "dataset_samples": 402,
+  "train_samples": 280,
+  "val_samples": 61,
+  "test_samples": 61,
   "evaluation_metrics": {
-    "r2_score": 0.9996,
-    "rmse_bdt": 206.76,
-    "mae_bdt": 140.14,
-    "cv_5fold_rmse_bdt": 201.81
+    "r2_score": 0.9998,
+    "rmse_bdt": 212.12,
+    "mae_bdt": 122.47,
+    "cv_5fold_rmse_bdt": 201.96
   },
   "best_hyperparameters": {
     "colsample_bytree": 0.85,
     "learning_rate": 0.08,
     "max_depth": 4,
     "n_estimators": 250,
-    "subsample": 0.85
+    "subsample": 1.0
   },
   "top_features_importance": {
-    "rotation_key_profit": 0.8929436802864075,
-    "total_water_mm": 0.09390992671251297,
-    "total_cost_bdt": 0.008896874263882637,
-    "irrigation_available": 0.0028885926585644484,
-    "soil_soc_g_kg": 0.0006880747387185693,
-    "soil_ph": 0.00031340328860096633,
-    "temp_mean": 0.00013912233407609165,
-    "soil_clay_pct": 0.00010248834587400779,
-    "temp_max": 3.316601214464754e-05,
-    "district_Pabna": 2.447675069561228e-05,
-    "district_Naogaon": 1.7164724340545945e-05,
-    "lon": 1.1247321708651725e-05,
-    "precip_annual_avg": 1.1195278602826875e-05,
-    "rootzone_wetness": 5.864086233486887e-06,
-    "lat": 5.77200580664794e-06
+    "total_cost_bdt": 0.7245562076568604,
+    "total_water_mm": 0.1988677978515625,
+    "rotation_key_onion_spices": 0.029268778860569,
+    "soil_ph": 0.008728088811039925,
+    "soil_texture_group": 0.008413807488977909,
+    "irrigation_available": 0.0059929280541837215,
+    "soil_soc_g_kg": 0.004966343753039837,
+    "rotation_key_shift": 0.004658104851841927,
+    "crop_rabi_onion": 0.004593852907419205,
+    "district_Natore": 0.004515387583523989,
+    "soil_clay_pct": 0.00247251451946795,
+    "temp_mean": 0.0005229143425822258,
+    "precip_annual_avg": 0.00045336844050325453,
+    "district_Pabna": 0.0004305400943849236,
+    "temp_max": 0.00041533485637046397
   },
   "shap_feature_attributions_bdt": {
-    "total_water_mm": 7895.33984375,
-    "total_cost_bdt": 1593.77001953125,
-    "irrigation_available": 1206.9300537109375,
-    "rotation_key_profit": 952.1500244140625,
-    "soil_soc_g_kg": 715.3200073242188,
-    "soil_ph": 383.82000732421875,
-    "lat": 113.0,
-    "temp_mean": 110.69999694824219,
-    "lon": 68.62999725341797,
-    "soil_clay_pct": 43.810001373291016
+    "total_cost_bdt": 11627.0400390625,
+    "total_water_mm": 2427.02001953125,
+    "soil_ph": 861.75,
+    "soil_soc_g_kg": 476.0199890136719,
+    "irrigation_available": 397.1199951171875,
+    "rotation_key_onion_spices": 242.4199981689453,
+    "rotation_key_shift": 80.12999725341797,
+    "soil_clay_pct": 79.30000305175781,
+    "precip_annual_avg": 71.04000091552734,
+    "temp_mean": 50.310001373291016
   },
   "feature_columns": [
     "lat",
@@ -70,9 +70,15 @@
     "district_Pabna",
     "district_Rajshahi",
     "district_Sirajganj",
+    "rotation_key_maize_commercial",
+    "rotation_key_onion_spices",
     "rotation_key_profit",
     "rotation_key_shift",
+    "rotation_key_wheat_cereal",
+    "crop_rabi_maize",
     "crop_rabi_mustard",
-    "crop_rabi_potato"
+    "crop_rabi_onion",
+    "crop_rabi_potato",
+    "crop_rabi_wheat"
   ]
 }

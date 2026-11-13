@@ -7,6 +7,12 @@ export type CropType =
   | "mustard"
   | "lentil"
   | "wheat"
+  | "maize"
+  | "onion"
+  | "chickpea"
+  | "sesame"
+  | "groundnut"
+  | "jute"
   | "boro_rice"
   | "aus_rice"
   | "aman_rice"
@@ -20,6 +26,12 @@ export const CROP_NAMES: Record<"bn" | "en", Record<string, string>> = {
     mustard: "সরিষা",
     lentil: "মসুর",
     wheat: "গম",
+    maize: "ভুট্টা",
+    onion: "পেঁয়াজ",
+    chickpea: "ছোলা",
+    sesame: "তিল",
+    groundnut: "চিনাবাদাম",
+    jute: "পাট",
     boro_rice: "বোরো ধান",
     aus_rice: "আউশ ধান",
     aman_rice: "আমন ধান",
@@ -32,6 +44,12 @@ export const CROP_NAMES: Record<"bn" | "en", Record<string, string>> = {
     mustard: "Mustard",
     lentil: "Lentil",
     wheat: "Wheat",
+    maize: "Maize/Corn",
+    onion: "Onion",
+    chickpea: "Chickpea",
+    sesame: "Sesame",
+    groundnut: "Groundnut",
+    jute: "Jute",
     boro_rice: "Boro rice",
     aus_rice: "Aus rice",
     aman_rice: "Aman rice",
@@ -45,7 +63,13 @@ const CROP_BG: Record<string, string> = {
   rice: "#FBEFC2",
   mustard: "#FFF4B8",
   lentil: "#F8DFCB",
-  wheat: "#FFF4B8",
+  wheat: "#FFF0BD",
+  maize: "#FFF3B3",
+  onion: "#F8D7DA",
+  chickpea: "#EEDBCE",
+  sesame: "#E4EDE2",
+  groundnut: "#F5E4D3",
+  jute: "#E8F0DC",
   boro_rice: "#FBEFC2",
   aus_rice: "#FBEFC2",
   aman_rice: "#FBEFC2",
@@ -59,6 +83,12 @@ export function normalizeCropKey(raw: string): string {
   if (k.includes("mustard") || k.includes("সরিষা")) return "mustard";
   if (k.includes("lentil") || k.includes("মসুর")) return "lentil";
   if (k.includes("wheat") || k.includes("গম")) return "wheat";
+  if (k.includes("maize") || k.includes("corn") || k.includes("ভুট্টা")) return "maize";
+  if (k.includes("onion") || k.includes("পেঁয়াজ") || k.includes("পিয়াজ")) return "onion";
+  if (k.includes("chickpea") || k.includes("gram") || k.includes("ছোলা")) return "chickpea";
+  if (k.includes("sesame") || k.includes("til") || k.includes("তিল")) return "sesame";
+  if (k.includes("peanut") || k.includes("groundnut") || k.includes("বাদাম")) return "groundnut";
+  if (k.includes("jute") || k.includes("পাট")) return "jute";
   if (k.includes("boro") || k.includes("বোরো")) return "rice";
   if (k.includes("aus") || k.includes("আউশ")) return "rice";
   if (k.includes("aman") || k.includes("আমন") || k.includes("rice") || k.includes("ধান")) return "rice";
@@ -132,6 +162,52 @@ export const CropIcon: React.FC<CropIconProps> = ({
           </>
         );
 
+      case "wheat":
+        return (
+          <>
+            <path
+              d="M24 42V15"
+              stroke="#A87E00"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+            <g fill="#E6AE10">
+              <ellipse cx="24" cy="10" rx="3" ry="5.5" />
+              <ellipse cx="19" cy="17" rx="3" ry="5" transform="rotate(-30 19 17)" />
+              <ellipse cx="29" cy="17" rx="3" ry="5" transform="rotate(30 29 17)" />
+              <ellipse cx="19" cy="25" rx="3" ry="5" transform="rotate(-30 19 25)" />
+              <ellipse cx="29" cy="25" rx="3" ry="5" transform="rotate(30 29 25)" />
+            </g>
+          </>
+        );
+
+      case "maize":
+        return (
+          <>
+            <path d="M18 38C18 38 21 28 24 20C27 28 30 38 30 38" stroke="#4D7C0F" strokeWidth="2.5" fill="none" />
+            <path d="M19 14C19 8 29 8 29 14C29 24 27 30 24 32C21 30 19 24 19 14Z" fill="#EAB308" />
+            <g fill="#CA8A04">
+              <circle cx="22" cy="14" r="1.3" />
+              <circle cx="26" cy="14" r="1.3" />
+              <circle cx="24" cy="18" r="1.3" />
+              <circle cx="22" cy="22" r="1.3" />
+              <circle cx="26" cy="22" r="1.3" />
+              <circle cx="24" cy="26" r="1.3" />
+            </g>
+          </>
+        );
+
+      case "onion":
+        return (
+          <>
+            <path d="M24 10V18" stroke="#15803D" strokeWidth="2" strokeLinecap="round" />
+            <path d="M20 12L24 18L28 12" stroke="#15803D" strokeWidth="1.5" strokeLinecap="round" />
+            <ellipse cx="24" cy="28" rx="12" ry="11" fill="#C2410C" />
+            <ellipse cx="24" cy="28" rx="8" ry="10" fill="#EA580C" />
+            <path d="M24 39V42" stroke="#78350F" strokeWidth="1.5" strokeLinecap="round" />
+          </>
+        );
+
       case "mustard":
         return (
           <>
@@ -175,6 +251,33 @@ export const CropIcon: React.FC<CropIconProps> = ({
             <ellipse cx="17" cy="26" rx="8.5" ry="5.5" />
             <ellipse cx="31" cy="21" rx="8.5" ry="5.5" />
             <ellipse cx="27" cy="33" rx="8.5" ry="5.5" />
+          </g>
+        );
+
+      case "chickpea":
+        return (
+          <g fill="#B45309">
+            <ellipse cx="20" cy="25" rx="7.5" ry="8" />
+            <ellipse cx="28" cy="23" rx="7" ry="7.5" />
+            <path d="M20 17L22 19M28 15L29 17" stroke="#78350F" strokeWidth="1.5" strokeLinecap="round" />
+          </g>
+        );
+
+      case "sesame":
+        return (
+          <g fill="#4B5563">
+            <ellipse cx="21" cy="22" rx="3.5" ry="5.5" transform="rotate(-15 21 22)" fill="#1F2937" />
+            <ellipse cx="27" cy="26" rx="3.5" ry="5.5" transform="rotate(25 27 26)" fill="#374151" />
+            <ellipse cx="22" cy="31" rx="3" ry="5" transform="rotate(-35 22 31)" fill="#111827" />
+          </g>
+        );
+
+      case "groundnut":
+        return (
+          <g fill="#D97706">
+            <ellipse cx="20" cy="25" rx="7" ry="9" />
+            <ellipse cx="28" cy="25" rx="7" ry="9" />
+            <path d="M20 20C24 22 24 28 20 30M28 20C24 22 24 28 28 30" stroke="#92400E" strokeWidth="1.5" />
           </g>
         );
 
@@ -222,4 +325,3 @@ export const CropIcon: React.FC<CropIconProps> = ({
 
   return svg;
 };
-

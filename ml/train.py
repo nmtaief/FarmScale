@@ -235,7 +235,7 @@ def run_training():
                 "rabi_cost_bdt": int(row["rabi_cost_bdt"]),
                 "expected_yield_sum_kg": int(row["expected_yield_sum_kg"]),
                 "expected_rabi_yield_kg": int(row["expected_rabi_yield_kg"]),
-                "water": "mid" if r_key == "profit" else "low",
+                "water": "mid" if r_key in ["profit", "maize_commercial", "onion_spices"] else "low",
             }
 
         predictions_export["upazilas"][u_name.lower().replace(" ", "_")] = upazila_data

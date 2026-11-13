@@ -8,7 +8,7 @@ import costsDataRaw from "@/data/costs.json";
 export interface CostBreakdownDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  rotationKey: "profit" | "shift" | "easy";
+  rotationKey: string;
   rotationTitle: string;
   crops: string[];
   lang: "bn" | "en";

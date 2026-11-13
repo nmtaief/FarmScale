@@ -109,6 +109,9 @@ def build_dataset():
         price_lentil = 95.0
         price_mung = 100.0
         price_rice = 30.0
+        price_wheat = 36.0
+        price_maize = 26.0
+        price_onion = 35.0
 
         # Base yields from BBS / DAE + modulated by local environmental telemetry
         # 1. Potato: High response to soil organic carbon, cool winter temperatures, and irrigation
@@ -134,14 +137,38 @@ def build_dataset():
         ))
         len_yield = max(120, min(195, len_yield))
 
-        # 4. Mungbean: Legume across Kharif-1, benefits from residual soil moisture
+        # 4. Wheat (BARI Gom-33): Blast resistant, responsive to cooler nights, 70% water savings vs Boro
+        wht_yield = round(450 * (
+            1.0 - 0.04 * (temp_min - 19.5) / 2.0
+            + 0.05 * (lat - 24.3)
+            + 0.03 * (soil_ph - 6.0) / 1.4
+        ))
+        wht_yield = max(380, min(520, wht_yield))
+
+        # 5. Maize (BARI Hybrid Maize-9): Commercial grain powerhouse, high biomass, Bogura/Pabna
+        mze_yield = round(1250 * (
+            1.0 + 0.06 * (soil_soc - 9.0) / 4.0
+            + 0.04 * (soil_ph - 6.0) / 1.4
+            - 0.03 * (water_stress_score - 30.0) / 20.0
+        ))
+        mze_yield = max(1050, min(1480, mze_yield))
+
+        # 6. Onion (Taherpuri / BARI Piaj-4): Premier spice cash crop of Pabna & Taherpur
+        on_yield = round(2200 * (
+            1.0 + 0.08 * (soil_soc - 8.5) / 4.0
+            + 0.05 * (soil_ph - 6.2) / 1.2
+            - 0.02 * (water_stress_score - 30.0) / 20.0
+        ))
+        on_yield = max(1800, min(2700, on_yield))
+
+        # 7. Mungbean: Legume across Kharif-1, benefits from residual soil moisture
         mung_yield = round(140 * (
             1.0 + 0.04 * (soil_soc - 9.0) / 4.0
             - 0.03 * (water_stress_score - 35.0) / 20.0
         ))
         mung_yield = max(115, min(170, mung_yield))
 
-        # 5. Aman Rice: Monsoon rainfed, responsive to monsoon precipitation & clay water holding
+        # 8. Aman Rice: Monsoon rainfed, responsive to monsoon precipitation & clay water holding
         rice_yield = round(600 * (
             1.0 + 0.05 * (soil_clay - 25.0) / 15.0
             + 0.03 * (precip_annual_avg - 1400.0) / 400.0
@@ -153,10 +180,13 @@ def build_dataset():
         cost_potato = 33500 + irr_cost_adj
         cost_mustard = 9500 + int(irr_cost_adj * 0.35)
         cost_lentil = 8800 + int(irr_cost_adj * 0.25)
+        cost_wheat = 9200 + int(irr_cost_adj * 0.30)
+        cost_maize = 16300 + int(irr_cost_adj * 0.45)
+        cost_onion = 27000 + int(irr_cost_adj * 0.40)
         cost_mung = 8500
         cost_rice = 11000 - 1500  # -1500 Tk fertilizer credit from mungbean green manure
 
-        # Calculate exact Net Profit = Revenue - Total Cost for each of the 3 rotations
+        # Calculate exact Net Profit = Revenue - Total Cost for each of the rotations
         # Option 1: "profit" (Potato -> Mungbean -> Aman Rice)
         pot_rev = (pot_yield * price_potato) + (mung_yield * price_mung) + (rice_yield * price_rice)
         pot_cost = cost_potato + cost_mung + cost_rice
@@ -171,6 +201,21 @@ def build_dataset():
         len_rev = (len_yield * price_lentil) + (mung_yield * price_mung) + (rice_yield * price_rice)
         len_cost = cost_lentil + cost_mung + cost_rice
         len_profit = len_rev - len_cost
+
+        # Option 4: "wheat_cereal" (Wheat -> Mungbean -> Aman Rice)
+        wht_rev = (wht_yield * price_wheat) + (mung_yield * price_mung) + (rice_yield * price_rice)
+        wht_cost = cost_wheat + cost_mung + cost_rice
+        wht_profit = wht_rev - wht_cost
+
+        # Option 5: "maize_commercial" (Maize -> Mungbean -> Aman Rice)
+        mze_rev = (mze_yield * price_maize) + (mung_yield * price_mung) + (rice_yield * price_rice)
+        mze_cost = cost_maize + cost_mung + cost_rice
+        mze_profit = mze_rev - mze_cost
+
+        # Option 6: "onion_spices" (Onion -> Mungbean -> Aman Rice)
+        on_rev = (on_yield * price_onion) + (mung_yield * price_mung) + (rice_yield * price_rice)
+        on_cost = cost_onion + cost_mung + cost_rice
+        on_profit = on_rev - on_cost
 
         # Append row for Option 1: profit
         rows.append({
@@ -259,6 +304,93 @@ def build_dataset():
             "target_net_profit_bdt": round(len_profit, 1)
         })
 
+        # Append row for Option 4: wheat_cereal
+        rows.append({
+            "district": d_name,
+            "upazila": u_name,
+            "lat": lat,
+            "lon": lon,
+            "rotation_key": "wheat_cereal",
+            "crop_rabi": "wheat",
+            "crop_kharif1": "mungbean",
+            "crop_kharif2": "rice",
+            "precip_annual_avg": round(precip_annual_avg, 1),
+            "temp_mean": round(temp_mean, 2),
+            "temp_max": round(temp_max, 2),
+            "temp_min": round(temp_min, 2),
+            "rootzone_wetness": round(rootzone_wetness, 3),
+            "water_stress_score": round(water_stress_score, 1),
+            "soil_ph": soil_ph,
+            "soil_soc_g_kg": soil_soc,
+            "soil_clay_pct": soil_clay,
+            "soil_texture_group": soil_texture,
+            "irrigation_available": 1,
+            "total_water_mm": 850,
+            "rabi_cost_bdt": cost_wheat,
+            "total_cost_bdt": wht_cost,
+            "expected_yield_sum_kg": wht_yield + mung_yield + rice_yield,
+            "expected_rabi_yield_kg": wht_yield,
+            "target_net_profit_bdt": round(wht_profit, 1)
+        })
+
+        # Append row for Option 5: maize_commercial
+        rows.append({
+            "district": d_name,
+            "upazila": u_name,
+            "lat": lat,
+            "lon": lon,
+            "rotation_key": "maize_commercial",
+            "crop_rabi": "maize",
+            "crop_kharif1": "mungbean",
+            "crop_kharif2": "rice",
+            "precip_annual_avg": round(precip_annual_avg, 1),
+            "temp_mean": round(temp_mean, 2),
+            "temp_max": round(temp_max, 2),
+            "temp_min": round(temp_min, 2),
+            "rootzone_wetness": round(rootzone_wetness, 3),
+            "water_stress_score": round(water_stress_score, 1),
+            "soil_ph": soil_ph,
+            "soil_soc_g_kg": soil_soc,
+            "soil_clay_pct": soil_clay,
+            "soil_texture_group": soil_texture,
+            "irrigation_available": 1,
+            "total_water_mm": 1050,
+            "rabi_cost_bdt": cost_maize,
+            "total_cost_bdt": mze_cost,
+            "expected_yield_sum_kg": mze_yield + mung_yield + rice_yield,
+            "expected_rabi_yield_kg": mze_yield,
+            "target_net_profit_bdt": round(mze_profit, 1)
+        })
+
+        # Append row for Option 6: onion_spices
+        rows.append({
+            "district": d_name,
+            "upazila": u_name,
+            "lat": lat,
+            "lon": lon,
+            "rotation_key": "onion_spices",
+            "crop_rabi": "onion",
+            "crop_kharif1": "mungbean",
+            "crop_kharif2": "rice",
+            "precip_annual_avg": round(precip_annual_avg, 1),
+            "temp_mean": round(temp_mean, 2),
+            "temp_max": round(temp_max, 2),
+            "temp_min": round(temp_min, 2),
+            "rootzone_wetness": round(rootzone_wetness, 3),
+            "water_stress_score": round(water_stress_score, 1),
+            "soil_ph": soil_ph,
+            "soil_soc_g_kg": soil_soc,
+            "soil_clay_pct": soil_clay,
+            "soil_texture_group": soil_texture,
+            "irrigation_available": 1,
+            "total_water_mm": 1000,
+            "rabi_cost_bdt": cost_onion,
+            "total_cost_bdt": on_cost,
+            "expected_yield_sum_kg": on_yield + mung_yield + rice_yield,
+            "expected_rabi_yield_kg": on_yield,
+            "target_net_profit_bdt": round(on_profit, 1)
+        })
+
     df = pd.DataFrame(rows)
     df.to_csv(OUTPUT_CSV, index=False)
     print(f"✅ Created training dataset at {OUTPUT_CSV}")
@@ -269,3 +401,4 @@ def build_dataset():
 
 if __name__ == "__main__":
     build_dataset()
+
