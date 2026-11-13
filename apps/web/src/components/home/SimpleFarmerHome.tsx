@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useTransition } from "react";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
-import { Navigation, Sparkles, ArrowRight, MapPin, Check, Calculator, Sprout } from "lucide-react";
+import { Navigation, Sparkles, ArrowRight, MapPin, Check, Calculator, Sprout, Droplets, ChevronRight } from "lucide-react";
 import { CropIcon, CROP_NAMES } from "@/components/crops/CropIcon";
 import { BarindMapPicker } from "./BarindMapPicker";
 import { AiFarmingOutline } from "./AiFarmingOutline";
@@ -606,52 +606,57 @@ export const SimpleFarmerHome: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Financial & Water Metrics */}
-                      <div className="grid grid-cols-3 gap-1 py-3 border-y border-border/70 my-3 text-center items-start">
-                        <div className="px-1 flex flex-col items-center justify-center">
-                          <span className="text-[11px] font-bold text-slate-500 whitespace-nowrap">
-                            {lang === "bn" ? "সম্ভাব্য লাভ" : "Est. Profit"}
-                          </span>
-                          <span className="text-[16px] sm:text-[18px] font-black text-forest mt-1 tracking-tight">
-                            {formatTaka(opt.profit_per_bigha, lang)}
-                          </span>
-                          <span className="text-[10px] text-slate-400 mt-0.5">
-                            {lang === "bn" ? "প্রতি বিঘা" : "per bigha"}
-                          </span>
+                      {/* Financial & Water Metrics: Zero-crossover 2-Row Design */}
+                      <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-3 sm:p-3.5 my-3 space-y-2.5">
+                        {/* Row 1: Estimated Profit & Water Demand */}
+                        <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-200/70">
+                          <div>
+                            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                              {lang === "bn" ? "সম্ভাব্য নিট লাভ" : "Est. Net Profit"}
+                            </span>
+                            <div className="flex items-baseline gap-1 mt-0.5">
+                              <span className="text-[20px] sm:text-[22px] font-black text-forest tracking-tight">
+                                {formatTaka(opt.profit_per_bigha, lang)}
+                              </span>
+                              <span className="text-[11px] font-medium text-slate-500">
+                                {lang === "bn" ? "/ বিঘা" : "/ bigha"}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="text-right flex flex-col items-end">
+                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">
+                              {lang === "bn" ? "পানি চাহিদা" : "Water Need"}
+                            </span>
+                            <span className="inline-flex items-center gap-1 text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-slate-800 shadow-2xs">
+                              <Droplets className="w-3.5 h-3.5 text-sky-600" />
+                              <span>{waterLabel}</span>
+                            </span>
+                          </div>
                         </div>
 
+                        {/* Row 2: Production Cost with Clickable Breakdown Drawer Link */}
                         <button
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
                             setCostBreakdownOption(opt);
                           }}
-                          className="border-x border-border/60 hover:bg-gold/15 transition-all rounded-xl py-1 px-1 flex flex-col items-center justify-center cursor-pointer group w-full"
+                          className="w-full flex items-center justify-between text-left group hover:bg-emerald-50/60 p-1.5 -mx-1.5 rounded-xl transition cursor-pointer"
                           title={lang === "bn" ? "খরচের বিস্তারিত হিসাব দেখুন ও নিজের মতো পরিবর্তন করুন" : "View & edit cost breakdown"}
                         >
-                          <span className="text-[11px] font-bold text-slate-500 flex items-center justify-center gap-1 whitespace-nowrap">
-                            <span>{lang === "bn" ? "মোট খরচ" : "Total Cost"}</span>
-                            <span className="text-[10px] text-emerald-800 font-bold bg-emerald-100 px-1 py-0.2 rounded group-hover:bg-emerald-200">ⓘ</span>
-                          </span>
-                          <span className="text-[16px] sm:text-[18px] font-bold text-slate-900 mt-1 tracking-tight">
-                            {formatTaka(opt.cost_per_bigha, lang)}
-                          </span>
-                          <span className="text-[10px] text-slate-400 mt-0.5">
-                            {lang === "bn" ? "প্রতি বিঘা" : "per bigha"}
+                          <div className="flex items-center gap-1.5 text-xs text-slate-700">
+                            <span className="font-semibold text-slate-600">
+                              {lang === "bn" ? "মোট খরচ (প্রতি বিঘা):" : "Total Cost (per bigha):"}
+                            </span>
+                            <span className="font-bold text-slate-900 font-mono text-sm">
+                              {formatTaka(opt.cost_per_bigha, lang)}
+                            </span>
+                          </div>
+                          <span className="text-[11px] font-bold text-emerald-800 bg-emerald-100 group-hover:bg-emerald-200 px-2 py-0.5 rounded-md flex items-center gap-0.5">
+                            <span>{lang === "bn" ? "হিসাব দেখুন ⓘ" : "Details ⓘ"}</span>
                           </span>
                         </button>
-
-                        <div className="px-1 flex flex-col items-center justify-center">
-                          <span className="text-[11px] font-bold text-slate-500 whitespace-nowrap">
-                            {t.water}
-                          </span>
-                          <span className="text-[16px] sm:text-[17px] font-bold text-slate-900 mt-1">
-                            {waterLabel}
-                          </span>
-                          <span className="text-[10px] text-slate-400 mt-0.5">
-                            {lang === "bn" ? "চাহিদা" : "demand"}
-                          </span>
-                        </div>
                       </div>
 
                       {/* Short Reason Sentence */}

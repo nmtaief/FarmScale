@@ -20,7 +20,7 @@ export const ContextBar: React.FC = () => {
 
   return (
     <div className="sticky top-16 z-30 w-full border-b border-border/80 bg-surface/90 backdrop-blur-sm transition-colors py-2 px-4 shadow-2xs">
-      <div className="max-w-content mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="w-full max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-3 text-xs">
         {/* Left: Location & Season Info */}
         <div className="flex items-center gap-3">
           {/* Location link */}
