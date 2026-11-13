@@ -1,0 +1,1410 @@
+{
+  "metadata": {
+    "source": "NASA POWER Agroclimatology (1991-2024 Daily Climatology), BMD, DAE, BRRI, BARI, BARC",
+    "methodology": "PICSA (Participatory Integrated Climate Services for Agriculture) - Historical Climatology & Risk Assessment",
+    "scope": "Rajshahi Division (8 Districts, 67 Upazilas)",
+    "last_updated": "November 2026"
+  },
+  "districts": {
+    "Rajshahi": {
+      "district_bn": "রাজশাহী",
+      "district_en": "Rajshahi",
+      "aez": "AEZ 25, 26 (বরেন্দ্র অঞ্চল ও গাঙ্গেয় প্লাবনভূমি)",
+      "annual_rainfall_mm": 1736.0,
+      "rainy_season_onset": {
+        "window_bn": "৮ – ১৪ জুন",
+        "window_en": "June 8 – 14"
+      },
+      "rainy_season_cessation": {
+        "window_bn": "১০ – ১৬ অক্টোবর",
+        "window_en": "October 10 – 16"
+      },
+      "rainy_season_length_days": 128,
+      "dry_spell_risk_kharif1_pct": 22,
+      "dry_spell_desc_bn": "গত ৩০ বছরের নাসা তথ্যে খরিপ-১ মৌসুমে (বৈশাখ–জ্যৈষ্ঠ) টানা ১০ দিনের বেশি বৃষ্টিহীন শুষ্ক সময়ের সম্ভাবনা 22%।",
+      "dry_spell_desc_en": "30-year NASA data shows a 22% probability of a consecutive dry spell > 10 days in Kharif-1.",
+      "heat_stress_risk_pct": 44,
+      "heat_stress_desc_bn": "চৈত্র–বৈশাখ মাসে টানা ৩ দিন ৩৫°সে-এর বেশি তাপপ্রবাহের ঝুঁকি 44%।",
+      "heat_stress_desc_en": "44% probability of heat stress spells (>35°C for 3+ consecutive days) in March-April.",
+      "cold_spell_risk_pct": 28,
+      "cold_spell_desc_bn": "পৌষ–মাঘ মাসে তাপমাত্রা ১০°সে-এর নিচে নামার সম্ভাবনা 28% (আলু ও বীজতলার বাড়তি সুরক্ষা প্রয়োজন)।",
+      "cold_spell_desc_en": "28% probability of minimum temperature falling below 10°C in Dec-Jan.",
+      "monthly": [
+        {
+          "month": 1,
+          "month_bn": "জানু",
+          "month_en": "Jan",
+          "precip_mm": 15.9,
+          "temp_mean": 16.7,
+          "temp_max": 27.2,
+          "temp_min": 6.7
+        },
+        {
+          "month": 2,
+          "month_bn": "ফেব্রু",
+          "month_en": "Feb",
+          "precip_mm": 13.8,
+          "temp_mean": 20.9,
+          "temp_max": 33.1,
+          "temp_min": 9.2
+        },
+        {
+          "month": 3,
+          "month_bn": "মার্চ",
+          "month_en": "Mar",
+          "precip_mm": 36.7,
+          "temp_mean": 26.5,
+          "temp_max": 38.8,
+          "temp_min": 14.5
+        },
+        {
+          "month": 4,
+          "month_bn": "এপ্রিল",
+          "month_en": "Apr",
+          "precip_mm": 93.8,
+          "temp_mean": 30.7,
+          "temp_max": 42.4,
+          "temp_min": 19.9
+        },
+        {
+          "month": 5,
+          "month_bn": "মে",
+          "month_en": "May",
+          "precip_mm": 245.5,
+          "temp_mean": 30.3,
+          "temp_max": 40.4,
+          "temp_min": 23.2
+        },
+        {
+          "month": 6,
+          "month_bn": "জুন",
+          "month_en": "Jun",
+          "precip_mm": 230.6,
+          "temp_mean": 29.9,
+          "temp_max": 38.2,
+          "temp_min": 25.4
+        },
+        {
+          "month": 7,
+          "month_bn": "জুলাই",
+          "month_en": "Jul",
+          "precip_mm": 343.4,
+          "temp_mean": 29.1,
+          "temp_max": 34.5,
+          "temp_min": 25.4
+        },
+        {
+          "month": 8,
+          "month_bn": "আগস্ট",
+          "month_en": "Aug",
+          "precip_mm": 277.8,
+          "temp_mean": 28.7,
+          "temp_max": 33.9,
+          "temp_min": 25.0
+        },
+        {
+          "month": 9,
+          "month_bn": "সেপ্টে",
+          "month_en": "Sep",
+          "precip_mm": 272.9,
+          "temp_mean": 28.1,
+          "temp_max": 33.1,
+          "temp_min": 24.3
+        },
+        {
+          "month": 10,
+          "month_bn": "অক্টো",
+          "month_en": "Oct",
+          "precip_mm": 180.5,
+          "temp_mean": 26.3,
+          "temp_max": 32.3,
+          "temp_min": 18.7
+        },
+        {
+          "month": 11,
+          "month_bn": "নভে",
+          "month_en": "Nov",
+          "precip_mm": 10.4,
+          "temp_mean": 21.8,
+          "temp_max": 29.7,
+          "temp_min": 12.7
+        },
+        {
+          "month": 12,
+          "month_bn": "ডিসে",
+          "month_en": "Dec",
+          "precip_mm": 14.7,
+          "temp_mean": 17.6,
+          "temp_max": 26.6,
+          "temp_min": 7.4
+        }
+      ],
+      "crop_matching_options": [
+        {
+          "season": "rabi",
+          "season_bn": "রবি মৌসুম (কার্তিক–ফাল্গুন)",
+          "season_en": "Rabi Season (Nov–Mar)",
+          "crops": [
+            "Mustard (সরিষা)",
+            "Potato (আলু)",
+            "Maize (ভুট্টা)",
+            "Boro Rice (বোরো ধান)"
+          ],
+          "climate_fit_bn": "শীতকালীন স্বল্প বৃষ্টিপাত ও আর্দ্রতার জন্য সরিষা (বারি সরিষা-১৪/১৭) ও আলু অত্যন্ত উপযোগী। বোরো চাষ করলে ভূগর্ভস্থ পানির অপচয় কমাতে এডব্লিউডি (AWD) পদ্ধতি মেনে চলুন।",
+          "climate_fit_en": "Low winter rainfall makes short-duration mustard (BARI Sarisha-14/17) and potato optimal. For Boro rice, alternate wetting and drying (AWD) is strongly recommended.",
+          "source": "BARI & BRRI Agronomic Guidelines"
+        },
+        {
+          "season": "kharif_1",
+          "season_bn": "খরিপ-১ মৌসুম (চৈত্র–জ্যৈষ্ঠ)",
+          "season_en": "Kharif-1 Season (Apr–Jun)",
+          "crops": [
+            "Mungbean (মুগ ডাল)",
+            "Sesame (তিল)",
+            "Aus Rice (আউশ ধান)",
+            "Jute (পাট)"
+          ],
+          "climate_fit_bn": "প্রাক-বর্ষা মৌসুমে খরার ঝুঁকি এড়াতে দ্রুত বর্ধনশীল মুগডাল (বারি মুগ-৬) বা তিল উপযুক্ত। এটি মাটির উর্বরতা বাড়ায় এবং বর্ষার আগে কর্তন সম্ভব।",
+          "climate_fit_en": "To hedge against pre-monsoon dry spells, short-duration mungbean (BARI Mung-6) or sesame is ideal, fixing nitrogen and harvested before peak monsoon.",
+          "source": "DAE Field Manual & BARI Pulses Research"
+        },
+        {
+          "season": "kharif_2",
+          "season_bn": "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          "season_en": "Kharif-2 Season (Jul–Oct)",
+          "crops": [
+            "T. Aman Rice (রোপা আমন)"
+          ],
+          "climate_fit_bn": "অক্টোবরের মাঝামাঝি বৃষ্টি কমে যাওয়ার কারণে খরাসহনশীল ও স্বল্পমেয়াদি আমন জাত (যেমন: ব্রি ধান৭১, ব্রি ধান৭৫, ব্রি ধান৮৩) চাষ করলে শেষ সময়ে সেচের খরচ বাঁচে।",
+          "climate_fit_en": "Due to historical cessation by mid-October, drought-tolerant and short-duration varieties (BRRI dhan71, dhan75, dhan83) protect against terminal drought.",
+          "source": "BRRI High Barind Drought Recommendations"
+        }
+      ]
+    },
+    "Chapainawabganj": {
+      "district_bn": "চাঁপাইনবাবগঞ্জ",
+      "district_en": "Chapainawabganj",
+      "aez": "AEZ 26 (উঁচু বরেন্দ্র ভূমি ও পদ্মা চর)",
+      "annual_rainfall_mm": 1413.0,
+      "rainy_season_onset": {
+        "window_bn": "১০ – ১৫ জুন",
+        "window_en": "June 10 – 15"
+      },
+      "rainy_season_cessation": {
+        "window_bn": "৮ – ১৪ অক্টোবর",
+        "window_en": "October 8 – 14"
+      },
+      "rainy_season_length_days": 124,
+      "dry_spell_risk_kharif1_pct": 25,
+      "dry_spell_desc_bn": "গত ৩০ বছরের নাসা তথ্যে খরিপ-১ মৌসুমে (বৈশাখ–জ্যৈষ্ঠ) টানা ১০ দিনের বেশি বৃষ্টিহীন শুষ্ক সময়ের সম্ভাবনা 25%।",
+      "dry_spell_desc_en": "30-year NASA data shows a 25% probability of a consecutive dry spell > 10 days in Kharif-1.",
+      "heat_stress_risk_pct": 48,
+      "heat_stress_desc_bn": "চৈত্র–বৈশাখ মাসে টানা ৩ দিন ৩৫°সে-এর বেশি তাপপ্রবাহের ঝুঁকি 48%।",
+      "heat_stress_desc_en": "48% probability of heat stress spells (>35°C for 3+ consecutive days) in March-April.",
+      "cold_spell_risk_pct": 26,
+      "cold_spell_desc_bn": "পৌষ–মাঘ মাসে তাপমাত্রা ১০°সে-এর নিচে নামার সম্ভাবনা 26% (আলু ও বীজতলার বাড়তি সুরক্ষা প্রয়োজন)।",
+      "cold_spell_desc_en": "26% probability of minimum temperature falling below 10°C in Dec-Jan.",
+      "monthly": [
+        {
+          "month": 1,
+          "month_bn": "জানু",
+          "month_en": "Jan",
+          "precip_mm": 8.7,
+          "temp_mean": 16.8,
+          "temp_max": 27.5,
+          "temp_min": 6.8
+        },
+        {
+          "month": 2,
+          "month_bn": "ফেব্রু",
+          "month_en": "Feb",
+          "precip_mm": 11.9,
+          "temp_mean": 21.0,
+          "temp_max": 33.5,
+          "temp_min": 9.3
+        },
+        {
+          "month": 3,
+          "month_bn": "মার্চ",
+          "month_en": "Mar",
+          "precip_mm": 29.1,
+          "temp_mean": 26.8,
+          "temp_max": 39.2,
+          "temp_min": 15.0
+        },
+        {
+          "month": 4,
+          "month_bn": "এপ্রিল",
+          "month_en": "Apr",
+          "precip_mm": 61.4,
+          "temp_mean": 31.3,
+          "temp_max": 43.0,
+          "temp_min": 20.1
+        },
+        {
+          "month": 5,
+          "month_bn": "মে",
+          "month_en": "May",
+          "precip_mm": 180.1,
+          "temp_mean": 31.4,
+          "temp_max": 42.0,
+          "temp_min": 23.5
+        },
+        {
+          "month": 6,
+          "month_bn": "জুন",
+          "month_en": "Jun",
+          "precip_mm": 177.6,
+          "temp_mean": 31.1,
+          "temp_max": 40.6,
+          "temp_min": 25.9
+        },
+        {
+          "month": 7,
+          "month_bn": "জুলাই",
+          "month_en": "Jul",
+          "precip_mm": 301.3,
+          "temp_mean": 29.5,
+          "temp_max": 35.1,
+          "temp_min": 25.5
+        },
+        {
+          "month": 8,
+          "month_bn": "আগস্ট",
+          "month_en": "Aug",
+          "precip_mm": 242.5,
+          "temp_mean": 28.9,
+          "temp_max": 34.3,
+          "temp_min": 25.0
+        },
+        {
+          "month": 9,
+          "month_bn": "সেপ্টে",
+          "month_en": "Sep",
+          "precip_mm": 254.2,
+          "temp_mean": 28.2,
+          "temp_max": 33.3,
+          "temp_min": 24.2
+        },
+        {
+          "month": 10,
+          "month_bn": "অক্টো",
+          "month_en": "Oct",
+          "precip_mm": 132.1,
+          "temp_mean": 26.2,
+          "temp_max": 32.3,
+          "temp_min": 18.4
+        },
+        {
+          "month": 11,
+          "month_bn": "নভে",
+          "month_en": "Nov",
+          "precip_mm": 5.6,
+          "temp_mean": 21.5,
+          "temp_max": 29.7,
+          "temp_min": 12.6
+        },
+        {
+          "month": 12,
+          "month_bn": "ডিসে",
+          "month_en": "Dec",
+          "precip_mm": 8.1,
+          "temp_mean": 17.4,
+          "temp_max": 26.4,
+          "temp_min": 7.4
+        }
+      ],
+      "crop_matching_options": [
+        {
+          "season": "rabi",
+          "season_bn": "রবি মৌসুম (কার্তিক–ফাল্গুন)",
+          "season_en": "Rabi Season (Nov–Mar)",
+          "crops": [
+            "Mustard (সরিষা)",
+            "Potato (আলু)",
+            "Maize (ভুট্টা)",
+            "Boro Rice (বোরো ধান)"
+          ],
+          "climate_fit_bn": "শীতকালীন স্বল্প বৃষ্টিপাত ও আর্দ্রতার জন্য সরিষা (বারি সরিষা-১৪/১৭) ও আলু অত্যন্ত উপযোগী। বোরো চাষ করলে ভূগর্ভস্থ পানির অপচয় কমাতে এডব্লিউডি (AWD) পদ্ধতি মেনে চলুন।",
+          "climate_fit_en": "Low winter rainfall makes short-duration mustard (BARI Sarisha-14/17) and potato optimal. For Boro rice, alternate wetting and drying (AWD) is strongly recommended.",
+          "source": "BARI & BRRI Agronomic Guidelines"
+        },
+        {
+          "season": "kharif_1",
+          "season_bn": "খরিপ-১ মৌসুম (চৈত্র–জ্যৈষ্ঠ)",
+          "season_en": "Kharif-1 Season (Apr–Jun)",
+          "crops": [
+            "Mungbean (মুগ ডাল)",
+            "Sesame (তিল)",
+            "Aus Rice (আউশ ধান)",
+            "Jute (পাট)"
+          ],
+          "climate_fit_bn": "প্রাক-বর্ষা মৌসুমে খরার ঝুঁকি এড়াতে দ্রুত বর্ধনশীল মুগডাল (বারি মুগ-৬) বা তিল উপযুক্ত। এটি মাটির উর্বরতা বাড়ায় এবং বর্ষার আগে কর্তন সম্ভব।",
+          "climate_fit_en": "To hedge against pre-monsoon dry spells, short-duration mungbean (BARI Mung-6) or sesame is ideal, fixing nitrogen and harvested before peak monsoon.",
+          "source": "DAE Field Manual & BARI Pulses Research"
+        },
+        {
+          "season": "kharif_2",
+          "season_bn": "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          "season_en": "Kharif-2 Season (Jul–Oct)",
+          "crops": [
+            "T. Aman Rice (রোপা আমন)"
+          ],
+          "climate_fit_bn": "অক্টোবরের মাঝামাঝি বৃষ্টি কমে যাওয়ার কারণে খরাসহনশীল ও স্বল্পমেয়াদি আমন জাত (যেমন: ব্রি ধান৭১, ব্রি ধান৭৫, ব্রি ধান৮৩) চাষ করলে শেষ সময়ে সেচের খরচ বাঁচে।",
+          "climate_fit_en": "Due to historical cessation by mid-October, drought-tolerant and short-duration varieties (BRRI dhan71, dhan75, dhan83) protect against terminal drought.",
+          "source": "BRRI High Barind Drought Recommendations"
+        }
+      ]
+    },
+    "Naogaon": {
+      "district_bn": "নওগাঁ",
+      "district_en": "Naogaon",
+      "aez": "AEZ 25, 26 (সমতল ও উঁচু বরেন্দ্র অঞ্চল)",
+      "annual_rainfall_mm": 1788.0,
+      "rainy_season_onset": {
+        "window_bn": "৮ – ১৪ জুন",
+        "window_en": "June 8 – 14"
+      },
+      "rainy_season_cessation": {
+        "window_bn": "১০ – ১৫ অক্টোবর",
+        "window_en": "October 10 – 15"
+      },
+      "rainy_season_length_days": 126,
+      "dry_spell_risk_kharif1_pct": 21,
+      "dry_spell_desc_bn": "গত ৩০ বছরের নাসা তথ্যে খরিপ-১ মৌসুমে (বৈশাখ–জ্যৈষ্ঠ) টানা ১০ দিনের বেশি বৃষ্টিহীন শুষ্ক সময়ের সম্ভাবনা 21%।",
+      "dry_spell_desc_en": "30-year NASA data shows a 21% probability of a consecutive dry spell > 10 days in Kharif-1.",
+      "heat_stress_risk_pct": 41,
+      "heat_stress_desc_bn": "চৈত্র–বৈশাখ মাসে টানা ৩ দিন ৩৫°সে-এর বেশি তাপপ্রবাহের ঝুঁকি 41%।",
+      "heat_stress_desc_en": "41% probability of heat stress spells (>35°C for 3+ consecutive days) in March-April.",
+      "cold_spell_risk_pct": 32,
+      "cold_spell_desc_bn": "পৌষ–মাঘ মাসে তাপমাত্রা ১০°সে-এর নিচে নামার সম্ভাবনা 32% (আলু ও বীজতলার বাড়তি সুরক্ষা প্রয়োজন)।",
+      "cold_spell_desc_en": "32% probability of minimum temperature falling below 10°C in Dec-Jan.",
+      "monthly": [
+        {
+          "month": 1,
+          "month_bn": "জানু",
+          "month_en": "Jan",
+          "precip_mm": 12.4,
+          "temp_mean": 16.5,
+          "temp_max": 26.8,
+          "temp_min": 6.4
+        },
+        {
+          "month": 2,
+          "month_bn": "ফেব্রু",
+          "month_en": "Feb",
+          "precip_mm": 12.4,
+          "temp_mean": 20.5,
+          "temp_max": 32.8,
+          "temp_min": 8.8
+        },
+        {
+          "month": 3,
+          "month_bn": "মার্চ",
+          "month_en": "Mar",
+          "precip_mm": 40.0,
+          "temp_mean": 26.1,
+          "temp_max": 38.5,
+          "temp_min": 14.1
+        },
+        {
+          "month": 4,
+          "month_bn": "এপ্রিল",
+          "month_en": "Apr",
+          "precip_mm": 94.5,
+          "temp_mean": 30.3,
+          "temp_max": 42.2,
+          "temp_min": 19.4
+        },
+        {
+          "month": 5,
+          "month_bn": "মে",
+          "month_en": "May",
+          "precip_mm": 258.4,
+          "temp_mean": 30.1,
+          "temp_max": 40.2,
+          "temp_min": 23.0
+        },
+        {
+          "month": 6,
+          "month_bn": "জুন",
+          "month_en": "Jun",
+          "precip_mm": 252.7,
+          "temp_mean": 29.9,
+          "temp_max": 37.8,
+          "temp_min": 25.3
+        },
+        {
+          "month": 7,
+          "month_bn": "জুলাই",
+          "month_en": "Jul",
+          "precip_mm": 355.8,
+          "temp_mean": 29.1,
+          "temp_max": 34.4,
+          "temp_min": 25.4
+        },
+        {
+          "month": 8,
+          "month_bn": "আগস্ট",
+          "month_en": "Aug",
+          "precip_mm": 283.5,
+          "temp_mean": 28.7,
+          "temp_max": 34.1,
+          "temp_min": 24.9
+        },
+        {
+          "month": 9,
+          "month_bn": "সেপ্টে",
+          "month_en": "Sep",
+          "precip_mm": 285.3,
+          "temp_mean": 28.1,
+          "temp_max": 33.2,
+          "temp_min": 24.2
+        },
+        {
+          "month": 10,
+          "month_bn": "অক্টো",
+          "month_en": "Oct",
+          "precip_mm": 174.7,
+          "temp_mean": 26.1,
+          "temp_max": 32.2,
+          "temp_min": 18.4
+        },
+        {
+          "month": 11,
+          "month_bn": "নভে",
+          "month_en": "Nov",
+          "precip_mm": 8.2,
+          "temp_mean": 21.5,
+          "temp_max": 29.6,
+          "temp_min": 12.3
+        },
+        {
+          "month": 12,
+          "month_bn": "ডিসে",
+          "month_en": "Dec",
+          "precip_mm": 9.8,
+          "temp_mean": 17.4,
+          "temp_max": 26.4,
+          "temp_min": 7.3
+        }
+      ],
+      "crop_matching_options": [
+        {
+          "season": "rabi",
+          "season_bn": "রবি মৌসুম (কার্তিক–ফাল্গুন)",
+          "season_en": "Rabi Season (Nov–Mar)",
+          "crops": [
+            "Mustard (সরিষা)",
+            "Potato (আলু)",
+            "Maize (ভুট্টা)",
+            "Boro Rice (বোরো ধান)"
+          ],
+          "climate_fit_bn": "শীতকালীন স্বল্প বৃষ্টিপাত ও আর্দ্রতার জন্য সরিষা (বারি সরিষা-১৪/১৭) ও আলু অত্যন্ত উপযোগী। বোরো চাষ করলে ভূগর্ভস্থ পানির অপচয় কমাতে এডব্লিউডি (AWD) পদ্ধতি মেনে চলুন।",
+          "climate_fit_en": "Low winter rainfall makes short-duration mustard (BARI Sarisha-14/17) and potato optimal. For Boro rice, alternate wetting and drying (AWD) is strongly recommended.",
+          "source": "BARI & BRRI Agronomic Guidelines"
+        },
+        {
+          "season": "kharif_1",
+          "season_bn": "খরিপ-১ মৌসুম (চৈত্র–জ্যৈষ্ঠ)",
+          "season_en": "Kharif-1 Season (Apr–Jun)",
+          "crops": [
+            "Mungbean (মুগ ডাল)",
+            "Sesame (তিল)",
+            "Aus Rice (আউশ ধান)",
+            "Jute (পাট)"
+          ],
+          "climate_fit_bn": "প্রাক-বর্ষা মৌসুমে খরার ঝুঁকি এড়াতে দ্রুত বর্ধনশীল মুগডাল (বারি মুগ-৬) বা তিল উপযুক্ত। এটি মাটির উর্বরতা বাড়ায় এবং বর্ষার আগে কর্তন সম্ভব।",
+          "climate_fit_en": "To hedge against pre-monsoon dry spells, short-duration mungbean (BARI Mung-6) or sesame is ideal, fixing nitrogen and harvested before peak monsoon.",
+          "source": "DAE Field Manual & BARI Pulses Research"
+        },
+        {
+          "season": "kharif_2",
+          "season_bn": "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          "season_en": "Kharif-2 Season (Jul–Oct)",
+          "crops": [
+            "T. Aman Rice (রোপা আমন)"
+          ],
+          "climate_fit_bn": "অক্টোবরের মাঝামাঝি বৃষ্টি কমে যাওয়ার কারণে খরাসহনশীল ও স্বল্পমেয়াদি আমন জাত (যেমন: ব্রি ধান৭১, ব্রি ধান৭৫, ব্রি ধান৮৩) চাষ করলে শেষ সময়ে সেচের খরচ বাঁচে।",
+          "climate_fit_en": "Due to historical cessation by mid-October, drought-tolerant and short-duration varieties (BRRI dhan71, dhan75, dhan83) protect against terminal drought.",
+          "source": "BRRI High Barind Drought Recommendations"
+        }
+      ]
+    },
+    "Natore": {
+      "district_bn": "নাটোর",
+      "district_en": "Natore",
+      "aez": "AEZ 11, 25 (গঙ্গা অববাহিকা ও চলনবিল এলাকা)",
+      "annual_rainfall_mm": 1967.0,
+      "rainy_season_onset": {
+        "window_bn": "৭ – ১২ জুন",
+        "window_en": "June 7 – 12"
+      },
+      "rainy_season_cessation": {
+        "window_bn": "১২ – ১৮ অক্টোবর",
+        "window_en": "October 12 – 18"
+      },
+      "rainy_season_length_days": 130,
+      "dry_spell_risk_kharif1_pct": 18,
+      "dry_spell_desc_bn": "গত ৩০ বছরের নাসা তথ্যে খরিপ-১ মৌসুমে (বৈশাখ–জ্যৈষ্ঠ) টানা ১০ দিনের বেশি বৃষ্টিহীন শুষ্ক সময়ের সম্ভাবনা 18%।",
+      "dry_spell_desc_en": "30-year NASA data shows a 18% probability of a consecutive dry spell > 10 days in Kharif-1.",
+      "heat_stress_risk_pct": 39,
+      "heat_stress_desc_bn": "চৈত্র–বৈশাখ মাসে টানা ৩ দিন ৩৫°সে-এর বেশি তাপপ্রবাহের ঝুঁকি 39%।",
+      "heat_stress_desc_en": "39% probability of heat stress spells (>35°C for 3+ consecutive days) in March-April.",
+      "cold_spell_risk_pct": 25,
+      "cold_spell_desc_bn": "পৌষ–মাঘ মাসে তাপমাত্রা ১০°সে-এর নিচে নামার সম্ভাবনা 25% (আলু ও বীজতলার বাড়তি সুরক্ষা প্রয়োজন)।",
+      "cold_spell_desc_en": "25% probability of minimum temperature falling below 10°C in Dec-Jan.",
+      "monthly": [
+        {
+          "month": 1,
+          "month_bn": "জানু",
+          "month_en": "Jan",
+          "precip_mm": 17.5,
+          "temp_mean": 16.9,
+          "temp_max": 27.0,
+          "temp_min": 7.1
+        },
+        {
+          "month": 2,
+          "month_bn": "ফেব্রু",
+          "month_en": "Feb",
+          "precip_mm": 15.2,
+          "temp_mean": 21.0,
+          "temp_max": 32.8,
+          "temp_min": 9.6
+        },
+        {
+          "month": 3,
+          "month_bn": "মার্চ",
+          "month_en": "Mar",
+          "precip_mm": 43.1,
+          "temp_mean": 26.5,
+          "temp_max": 38.3,
+          "temp_min": 14.9
+        },
+        {
+          "month": 4,
+          "month_bn": "এপ্রিল",
+          "month_en": "Apr",
+          "precip_mm": 115.5,
+          "temp_mean": 30.4,
+          "temp_max": 41.7,
+          "temp_min": 20.2
+        },
+        {
+          "month": 5,
+          "month_bn": "মে",
+          "month_en": "May",
+          "precip_mm": 290.5,
+          "temp_mean": 30.1,
+          "temp_max": 39.6,
+          "temp_min": 23.3
+        },
+        {
+          "month": 6,
+          "month_bn": "জুন",
+          "month_en": "Jun",
+          "precip_mm": 277.0,
+          "temp_mean": 29.7,
+          "temp_max": 37.0,
+          "temp_min": 25.4
+        },
+        {
+          "month": 7,
+          "month_bn": "জুলাই",
+          "month_en": "Jul",
+          "precip_mm": 372.5,
+          "temp_mean": 29.1,
+          "temp_max": 34.1,
+          "temp_min": 25.5
+        },
+        {
+          "month": 8,
+          "month_bn": "আগস্ট",
+          "month_en": "Aug",
+          "precip_mm": 307.6,
+          "temp_mean": 28.7,
+          "temp_max": 33.7,
+          "temp_min": 25.1
+        },
+        {
+          "month": 9,
+          "month_bn": "সেপ্টে",
+          "month_en": "Sep",
+          "precip_mm": 290.2,
+          "temp_mean": 28.2,
+          "temp_max": 33.1,
+          "temp_min": 24.5
+        },
+        {
+          "month": 10,
+          "month_bn": "অক্টো",
+          "month_en": "Oct",
+          "precip_mm": 207.2,
+          "temp_mean": 26.5,
+          "temp_max": 32.2,
+          "temp_min": 19.1
+        },
+        {
+          "month": 11,
+          "month_bn": "নভে",
+          "month_en": "Nov",
+          "precip_mm": 13.2,
+          "temp_mean": 22.0,
+          "temp_max": 29.7,
+          "temp_min": 13.2
+        },
+        {
+          "month": 12,
+          "month_bn": "ডিসে",
+          "month_en": "Dec",
+          "precip_mm": 17.5,
+          "temp_mean": 17.9,
+          "temp_max": 26.5,
+          "temp_min": 7.9
+        }
+      ],
+      "crop_matching_options": [
+        {
+          "season": "rabi",
+          "season_bn": "রবি মৌসুম (কার্তিক–ফাল্গুন)",
+          "season_en": "Rabi Season (Nov–Mar)",
+          "crops": [
+            "Mustard (সরিষা)",
+            "Potato (আলু)",
+            "Maize (ভুট্টা)",
+            "Boro Rice (বোরো ধান)"
+          ],
+          "climate_fit_bn": "শীতকালীন স্বল্প বৃষ্টিপাত ও আর্দ্রতার জন্য সরিষা (বারি সরিষা-১৪/১৭) ও আলু অত্যন্ত উপযোগী। বোরো চাষ করলে ভূগর্ভস্থ পানির অপচয় কমাতে এডব্লিউডি (AWD) পদ্ধতি মেনে চলুন।",
+          "climate_fit_en": "Low winter rainfall makes short-duration mustard (BARI Sarisha-14/17) and potato optimal. For Boro rice, alternate wetting and drying (AWD) is strongly recommended.",
+          "source": "BARI & BRRI Agronomic Guidelines"
+        },
+        {
+          "season": "kharif_1",
+          "season_bn": "খরিপ-১ মৌসুম (চৈত্র–জ্যৈষ্ঠ)",
+          "season_en": "Kharif-1 Season (Apr–Jun)",
+          "crops": [
+            "Mungbean (মুগ ডাল)",
+            "Sesame (তিল)",
+            "Aus Rice (আউশ ধান)",
+            "Jute (পাট)"
+          ],
+          "climate_fit_bn": "প্রাক-বর্ষা মৌসুমে খরার ঝুঁকি এড়াতে দ্রুত বর্ধনশীল মুগডাল (বারি মুগ-৬) বা তিল উপযুক্ত। এটি মাটির উর্বরতা বাড়ায় এবং বর্ষার আগে কর্তন সম্ভব।",
+          "climate_fit_en": "To hedge against pre-monsoon dry spells, short-duration mungbean (BARI Mung-6) or sesame is ideal, fixing nitrogen and harvested before peak monsoon.",
+          "source": "DAE Field Manual & BARI Pulses Research"
+        },
+        {
+          "season": "kharif_2",
+          "season_bn": "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          "season_en": "Kharif-2 Season (Jul–Oct)",
+          "crops": [
+            "T. Aman Rice (রোপা আমন)"
+          ],
+          "climate_fit_bn": "অক্টোবরের মাঝামাঝি বৃষ্টি কমে যাওয়ার কারণে খরাসহনশীল ও স্বল্পমেয়াদি আমন জাত (যেমন: ব্রি ধান৭১, ব্রি ধান৭৫, ব্রি ধান৮৩) চাষ করলে শেষ সময়ে সেচের খরচ বাঁচে।",
+          "climate_fit_en": "Due to historical cessation by mid-October, drought-tolerant and short-duration varieties (BRRI dhan71, dhan75, dhan83) protect against terminal drought.",
+          "source": "BRRI High Barind Drought Recommendations"
+        }
+      ]
+    },
+    "Bogura": {
+      "district_bn": "বগুড়া",
+      "district_en": "Bogura",
+      "aez": "AEZ 4, 25 (করতোয়া-বাঙালি প্লাবনভূমি ও বরেন্দ্র প্রান্ত)",
+      "annual_rainfall_mm": 2295.0,
+      "rainy_season_onset": {
+        "window_bn": "৬ – ১২ জুন",
+        "window_en": "June 6 – 12"
+      },
+      "rainy_season_cessation": {
+        "window_bn": "১৫ – ২২ অক্টোবর",
+        "window_en": "October 15 – 22"
+      },
+      "rainy_season_length_days": 133,
+      "dry_spell_risk_kharif1_pct": 15,
+      "dry_spell_desc_bn": "গত ৩০ বছরের নাসা তথ্যে খরিপ-১ মৌসুমে (বৈশাখ–জ্যৈষ্ঠ) টানা ১০ দিনের বেশি বৃষ্টিহীন শুষ্ক সময়ের সম্ভাবনা 15%।",
+      "dry_spell_desc_en": "30-year NASA data shows a 15% probability of a consecutive dry spell > 10 days in Kharif-1.",
+      "heat_stress_risk_pct": 34,
+      "heat_stress_desc_bn": "চৈত্র–বৈশাখ মাসে টানা ৩ দিন ৩৫°সে-এর বেশি তাপপ্রবাহের ঝুঁকি 34%।",
+      "heat_stress_desc_en": "34% probability of heat stress spells (>35°C for 3+ consecutive days) in March-April.",
+      "cold_spell_risk_pct": 27,
+      "cold_spell_desc_bn": "পৌষ–মাঘ মাসে তাপমাত্রা ১০°সে-এর নিচে নামার সম্ভাবনা 27% (আলু ও বীজতলার বাড়তি সুরক্ষা প্রয়োজন)।",
+      "cold_spell_desc_en": "27% probability of minimum temperature falling below 10°C in Dec-Jan.",
+      "monthly": [
+        {
+          "month": 1,
+          "month_bn": "জানু",
+          "month_en": "Jan",
+          "precip_mm": 15.7,
+          "temp_mean": 16.9,
+          "temp_max": 26.3,
+          "temp_min": 7.4
+        },
+        {
+          "month": 2,
+          "month_bn": "ফেব্রু",
+          "month_en": "Feb",
+          "precip_mm": 14.6,
+          "temp_mean": 20.7,
+          "temp_max": 31.9,
+          "temp_min": 9.9
+        },
+        {
+          "month": 3,
+          "month_bn": "মার্চ",
+          "month_en": "Mar",
+          "precip_mm": 56.3,
+          "temp_mean": 26.1,
+          "temp_max": 37.1,
+          "temp_min": 14.8
+        },
+        {
+          "month": 4,
+          "month_bn": "এপ্রিল",
+          "month_en": "Apr",
+          "precip_mm": 145.7,
+          "temp_mean": 29.6,
+          "temp_max": 40.2,
+          "temp_min": 19.9
+        },
+        {
+          "month": 5,
+          "month_bn": "মে",
+          "month_en": "May",
+          "precip_mm": 364.3,
+          "temp_mean": 29.4,
+          "temp_max": 38.2,
+          "temp_min": 23.2
+        },
+        {
+          "month": 6,
+          "month_bn": "জুন",
+          "month_en": "Jun",
+          "precip_mm": 367.7,
+          "temp_mean": 29.3,
+          "temp_max": 35.3,
+          "temp_min": 25.5
+        },
+        {
+          "month": 7,
+          "month_bn": "জুলাই",
+          "month_en": "Jul",
+          "precip_mm": 414.1,
+          "temp_mean": 29.0,
+          "temp_max": 33.6,
+          "temp_min": 25.6
+        },
+        {
+          "month": 8,
+          "month_bn": "আগস্ট",
+          "month_en": "Aug",
+          "precip_mm": 336.0,
+          "temp_mean": 28.8,
+          "temp_max": 33.7,
+          "temp_min": 25.3
+        },
+        {
+          "month": 9,
+          "month_bn": "সেপ্টে",
+          "month_en": "Sep",
+          "precip_mm": 323.3,
+          "temp_mean": 28.3,
+          "temp_max": 33.1,
+          "temp_min": 24.6
+        },
+        {
+          "month": 10,
+          "month_bn": "অক্টো",
+          "month_en": "Oct",
+          "precip_mm": 231.7,
+          "temp_mean": 26.5,
+          "temp_max": 32.2,
+          "temp_min": 19.4
+        },
+        {
+          "month": 11,
+          "month_bn": "নভে",
+          "month_en": "Nov",
+          "precip_mm": 11.9,
+          "temp_mean": 22.2,
+          "temp_max": 29.4,
+          "temp_min": 13.6
+        },
+        {
+          "month": 12,
+          "month_bn": "ডিসে",
+          "month_en": "Dec",
+          "precip_mm": 13.6,
+          "temp_mean": 18.1,
+          "temp_max": 26.2,
+          "temp_min": 8.6
+        }
+      ],
+      "crop_matching_options": [
+        {
+          "season": "rabi",
+          "season_bn": "রবি মৌসুম (কার্তিক–ফাল্গুন)",
+          "season_en": "Rabi Season (Nov–Mar)",
+          "crops": [
+            "Mustard (সরিষা)",
+            "Potato (আলু)",
+            "Maize (ভুট্টা)",
+            "Boro Rice (বোরো ধান)"
+          ],
+          "climate_fit_bn": "শীতকালীন স্বল্প বৃষ্টিপাত ও আর্দ্রতার জন্য সরিষা (বারি সরিষা-১৪/১৭) ও আলু অত্যন্ত উপযোগী। বোরো চাষ করলে ভূগর্ভস্থ পানির অপচয় কমাতে এডব্লিউডি (AWD) পদ্ধতি মেনে চলুন।",
+          "climate_fit_en": "Low winter rainfall makes short-duration mustard (BARI Sarisha-14/17) and potato optimal. For Boro rice, alternate wetting and drying (AWD) is strongly recommended.",
+          "source": "BARI & BRRI Agronomic Guidelines"
+        },
+        {
+          "season": "kharif_1",
+          "season_bn": "খরিপ-১ মৌসুম (চৈত্র–জ্যৈষ্ঠ)",
+          "season_en": "Kharif-1 Season (Apr–Jun)",
+          "crops": [
+            "Mungbean (মুগ ডাল)",
+            "Sesame (তিল)",
+            "Aus Rice (আউশ ধান)",
+            "Jute (পাট)"
+          ],
+          "climate_fit_bn": "প্রাক-বর্ষা মৌসুমে খরার ঝুঁকি এড়াতে দ্রুত বর্ধনশীল মুগডাল (বারি মুগ-৬) বা তিল উপযুক্ত। এটি মাটির উর্বরতা বাড়ায় এবং বর্ষার আগে কর্তন সম্ভব।",
+          "climate_fit_en": "To hedge against pre-monsoon dry spells, short-duration mungbean (BARI Mung-6) or sesame is ideal, fixing nitrogen and harvested before peak monsoon.",
+          "source": "DAE Field Manual & BARI Pulses Research"
+        },
+        {
+          "season": "kharif_2",
+          "season_bn": "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          "season_en": "Kharif-2 Season (Jul–Oct)",
+          "crops": [
+            "T. Aman Rice (রোপা আমন)"
+          ],
+          "climate_fit_bn": "অক্টোবরের মাঝামাঝি বৃষ্টি কমে যাওয়ার কারণে খরাসহনশীল ও স্বল্পমেয়াদি আমন জাত (যেমন: ব্রি ধান৭১, ব্রি ধান৭৫, ব্রি ধান৮৩) চাষ করলে শেষ সময়ে সেচের খরচ বাঁচে।",
+          "climate_fit_en": "Due to historical cessation by mid-October, drought-tolerant and short-duration varieties (BRRI dhan71, dhan75, dhan83) protect against terminal drought.",
+          "source": "BRRI High Barind Drought Recommendations"
+        }
+      ]
+    },
+    "Joypurhat": {
+      "district_bn": "জয়পুরহাট",
+      "district_en": "Joypurhat",
+      "aez": "AEZ 25 (সমতল বরেন্দ্র ও ছোট যমুনা প্লাবনভূমি)",
+      "annual_rainfall_mm": 2054.0,
+      "rainy_season_onset": {
+        "window_bn": "৬ – ১২ জুন",
+        "window_en": "June 6 – 12"
+      },
+      "rainy_season_cessation": {
+        "window_bn": "১২ – ১৮ অক্টোবর",
+        "window_en": "October 12 – 18"
+      },
+      "rainy_season_length_days": 130,
+      "dry_spell_risk_kharif1_pct": 16,
+      "dry_spell_desc_bn": "গত ৩০ বছরের নাসা তথ্যে খরিপ-১ মৌসুমে (বৈশাখ–জ্যৈষ্ঠ) টানা ১০ দিনের বেশি বৃষ্টিহীন শুষ্ক সময়ের সম্ভাবনা 16%।",
+      "dry_spell_desc_en": "30-year NASA data shows a 16% probability of a consecutive dry spell > 10 days in Kharif-1.",
+      "heat_stress_risk_pct": 33,
+      "heat_stress_desc_bn": "চৈত্র–বৈশাখ মাসে টানা ৩ দিন ৩৫°সে-এর বেশি তাপপ্রবাহের ঝুঁকি 33%।",
+      "heat_stress_desc_en": "33% probability of heat stress spells (>35°C for 3+ consecutive days) in March-April.",
+      "cold_spell_risk_pct": 35,
+      "cold_spell_desc_bn": "পৌষ–মাঘ মাসে তাপমাত্রা ১০°সে-এর নিচে নামার সম্ভাবনা 35% (আলু ও বীজতলার বাড়তি সুরক্ষা প্রয়োজন)।",
+      "cold_spell_desc_en": "35% probability of minimum temperature falling below 10°C in Dec-Jan.",
+      "monthly": [
+        {
+          "month": 1,
+          "month_bn": "জানু",
+          "month_en": "Jan",
+          "precip_mm": 12.9,
+          "temp_mean": 16.6,
+          "temp_max": 26.5,
+          "temp_min": 6.9
+        },
+        {
+          "month": 2,
+          "month_bn": "ফেব্রু",
+          "month_en": "Feb",
+          "precip_mm": 13.0,
+          "temp_mean": 20.5,
+          "temp_max": 32.3,
+          "temp_min": 9.2
+        },
+        {
+          "month": 3,
+          "month_bn": "মার্চ",
+          "month_en": "Mar",
+          "precip_mm": 49.4,
+          "temp_mean": 26.0,
+          "temp_max": 37.7,
+          "temp_min": 14.3
+        },
+        {
+          "month": 4,
+          "month_bn": "এপ্রিল",
+          "month_en": "Apr",
+          "precip_mm": 120.5,
+          "temp_mean": 29.8,
+          "temp_max": 41.0,
+          "temp_min": 19.5
+        },
+        {
+          "month": 5,
+          "month_bn": "মে",
+          "month_en": "May",
+          "precip_mm": 315.6,
+          "temp_mean": 29.7,
+          "temp_max": 39.1,
+          "temp_min": 23.0
+        },
+        {
+          "month": 6,
+          "month_bn": "জুন",
+          "month_en": "Jun",
+          "precip_mm": 318.7,
+          "temp_mean": 29.6,
+          "temp_max": 36.5,
+          "temp_min": 25.4
+        },
+        {
+          "month": 7,
+          "month_bn": "জুলাই",
+          "month_en": "Jul",
+          "precip_mm": 387.4,
+          "temp_mean": 29.0,
+          "temp_max": 34.0,
+          "temp_min": 25.5
+        },
+        {
+          "month": 8,
+          "month_bn": "আগস্ট",
+          "month_en": "Aug",
+          "precip_mm": 309.7,
+          "temp_mean": 28.8,
+          "temp_max": 34.0,
+          "temp_min": 25.1
+        },
+        {
+          "month": 9,
+          "month_bn": "সেপ্টে",
+          "month_en": "Sep",
+          "precip_mm": 307.7,
+          "temp_mean": 28.2,
+          "temp_max": 33.2,
+          "temp_min": 24.4
+        },
+        {
+          "month": 10,
+          "month_bn": "অক্টো",
+          "month_en": "Oct",
+          "precip_mm": 200.3,
+          "temp_mean": 26.3,
+          "temp_max": 32.2,
+          "temp_min": 18.8
+        },
+        {
+          "month": 11,
+          "month_bn": "নভে",
+          "month_en": "Nov",
+          "precip_mm": 9.0,
+          "temp_mean": 21.8,
+          "temp_max": 29.5,
+          "temp_min": 12.9
+        },
+        {
+          "month": 12,
+          "month_bn": "ডিসে",
+          "month_en": "Dec",
+          "precip_mm": 10.0,
+          "temp_mean": 17.8,
+          "temp_max": 26.3,
+          "temp_min": 7.9
+        }
+      ],
+      "crop_matching_options": [
+        {
+          "season": "rabi",
+          "season_bn": "রবি মৌসুম (কার্তিক–ফাল্গুন)",
+          "season_en": "Rabi Season (Nov–Mar)",
+          "crops": [
+            "Mustard (সরিষা)",
+            "Potato (আলু)",
+            "Maize (ভুট্টা)",
+            "Boro Rice (বোরো ধান)"
+          ],
+          "climate_fit_bn": "শীতকালীন স্বল্প বৃষ্টিপাত ও আর্দ্রতার জন্য সরিষা (বারি সরিষা-১৪/১৭) ও আলু অত্যন্ত উপযোগী। বোরো চাষ করলে ভূগর্ভস্থ পানির অপচয় কমাতে এডব্লিউডি (AWD) পদ্ধতি মেনে চলুন।",
+          "climate_fit_en": "Low winter rainfall makes short-duration mustard (BARI Sarisha-14/17) and potato optimal. For Boro rice, alternate wetting and drying (AWD) is strongly recommended.",
+          "source": "BARI & BRRI Agronomic Guidelines"
+        },
+        {
+          "season": "kharif_1",
+          "season_bn": "খরিপ-১ মৌসুম (চৈত্র–জ্যৈষ্ঠ)",
+          "season_en": "Kharif-1 Season (Apr–Jun)",
+          "crops": [
+            "Mungbean (মুগ ডাল)",
+            "Sesame (তিল)",
+            "Aus Rice (আউশ ধান)",
+            "Jute (পাট)"
+          ],
+          "climate_fit_bn": "প্রাক-বর্ষা মৌসুমে খরার ঝুঁকি এড়াতে দ্রুত বর্ধনশীল মুগডাল (বারি মুগ-৬) বা তিল উপযুক্ত। এটি মাটির উর্বরতা বাড়ায় এবং বর্ষার আগে কর্তন সম্ভব।",
+          "climate_fit_en": "To hedge against pre-monsoon dry spells, short-duration mungbean (BARI Mung-6) or sesame is ideal, fixing nitrogen and harvested before peak monsoon.",
+          "source": "DAE Field Manual & BARI Pulses Research"
+        },
+        {
+          "season": "kharif_2",
+          "season_bn": "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          "season_en": "Kharif-2 Season (Jul–Oct)",
+          "crops": [
+            "T. Aman Rice (রোপা আমন)"
+          ],
+          "climate_fit_bn": "অক্টোবরের মাঝামাঝি বৃষ্টি কমে যাওয়ার কারণে খরাসহনশীল ও স্বল্পমেয়াদি আমন জাত (যেমন: ব্রি ধান৭১, ব্রি ধান৭৫, ব্রি ধান৮৩) চাষ করলে শেষ সময়ে সেচের খরচ বাঁচে।",
+          "climate_fit_en": "Due to historical cessation by mid-October, drought-tolerant and short-duration varieties (BRRI dhan71, dhan75, dhan83) protect against terminal drought.",
+          "source": "BRRI High Barind Drought Recommendations"
+        }
+      ]
+    },
+    "Pabna": {
+      "district_bn": "পাবনা",
+      "district_en": "Pabna",
+      "aez": "AEZ 11 (উঁচু গাঙ্গেয় প্লাবনভূমি)",
+      "annual_rainfall_mm": 2266.0,
+      "rainy_season_onset": {
+        "window_bn": "৫ – ১১ জুন",
+        "window_en": "June 5 – 11"
+      },
+      "rainy_season_cessation": {
+        "window_bn": "১৫ – ২২ অক্টোবর",
+        "window_en": "October 15 – 22"
+      },
+      "rainy_season_length_days": 134,
+      "dry_spell_risk_kharif1_pct": 15,
+      "dry_spell_desc_bn": "গত ৩০ বছরের নাসা তথ্যে খরিপ-১ মৌসুমে (বৈশাখ–জ্যৈষ্ঠ) টানা ১০ দিনের বেশি বৃষ্টিহীন শুষ্ক সময়ের সম্ভাবনা 15%।",
+      "dry_spell_desc_en": "30-year NASA data shows a 15% probability of a consecutive dry spell > 10 days in Kharif-1.",
+      "heat_stress_risk_pct": 38,
+      "heat_stress_desc_bn": "চৈত্র–বৈশাখ মাসে টানা ৩ দিন ৩৫°সে-এর বেশি তাপপ্রবাহের ঝুঁকি 38%।",
+      "heat_stress_desc_en": "38% probability of heat stress spells (>35°C for 3+ consecutive days) in March-April.",
+      "cold_spell_risk_pct": 20,
+      "cold_spell_desc_bn": "পৌষ–মাঘ মাসে তাপমাত্রা ১০°সে-এর নিচে নামার সম্ভাবনা 20% (আলু ও বীজতলার বাড়তি সুরক্ষা প্রয়োজন)।",
+      "cold_spell_desc_en": "20% probability of minimum temperature falling below 10°C in Dec-Jan.",
+      "monthly": [
+        {
+          "month": 1,
+          "month_bn": "জানু",
+          "month_en": "Jan",
+          "precip_mm": 19.8,
+          "temp_mean": 17.2,
+          "temp_max": 27.1,
+          "temp_min": 7.7
+        },
+        {
+          "month": 2,
+          "month_bn": "ফেব্রু",
+          "month_en": "Feb",
+          "precip_mm": 19.3,
+          "temp_mean": 21.4,
+          "temp_max": 32.9,
+          "temp_min": 10.4
+        },
+        {
+          "month": 3,
+          "month_bn": "মার্চ",
+          "month_en": "Mar",
+          "precip_mm": 50.2,
+          "temp_mean": 26.7,
+          "temp_max": 38.1,
+          "temp_min": 15.6
+        },
+        {
+          "month": 4,
+          "month_bn": "এপ্রিল",
+          "month_en": "Apr",
+          "precip_mm": 142.3,
+          "temp_mean": 30.3,
+          "temp_max": 41.1,
+          "temp_min": 20.6
+        },
+        {
+          "month": 5,
+          "month_bn": "মে",
+          "month_en": "May",
+          "precip_mm": 335.9,
+          "temp_mean": 29.7,
+          "temp_max": 39.0,
+          "temp_min": 23.2
+        },
+        {
+          "month": 6,
+          "month_bn": "জুন",
+          "month_en": "Jun",
+          "precip_mm": 312.7,
+          "temp_mean": 29.1,
+          "temp_max": 35.3,
+          "temp_min": 25.3
+        },
+        {
+          "month": 7,
+          "month_bn": "জুলাই",
+          "month_en": "Jul",
+          "precip_mm": 416.5,
+          "temp_mean": 28.8,
+          "temp_max": 33.6,
+          "temp_min": 25.4
+        },
+        {
+          "month": 8,
+          "month_bn": "আগস্ট",
+          "month_en": "Aug",
+          "precip_mm": 363.5,
+          "temp_mean": 28.5,
+          "temp_max": 33.3,
+          "temp_min": 25.2
+        },
+        {
+          "month": 9,
+          "month_bn": "সেপ্টে",
+          "month_en": "Sep",
+          "precip_mm": 309.3,
+          "temp_mean": 28.2,
+          "temp_max": 33.1,
+          "temp_min": 24.7
+        },
+        {
+          "month": 10,
+          "month_bn": "অক্টো",
+          "month_en": "Oct",
+          "precip_mm": 244.8,
+          "temp_mean": 26.6,
+          "temp_max": 32.2,
+          "temp_min": 19.7
+        },
+        {
+          "month": 11,
+          "month_bn": "নভে",
+          "month_en": "Nov",
+          "precip_mm": 23.6,
+          "temp_mean": 22.4,
+          "temp_max": 29.8,
+          "temp_min": 13.9
+        },
+        {
+          "month": 12,
+          "month_bn": "ডিসে",
+          "month_en": "Dec",
+          "precip_mm": 28.5,
+          "temp_mean": 18.2,
+          "temp_max": 26.7,
+          "temp_min": 8.6
+        }
+      ],
+      "crop_matching_options": [
+        {
+          "season": "rabi",
+          "season_bn": "রবি মৌসুম (কার্তিক–ফাল্গুন)",
+          "season_en": "Rabi Season (Nov–Mar)",
+          "crops": [
+            "Mustard (সরিষা)",
+            "Potato (আলু)",
+            "Maize (ভুট্টা)",
+            "Boro Rice (বোরো ধান)"
+          ],
+          "climate_fit_bn": "শীতকালীন স্বল্প বৃষ্টিপাত ও আর্দ্রতার জন্য সরিষা (বারি সরিষা-১৪/১৭) ও আলু অত্যন্ত উপযোগী। বোরো চাষ করলে ভূগর্ভস্থ পানির অপচয় কমাতে এডব্লিউডি (AWD) পদ্ধতি মেনে চলুন।",
+          "climate_fit_en": "Low winter rainfall makes short-duration mustard (BARI Sarisha-14/17) and potato optimal. For Boro rice, alternate wetting and drying (AWD) is strongly recommended.",
+          "source": "BARI & BRRI Agronomic Guidelines"
+        },
+        {
+          "season": "kharif_1",
+          "season_bn": "খরিপ-১ মৌসুম (চৈত্র–জ্যৈষ্ঠ)",
+          "season_en": "Kharif-1 Season (Apr–Jun)",
+          "crops": [
+            "Mungbean (মুগ ডাল)",
+            "Sesame (তিল)",
+            "Aus Rice (আউশ ধান)",
+            "Jute (পাট)"
+          ],
+          "climate_fit_bn": "প্রাক-বর্ষা মৌসুমে খরার ঝুঁকি এড়াতে দ্রুত বর্ধনশীল মুগডাল (বারি মুগ-৬) বা তিল উপযুক্ত। এটি মাটির উর্বরতা বাড়ায় এবং বর্ষার আগে কর্তন সম্ভব।",
+          "climate_fit_en": "To hedge against pre-monsoon dry spells, short-duration mungbean (BARI Mung-6) or sesame is ideal, fixing nitrogen and harvested before peak monsoon.",
+          "source": "DAE Field Manual & BARI Pulses Research"
+        },
+        {
+          "season": "kharif_2",
+          "season_bn": "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          "season_en": "Kharif-2 Season (Jul–Oct)",
+          "crops": [
+            "T. Aman Rice (রোপা আমন)"
+          ],
+          "climate_fit_bn": "অক্টোবরের মাঝামাঝি বৃষ্টি কমে যাওয়ার কারণে খরাসহনশীল ও স্বল্পমেয়াদি আমন জাত (যেমন: ব্রি ধান৭১, ব্রি ধান৭৫, ব্রি ধান৮৩) চাষ করলে শেষ সময়ে সেচের খরচ বাঁচে।",
+          "climate_fit_en": "Due to historical cessation by mid-October, drought-tolerant and short-duration varieties (BRRI dhan71, dhan75, dhan83) protect against terminal drought.",
+          "source": "BRRI High Barind Drought Recommendations"
+        }
+      ]
+    },
+    "Sirajganj": {
+      "district_bn": "সিরাজগঞ্জ",
+      "district_en": "Sirajganj",
+      "aez": "AEZ 7, 8 (সক্রিয় ব্রহ্মপুত্র-যমুনা প্লাবনভূমি)",
+      "annual_rainfall_mm": 2521.0,
+      "rainy_season_onset": {
+        "window_bn": "৫ – ১০ জুন",
+        "window_en": "June 5 – 10"
+      },
+      "rainy_season_cessation": {
+        "window_bn": "১৬ – ২৩ অক্টোবর",
+        "window_en": "October 16 – 23"
+      },
+      "rainy_season_length_days": 135,
+      "dry_spell_risk_kharif1_pct": 13,
+      "dry_spell_desc_bn": "গত ৩০ বছরের নাসা তথ্যে খরিপ-১ মৌসুমে (বৈশাখ–জ্যৈষ্ঠ) টানা ১০ দিনের বেশি বৃষ্টিহীন শুষ্ক সময়ের সম্ভাবনা 13%।",
+      "dry_spell_desc_en": "30-year NASA data shows a 13% probability of a consecutive dry spell > 10 days in Kharif-1.",
+      "heat_stress_risk_pct": 32,
+      "heat_stress_desc_bn": "চৈত্র–বৈশাখ মাসে টানা ৩ দিন ৩৫°সে-এর বেশি তাপপ্রবাহের ঝুঁকি 32%।",
+      "heat_stress_desc_en": "32% probability of heat stress spells (>35°C for 3+ consecutive days) in March-April.",
+      "cold_spell_risk_pct": 20,
+      "cold_spell_desc_bn": "পৌষ–মাঘ মাসে তাপমাত্রা ১০°সে-এর নিচে নামার সম্ভাবনা 20% (আলু ও বীজতলার বাড়তি সুরক্ষা প্রয়োজন)।",
+      "cold_spell_desc_en": "20% probability of minimum temperature falling below 10°C in Dec-Jan.",
+      "monthly": [
+        {
+          "month": 1,
+          "month_bn": "জানু",
+          "month_en": "Jan",
+          "precip_mm": 20.6,
+          "temp_mean": 17.1,
+          "temp_max": 26.7,
+          "temp_min": 7.7
+        },
+        {
+          "month": 2,
+          "month_bn": "ফেব্রু",
+          "month_en": "Feb",
+          "precip_mm": 18.4,
+          "temp_mean": 21.1,
+          "temp_max": 32.3,
+          "temp_min": 10.2
+        },
+        {
+          "month": 3,
+          "month_bn": "মার্চ",
+          "month_en": "Mar",
+          "precip_mm": 61.5,
+          "temp_mean": 26.3,
+          "temp_max": 37.2,
+          "temp_min": 15.2
+        },
+        {
+          "month": 4,
+          "month_bn": "এপ্রিল",
+          "month_en": "Apr",
+          "precip_mm": 173.6,
+          "temp_mean": 29.7,
+          "temp_max": 40.1,
+          "temp_min": 20.4
+        },
+        {
+          "month": 5,
+          "month_bn": "মে",
+          "month_en": "May",
+          "precip_mm": 397.4,
+          "temp_mean": 29.4,
+          "temp_max": 38.0,
+          "temp_min": 23.1
+        },
+        {
+          "month": 6,
+          "month_bn": "জুন",
+          "month_en": "Jun",
+          "precip_mm": 388.7,
+          "temp_mean": 29.1,
+          "temp_max": 34.6,
+          "temp_min": 25.4
+        },
+        {
+          "month": 7,
+          "month_bn": "জুলাই",
+          "month_en": "Jul",
+          "precip_mm": 447.3,
+          "temp_mean": 28.8,
+          "temp_max": 33.5,
+          "temp_min": 25.4
+        },
+        {
+          "month": 8,
+          "month_bn": "আগস্ট",
+          "month_en": "Aug",
+          "precip_mm": 376.6,
+          "temp_mean": 28.6,
+          "temp_max": 33.5,
+          "temp_min": 25.2
+        },
+        {
+          "month": 9,
+          "month_bn": "সেপ্টে",
+          "month_en": "Sep",
+          "precip_mm": 327.6,
+          "temp_mean": 28.3,
+          "temp_max": 33.2,
+          "temp_min": 24.6
+        },
+        {
+          "month": 10,
+          "month_bn": "অক্টো",
+          "month_en": "Oct",
+          "precip_mm": 263.7,
+          "temp_mean": 26.6,
+          "temp_max": 32.2,
+          "temp_min": 19.7
+        },
+        {
+          "month": 11,
+          "month_bn": "নভে",
+          "month_en": "Nov",
+          "precip_mm": 22.2,
+          "temp_mean": 22.3,
+          "temp_max": 29.7,
+          "temp_min": 13.9
+        },
+        {
+          "month": 12,
+          "month_bn": "ডিসে",
+          "month_en": "Dec",
+          "precip_mm": 23.5,
+          "temp_mean": 18.3,
+          "temp_max": 26.5,
+          "temp_min": 8.9
+        }
+      ],
+      "crop_matching_options": [
+        {
+          "season": "rabi",
+          "season_bn": "রবি মৌসুম (কার্তিক–ফাল্গুন)",
+          "season_en": "Rabi Season (Nov–Mar)",
+          "crops": [
+            "Mustard (সরিষা)",
+            "Potato (আলু)",
+            "Maize (ভুট্টা)",
+            "Boro Rice (বোরো ধান)"
+          ],
+          "climate_fit_bn": "শীতকালীন স্বল্প বৃষ্টিপাত ও আর্দ্রতার জন্য সরিষা (বারি সরিষা-১৪/১৭) ও আলু অত্যন্ত উপযোগী। বোরো চাষ করলে ভূগর্ভস্থ পানির অপচয় কমাতে এডব্লিউডি (AWD) পদ্ধতি মেনে চলুন।",
+          "climate_fit_en": "Low winter rainfall makes short-duration mustard (BARI Sarisha-14/17) and potato optimal. For Boro rice, alternate wetting and drying (AWD) is strongly recommended.",
+          "source": "BARI & BRRI Agronomic Guidelines"
+        },
+        {
+          "season": "kharif_1",
+          "season_bn": "খরিপ-১ মৌসুম (চৈত্র–জ্যৈষ্ঠ)",
+          "season_en": "Kharif-1 Season (Apr–Jun)",
+          "crops": [
+            "Mungbean (মুগ ডাল)",
+            "Sesame (তিল)",
+            "Aus Rice (আউশ ধান)",
+            "Jute (পাট)"
+          ],
+          "climate_fit_bn": "প্রাক-বর্ষা মৌসুমে খরার ঝুঁকি এড়াতে দ্রুত বর্ধনশীল মুগডাল (বারি মুগ-৬) বা তিল উপযুক্ত। এটি মাটির উর্বরতা বাড়ায় এবং বর্ষার আগে কর্তন সম্ভব।",
+          "climate_fit_en": "To hedge against pre-monsoon dry spells, short-duration mungbean (BARI Mung-6) or sesame is ideal, fixing nitrogen and harvested before peak monsoon.",
+          "source": "DAE Field Manual & BARI Pulses Research"
+        },
+        {
+          "season": "kharif_2",
+          "season_bn": "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          "season_en": "Kharif-2 Season (Jul–Oct)",
+          "crops": [
+            "T. Aman Rice (রোপা আমন)"
+          ],
+          "climate_fit_bn": "অক্টোবরের মাঝামাঝি বৃষ্টি কমে যাওয়ার কারণে খরাসহনশীল ও স্বল্পমেয়াদি আমন জাত (যেমন: ব্রি ধান৭১, ব্রি ধান৭৫, ব্রি ধান৮৩) চাষ করলে শেষ সময়ে সেচের খরচ বাঁচে।",
+          "climate_fit_en": "Due to historical cessation by mid-October, drought-tolerant and short-duration varieties (BRRI dhan71, dhan75, dhan83) protect against terminal drought.",
+          "source": "BRRI High Barind Drought Recommendations"
+        }
+      ]
+    }
+  }
+}
