@@ -279,13 +279,13 @@ export const SimpleFarmerHome: React.FC = () => {
   };
 
   return (
-    <div className="max-w-[560px] mx-auto py-2 px-1 sm:px-2 pb-16 font-sans antialiased text-primary">
+    <div className="w-full max-w-7xl mx-auto py-3 sm:py-6 px-3 sm:px-6 lg:px-8 pb-20 font-sans antialiased text-primary">
       {/* Top Header: Brand + Lang Toggle + Auth Button */}
-      <header className="flex items-center justify-between gap-2 sm:gap-3 mb-6">
-        <div className="flex items-center gap-2.5 font-bold text-[21px] tracking-tight text-primary">
+      <header className="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8 pb-4 border-b border-border/70">
+        <div className="flex items-center gap-3">
           <svg
-            width="36"
-            height="36"
+            width="40"
+            height="40"
             viewBox="0 0 48 48"
             aria-hidden="true"
             className="flex-shrink-0"
@@ -312,10 +312,20 @@ export const SimpleFarmerHome: React.FC = () => {
               strokeLinecap="round"
             />
           </svg>
-          <span className="hidden xs:inline">FarmScale</span>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="font-extrabold text-[22px] sm:text-[24px] tracking-tight text-primary">FarmScale</span>
+              <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold">
+                {lang === "bn" ? "রাজশাহী বিভাগ ও বরেন্দ্র অঞ্চল পাইলট" : "Rajshahi Division & Barind Tract"}
+              </span>
+            </div>
+            <p className="hidden md:block text-xs text-secondary font-medium">
+              {lang === "bn" ? "নাসা উপগ্রহ ক্লাইমেটোলজি ও এআই ৩-ফসলি লাভজনক পর্যায় রূপরেখা" : "NASA Satellite Climatology & AI Crop Rotation Engine"}
+            </p>
+          </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Language switch pill: Bangla (default) & English */}
           <div
             className="flex bg-surface border border-border rounded-full p-0.5 shadow-2xs"
@@ -327,7 +337,7 @@ export const SimpleFarmerHome: React.FC = () => {
               disabled={isPendingLang}
               onClick={() => handleLanguageChange("bn")}
               aria-pressed={lang === "bn"}
-              className={`px-3 py-1.5 rounded-full text-[14px] font-semibold transition-all min-h-[36px] ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-full text-[13px] sm:text-[14px] font-semibold transition-all min-h-[36px] ${
                 lang === "bn"
                   ? "bg-gold text-[#1a1300] shadow-2xs"
                   : "text-secondary hover:text-primary"
@@ -340,7 +350,7 @@ export const SimpleFarmerHome: React.FC = () => {
               disabled={isPendingLang}
               onClick={() => handleLanguageChange("en")}
               aria-pressed={lang === "en"}
-              className={`px-3 py-1.5 rounded-full text-[14px] font-semibold transition-all min-h-[36px] ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-full text-[13px] sm:text-[14px] font-semibold transition-all min-h-[36px] ${
                 lang === "en"
                   ? "bg-gold text-[#1a1300] shadow-2xs"
                   : "text-secondary hover:text-primary"
@@ -355,86 +365,110 @@ export const SimpleFarmerHome: React.FC = () => {
         </div>
       </header>
 
-      {/* Main Title & Subtitle */}
-      <h1 className="text-[27px] sm:text-[30px] font-bold leading-[1.25] text-primary mt-4 mb-2">
-        {t.h1}
-      </h1>
-      <p className="text-[16px] sm:text-[17px] text-secondary leading-snug mb-5">
-        {t.sub}
-      </p>
+      {/* Hero & Cascading Location Selection: Responsive 2-column on desktop */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start mb-8">
+        {/* Left Column (Desktop 7 cols): Headline, Subtitle, Big Location Button */}
+        <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/20 text-[#1a1300] text-xs font-bold w-fit mb-3">
+            <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+            <span>{lang === "bn" ? "নাসা উপগ্রহের তথ্য ও ৩-ফসলি লাভজনক ঘূর্ণন" : "NASA Earth Data & 3-Season Profitable Rotations"}</span>
+          </div>
+          <h1 className="text-[28px] sm:text-[34px] lg:text-[40px] font-extrabold leading-[1.2] text-primary tracking-tight">
+            {t.h1}
+          </h1>
+          <p className="text-[16px] sm:text-[18px] text-secondary leading-relaxed mt-2.5 mb-6 max-w-xl">
+            {t.sub}
+          </p>
 
-      {/* Big "Use My Location" Button */}
-      <button
-        type="button"
-        onClick={handleUseLocation}
-        className="w-full min-h-[58px] rounded-2xl bg-gold hover:opacity-95 text-[#1a1300] font-bold text-[18px] sm:text-[19px] flex items-center justify-center gap-2.5 cursor-pointer shadow-sm active:scale-[0.99] transition-transform focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary mb-5"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z" />
-          <circle cx="12" cy="9.5" r="2.5" />
-        </svg>
-        <span>{t.go}</span>
-      </button>
-
-      {/* Cascading Location Selector: District -> Upazila (All 67 Upazilas of Rajshahi Division) */}
-      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-3 space-y-3 shadow-xs">
-        <div className="flex items-center justify-between">
-          <label className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-            <MapPin className="w-4 h-4 text-emerald-700" />
-            <span>{t.or}</span>
-          </label>
-          <button
-            type="button"
-            onClick={() => setShowMap(!showMap)}
-            className="text-xs font-semibold text-emerald-800 hover:text-emerald-950 underline flex items-center gap-1"
-          >
-            {showMap ? t.closeMap : t.pickMap}
-          </button>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3">
-          {/* District Dropdown (8 Districts) */}
-          <div>
-            <span className="block text-[11px] font-medium text-slate-500 mb-1">{t.district}</span>
-            <select
-              value={selectedDistrictEn}
-              onChange={(e) => handleDistrictChange(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white font-semibold text-sm text-slate-800 focus:ring-2 focus:ring-primary min-h-[44px]"
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            {/* Big "Use My Location" Button */}
+            <button
+              type="button"
+              onClick={handleUseLocation}
+              className="min-h-[56px] px-6 rounded-2xl bg-gold hover:opacity-95 text-[#1a1300] font-bold text-[17px] sm:text-[18px] flex items-center justify-center gap-2.5 cursor-pointer shadow-sm active:scale-[0.99] transition-transform focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
             >
-              {RAJSHAHI_DISTRICTS.map((d) => (
-                <option key={d.en} value={d.en}>
-                  {lang === "bn" ? d.bn : d.en}
-                </option>
-              ))}
-            </select>
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z" />
+                <circle cx="12" cy="9.5" r="2.5" />
+              </svg>
+              <span>{t.go}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setShowMap(!showMap)}
+              className="min-h-[56px] px-5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold text-[15px] flex items-center justify-center gap-2 cursor-pointer shadow-2xs transition"
+            >
+              <MapPin className="w-4 h-4 text-emerald-700" />
+              <span>{showMap ? t.closeMap : t.pickMap}</span>
+            </button>
           </div>
 
-          {/* Upazila Dropdown (All Upazilas for selected district) */}
-          <div>
-            <span className="block text-[11px] font-medium text-slate-500 mb-1">
-              {lang === "bn" ? `উপজেলা (${filteredUpazilas.length}টি)` : `Upazila (${filteredUpazilas.length})`}
+          {/* Dynamic Status / Location Notes */}
+          <p
+            className="min-h-[24px] mt-3 text-[14px] text-secondary leading-snug"
+            role="status"
+          >
+            {statusMessage}
+          </p>
+        </div>
+
+        {/* Right Column (Desktop 5 cols): Cascading Select Card */}
+        <div className="lg:col-span-5 bg-white border border-slate-200/90 rounded-3xl p-5 sm:p-6 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+            <label className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
+              <MapPin className="w-4 h-4 text-emerald-700" />
+              <span>{t.or}</span>
+            </label>
+            <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              {lang === "bn" ? "৬৭টি উপজেলা" : "67 Upazilas"}
             </span>
-            <select
-              value={selectedUpazilaEn}
-              onChange={(e) => handleUpazilaChange(e.target.value)}
-              className="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white font-semibold text-sm text-slate-800 focus:ring-2 focus:ring-primary min-h-[44px]"
-            >
-              {filteredUpazilas.map((u) => (
-                <option key={u.upazila_en} value={u.upazila_en}>
-                  {lang === "bn" ? u.upazila_bn : u.upazila_en}
-                </option>
-              ))}
-            </select>
+          </div>
+
+          <div className="space-y-3.5">
+            {/* District Dropdown (8 Districts) */}
+            <div>
+              <span className="block text-xs font-bold text-slate-600 mb-1.5">{t.district}</span>
+              <select
+                value={selectedDistrictEn}
+                onChange={(e) => handleDistrictChange(e.target.value)}
+                className="w-full px-3.5 py-3 rounded-xl border border-slate-300 bg-slate-50 hover:bg-white font-semibold text-sm text-slate-900 focus:ring-2 focus:ring-primary min-h-[46px] transition cursor-pointer"
+              >
+                {RAJSHAHI_DISTRICTS.map((d) => (
+                  <option key={d.en} value={d.en}>
+                    {lang === "bn" ? d.bn : d.en}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Upazila Dropdown (All Upazilas for selected district) */}
+            <div>
+              <span className="block text-xs font-bold text-slate-600 mb-1.5">
+                {lang === "bn" ? `উপজেলা (${filteredUpazilas.length}টি)` : `Upazila (${filteredUpazilas.length})`}
+              </span>
+              <select
+                value={selectedUpazilaEn}
+                onChange={(e) => handleUpazilaChange(e.target.value)}
+                className="w-full px-3.5 py-3 rounded-xl border border-slate-300 bg-slate-50 hover:bg-white font-semibold text-sm text-slate-900 focus:ring-2 focus:ring-primary min-h-[46px] transition cursor-pointer"
+              >
+                {filteredUpazilas.map((u) => (
+                  <option key={u.upazila_en} value={u.upazila_en}>
+                    {lang === "bn" ? u.upazila_bn : u.upazila_en}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
       </div>
@@ -499,8 +533,8 @@ export const SimpleFarmerHome: React.FC = () => {
               </span>
             </div>
 
-            {/* Exactly 3 Recommendation Cards in fixed order: profit, shift, easy */}
-            <div className="space-y-4">
+            {/* Exactly 3 Recommendation Cards: Responsive 3-Column Comparison on Desktop */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
               {recommendations.map((opt) => {
                 const isProfit = opt.key === "profit";
                 const isShift = opt.key === "shift";
@@ -513,136 +547,142 @@ export const SimpleFarmerHome: React.FC = () => {
                   <article
                     key={opt.key}
                     tabIndex={0}
-                    className={`rounded-[20px] p-5 border transition-all ${
+                    className={`rounded-[24px] p-5 sm:p-6 border transition-all flex flex-col justify-between h-full ${
                       isProfit
-                        ? "bg-surface border-gold/70 shadow-sm ring-1 ring-gold/40"
-                        : "bg-surface border-border hover:border-gold/50"
+                        ? "bg-surface border-gold/80 shadow-md ring-1 ring-gold/40"
+                        : "bg-surface border-border hover:border-gold/50 shadow-xs"
                     } focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary`}
                   >
-                    {/* Card Header Badge */}
-                    <div className="flex items-center justify-between gap-2 mb-3">
-                      <div className="flex items-center gap-2">
-                        {isProfit && (
-                          <span className="inline-flex items-center gap-1 text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-gold text-[#1a1300] uppercase tracking-wide">
-                            <Sparkles className="w-3 h-3 fill-current" />
-                            {lang === "bn" ? "সেরা পছন্দ" : "Top Pick"}
-                          </span>
-                        )}
-                        {isShift && (
-                          <span className="inline-flex items-center text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-forest text-white uppercase tracking-wide">
-                            {lang === "bn" ? "পানি সাশ্রয়ী" : "Saves Water"}
-                          </span>
-                        )}
-                        <h2 className="text-[19px] sm:text-[20px] font-bold text-primary leading-snug">
-                          {cardTitle}
-                        </h2>
+                    <div>
+                      {/* Card Header Badge */}
+                      <div className="flex items-center justify-between gap-2 mb-3">
+                        <div className="flex items-center gap-2">
+                          {isProfit && (
+                            <span className="inline-flex items-center gap-1 text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-gold text-[#1a1300] uppercase tracking-wide">
+                              <Sparkles className="w-3 h-3 fill-current" />
+                              {lang === "bn" ? "সেরা পছন্দ" : "Top Pick"}
+                            </span>
+                          )}
+                          {isShift && (
+                            <span className="inline-flex items-center text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-forest text-white uppercase tracking-wide">
+                              {lang === "bn" ? "পানি সাশ্রয়ী" : "Saves Water"}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                    </div>
 
-                    {/* 3-Season Rotation: Rabi -> Kharif-1 -> Kharif-2 */}
-                    <div className="bg-background-50 border border-border/80 rounded-2xl p-3 my-3">
-                      <div className="grid grid-cols-3 gap-2 items-center text-center">
-                        {opt.crops.map((cropKey, idx) => (
-                          <div key={idx} className="flex flex-col items-center">
-                            <span className="text-[11px] font-semibold text-secondary uppercase tracking-wider mb-1">
-                              {idx === 0
-                                ? lang === "bn"
-                                  ? "রবি"
-                                  : "Rabi"
-                                : idx === 1
-                                ? lang === "bn"
-                                  ? "খরিপ-১"
-                                  : "Kharif-1"
-                                : lang === "bn"
-                                ? "খরিপ-২"
-                                : "Kharif-2"}
-                            </span>
-                            <CropIcon crop={cropKey} size={48} className="my-0.5" />
-                            <span className="text-[13px] sm:text-[14px] font-bold text-primary mt-1 line-clamp-1">
-                              {CROP_NAMES[lang][cropKey] || cropKey}
-                            </span>
+                      <h2 className="text-[19px] sm:text-[21px] font-bold text-primary leading-snug mb-3">
+                        {cardTitle}
+                      </h2>
+
+                      {/* 3-Season Rotation: Rabi -> Kharif-1 -> Kharif-2 */}
+                      <div className="bg-background-50 border border-border/80 rounded-2xl p-3 my-3">
+                        <div className="grid grid-cols-3 gap-2 items-center text-center">
+                          {opt.crops.map((cropKey, idx) => (
+                            <div key={idx} className="flex flex-col items-center">
+                              <span className="text-[11px] font-semibold text-secondary uppercase tracking-wider mb-1">
+                                {idx === 0
+                                  ? lang === "bn"
+                                    ? "রবি"
+                                    : "Rabi"
+                                  : idx === 1
+                                  ? lang === "bn"
+                                    ? "খরিপ-১"
+                                    : "Kharif-1"
+                                  : lang === "bn"
+                                  ? "খরিপ-২"
+                                  : "Kharif-2"}
+                              </span>
+                              <CropIcon crop={cropKey} size={48} className="my-0.5" />
+                              <span className="text-[13px] sm:text-[14px] font-bold text-primary mt-1 line-clamp-1">
+                                {CROP_NAMES[lang][cropKey] || cropKey}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Financial & Water Metrics */}
+                      <div className="grid grid-cols-3 gap-1.5 py-3 border-y border-border/70 my-3 text-center">
+                        <div>
+                          <div className="text-[11px] font-medium text-secondary">
+                            {t.profit}
                           </div>
-                        ))}
+                          <div className="text-[17px] sm:text-[18px] font-extrabold text-forest mt-0.5">
+                            {formatTaka(opt.profit_per_bigha, lang)}
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCostBreakdownOption(opt);
+                          }}
+                          className="border-x border-border/60 hover:bg-gold/10 transition-colors rounded-lg py-0.5 px-1 flex flex-col items-center cursor-pointer group"
+                          title={lang === "bn" ? "খরচের বিস্তারিত হিসাব দেখুন ও নিজের মতো পরিবর্তন করুন" : "View & edit cost breakdown"}
+                        >
+                          <div className="text-[11px] font-medium text-secondary flex items-center gap-0.5">
+                            <span>{t.cost}</span>
+                            <span className="text-[10px] text-emerald-800 font-bold bg-emerald-100 px-1 rounded-sm group-hover:bg-emerald-200">ⓘ</span>
+                          </div>
+                          <div className="text-[17px] sm:text-[18px] font-bold text-primary mt-0.5">
+                            {formatTaka(opt.cost_per_bigha, lang)}
+                          </div>
+                        </button>
+
+                        <div>
+                          <div className="text-[11px] font-medium text-secondary">
+                            {t.water}
+                          </div>
+                          <div className="text-[16px] sm:text-[17px] font-bold text-primary mt-0.5">
+                            {waterLabel}
+                          </div>
+                        </div>
                       </div>
+
+                      {/* Short Reason Sentence */}
+                      <p className="text-[14px] sm:text-[15px] text-secondary leading-relaxed m-0 mb-4">
+                        {reason}
+                      </p>
                     </div>
 
-                    {/* Financial & Water Metrics */}
-                    <div className="grid grid-cols-3 gap-2 py-3 border-y border-border/70 my-3 text-center">
-                      <div>
-                        <div className="text-[12px] font-medium text-secondary">
-                          {t.profit}
-                        </div>
-                        <div className="text-[18px] sm:text-[19px] font-extrabold text-forest mt-0.5">
-                          {formatTaka(opt.profit_per_bigha, lang)}
-                        </div>
-                      </div>
-
+                    {/* Card Actions (Anchored to bottom) */}
+                    <div className="space-y-2 pt-2 mt-auto">
+                      {/* Cost Breakdown & Participatory Budget Button */}
                       <button
                         type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setCostBreakdownOption(opt);
-                        }}
-                        className="border-x border-border/60 hover:bg-gold/10 transition-colors rounded-lg py-0.5 px-1 flex flex-col items-center cursor-pointer group"
-                        title={lang === "bn" ? "খরচের বিস্তারিত হিসাব দেখুন ও নিজের মতো পরিবর্তন করুন" : "View & edit cost breakdown"}
+                        onClick={() => setCostBreakdownOption(opt)}
+                        className="w-full py-2 px-3 rounded-xl text-xs font-bold text-emerald-900 bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200/90 flex items-center justify-center gap-1.5 transition-colors cursor-pointer min-h-[40px]"
                       >
-                        <div className="text-[12px] font-medium text-secondary flex items-center gap-1">
-                          <span>{t.cost}</span>
-                          <span className="text-[10px] text-emerald-800 font-bold bg-emerald-100 px-1 rounded-sm group-hover:bg-emerald-200">ⓘ</span>
-                        </div>
-                        <div className="text-[18px] sm:text-[19px] font-bold text-primary mt-0.5">
-                          {formatTaka(opt.cost_per_bigha, lang)}
-                        </div>
+                        <Calculator className="w-3.5 h-3.5 text-amber-600" />
+                        <span>
+                          {lang === "bn"
+                            ? "খরচ ও লাভের হিসাব (সম্পাদনাযোগ্য) ⓘ"
+                            : "Cost Breakdown & Budget ⓘ"}
+                        </span>
                       </button>
 
-                      <div>
-                        <div className="text-[12px] font-medium text-secondary">
-                          {t.water}
-                        </div>
-                        <div className="text-[17px] sm:text-[18px] font-bold text-primary mt-0.5">
-                          {waterLabel}
-                        </div>
-                      </div>
+                      {/* Action button to expand stage-by-stage AI outline */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedOptionForOutline(opt);
+                          setTimeout(() => {
+                            const outlineEl = document.getElementById("ai-outline-section");
+                            if (outlineEl) outlineEl.scrollIntoView({ behavior: "smooth" });
+                          }, 100);
+                        }}
+                        className={`w-full py-2.5 px-4 rounded-xl font-bold text-[14px] sm:text-[15px] flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[44px] ${
+                          isSelectedForOutline
+                            ? "bg-forest text-white ring-2 ring-gold"
+                            : "bg-gold/20 hover:bg-gold/30 text-primary border border-gold/40"
+                        }`}
+                      >
+                        <span>{t.selectPlan}</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
                     </div>
-
-                    {/* Short Reason Sentence */}
-                    <p className="text-[15px] sm:text-[16px] text-secondary leading-relaxed m-0">
-                      {reason}
-                    </p>
-
-                    {/* Cost Breakdown & Participatory Budget Button */}
-                    <button
-                      type="button"
-                      onClick={() => setCostBreakdownOption(opt)}
-                      className="w-full mt-3 py-2 px-3 rounded-xl text-xs sm:text-[13px] font-bold text-emerald-900 bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/90 flex items-center justify-center gap-1.5 transition-colors cursor-pointer min-h-[40px]"
-                    >
-                      <Calculator className="w-4 h-4 text-amber-600" />
-                      <span>
-                        {lang === "bn"
-                          ? "উৎপাদন খরচ ও লাভ-ক্ষতির পূর্ণ হিসাব (সম্পাদনাযোগ্য) ⓘ"
-                          : "Cost Breakdown & Participatory Budget ⓘ"}
-                      </span>
-                    </button>
-
-                    {/* Action button to expand stage-by-stage AI outline */}
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setSelectedOptionForOutline(opt);
-                        setTimeout(() => {
-                          const outlineEl = document.getElementById("ai-outline-section");
-                          if (outlineEl) outlineEl.scrollIntoView({ behavior: "smooth" });
-                        }, 100);
-                      }}
-                      className={`w-full mt-2.5 py-2.5 px-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[44px] ${
-                        isSelectedForOutline
-                          ? "bg-forest text-white ring-2 ring-gold"
-                          : "bg-gold/20 hover:bg-gold/30 text-primary border border-gold/40"
-                      }`}
-                    >
-                      <span>{t.selectPlan}</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
                   </article>
                 );
               })}

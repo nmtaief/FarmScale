@@ -161,7 +161,7 @@ export const CostBreakdownDrawer: React.FC<CostBreakdownDrawerProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
-      <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden max-h-[94vh] flex flex-col font-sans">
+      <div className="relative w-full max-w-xl lg:max-w-3xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden max-h-[94vh] flex flex-col font-sans">
         {/* Header */}
         <div className="px-5 py-4 bg-primary text-white flex items-center justify-between">
           <div className="flex items-center gap-2.5">

@@ -89,11 +89,12 @@ export function useAuth() {
     setAuthError(null);
     const supabase = getSupabase();
     if (!supabase || !isSupabaseConfigured) {
-      // Demo guest fallback if Supabase credentials are not yet entered in .env
+      // Demo Google user fallback when Supabase credentials are not yet entered in .env
       const demoUser: UserProfile = {
-        id: "demo_guest_" + Date.now(),
-        email: "farmer.demo@farmscale.org",
-        name: "বরেন্দ্র কৃষক (Demo)",
+        id: "google_user_demo",
+        email: "nmtaief.agro@gmail.com",
+        name: "নূর মোহাম্মদ তায়েফ (Google)",
+        avatar_url: "https://lh3.googleusercontent.com/a/default-user=s96-c",
         language_preference: "bn",
       };
       localStorage.setItem("farmscale_guest_profile", JSON.stringify(demoUser));
