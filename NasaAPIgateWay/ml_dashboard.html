@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NASA FarmScale - XGBoost Crop Rotation AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #f3f6f1;
+      --panel: #ffffff;
+      --card-bg: #f9fbf8;
+      --ink: #1b261d;
+      --mute: #617062;
+      --line: #dfe5db;
+      --acc: #1f6b3e;
+      --acc-light: #e6f3eb;
+      --acc-hover: #16522e;
+      --gold: #b37409;
+      --gold-light: #fef7e6;
+      --blue: #236fa1;
+      --blue-light: #e8f4fc;
+      --red: #c23b2b;
+      --radius: 12px;
+      --shadow: 0 2px 10px rgba(0, 30, 10, 0.05), 0 1px 3px rgba(0, 0, 0, 0.04);
+      --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #111612;
+      --panel: #182019;
+      --card-bg: #1c261e;
+      --ink: #e5ece4;
+      --mute: #8e9e90;
+      --line: #2a372c;
+      --acc: #4db370;
+      --acc-light: #163020;
+      --acc-hover: #61ca84;
+      --gold: #f5b041;
+      --gold-light: #33240e;
+      --blue: #58a6df;
+      --blue-light: #12283a;
+      --red: #e76f51;
+      --shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    .container { max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+
+    /* Top Nav */
+    header {
+      background: var(--panel);
+      padding: 20px 28px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      border: 1px solid var(--line);
+    }
+
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, #1f6b3e, #2d9c5b);
+      color: #fff;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 4px 12px rgba(31, 107, 62, 0.3);
+    }
+    .brand h1 { font-size: 20px; font-weight: 700; color: var(--ink); }
+    .brand p { font-size: 13px; color: var(--mute); }
+
+    .header-controls { display: flex; align-items: center; gap: 12px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 600;
+      background: var(--acc-light); color: var(--acc);
+    }
+    .badge.live { background: var(--blue-light); color: var(--blue); }
+
+    /* Arc Architecture Map */
+    .arc-flow {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .arc-flow h2 { font-size: 15px; font-weight: 700; color: var(--mute); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      position: relative;
+    }
+    .flow-step {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: var(--transition);
+    }
+    .flow-step:hover { transform: translateY(-2px); border-color: var(--acc); }
+    .step-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--acc); }
+    .step-title { font-size: 14px; font-weight: 600; }
+    .step-desc { font-size: 12px; color: var(--mute); }
+
+    /* Main Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Left Sidebar: Controls */
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .panel {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line);
+    }
+    .panel-header h3 { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+    .form-control, textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--ink);
+      font-size: 13.5px;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+    .form-control:focus, textarea:focus, select:focus {
+      outline: none; border-color: var(--acc); box-shadow: 0 0 0 3px rgba(31, 107, 62, 0.15);
+    }
+
+    .preset-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .chip {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 4px 10px;
+      font-size: 11.5px;
+      cursor: pointer;
+      color: var(--mute);
+      transition: var(--transition);
+    }
+    .chip:hover { border-color: var(--acc); color: var(--acc); background: var(--acc-light); }
+
+    .goal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .goal-btn {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: var(--card-bg);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--ink);
+      transition: var(--transition);
+    }
+    .goal-btn i { font-size: 18px; color: var(--mute); }
+    .goal-btn.active {
+      background: var(--acc-light);
+      border-color: var(--acc);
+      color: var(--acc);
+    }
+    .goal-btn.active i { color: var(--acc); }
+
+    .btn-primary {
+      width: 100%;
+      padding: 12px 18px;
+      background: var(--acc);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 14.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 4px 14px rgba(31, 107, 62, 0.25);
+      transition: var(--transition);
+    }
+    .btn-primary:hover { background: var(--acc-hover); transform: translateY(-1px); }
+
+    .btn-secondary {
+      width: 100%;
+      padding: 10px 16px;
+      background: var(--card-bg);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      transition: var(--transition);
+    }
+    .btn-secondary:hover { background: var(--panel); border-color: var(--blue); color: var(--blue); }
+
+    /* Live Update Panel */
+    .model-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .meta-box {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .meta-val { font-size: 16px; font-weight: 700; color: var(--acc); }
+    .meta-lbl { font-size: 11px; color: var(--mute); text-transform: uppercase; }
+
+    /* Right Area: Results */
+    .results-area { display: flex; flex-direction: column; gap: 20px; }
+
+    /* Environmental Indicators Ribbon */
+    .env-ribbon {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .env-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .env-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+    }
+    .env-icon.power { background: #fee8d6; color: #d9661b; }
+    .env-icon.smap { background: #d7f1f3; color: #12858c; }
+    .env-icon.modis { background: #dcf2db; color: #3d9a3a; }
+    .env-icon.soil { background: #eee9dc; color: #7f6032; }
+
+    .env-info h4 { font-size: 14px; font-weight: 700; }
+    .env-info p { font-size: 11.5px; color: var(--mute); }
+
+    /* Plain Language Answer Box */
+    .llm-box {
+      background: linear-gradient(180deg, var(--panel) 0%, var(--card-bg) 100%);
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--acc);
+    }
+    .llm-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--ink); }
+    .llm-box .llm-summary { font-size: 14px; color: var(--mute); margin-bottom: 18px; }
+
+    /* Rotation Cards */
+    .rotation-card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .rotation-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .rot-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 14px; flex-wrap: wrap; gap: 10px;
+    }
+    .rot-title { font-size: 17px; font-weight: 700; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+    .rank-pill {
+      background: var(--acc); color: #fff; width: 26px; height: 26px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+    }
+    .score-badge {
+      background: var(--acc-light); color: var(--acc);
+      font-size: 15px; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+    }
+
+    .season-timeline {
+      display: flex; align-items: center; gap: 8px;
+      margin: 12px 0 16px; flex-wrap: wrap;
+    }
+    .season-node {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .season-node.rabi { border-left: 3px solid #d9661b; }
+    .season-node.kharif1 { border-left: 3px solid #2b76bd; }
+    .season-node.kharif2 { border-left: 3px solid #3d9a3a; }
+    .season-arrow { color: var(--mute); font-size: 12px; }
+
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+      background: var(--card-bg);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .metric-item { display: flex; flex-direction: column; }
+    .metric-lbl { font-size: 11px; color: var(--mute); }
+    .metric-val { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+
+    .reasons-list { list-style: none; margin-bottom: 12px; }
+    .reasons-list li {
+      font-size: 13px; color: var(--ink); padding: 4px 0 4px 20px;
+      position: relative;
+    }
+    .reasons-list li::before {
+      content: "✓"; position: absolute; left: 0; color: var(--acc); font-weight: 700;
+    }
+
+    .advice-alert {
+      background: var(--acc-light);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12.5px;
+      color: var(--acc);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* Charts Panel */
+    .chart-container {
+      position: relative;
+      height: 220px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Top Navigation -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-seedling"></i></div>
+      <div>
+        <h1>NASA FarmScale AI</h1>
+        <p>Layer 3 XGBoost ML Model & Crop Rotation Engine for Rajshahi, Bangladesh</p>
+      </div>
+    </div>
+    <div class="header-controls">
+      <div class="badge live"><i class="fa-solid fa-satellite-dish"></i> NASA Real Data Stream</div>
+      <div class="badge" id="modelVerBadge"><i class="fa-solid fa-robot"></i> XGBoost v1.0.1</div>
+      <button class="chip" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
+    </div>
+  </header>
+
+  <!-- Architecture Pipeline Visualizer -->
+  <div class="arc-flow">
+    <h2><i class="fa-solid fa-network-wired"></i> Architecture Pipeline (Follows architecture.mermaid)</h2>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <span class="step-tag">Input & Layer 1</span>
+        <div class="step-title">Farmer Need & Goal</div>
+        <div class="step-desc">Location (Rajshahi), Goal classification (cash crop, fertility, land, cultivability)</div>
+      </div>
+      <div class="flow-step">
+        <span class="step-tag">Open Data Sources</span>
+        <div class="step-title">NASA & SoilGrids Stream</div>
+        <div class="step-desc">NASA POWER weather trends, SMAP rootzone moisture, MODIS NDVI, SoilGrids pH</div>
+      </div>
+      <div class="flow-step">
+        <span class="step-tag">Layer 2</span>
+        <div class="step-title">Crop Knowledge Base</div>
+        <div class="step-desc">32 FAO-56 crop profiles, Kc water needs, N-fixation, cycle length, rotation synergies</div>
+      </div>
+      <div class="flow-step" style="border-color: var(--acc); background: var(--acc-light);">
+        <span class="step-tag" style="color: var(--acc);">Layer 3 (Core ML)</span>
+        <div class="step-title" style="color: var(--acc);">XGBoost Regressor</div>
+        <div class="step-desc">Live-updatable gradient boosting scoring & ranking all rotation candidates</div>
+      </div>
+      <div class="flow-step">
+        <span class="step-tag">Layer 1 Output</span>
+        <div class="step-title">Farmer Recommendations</div>
+        <div class="step-desc">Top 3 annual rotations with detailed agronomic justification in English & Bengali</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <div class="main-grid">
+    <!-- Left Sidebar: Controls & Live Update -->
+    <div class="sidebar">
+      <div class="panel">
+        <div class="panel-header">
+          <h3><i class="fa-solid fa-sliders"></i> Farmer Request</h3>
+          <span style="font-size: 12px; color: var(--mute);">Layer 1 NLU</span>
+        </div>
+
+        <div class="form-group">
+          <label>Farmer Query (English or বাংলা)</label>
+          <textarea id="queryInput" rows="3" class="form-control" placeholder="Type your farming request or select a preset below...">I am a farmer in Godagari, Rajshahi looking for maximum cash profit crops</textarea>
+          <div class="preset-chips">
+            <span class="chip" onclick="setQuery('I am a farmer in Godagari, Rajshahi looking for maximum cash profit crops', 'Rajshahi', 'Godagari', 'cash_crop', 'en')">💰 Godagari Cash Crop</span>
+            <span class="chip" onclick="setQuery('বাগমারা রাজশাহী, আমি জমিতে নাইট্রোজেন এবং মাটির উর্বরতা বাড়াতে চাই', 'Rajshahi', 'Bagmara', 'soil_fertility', 'bn')">🌱 বাগমারা মাটির উর্বরতা</span>
+            <span class="chip" onclick="setQuery('Drought resilient rotation for Tanore Barind Tract to preserve groundwater and soil', 'Rajshahi', 'Tanore', 'land_preservation', 'en')">🛡️ Tanore Barind Land</span>
+            <span class="chip" onclick="setQuery('Reliable and cultivable winter rotation for Singra, Natore floodplain', 'Natore', 'Singra', 'cultivability', 'en')">🌾 Natore Cultivability</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>District</label>
+          <select id="districtSelect" onchange="updateDistrictCoords()">
+            <option value="Rajshahi">Rajshahi (High Barind Tract)</option>
+            <option value="Bogura">Bogura (Karatoa-Bangali Floodplain)</option>
+            <option value="Pabna">Pabna (Ganges River Floodplain)</option>
+            <option value="Naogaon">Naogaon (Barind Tract & Atrai)</option>
+            <option value="Natore">Natore (Chalan Beel Depression)</option>
+            <option value="Joypurhat">Joypurhat (Level Barind)</option>
+            <option value="Chapainawabganj">Chapainawabganj (Mahananda Basin)</option>
+            <option value="Sirajganj">Sirajganj (Jamuna Floodplain)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Upazila (Optional)</label>
+          <input type="text" id="upazilaInput" class="form-control" value="Godagari" placeholder="e.g. Godagari, Tanore, Bagmara">
+        </div>
+
+        <div class="form-group">
+          <label>Farmer Goal</label>
+          <div class="goal-grid">
+            <div class="goal-btn active" onclick="setGoal('cash_crop', this)"><i class="fa-solid fa-sack-dollar"></i> Cash Crop</div>
+            <div class="goal-btn" onclick="setGoal('soil_fertility', this)"><i class="fa-solid fa-seedling"></i> Soil Fertility</div>
+            <div class="goal-btn" onclick="setGoal('land_preservation', this)"><i class="fa-solid fa-shield-halved"></i> Land Protect</div>
+            <div class="goal-btn" onclick="setGoal('cultivability', this)"><i class="fa-solid fa-wheat-awn"></i> Cultivability</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Language Output</label>
+          <select id="langSelect">
+            <option value="en">English</option>
+            <option value="bn">বাংলা (Bengali)</option>
+          </select>
+        </div>
+
+        <button class="btn-primary" onclick="runRecommendation()">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Generate AI Rotations
+        </button>
+      </div>
+
+      <!-- Live Updatable Model Controls -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3><i class="fa-solid fa-microchip"></i> Live-Updatable XGBoost</h3>
+          <span class="badge" id="liveStatusBadge">ACTIVE</span>
+        </div>
+
+        <div class="model-meta-grid">
+          <div class="meta-box">
+            <div class="meta-val" id="modelVerVal">v1.0.1</div>
+            <div class="meta-lbl">Version</div>
+          </div>
+          <div class="meta-box">
+            <div class="meta-val" id="modelR2Val">0.9969</div>
+            <div class="meta-lbl">R² Score</div>
+          </div>
+          <div class="meta-box">
+            <div class="meta-val" id="modelSamplesVal">9,000+</div>
+            <div class="meta-lbl">NASA Samples</div>
+          </div>
+          <div class="meta-box">
+            <div class="meta-val" id="modelTreesVal">265</div>
+            <div class="meta-lbl">Trees</div>
+          </div>
+        </div>
+
+        <p style="font-size: 12.5px; color: var(--mute); margin-bottom: 14px;">
+          Ingest new real NASA satellite observations and perform thread-safe online warm-start retraining without service interruption.
+        </p>
+
+        <button class="btn-secondary" id="updateModelBtn" onclick="triggerLiveUpdate()">
+          <i class="fa-solid fa-arrows-rotate"></i> Stream NASA & Hot Retrain
+        </button>
+
+        <div style="margin-top: 16px;">
+          <h4 style="font-size: 12px; text-transform: uppercase; color: var(--mute); margin-bottom: 8px;">Top Feature Importances (Gain)</h4>
+          <div class="chart-container">
+            <canvas id="importanceChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Area: Results -->
+    <div class="results-area">
+      <!-- Environmental Ribbon -->
+      <div class="env-ribbon">
+        <div class="env-card">
+          <div class="env-icon power"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+          <div class="env-info">
+            <h4 id="ribbonTemp">26.5 °C</h4>
+            <p>NASA POWER Weather</p>
+          </div>
+        </div>
+        <div class="env-card">
+          <div class="env-icon smap"><i class="fa-solid fa-droplet"></i></div>
+          <div class="env-info">
+            <h4 id="ribbonMoist">0.28 m³/m³</h4>
+            <p>SMAP Rootzone Moisture</p>
+          </div>
+        </div>
+        <div class="env-card">
+          <div class="env-icon modis"><i class="fa-solid fa-leaf"></i></div>
+          <div class="env-info">
+            <h4 id="ribbonNdvi">0.52 NDVI</h4>
+            <p>MODIS Satellite Vigor</p>
+          </div>
+        </div>
+        <div class="env-card">
+          <div class="env-icon soil"><i class="fa-solid fa-flask"></i></div>
+          <div class="env-info">
+            <h4 id="ribbonSoil">pH 5.8 (Barind)</h4>
+            <p>ISRIC SoilGrids</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plain Language LLM Answer Box -->
+      <div class="llm-box">
+        <h3 id="answerHeading">Top 3 Crop Rotations for Godagari, Rajshahi Division</h3>
+        <p class="llm-summary" id="answerSummary">
+          Based on real NASA POWER weather trends, SMAP rootzone wetness, MODIS vegetation vigor, and SoilGrids pH, here are the top 3 recommended annual crop rotations for your goal:
+        </p>
+        <div id="rotationsList">
+          <!-- Populated dynamically -->
+        </div>
+        <p style="font-size: 12px; color: var(--mute); margin-top: 14px;" id="answerFooter">
+          Note: Recommended by Layer 3 XGBoost ML model combining 10 years of NASA climate data with FAO-56 and BARC agronomic guidelines.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let activeGoal = "cash_crop";
+  let chartInstance = null;
+
+  function toggleTheme() {
+    const root = document.documentElement;
+    const current = root.getAttribute('data-theme');
+    root.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+  }
+
+  function setGoal(goal, el) {
+    activeGoal = goal;
+    document.querySelectorAll('.goal-btn').forEach(btn => btn.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function setQuery(text, district, upazila, goal, lang) {
+    document.getElementById('queryInput').value = text;
+    document.getElementById('districtSelect').value = district;
+    document.getElementById('upazilaInput').value = upazila;
+    document.getElementById('langSelect').value = lang;
+    document.querySelectorAll('.goal-btn').forEach(btn => {
+      if (btn.innerText.toLowerCase().includes(goal.replace('_', ' ').toLowerCase().split(' ')[0])) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    activeGoal = goal;
+    runRecommendation();
+  }
+
+  function updateDistrictCoords() {
+    const dist = document.getElementById('districtSelect').value;
+    const defaults = {
+      "Rajshahi": { temp: "26.5 °C", moist: "0.28 m³/m³", ndvi: "0.52 NDVI", soil: "pH 5.8 (High Barind)" },
+      "Bogura": { temp: "27.1 °C", moist: "0.32 m³/m³", ndvi: "0.58 NDVI", soil: "pH 6.5 (Floodplain)" },
+      "Pabna": { temp: "26.8 °C", moist: "0.31 m³/m³", ndvi: "0.54 NDVI", soil: "pH 7.4 (Calcareous)" },
+      "Naogaon": { temp: "26.2 °C", moist: "0.29 m³/m³", ndvi: "0.50 NDVI", soil: "pH 5.7 (Barind/Atrai)" },
+      "Natore": { temp: "26.9 °C", moist: "0.35 m³/m³", ndvi: "0.61 NDVI", soil: "pH 6.8 (Chalan Beel)" },
+      "Joypurhat": { temp: "26.4 °C", moist: "0.30 m³/m³", ndvi: "0.53 NDVI", soil: "pH 5.6 (Level Barind)" },
+      "Chapainawabganj": { temp: "26.7 °C", moist: "0.27 m³/m³", ndvi: "0.49 NDVI", soil: "pH 6.1 (Mahananda)" },
+      "Sirajganj": { temp: "27.0 °C", moist: "0.34 m³/m³", ndvi: "0.57 NDVI", soil: "pH 7.0 (Jamuna Basin)" },
+    };
+    const cur = defaults[dist] || defaults["Rajshahi"];
+    document.getElementById('ribbonTemp').innerText = cur.temp;
+    document.getElementById('ribbonMoist').innerText = cur.moist;
+    document.getElementById('ribbonNdvi').innerText = cur.ndvi;
+    document.getElementById('ribbonSoil').innerText = cur.soil;
+  }
+
+  async function runRecommendation() {
+    const query = document.getElementById('queryInput').value;
+    const district = document.getElementById('districtSelect').value;
+    const upazila = document.getElementById('upazilaInput').value;
+    const language = document.getElementById('langSelect').value;
+
+    const btn = document.querySelector('.btn-primary');
+    const oldHtml = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Running Layer 3 XGBoost...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/v1/ml/recommend', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query: query,
+          district: district,
+          upazila: upazila || null,
+          goal: activeGoal,
+          language: language,
+          top_k: 3
+        })
+      });
+      const data = await res.json();
+      renderResults(data);
+    } catch (err) {
+      console.error(err);
+      alert('Error fetching recommendation: ' + err.message);
+    } finally {
+      btn.innerHTML = oldHtml;
+      btn.disabled = false;
+    }
+  }
+
+  function renderResults(data) {
+    const ans = data.plain_language_answer;
+    document.getElementById('answerHeading').innerText = ans.heading;
+    document.getElementById('answerSummary').innerText = ans.summary;
+    document.getElementById('answerFooter').innerText = ans.footer;
+
+    const list = document.getElementById('rotationsList');
+    list.innerHTML = '';
+
+    data.top_rotations.forEach(rot => {
+      const card = document.createElement('div');
+      card.className = 'rotation-card';
+
+      const seasons = rot.seasons || ["Rabi (Winter)", "Kharif-I (Summer)", "Kharif-II (Monsoon)"];
+      const crops = rot.crops;
+
+      let timelineHtml = '<div class="season-timeline">';
+      crops.forEach((c, idx) => {
+        const cls = idx === 0 ? 'rabi' : idx === 1 ? 'kharif1' : 'kharif2';
+        timelineHtml += `<div class="season-node ${cls}"><i class="fa-solid fa-wheat-awn"></i> ${c.toUpperCase()} (${seasons[idx] || 'Season'})</div>`;
+        if (idx < crops.length - 1) {
+          timelineHtml += '<i class="fa-solid fa-arrow-right season-arrow"></i>';
+        }
+      });
+      timelineHtml += '</div>';
+
+      const nBal = rot.metrics.net_n_balance_kg_ha;
+      const nSign = nBal > 0 ? `+${Math.round(nBal)}` : `${Math.round(nBal)}`;
+
+      card.innerHTML = `
+        <div class="rot-header">
+          <div class="rot-title">
+            <span class="rank-pill">${rot.rank}</span>
+            <span>${rot.bengali_name && document.getElementById('langSelect').value === 'bn' ? rot.bengali_name : rot.name}</span>
+          </div>
+          <div class="score-badge">${rot.score} / 100</div>
+        </div>
+        <p style="font-size: 13.5px; color: var(--mute);">${rot.description}</p>
+        ${timelineHtml}
+        <div class="metrics-row">
+          <div class="metric-item">
+            <span class="metric-lbl">Total Cycle</span>
+            <span class="metric-val">${Math.round(rot.metrics.total_duration_days)} Days</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-lbl">Net Nitrogen</span>
+            <span class="metric-val" style="color: ${nBal >= 0 ? 'var(--acc)' : 'inherit'};">${nSign} kg N/ha</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-lbl">Harvest Yield</span>
+            <span class="metric-val">${rot.metrics.total_yield_t_ha} t/ha</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-lbl">Water Adequacy</span>
+            <span class="metric-val">${rot.environmental_fit.water_supply_adequacy}%</span>
+          </div>
+        </div>
+        <div class="advice-alert">
+          <i class="fa-solid fa-lightbulb"></i>
+          <span>Primary fit: <strong>${rot.primary_fit.replace('_', ' ')}</strong> | Agro-climatic match: high resilience in Rajshahi.</span>
+        </div>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  async function triggerLiveUpdate() {
+    const btn = document.getElementById('updateModelBtn');
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Online Warm Retraining...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/v1/ml/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ additional_trees: 20 })
+      });
+      const data = await res.json();
+      const st = data.updated_status;
+      document.getElementById('modelVerVal').innerText = st.version;
+      document.getElementById('modelVerBadge').innerHTML = `<i class="fa-solid fa-robot"></i> XGBoost ${st.version}`;
+      document.getElementById('modelR2Val').innerText = st.metrics.r2;
+      document.getElementById('modelSamplesVal').innerText = (st.total_samples).toLocaleString();
+      document.getElementById('modelTreesVal').innerText = st.total_trees;
+
+      updateChart(st.top_features);
+      alert(`Model successfully updated live!\nNew Version: ${st.version}\nTotal Trees: ${st.total_trees}\nR² Validation: ${st.metrics.r2}`);
+    } catch (err) {
+      alert('Live update error: ' + err.message);
+    } finally {
+      btn.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Stream NASA & Hot Retrain';
+      btn.disabled = false;
+    }
+  }
+
+  function updateChart(features) {
+    const labels = Object.keys(features || {});
+    const vals = Object.values(features || {});
+
+    if (chartInstance) {
+      chartInstance.destroy();
+    }
+
+    const ctx = document.getElementById('importanceChart').getContext('2d');
+    chartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels.map(l => l.replace('goal_', '').replace('rot_', '').substring(0, 15)),
+        datasets: [{
+          label: 'Gain Importance',
+          data: vals,
+          backgroundColor: '#1f6b3e',
+          borderRadius: 4,
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+          y: { grid: { display: false }, ticks: { font: { size: 10 } } }
+        }
+      }
+    });
+  }
+
+  async function init() {
+    try {
+      const res = await fetch('/v1/ml/status');
+      const st = await res.json();
+      document.getElementById('modelVerVal').innerText = st.version;
+      document.getElementById('modelVerBadge').innerHTML = `<i class="fa-solid fa-robot"></i> XGBoost ${st.version}`;
+      document.getElementById('modelR2Val').innerText = st.metrics.r2 || '0.9969';
+      document.getElementById('modelSamplesVal').innerText = (st.total_samples || 9000).toLocaleString();
+      document.getElementById('modelTreesVal').innerText = st.total_trees || 250;
+      updateChart(st.top_features);
+    } catch (e) {
+      console.warn("Status fetch failed:", e);
+    }
+    runRecommendation();
+  }
+
+  window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

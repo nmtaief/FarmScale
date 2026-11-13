@@ -1,0 +1,134 @@
+{
+  "version": "v1.0.6",
+  "model_type": "XGBoost Regressor (Layer 3)",
+  "total_samples": 27600,
+  "live_updates_count": 6,
+  "last_updated": "2026-11-09T08:54:50.700311+00:00",
+  "metrics": {
+    "rmse": 0.7915,
+    "mae": 0.5468,
+    "r2": 0.9966
+  },
+  "top_features": {
+    "sm_rootzone": 3268.326,
+    "goal_soil_fertility": 2768.096,
+    "rot_has_legume": 2155.412,
+    "rot_has_cash_tuber_veg": 1410.223,
+    "water_supply_adequacy": 952.844,
+    "goal_cash_crop": 792.699,
+    "goal_cultivability": 576.972,
+    "rot_total_yield_t_ha": 559.2,
+    "moisture_stress_vulnerability": 482.37,
+    "goal_land_preservation": 480.293,
+    "rot_diversity_score": 416.006,
+    "topsoil_wetness": 240.126,
+    "rot_drought_resilience": 191.108,
+    "rot_net_n_balance_kg_ha": 166.74,
+    "rot_om_balance": 165.871
+  },
+  "num_trees": 335,
+  "feature_names": [
+    "temp_mean_c",
+    "temp_max_c",
+    "temp_min_c",
+    "temp_range_c",
+    "precip_mm",
+    "rootzone_wetness",
+    "topsoil_wetness",
+    "water_stress_score",
+    "sm_rootzone",
+    "sm_rootzone_pctl",
+    "ndvi",
+    "evi",
+    "ndvi_vci",
+    "soil_ph",
+    "soil_soc_g_kg",
+    "soil_n_g_kg",
+    "soil_sand_pct",
+    "soil_silt_pct",
+    "soil_clay_pct",
+    "soil_texture_group",
+    "rot_total_cycle_days",
+    "rot_avg_kc",
+    "rot_total_yield_t_ha",
+    "rot_net_n_balance_kg_ha",
+    "rot_diversity_score",
+    "rot_om_balance",
+    "rot_soil_cover_score",
+    "rot_drought_resilience",
+    "rot_has_legume",
+    "rot_has_oilseed",
+    "rot_has_cash_tuber_veg",
+    "thermal_comfort_ratio",
+    "ph_suitability_score",
+    "water_supply_adequacy",
+    "texture_affinity_score",
+    "moisture_stress_vulnerability",
+    "goal_cash_crop",
+    "goal_soil_fertility",
+    "goal_land_preservation",
+    "goal_cultivability"
+  ],
+  "update_history": [
+    {
+      "event": "full_train",
+      "version": "v1.0.0",
+      "timestamp": "2026-11-09T08:12:51.047053+00:00",
+      "samples_trained": 6000,
+      "num_trees": 250,
+      "metrics": {
+        "rmse": 0.7915,
+        "mae": 0.5468,
+        "r2": 0.9966
+      }
+    },
+    {
+      "event": "live_incremental_update",
+      "version": "v1.0.1",
+      "timestamp": "2026-11-09T08:13:45.108093+00:00",
+      "samples_added": 3600,
+      "trees_added": 15,
+      "total_trees": 265
+    },
+    {
+      "event": "live_incremental_update",
+      "version": "v1.0.2",
+      "timestamp": "2026-11-09T08:13:49.976892+00:00",
+      "samples_added": 3600,
+      "trees_added": 15,
+      "total_trees": 280
+    },
+    {
+      "event": "live_incremental_update",
+      "version": "v1.0.3",
+      "timestamp": "2026-11-09T08:14:35.239249+00:00",
+      "samples_added": 3600,
+      "trees_added": 15,
+      "total_trees": 295
+    },
+    {
+      "event": "live_incremental_update",
+      "version": "v1.0.4",
+      "timestamp": "2026-11-09T08:15:05.838430+00:00",
+      "samples_added": 3600,
+      "trees_added": 10,
+      "total_trees": 305
+    },
+    {
+      "event": "live_incremental_update",
+      "version": "v1.0.5",
+      "timestamp": "2026-11-09T08:19:50.570899+00:00",
+      "samples_added": 3600,
+      "trees_added": 10,
+      "total_trees": 315
+    },
+    {
+      "event": "live_incremental_update",
+      "version": "v1.0.6",
+      "timestamp": "2026-11-09T08:54:50.700311+00:00",
+      "samples_added": 3600,
+      "trees_added": 20,
+      "total_trees": 335
+    }
+  ]
+}

@@ -19,6 +19,8 @@ from pydantic import BaseModel, Field
 
 import store
 import providers as P
+from ml.api import router as ml_router
+from ml.service import get_service as get_ml_service
 
 SMAP_PRODUCT = os.getenv("SMAP_PRODUCT", "SPL4SMGP.008")  # verify current versions via /v1/meta/layers/{product}
 VEG_PRODUCT = os.getenv("VEG_PRODUCT", "MOD13Q1.061")
@@ -39,6 +41,10 @@ async def lifespan(app):
     store.init()
     if store.key_count() == 0:
         print("\n  First start: created API key ->", store.create_key("default", 60), "\n")
+    try:
+        get_ml_service().ensure_model_trained()
+    except Exception as e:
+        print("ML Model startup warning:", e)
     task = asyncio.create_task(refresher()) if REFRESH_HOURS > 0 else None
     yield
     if task:
@@ -46,6 +52,7 @@ async def lifespan(app):
 
 
 app = FastAPI(title="Data Engine", version="1.0", lifespan=lifespan)
+app.include_router(ml_router)
 app.add_middleware(CORSMiddleware, allow_origins=os.getenv("CORS_ORIGINS", "*").split(","),
                    allow_methods=["*"], allow_headers=["*"],
                    expose_headers=["X-Cache", "X-Cache-Age"])
@@ -326,6 +333,13 @@ async def dashboard():
     return FileResponse(f) if f.exists() else JSONResponse({"error": "dashboard.html not found"}, status_code=404)
 
 
+@app.get("/ml", include_in_schema=False)
+@app.get("/dashboard/ml", include_in_schema=False)
+async def ml_dashboard():
+    f = Path(__file__).parent / "ml_dashboard.html"
+    return FileResponse(f, headers=NO_CACHE) if f.exists() else JSONResponse({"error": "ml_dashboard.html not found"}, status_code=404)
+
+
 @app.get("/map", include_in_schema=False)
 async def map_viewer():
     f = Path(__file__).parent / "map.html"
@@ -557,7 +571,12 @@ async def refresher():
             store.cache_purge()
             for loc in store.loc_all():
                 try:
-                    _snapshot(loc["id"], await _profile(loc["lat"], loc["lon"], refresh=True))
+                    prof = await _profile(loc["lat"], loc["lon"], refresh=True)
+                    _snapshot(loc["id"], prof)
+                    try:
+                        get_ml_service().live_update(additional_trees=5)
+                    except Exception:
+                        pass
                 except Exception as e:
                     print("background refresh failed for", loc["name"], "->", e)
                 await asyncio.sleep(5)

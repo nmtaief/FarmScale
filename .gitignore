@@ -18,6 +18,7 @@ __pycache__/
 *.db
 *.sqlite
 *.sqlite3
+!NasaAPIgateWay/data/engine.db
 
 # Operating System & IDE files
 .DS_Store
