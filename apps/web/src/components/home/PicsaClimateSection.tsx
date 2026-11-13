@@ -341,58 +341,64 @@ export const PicsaClimateSection: React.FC<PicsaClimateSectionProps> = ({
 
             {/* Visual Bar Graph */}
             <div className="pt-3 pb-1">
-              <div className="h-44 flex items-end justify-between gap-1 sm:gap-2 px-1 border-b border-slate-300 pb-1">
+              {/* Bars Row: 140px fixed height where percentage styles work cleanly */}
+              <div className="h-36 flex items-end justify-between gap-1 sm:gap-2 px-1 border-b border-slate-300">
                 {data.monthly.map((m) => {
-                  const label = lang === "bn" ? m.month_bn : m.month_en;
-
                   if (activeTab === "rainfall") {
-                    const heightPct = Math.max((m.precip_mm / maxPrecip) * 100, 4);
+                    const heightPct = Math.min(Math.max(Math.round((m.precip_mm / maxPrecip) * 100), 8), 100);
                     return (
-                      <div key={m.month} className="flex-1 flex flex-col items-center group relative">
+                      <div key={m.month} className="flex-1 h-full flex items-end justify-center group relative">
                         {/* Tooltip */}
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 bg-slate-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow pointer-events-none whitespace-nowrap z-10">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 bg-slate-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow pointer-events-none whitespace-nowrap z-20">
                           {toLocaleNum(m.precip_mm)} mm
                         </div>
-                        {/* Bar */}
+                        {/* Solid colored bar */}
                         <div
-                          className="w-full bg-blue-500 group-hover:bg-blue-600 rounded-t transition-all"
+                          className="w-full bg-blue-500 hover:bg-blue-600 rounded-t-md transition-all duration-300 shadow-2xs min-h-[6px]"
                           style={{ height: `${heightPct}%` }}
                         />
-                        <span className="text-[10px] sm:text-[11px] font-semibold text-slate-600 mt-1">
-                          {label}
-                        </span>
                       </div>
                     );
                   } else {
-                    // Temperature Range
-                    const minH = Math.max((m.temp_min / 45) * 100, 5);
-                    const maxH = Math.max((m.temp_max / 45) * 100, 10);
+                    // Temperature Range (Min to Max)
+                    const minPct = Math.min(Math.max(Math.round((m.temp_min / 45) * 100), 8), 70);
+                    const maxPct = Math.min(Math.max(Math.round((m.temp_max / 45) * 100), 20), 100);
+                    const barHeightPct = Math.max(maxPct - minPct, 12);
                     return (
-                      <div key={m.month} className="flex-1 flex flex-col items-center group relative">
+                      <div key={m.month} className="flex-1 h-full flex flex-col justify-end items-center group relative">
                         {/* Tooltip */}
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-10 bg-slate-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow pointer-events-none whitespace-nowrap z-10 text-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-10 bg-slate-900 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow pointer-events-none whitespace-nowrap z-20 text-center">
                           <div>{t.maxTemp}: {toLocaleNum(m.temp_max)}°C</div>
                           <div>{t.minTemp}: {toLocaleNum(m.temp_min)}°C</div>
                         </div>
-                        {/* Bar Range */}
-                        <div className="w-full flex flex-col items-center justify-end h-full">
-                          <div
-                            className="w-full bg-orange-400 group-hover:bg-orange-500 rounded-t transition-all"
-                            style={{ height: `${maxH - minH}%` }}
-                          />
-                          <div
-                            className="w-full bg-sky-200 rounded-b transition-all"
-                            style={{ height: `${minH}%` }}
-                          />
-                        </div>
-                        <span className="text-[10px] sm:text-[11px] font-semibold text-slate-600 mt-1">
-                          {label}
-                        </span>
+                        {/* Max Temp Bar (Orange) */}
+                        <div
+                          className="w-full bg-orange-500 hover:bg-orange-600 rounded-t-md transition-all duration-300 min-h-[6px]"
+                          style={{ height: `${barHeightPct}%` }}
+                        />
+                        {/* Min Temp Base (Sky) */}
+                        <div
+                          className="w-full bg-sky-300 rounded-b-sm transition-all"
+                          style={{ height: `${minPct}%` }}
+                        />
                       </div>
                     );
                   }
                 })}
               </div>
+
+              {/* Month Labels Row (Sitting cleanly below baseline border) */}
+              <div className="flex justify-between gap-1 sm:gap-2 px-1 pt-2">
+                {data.monthly.map((m) => (
+                  <span
+                    key={m.month}
+                    className="flex-1 text-center text-[10px] sm:text-[11px] font-bold text-slate-600"
+                  >
+                    {lang === "bn" ? m.month_bn : m.month_en}
+                  </span>
+                ))}
+              </div>
+
               <div className="text-[11px] text-slate-500 text-right mt-2">
                 {activeTab === "rainfall"
                   ? lang === "bn"
