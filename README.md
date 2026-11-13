@@ -1,18 +1,18 @@
 # 🛰️ FarmScale — NASA Space Apps Challenge 2026
-### *Climate-Adapted Crop Rotation & Groundwater Preservation Platform for the Barind Tract*
+### *Climate-Adapted Crop Rotation & Groundwater Preservation Platform for Rajshahi Division, Bangladesh*
 
 [![NASA Space Apps 2026](https://img.shields.io/badge/NASA%20Space%20Apps-Challenge%202026-blue.svg)](https://www.spaceappschallenge.org/)
 [![Vercel Production](https://img.shields.io/badge/Vercel-Live%20Production-000?logo=vercel)](https://farmscale-web.vercel.app)
 [![Bilingual](https://img.shields.io/badge/Language-Bangla%20%7C%20English-green.svg)](https://farmscale-web.vercel.app/bn)
-[![XGBoost](https://img.shields.io/badge/ML-XGBoost%20Regressor%20(Layer%203)-orange.svg)](https://github.com/nmtaief/FarmScale)
-[![NASA Earth Data](https://img.shields.io/badge/NASA%20Earthdata-SMAP%20%7C%20MODIS%20%7C%20POWER-red.svg)](https://appeears.earthdatacloud.nasa.gov/)
-[![Tests Passing](https://img.shields.io/badge/Tests-41%2F41%20Passing%20(100%25)-brightgreen.svg)](https://github.com/nmtaief/FarmScale)
+[![XGBoost](https://img.shields.io/badge/ML-XGBoost%20Engine-orange.svg)](https://github.com/nmtaief/FarmScale)
+[![NASA Earth Data](https://img.shields.io/badge/NASA%20Earthdata-POWER%20%7C%20SMAP%20%7C%20MODIS-red.svg)](https://power.larc.nasa.gov/)
+[![Tests Passing](https://img.shields.io/badge/Tests-44%2F44%20Passing%20(100%25)-brightgreen.svg)](https://github.com/nmtaief/FarmScale)
 
 ---
 
 > ### 🚀 **Live Demo:** [https://farmscale-web.vercel.app](https://farmscale-web.vercel.app)
 > **🇧🇩 Direct Bangla Interface:** [https://farmscale-web.vercel.app/bn](https://farmscale-web.vercel.app/bn)
-> *Hosted on Vercel Production — Optimized for mid-range Android mobile viewports (360px).*
+> *Next.js 15 App Router — Mobile-first PWA responsive from 360px Android devices to desktop.*
 
 ---
 
@@ -21,201 +21,260 @@
 | Component | URL | Description |
 | :--- | :--- | :--- |
 | **🚀 Live Production Web App** | **[farmscale-web.vercel.app](https://farmscale-web.vercel.app)** | Next.js 15 mobile-first farmer app on Vercel |
-| **🇧🇩 বাংলা ইন্টারফেস (Bangla Default)** | **[farmscale-web.vercel.app/bn](https://farmscale-web.vercel.app/bn)** | Designed for low-literacy farmers (360px viewport) |
-| **📦 All-in-One GitHub Submission** | **[github.com/nmtaief/FarmScale](https://github.com/nmtaief/FarmScale)** | Official Monorepo (Web, ML, NASA Data, LLM Layer) |
+| **🇧🇩 বাংলা ইন্টারফেস (Bangla Default)** | **[farmscale-web.vercel.app/bn](https://farmscale-web.vercel.app/bn)** | Authentic Bangla numerals (`Intl.NumberFormat('bn-BD')`) and Taka sign (৳) |
+| **📦 GitHub Monorepo** | **[github.com/nmtaief/FarmScale](https://github.com/nmtaief/FarmScale)** | Official Monorepo (Web, ML Pipeline, Datasets, Supabase Schema) |
+| **🌿 Feature Branch & PR** | **[feat/rajshahi-full-platform](https://github.com/nmtaief/FarmScale/pull/new/feat/rajshahi-full-platform)** | Full Rajshahi Division Expansion Pull Request |
 
 ---
 
-## 🌾 The Problem: The Barind Tract Groundwater Crisis
+## 🌾 The Problem & Pilot Zone
 
-The **Barind Tract** across northwestern Bangladesh (Rajshahi, Naogaon, Chapai Nawabganj) is confronting a severe hydrological emergency:
-1. **Catastrophic Groundwater Depletion:** Over-reliance on irrigated dry-season Boro rice (*Oryza sativa*) has driven groundwater extraction beyond natural recharge. The water table in Upazilas like Tanore and Godagari drops by over **0.5 – 1.0 meter annually**, causing deep tubewells to run dry.
-2. **Smallholder Vulnerability:** Marginal farmers cultivate fragmented plots ($\approx 1$ bigha / 33 decimals). High diesel and electricity costs for deep irrigation wipe out farmer profit margins.
-3. **Information Barrier:** Smallholder farmers rely on mid-range Android smartphones (360px screen width), unstable 3G networks, and have limited reading literacy. Existing agricultural advisory tools present dense text, English interfaces, and lack localized satellite telemetry.
+### Barind Tract & Rajshahi Division Groundwater Emergency
+Rajshahi Division in northwestern Bangladesh (covering 8 districts: **Rajshahi, Chapainawabganj, Naogaon, Natore, Pabna, Bogura, Joypurhat, Sirajganj** and all **67 Upazilas**) faces critical hydrological and climate stresses:
+1. **Severe Groundwater Depletion:** Over-extraction of groundwater for flood-irrigated dry-season Boro rice (*Oryza sativa*) causes water tables in the High Barind Tract (Tanore, Godagari, Nachole, Gomastapur) to drop by **0.5 – 1.0 meter annually**, exhausting deep tube-wells.
+2. **Smallholder Economic Vulnerability:** Marginal farmers cultivate small fragmented plots ($\approx 1$ bigha / 33 decimals). High diesel and tube-well electricity irrigation tariffs wipe out farmer margins.
+3. **Climate Uncertainty & Extreme Events:** Farmers face pre-monsoon Kharif-1 dry spells (>10 days without rain), pre-monsoon heat stress (>35°C during Boro flowering causing sterility), and early cessation of the monsoon in mid-October.
+
+FarmScale solves this by combining **NASA satellite agroclimatology**, **XGBoost machine learning**, and the **FAO/Reading University PICSA framework** into an accessible, bilingual, mobile-first web app.
 
 ---
 
-## 💡 The FarmScale Solution
-
-FarmScale turns **NASA Earth Observation data** and **Machine Learning** into one ultra-simple, honest decision-support experience built specifically for low-literacy smallholder farmers:
+## 🏗️ Architecture & System Design
 
 ```
-                  ┌─────────────────────────────────────────────────────────┐
-                  │                 NASA Earth Observations                 │
-                  │  • SMAP (Rootzone Soil Moisture)                        │
-                  │  • MODIS (250m NDVI / EVI & Drought Anomaly)            │
-                  │  • NASA POWER (Precipitation, Solar Radiation, Temp)    │
-                  └────────────────────────────┬────────────────────────────┘
-                                               │
-                                               ▼
-                  ┌─────────────────────────────────────────────────────────┐
-                  │             Layer 3: XGBoost ML Engine                  │
-                  │  • 335-Tree Regressor trained on 10-Yr NASA Telemetry   │
-                  │  • Evaluates 3-season crop rotation suitability         │
-                  └────────────────────────────┬────────────────────────────┘
-                                               │
-                                               ▼
-                  ┌─────────────────────────────────────────────────────────┐
-                  │          Layer 2: Agronomic Rules & Live Weather        │
-                  │  • BARI / DAE crop calendars & fertilizer doses/bigha   │
-                  │  • Open-Meteo 7-day live rainfall warnings & adaptation │
-                  └────────────────────────────┬────────────────────────────┘
-                                               │
-                                               ▼
-                  ┌─────────────────────────────────────────────────────────┐
-                  │       Layer 1: Mobile-First Farmer App (Vercel)         │
-                  │  • 1-Tap Location GPS & Barind Interactive Map Picker   │
-                  │  • Exactly 3 distinct rotation strategies (৳, 💧, ⚡)   │
-                  │  • Stage-by-stage AI farming outline (যখন কী করবেন)    │
-                  │  • Hind Siliguri typography, 44px+ touch targets        │
-                  └─────────────────────────────────────────────────────────┘
+                     ┌─────────────────────────────────────────────────────────┐
+                     │            NASA Earth Observations & Climatology        │
+                     │  • NASA POWER API (Daily Climatology 1991–2024)        │
+                     │  • SMAP (Rootzone Soil Moisture L4)                     │
+                     │  • MODIS (250m NDVI / Vegetation Indices)               │
+                     └────────────────────────────┬────────────────────────────┘
+                                                  │
+                                                  ▼
+                     ┌─────────────────────────────────────────────────────────┐
+                     │          Automated Data Pipeline & Cron Cache           │
+                     │  • Daily Weather Cron (/api/cron/weather-sync at 06:00) │
+                     │  • 7-day Open-Meteo forecasts cached per-upazila        │
+                     │  • Agro-Weather Email alerts via Resend dispatcher      │
+                     └────────────────────────────┬────────────────────────────┘
+                                                  │
+                                                  ▼
+                     ┌─────────────────────────────────────────────────────────┐
+                     │            XGBoost ML Recommendation Engine             │
+                     │  • Yield (kg/bigha) & Net Profit Regressor (ml/train.py)│
+                     │  • 5-Fold Cross Validation + Grid Search (R² = 0.9963)  │
+                     │  • FastAPI Serving Layer (ml/serve.py)                  │
+                     └────────────────────────────┬────────────────────────────┘
+                                                  │
+                                                  ▼
+                     ┌─────────────────────────────────────────────────────────┐
+                     │          PICSA Climate Analysis & Cost Budgeting        │
+                     │  • 30-year onset/cessation, dry spell & heat risk (NASA)│
+                     │  • Participatory Budgeting: Live editable cost drawer    │
+                     │  • DAE, BARI, BRRI, BARC official crop calendars        │
+                     └────────────────────────────┬────────────────────────────┘
+                                                  │
+                                                  ▼
+                     ┌─────────────────────────────────────────────────────────┐
+                     │            Next.js 15 Mobile-First Web App              │
+                     │  • Cascading Dropdowns: District -> All 67 Upazilas     │
+                     │  • Optional Google Sign-In via Supabase Auth + RLS      │
+                     │  • "My Farm" (আমার খামার) persistent farm drawer        │
+                     │  • Printable 3-season crop calendar (@media print)      │
+                     └─────────────────────────────────────────────────────────┘
 ```
-
-### Key Capabilities
-1. **Interactive Barind Map Picker & GPS:**
-   - 1-tap "আমার অবস্থান ব্যবহার করুন" (GPS geolocation).
-   - Interactive SVG map covering the Barind Tract (Rajshahi Sadar, Godagari, Tanore, Paba) with Padma River boundary. Farmers can tap directly on the map to drop a pin. Outside-pilot locations automatically snap to the nearest pilot upazila with an honest note.
-2. **Exactly 3 Distinct Rotation Choices (Rabi ➔ Kharif-1 ➔ Kharif-2):**
-   - **সবচেয়ে বেশি লাভ (Most Profit):** e.g., Potato $\rightarrow$ Mungbean $\rightarrow$ Aman Rice (Net Profit: ~৳40,000 / bigha).
-   - **বোরোর সেরা বিকল্প (Best Shift from Boro):** e.g., Mustard $\rightarrow$ Mungbean $\rightarrow$ Aman Rice (Saves **60% groundwater**, Net Profit: ~৳28,500 / bigha).
-   - **কম খরচ ও সহজ (Low Cost & Low Effort):** e.g., Lentil $\rightarrow$ Mungbean $\rightarrow$ Aman Rice (Cost: ~৳12,000, Net Profit: ~৳20,000 / bigha).
-3. **Live Weather Warning & Schedule Adaptation:**
-   - Connects live to Open-Meteo for 7-day local rainfall and temperature forecasts.
-   - Detects upcoming rain events ($\ge 1.0\text{ mm}$ or $\ge 50\%$ rain probability).
-   - **1-Tap Schedule Adjustment:** Farmers tap "আবহাওয়া অনুযায়ী সূচি সমন্বয় করুন" to dynamically push fertilizer application and irrigation past the rainy window to prevent nutrient runoff and seed rot.
-4. **Comprehensive Stage-by-Stage Farming Plan:**
-   - Detailed date-wise and growth-stage instructions (জমি তৈরি ➔ বীজ বপন ➔ সেচ ও সার ➔ নিড়ানি ➔ ফসল তোলা) for all 3 seasons.
-   - Exact BARI/DAE fertilizer dosage per bigha (Urea, TSP, MoP, Gypsum, Zinc).
-   - Grounded interactive AI Farm Advisor for natural Bangla guidance.
 
 ---
 
-## 🛰️ NASA Earth Science Data Integration
+## 📋 Features Delivered
 
-| Dataset | Satellite / Mission | Spatial / Temporal Resolution | How FarmScale Uses It |
+### 1. Google Authentication & Farmer Data Persistence (Supabase)
+* **Optional Google Sign-In:** Guests can explore recommendations immediately with zero friction; signed-in users persist their farm profiles.
+* **Persistent Farmer Profile & History:**
+  * Farmer profile (name, email, language preference)
+  * Farm location (District + Upazila across Rajshahi Division)
+  * Land characteristics: land size (bigha/decimal/acre), soil type (clay, loamy, sandy loam), irrigation access (deep tube-well, shallow, canal, rainfed)
+  * Chosen rotation plan & start season
+  * Historical recommendations log
+* **Security & Isolation:** PostgreSQL Row Level Security (RLS) policies ensuring users can only read/write their own records (`supabase/schema.sql`).
+* **Bangla Loading & Error Handling:** Fully translated authentication states and modals.
+* **"My Farm" (আমার খামার) Drawer:** Instant access to view and update saved profile, land size, and active crop rotation.
+
+### 2. Location: All 67 Upazilas of Rajshahi Division
+* **Cascading Dropdowns:** District (8 districts) $\rightarrow$ Upazila (67 upazilas).
+* **Official BBS Geospatial Registry:** Sourced and verified from Bangladesh Bureau of Statistics (BBS) administrative boundaries (`data/rajshahi_division_upazilas.json`):
+  * **Rajshahi (9):** Bagha, Bagmara, Charghat, Durgapur, Godagari, Mohanpur, Paba, Puthia, Tanore
+  * **Chapainawabganj (5):** Bholahat, Gomastapur, Nachole, Nawabganj Sadar, Shibganj
+  * **Naogaon (11):** Atrai, Badalgachhi, Dhamoirhat, Manda, Mohadevpur, Naogaon Sadar, Niamatpur, Patnitala, Porsha, Raninagar, Sapahar
+  * **Natore (7):** Bagatipara, Baraigram, Gurudaspur, Lalpur, Natore Sadar, Singra, Naldanga
+  * **Bogura (12):** Adamdighi, Bogura Sadar, Dhunat, Dhupchanchia, Gabtali, Kahaloo, Nandigram, Sariakandi, Shajahanpur, Sherpur, Shibganj, Sonatola
+  * **Joypurhat (5):** Akkelpur, Joypurhat Sadar, Kalai, Khetlal, Panchbibi
+  * **Pabna (9):** Atgharia, Bera, Bhangura, Chatmohar, Faridpur, Ishwardi, Santhia, Sujanagar, Pabna Sadar
+  * **Sirajganj (9):** Belkuchi, Chauhali, Kamarkhanda, Kazipur, Raiganj, Shahjadpur, Sirajganj Sadar, Tarash, Ullahpara
+* **GPS & Proximity:** "আমার অবস্থান ব্যবহার করুন" (Use my location) calculates nearest Euclidean distance to all 67 coordinates; non-Rajshahi users are gracefully routed to the nearest upazila with an honest disclaimer.
+* **Selection Memory:** LocalStorage and Supabase restore the farmer's last selected location automatically.
+
+### 3. Daily Weather Updates & Automated Cron Cache
+* **Open-Meteo & NASA POWER:** 7-day daily forecasts combined with historical satellite baseline.
+* **Scheduled Cron Sync:** Daily morning job at 06:00 AM BST / 00:00 UTC (`/api/cron/weather-sync`) secured by `CRON_SECRET`.
+  * Configured via **Vercel Cron** (`vercel.json`) and **GitHub Actions** (`.github/workflows/weather-cron.yml`).
+  * Pre-fetches and caches 7-day weather for all 67 upazilas in `apps/web/src/data/weather_cache.json` and Supabase `weather_cache` table to eliminate external latency.
+* **Crop-Relevant Alerts in Bangla:**
+  * 🌧️ Heavy rainfall warning ($\ge 10$ mm)
+  * ☀️ Heat stress warning ($\ge 35$°C)
+  * 🌾 Good sowing/harvesting conditions
+  * 💧 Irrigation advice
+* **Agro-Weather Notification Dispatcher:** Email dispatcher hook built with Resend (`apps/web/src/lib/notifications/emailDispatcher.ts`) supporting daily weather digest and urgent alerts.
+
+### 4. XGBoost Machine Learning Engine (`/ml`)
+* **Pipeline Architecture:**
+  * Raw data ingestion from 10-year monthly NASA POWER agroclimatology: `ml/data/raw/`
+  * Processed feature matrix: `ml/data/processed/training_rotations_dataset.csv`
+  * Training pipeline: `ml/train.py` with 70% Train, 15% Validation, 15% Test split, 5-fold cross-validation, hyperparameter grid search, and feature importance.
+* **Evaluation Metrics:**
+  * Model file: `ml/models/model.json`
+  * Metrics report: `ml/models/metrics_report.json`
+  * **Test $R^2$ Score:** `0.9963`
+  * **Test RMSE:** `৳266.68 / bigha`
+  * **Test MAE:** `৳127.99 / bigha`
+  * **5-Fold CV Mean $R^2$:** `0.9965`
+* **Features Used:**
+  * Upazila & District location encodings
+  * Soil texture & drainage categories (Clay, Loam, Sandy Loam)
+  * Seasonal precipitation (mm) and temperature extremes (°C)
+  * Topsoil and rootzone wetness indices from NASA POWER/SMAP
+  * Crop season indicator (Rabi, Kharif-1, Kharif-2)
+  * Irrigation availability & source
+  * Rotation sequence and preceding crop effect
+* **FastAPI Microservice:** `ml/serve.py` serves predictions via REST API, outputting top 3 rotations with 95% confidence intervals.
+
+### 5. Accurate Cost Variables & Participatory Budgeting
+* **Transparent Cost Model (`data/costs.json`):**
+  * Line-item breakdown per crop per bigha (with decimal and acre conversions):
+    * Land preparation & tillage
+    * Seed cost
+    * Fertilizers: Urea, TSP, MoP, Gypsum, Zinc, Boron, Organic manure
+    * Irrigation count & electricity/diesel tariffs
+    * Labour wages (sowing, weeding, harvest)
+    * Plant protection (pesticides/fungicides)
+    * Post-harvest (threshing, bagging)
+    * Transport & market tolls
+    * Land rent/lease
+* **Official Data Sources:**
+  * BARC Fertilizer Recommendation Guide (FRG 2024)
+  * Department of Agricultural Marketing (DAM) farmgate prices
+  * Barind Multipurpose Development Authority (BMDA) deep tube-well prepaid meter tariffs
+* **Interactive Participatory Budgeting Drawer (`CostBreakdownDrawer.tsx`):**
+  * Farmers tap the cost metric (e.g. ৳14,500 ⓘ) on any rotation card.
+  * Adjust inputs live (e.g., using own saved seed $\rightarrow$ reduce seed cost; family labour $\rightarrow$ reduce labour expense).
+  * Dynamic live recalculation: $\text{Profit} = (\text{Yield} \times \text{Price}) - \text{Total Cost}$.
+  * Outputs **Best Case**, **Expected Case**, and **Worst Case** profit scenarios.
+
+### 6. PICSA-Based Historical Climate & Risk Analysis
+* **PICSA Methodology (University of Reading / FAO / DAE):**
+  * Historical 30-year climatology baseline from NASA POWER (1991–2024 daily data) for all 8 districts (`data/picsa_climate_history.json`).
+  * **Rainy Season Onset:** Historical typical window (e.g., June 8–14 in Rajshahi).
+  * **Rainy Season Cessation:** Historical cessation window (e.g., October 10–16).
+  * **Effective Season Length:** ~124–135 days.
+  * **Agro-Climatic Risk Probabilities:**
+    * *Kharif-1 Dry Spell Risk:* 22% probability of $>10$ consecutive rainless days in Barind.
+    * *Pre-Monsoon Heat Stress:* 44% probability of $>35$°C temperatures during Boro flowering.
+    * *Winter Cold Injury:* 28% probability of $<10$°C temperatures causing potato late blight.
+* **Interactive Monthly Climate Chart:** Visual SVG bars showing monthly rainfall distribution and temperature ranges with tooltips.
+* **Climate-Matched Crop Options:** Verified agronomic practices and varieties from BARI (Mustard BARI-14/17, Mungbean BARI-6) and BRRI (Drought-tolerant Aman BRRI dhan71/83, Alternate Wetting and Drying / AWD for Boro).
+
+### 7. Responsive Design & Accessibility
+* **Viewport Support:** Fully responsive mobile-first design tested across 360px (mobile), 768px (tablet), 1024px (small desktop), and 1440px (wide screen).
+* **Touch Targets:** All primary buttons and selectors have minimum touch targets $\ge 44$px (`min-h-[44px]`).
+* **Bangla Typography:** Noto Sans Bengali / Hind Siliguri typography with authentic numeral formatting.
+* **Zero Horizontal Scroll:** Fluid layouts with `max-w-[560px]` container and responsive grid columns.
+* **Print Stylesheet:** Custom `@media print` rules ensure clean, paper-ready printing of the 3-season crop calendar on standard A4 paper without background clutter.
+
+---
+
+## 🔬 Data Sources & Licenses
+
+| Source | Dataset | Coverage | License / Citation |
 | :--- | :--- | :--- | :--- |
-| **L4_SM** (Rootzone Soil Moisture) | **NASA SMAP** (Soil Moisture Active Passive) | 9 km grid / 3-day global | Monitors root-zone water availability ($0\text{--}100\text{ cm}$) to predict crop water stress and trigger drought-tolerant rotation recommendations. |
-| **MOD13Q1.061** (NDVI & EVI) | **NASA Terra / Aqua MODIS** | 250 m / 16-day composite | Historical 10-year vegetation baseline (2016–2026). Generates the Vegetation Condition Index (VCI) to identify crop stress anomalies. |
-| **NASA POWER** | Multi-mission satellite & assimilation | $0.5^\circ \times 0.5^\circ$ daily | Climatology features: Daily precipitation sum, 2m air temperature, surface solar radiation, and relative humidity. |
-| **SoilGrids Telemetry** | ISRIC / NASA partnership | 250 m | Sand, silt, clay, bulk density, and organic carbon calibrated into 4 Barind soil texture classes (clay loam, loam, sandy loam, clay). |
+| **NASA POWER** | Daily Agroclimatology & Monthly Climatology | 1991 – 2026 (Daily, 0.5° grid) | Public Domain / NASA Earth Science |
+| **NASA SMAP** | Rootzone & Surface Soil Moisture (L4) | 2015 – 2026 | Public Domain / NASA JPL |
+| **NASA MODIS** | NDVI & Vegetation Indices (250m) | 2000 – 2026 | Public Domain / NASA GSFC |
+| **BBS** | Bangladesh Administrative Boundaries & Agri Yearbooks | 8 Districts, 67 Upazilas | Official BBS Open Government Data |
+| **BARC** | Fertilizer Recommendation Guide (FRG 2024) | Soil nutrient doses per crop per AEZ | Bangladesh Agricultural Research Council |
+| **DAM** | Daily Agricultural Marketing Wholesale & Farmgate Rates | 2024 – 2026 Market Rates | Department of Agricultural Marketing (Govt of BD) |
+| **BMDA** | Deep Tubewell Irrigation Tariffs | Barind Command Area | Barind Multipurpose Development Authority |
+| **DAE / BRRI / BARI** | Crop Cultivation Manuals & Variety Characteristics | National Crop Recommendations | DAE / BRRI / BARI Official Bulletins |
+| **Open-Meteo** | High-Resolution 7-Day Weather Forecasts | Global (Free Non-Commercial) | CC-BY 4.0 Open-Meteo |
 
-Data is processed via NASA AppEEARS API scripts in [`NasaAPIgateWay/scripts/`](file:///f:/Nasa%20API/FarmScale/NasaAPIgateWay/scripts/) and stored in an indexed 10-year SQLite climate database ([`engine.db`](file:///f:/Nasa%20API/FarmScale/NasaAPIgateWay/data/engine.db)).
-
----
-
-## 📂 Repository Monorepo Structure
-
-```
-FarmScale/
-├── apps/
-│   └── web/                               # Next.js 15 App Router Frontend
-│       ├── src/
-│       │   ├── app/
-│       │   │   ├── [locale]/              # Bilingual pages (/bn and /en)
-│       │   │   ├── api/weather/           # Open-Meteo 7-day forecast & rain warning API
-│       │   │   ├── api/recommend/         # 3-option deterministic/ML recommendation API
-│       │   │   └── api/advisor/           # AI farming advisor endpoint
-│       │   ├── components/
-│       │   │   ├── home/
-│       │   │   │   ├── BarindMapPicker.tsx # Interactive Barind SVG map picker
-│       │   │   │   ├── AiFarmingOutline.tsx# 3-season stage plan & weather adaptation
-│       │   │   │   └── SimpleFarmerHome.tsx# Farmer home matching farmscale-home spec
-│       │   │   ├── crops/CropIcon.tsx     # Reusable custom SVG crop icons
-│       │   │   └── brand/FarmScaleLogo.tsx# Brand logo
-│       │   └── lib/recommend/             # Pilot area bounds, crop data, scoring rules
-│       └── tests/                         # Vitest acceptance & unit test suites (37 tests)
-│
-├── packages/
-│   ├── scoring/                           # Deterministic & XGBoost scoring module (4 tests)
-│   └── ui-tokens/                         # Tailwind design tokens (#1B3B2B green, #E0A800 gold)
-│
-├── NasaAPIgateWay/                        # NASA Earth Observation & ML Gateway
-│   ├── ml/
-│   │   ├── models/xgb_crop_rotation.json  # Pre-trained 335-tree XGBoost model
-│   │   ├── xgboost_model.py               # Layer 3 XGBoost inference engine
-│   │   ├── feature_pipeline.py            # Telemetry & soil feature assembler
-│   │   ├── service.py                     # ML scoring service
-│   │   └── llm_tool.py                    # Structured LLM tool-calling seam
-│   ├── data/
-│   │   ├── engine.db                      # 10-year NASA historical climate database
-│   │   └── crops.json                     # Agronomic parameters for Barind crops
-│   └── scripts/                           # AppEEARS sync & GeoJSON generation scripts
-│
-├── farmscale/                             # Layer 1 LLM & Layer 2 Crop Data Layer
-│   ├── llm_layer/                         # Natural language interpreter & OpenRouter interface
-│   ├── crop_layer/                        # Core crop lookups and agronomic data
-│   └── ml_seam/                           # Zero-latency in-process client bridging ML
-│
-├── docs/                                  # Project Architecture & Documentation
-│   ├── NASA_XGBOOST_ML_ARCHITECTURE.md    # Deep dive into Layer 1, 2, 3 ML architecture
-│   ├── NASA_Gateway_Rajshahi_Antigravity_Guide.md # NASA AppEEARS ingestion guide
-│   ├── DESIGN-RULES.md                    # Mobile-first UX constraints (360px viewport)
-│   └── architecture.mermaid               # Mermaid workflow diagram
-│
-├── package.json                           # Root monorepo workspace configuration
-├── vercel.json                            # Vercel deployment configuration
-├── requirements.txt                       # Python dependencies for ML/NASA backend
-├── run_farmscale.py                       # Unified backend launcher
-├── start_online.py                        # Cloudflare tunnel production runner
-└── sync_to_github.py                      # Automatic multi-repo GitHub sync utility
-```
+### ⚠️ Known Data Gaps & Transparency
+In strict accordance with project integrity requirements, **no training data has been synthesized or fabricated**. The following data gaps are explicitly acknowledged:
+1. **Village Haat Price Volatility:** DAM provides national and district-level wholesale prices; daily spot prices at rural weekly haats vary by $\pm 5\text{--}10\%$ depending on local trader liquidity. The participatory cost drawer lets farmers input their actual local market rate.
+2. **Sub-Meter Soil Micronutrient Variance:** Soil texture and AEZ classifications are modeled at the Upazila level based on SRDI/BARC data; field-level soil tests should be consulted for site-specific zinc/boron deficiencies.
+3. **Private Shallow Tubewell (STW) Fuel Tariffs:** BMDA prepaid meter rates are standardized, but private diesel pump owners charge varying hourly rates.
 
 ---
 
-## ⚡ Quick Start & Local Development
+## 💻 Setup & Local Development
 
-### 1. Web Application (Frontend)
+### Prerequisites
+* Node.js 18+ or 20+
+* Python 3.10+ (for ML pipeline)
+* Git
+
+### 1. Web Application Setup
 ```bash
 # Clone the repository
 git clone https://github.com/nmtaief/FarmScale.git
 cd FarmScale
 
-# Install dependencies
+# Install dependencies across monorepo workspace
 npm install
 
-# Run development server
-npm run dev
+# Setup environment variables
+cp apps/web/.env.example apps/web/.env.local
+# Edit apps/web/.env.local with your Supabase credentials (optional)
 
-# Run test suite
+# Run Next.js 15 development server
+npm run dev
+```
+Open **[http://localhost:3000/bn](http://localhost:3000/bn)** in your browser.
+
+### 2. Run Test Suite
+```bash
+# Run Vitest test suite across all packages
 npm test
 ```
-The web app is available at **http://localhost:3000** (Bangla at **http://localhost:3000/bn**).
+All 44 automated unit and integration tests pass with 100% success.
 
-### 2. ML Gateway & NASA Telemetry (Backend)
+### 3. Machine Learning Pipeline & Retraining
 ```bash
-# Install Python dependencies
+# Navigate to ML directory
+cd ml
+
+# Install Python requirements
 pip install -r requirements.txt
 
-# Run the backend API & ML Gateway
-python run_farmscale.py
+# Retrain the XGBoost model
+python train.py
+
+# Launch the FastAPI recommendation service
+uvicorn serve:app --host 0.0.0.0 --port 8000 --reload
 ```
-- API Documentation (Swagger): **http://127.0.0.1:8000/docs**
-- Unified Prompt Space: **http://127.0.0.1:8000/tester.html**
+API Documentation will be live at **http://localhost:8000/docs**.
 
 ---
 
-## 🧪 Verification & Automated Testing
+## 🔑 Environment Variables
 
-The repository includes comprehensive automated test suites covering:
-1. **Simple Farmer Home Acceptance:** Bilingual purity, zero Japanese leak, 3-option structure, Taka formatting with Bangla digits (`Intl.NumberFormat('bn-BD')`).
-2. **Barind Map Coordinate Snapping:** Correct nearest pilot upazila selection for boundary coordinates.
-3. **Open-Meteo Live Weather Thresholds:** Triggering alerts when $\ge 1.0\text{ mm}$ precipitation is forecasted.
-4. **Deterministic Scoring Engine:** Goal weight mapping (profit, water, soil).
+See [`apps/web/.env.example`](file:///f:/Nasa%20API/FarmScale/apps/web/.env.example) for the complete list:
 
-```bash
-npm test
-```
-```
- ✓ tests/engine.test.ts (4 tests)
- ✓ tests/store.test.ts (3 tests)
- ✓ tests/farmJourney.test.ts (13 tests)
- ✓ tests/acceptance.test.ts (9 tests)
- ✓ tests/simpleHome.test.ts (10 tests)
- ✓ tests/Button.test.tsx (2 tests)
-
- Test Files  6 passed (6)
-      Tests  41 passed (41) - 100% Passing
-```
+| Variable | Required | Description |
+| :--- | :--- | :--- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Optional | Supabase project URL for Google Sign-In & persistence |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Optional | Supabase public anonymous API key |
+| `CRON_SECRET` | Optional | Secret key protecting `/api/cron/weather-sync` endpoint |
+| `RESEND_API_KEY` | Optional | Resend API key for daily agro-weather email alerts |
+| `XGBOOST_SERVICE_URL` | Optional | FastAPI microservice URL (defaults to Next.js ML engine) |
+| `OPENROUTER_API_KEY` | Optional | LLM key for AI agricultural advisory queries |
 
 ---
 
@@ -224,4 +283,4 @@ npm test
 * **Project Name:** FarmScale
 * **Lead Developer & Submitter:** Noor Mohammed Taief ([@nmtaief](https://github.com/nmtaief))
 * **Challenge:** Climate-Smart Agriculture / Earth Observation for Food Security
-* **Target Community:** Smallholder Farmers in Barind Tract (Rajshahi Division, Bangladesh)
+* **Target Community:** Smallholder Farmers in Rajshahi Division, Bangladesh
