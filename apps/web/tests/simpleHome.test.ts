@@ -134,4 +134,49 @@ describe("Simple Home Page & Recommend API Acceptance Tests", () => {
       expect(generateWarning(8.5)).toContain("সেচ স্থগিত রাখুন");
     });
   });
+
+  // 6. Rajshahi Division All 67 Upazilas Verification (Stage 2)
+  describe("Rajshahi Division Official 67 Upazilas", () => {
+    it("contains exactly 67 verified Upazilas across 8 districts", async () => {
+      const { ALL_RAJSHAHI_UPAZILAS, RAJSHAHI_DISTRICTS } = await import(
+        "../src/lib/recommend/recommendData"
+      );
+      expect(ALL_RAJSHAHI_UPAZILAS.length).toBe(67);
+      expect(RAJSHAHI_DISTRICTS.length).toBe(8);
+    });
+
+    it("verifies accurate district counts matching BBS official statistics", async () => {
+      const { ALL_RAJSHAHI_UPAZILAS } = await import(
+        "../src/lib/recommend/recommendData"
+      );
+      const counts: Record<string, number> = {};
+      for (const u of ALL_RAJSHAHI_UPAZILAS) {
+        counts[u.district_en] = (counts[u.district_en] || 0) + 1;
+      }
+
+      expect(counts["Rajshahi"]).toBe(9);
+      expect(counts["Bogura"]).toBe(12);
+      expect(counts["Pabna"]).toBe(9);
+      expect(counts["Naogaon"]).toBe(11);
+      expect(counts["Natore"]).toBe(7);
+      expect(counts["Joypurhat"]).toBe(5);
+      expect(counts["Chapainawabganj"]).toBe(5);
+      expect(counts["Sirajganj"]).toBe(9);
+    });
+
+    it("accurately finds nearest upazila and sets isFar flag outside boundary", async () => {
+      const { findNearestUpazila } = await import(
+        "../src/lib/recommend/recommendData"
+      );
+      // Godagari coordinates
+      const godagari = findNearestUpazila(24.466, 88.33);
+      expect(godagari.upazila.upazila_en).toBe("Godagari");
+      expect(godagari.isFar).toBe(false);
+
+      // Outside location (Dhaka)
+      const dhaka = findNearestUpazila(23.81, 90.41);
+      expect(dhaka.isFar).toBe(true);
+      expect(dhaka.distanceKm).toBeGreaterThan(50);
+    });
+  });
 });

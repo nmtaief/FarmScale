@@ -13,6 +13,7 @@
   "dependencies": {
     "@farmscale/scoring": "*",
     "@farmscale/ui-tokens": "*",
+    "@supabase/supabase-js": "^2.119.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
     "next": "^15.1.7",

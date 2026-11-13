@@ -1,25 +1,39 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
+import React, { useState, useEffect, useTransition } from "react";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
-import { Navigation, Sparkles, ArrowRight } from "lucide-react";
+import { Navigation, Sparkles, ArrowRight, MapPin, Check } from "lucide-react";
 import { CropIcon, CROP_NAMES } from "@/components/crops/CropIcon";
 import { BarindMapPicker } from "./BarindMapPicker";
 import { AiFarmingOutline } from "./AiFarmingOutline";
-import { PILOT_AREAS, type PilotArea, type RecommendOption, type RecommendResponse } from "@/lib/recommend/recommendData";
+import { AuthButton } from "@/components/auth/AuthButton";
+import { MyFarmModal } from "./MyFarmModal";
+import {
+  ALL_RAJSHAHI_UPAZILAS,
+  RAJSHAHI_DISTRICTS,
+  findNearestUpazila,
+  type UpazilaRecord,
+  type PilotArea,
+  type RecommendOption,
+  type RecommendResponse,
+} from "@/lib/recommend/recommendData";
 
 const TEXTS = {
   bn: {
     h1: "আপনার জমির জন্য সেরা ফসল",
     sub: "আপনার অবস্থান দিন, আমরা ৩টি সেরা চাষের পথ দেখাব।",
     go: "আমার অবস্থান ব্যবহার করুন",
-    or: "অথবা এলাকা বেছে নিন",
+    or: "অথবা জেলা ও উপজেলা বেছে নিন",
+    selectDistrict: "জেলা নির্বাচন করুন",
+    selectUpazila: "উপজেলা নির্বাচন করুন (৬৭টি)",
+    district: "জেলা",
+    upazila: "উপজেলা",
     pickMap: "মানচিত্রে খুঁজুন",
     closeMap: "মানচিত্র বন্ধ করুন",
     finding: "অবস্থান খুঁজছি…",
-    denied: "অবস্থান পাওয়া যায়নি। নিচ থেকে এলাকা বেছে নিন।",
-    far: "আপনার জায়গা পাইলট এলাকার বাইরে, তাই কাছের এলাকার ফল দেখানো হচ্ছে।",
+    denied: "অবস্থান পাওয়া যায়নি। নিচ থেকে জেলা ও উপজেলা বেছে নিন।",
+    far: "আপনার জায়গা রাজশাহী বিভাগের বাইরে, তাই সবচেয়ে কাছের উপজেলার ফল দেখানো হচ্ছে।",
     where: "এলাকা: ",
     profit: "লাভ / বিঘা",
     cost: "খরচ / বিঘা",
@@ -39,12 +53,16 @@ const TEXTS = {
     h1: "The best crops for your field",
     sub: "Share your location and we will show 3 best ways to farm it.",
     go: "Use my location",
-    or: "or pick your area",
+    or: "or select your district and upazila",
+    selectDistrict: "Select District",
+    selectUpazila: "Select Upazila (67)",
+    district: "District",
+    upazila: "Upazila",
     pickMap: "Pick on Map",
     closeMap: "Close Map",
     finding: "Finding your location…",
-    denied: "Could not get your location. Pick your area below.",
-    far: "You are outside the pilot area, so we are showing the nearest area.",
+    denied: "Could not get your location. Select your area below.",
+    far: "You are outside Rajshahi Division, so we are showing the nearest upazila.",
     where: "Area: ",
     profit: "Profit / bigha",
     cost: "Cost / bigha",
@@ -76,12 +94,16 @@ export const SimpleFarmerHome: React.FC = () => {
   const pathname = usePathname();
   const [isPendingLang, startLangTransition] = useTransition();
 
-  const [selectedArea, setSelectedArea] = useState<PilotArea | null>(null);
+  // Location State: Cascading District & Upazila
+  const [selectedDistrictEn, setSelectedDistrictEn] = useState<string>("Rajshahi");
+  const [selectedUpazilaEn, setSelectedUpazilaEn] = useState<string>("Godagari");
   const [showMap, setShowMap] = useState<boolean>(false);
   const [statusMessage, setStatusMessage] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [recommendations, setRecommendations] = useState<RecommendOption[]>([]);
   const [selectedOptionForOutline, setSelectedOptionForOutline] = useState<RecommendOption | null>(null);
+  const [myFarmOpen, setMyFarmOpen] = useState<boolean>(false);
+  const [initialLoaded, setInitialLoaded] = useState<boolean>(false);
 
   // Switch language between Bangla and English
   const handleLanguageChange = (nextLocale: "bn" | "en") => {
@@ -91,13 +113,33 @@ export const SimpleFarmerHome: React.FC = () => {
     });
   };
 
+  // Upazilas filtered by selected district
+  const filteredUpazilas = ALL_RAJSHAHI_UPAZILAS.filter(
+    (u) => u.district_en.toLowerCase() === selectedDistrictEn.toLowerCase()
+  );
+
+  // Current selected Upazila object
+  const currentUpazila =
+    ALL_RAJSHAHI_UPAZILAS.find(
+      (u) =>
+        u.district_en.toLowerCase() === selectedDistrictEn.toLowerCase() &&
+        u.upazila_en.toLowerCase() === selectedUpazilaEn.toLowerCase()
+    ) || filteredUpazilas[0] || ALL_RAJSHAHI_UPAZILAS[0];
+
   // Fetch recommendations from /api/recommend
-  const fetchRecommendations = async (params: { lat?: number; lng?: number; areaId?: string; isFar?: boolean }) => {
+  const fetchRecommendations = async (params: {
+    lat?: number;
+    lng?: number;
+    upazilaName?: string;
+    districtName?: string;
+    isFar?: boolean;
+  }) => {
     setLoading(true);
     setSelectedOptionForOutline(null);
     try {
       const query = new URLSearchParams();
-      if (params.areaId) query.set("area", params.areaId);
+      if (params.upazilaName) query.set("area", params.upazilaName);
+      if (params.districtName) query.set("district", params.districtName);
       if (params.lat !== undefined && params.lng !== undefined) {
         query.set("lat", String(params.lat));
         query.set("lng", String(params.lng));
@@ -121,15 +163,66 @@ export const SimpleFarmerHome: React.FC = () => {
     }
   };
 
-  // User taps an area chip or map pin
-  const handleSelectArea = (area: PilotArea, details?: { lat: number; lng: number; isFar: boolean }) => {
-    setSelectedArea(area);
+  // Restore last selected location on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("farmscale_last_selected_location");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.districtEn && parsed.upazilaEn) {
+          setSelectedDistrictEn(parsed.districtEn);
+          setSelectedUpazilaEn(parsed.upazilaEn);
+          fetchRecommendations({
+            upazilaName: parsed.upazilaEn,
+            districtName: parsed.districtEn,
+          });
+          setInitialLoaded(true);
+          return;
+        }
+      }
+    } catch {}
+
+    setInitialLoaded(true);
+  }, [lang]);
+
+  // Handle District selection
+  const handleDistrictChange = (d: string) => {
+    setSelectedDistrictEn(d);
+    const newUpzs = ALL_RAJSHAHI_UPAZILAS.filter((u) => u.district_en.toLowerCase() === d.toLowerCase());
+    const nextUpz = newUpzs[0]?.upazila_en || "";
+    setSelectedUpazilaEn(nextUpz);
     setStatusMessage("");
+
+    try {
+      localStorage.setItem(
+        "farmscale_last_selected_location",
+        JSON.stringify({ districtEn: d, upazilaEn: nextUpz })
+      );
+    } catch {}
+
+    if (nextUpz) {
+      fetchRecommendations({
+        upazilaName: nextUpz,
+        districtName: d,
+      });
+    }
+  };
+
+  // Handle Upazila selection
+  const handleUpazilaChange = (uName: string) => {
+    setSelectedUpazilaEn(uName);
+    setStatusMessage("");
+
+    try {
+      localStorage.setItem(
+        "farmscale_last_selected_location",
+        JSON.stringify({ districtEn: selectedDistrictEn, upazilaEn: uName })
+      );
+    } catch {}
+
     fetchRecommendations({
-      areaId: area.id,
-      lat: details?.lat,
-      lng: details?.lng,
-      isFar: details?.isFar,
+      upazilaName: uName,
+      districtName: selectedDistrictEn,
     });
   };
 
@@ -147,26 +240,33 @@ export const SimpleFarmerHome: React.FC = () => {
         const userLat = pos.coords.latitude;
         const userLng = pos.coords.longitude;
 
-        // Find nearest pilot area
-        let bestArea = PILOT_AREAS[0];
-        let bestDist = Infinity;
-        for (const a of PILOT_AREAS) {
-          const dist = Math.hypot(a.lat - userLat, a.lng - userLng);
-          if (dist < bestDist) {
-            bestDist = dist;
-            bestArea = a;
-          }
-        }
+        // Find nearest upazila among ALL 67 upazilas
+        const nearest = findNearestUpazila(userLat, userLng);
+        const upz = nearest.upazila;
 
-        const isFar = bestDist > 0.35;
-        setSelectedArea(bestArea);
-        if (isFar) {
+        setSelectedDistrictEn(upz.district_en);
+        setSelectedUpazilaEn(upz.upazila_en);
+
+        try {
+          localStorage.setItem(
+            "farmscale_last_selected_location",
+            JSON.stringify({ districtEn: upz.district_en, upazilaEn: upz.upazila_en })
+          );
+        } catch {}
+
+        if (nearest.isFar) {
           setStatusMessage(t.far);
         } else {
           setStatusMessage("");
         }
 
-        fetchRecommendations({ lat: userLat, lng: userLng, areaId: bestArea.id, isFar });
+        fetchRecommendations({
+          lat: userLat,
+          lng: userLng,
+          upazilaName: upz.upazila_en,
+          districtName: upz.district_en,
+          isFar: nearest.isFar,
+        });
       },
       () => {
         setStatusMessage(t.denied);
@@ -177,12 +277,12 @@ export const SimpleFarmerHome: React.FC = () => {
 
   return (
     <div className="max-w-[560px] mx-auto py-2 px-1 sm:px-2 pb-16 font-sans antialiased text-primary">
-      {/* Top Header: Brand + Lang Toggle */}
-      <header className="flex items-center justify-between gap-3 mb-6">
-        <div className="flex items-center gap-2.5 font-bold text-[22px] tracking-tight text-primary">
+      {/* Top Header: Brand + Lang Toggle + Auth Button */}
+      <header className="flex items-center justify-between gap-2 sm:gap-3 mb-6">
+        <div className="flex items-center gap-2.5 font-bold text-[21px] tracking-tight text-primary">
           <svg
-            width="38"
-            height="38"
+            width="36"
+            height="36"
             viewBox="0 0 48 48"
             aria-hidden="true"
             className="flex-shrink-0"
@@ -209,49 +309,54 @@ export const SimpleFarmerHome: React.FC = () => {
               strokeLinecap="round"
             />
           </svg>
-          <span>FarmScale</span>
+          <span className="hidden xs:inline">FarmScale</span>
         </div>
 
-        {/* Language switch pill: Bangla (default) & English only */}
-        <div
-          className="flex bg-surface border border-border rounded-full p-0.5 shadow-2xs"
-          role="group"
-          aria-label="Language"
-        >
-          <button
-            type="button"
-            disabled={isPendingLang}
-            onClick={() => handleLanguageChange("bn")}
-            aria-pressed={lang === "bn"}
-            className={`px-3.5 py-1.5 rounded-full text-[15px] font-semibold transition-all min-h-[36px] ${
-              lang === "bn"
-                ? "bg-gold text-[#1a1300] shadow-2xs"
-                : "text-secondary hover:text-primary"
-            }`}
+        <div className="flex items-center gap-2">
+          {/* Language switch pill: Bangla (default) & English */}
+          <div
+            className="flex bg-surface border border-border rounded-full p-0.5 shadow-2xs"
+            role="group"
+            aria-label="Language"
           >
-            বাংলা
-          </button>
-          <button
-            type="button"
-            disabled={isPendingLang}
-            onClick={() => handleLanguageChange("en")}
-            aria-pressed={lang === "en"}
-            className={`px-3.5 py-1.5 rounded-full text-[15px] font-semibold transition-all min-h-[36px] ${
-              lang === "en"
-                ? "bg-gold text-[#1a1300] shadow-2xs"
-                : "text-secondary hover:text-primary"
-            }`}
-          >
-            English
-          </button>
+            <button
+              type="button"
+              disabled={isPendingLang}
+              onClick={() => handleLanguageChange("bn")}
+              aria-pressed={lang === "bn"}
+              className={`px-3 py-1.5 rounded-full text-[14px] font-semibold transition-all min-h-[36px] ${
+                lang === "bn"
+                  ? "bg-gold text-[#1a1300] shadow-2xs"
+                  : "text-secondary hover:text-primary"
+              }`}
+            >
+              বাংলা
+            </button>
+            <button
+              type="button"
+              disabled={isPendingLang}
+              onClick={() => handleLanguageChange("en")}
+              aria-pressed={lang === "en"}
+              className={`px-3 py-1.5 rounded-full text-[14px] font-semibold transition-all min-h-[36px] ${
+                lang === "en"
+                  ? "bg-gold text-[#1a1300] shadow-2xs"
+                  : "text-secondary hover:text-primary"
+              }`}
+            >
+              EN
+            </button>
+          </div>
+
+          {/* Google Auth & My Farm Dropdown */}
+          <AuthButton lang={lang} onOpenMyFarm={() => setMyFarmOpen(true)} />
         </div>
       </header>
 
       {/* Main Title & Subtitle */}
-      <h1 className="text-[28px] sm:text-[30px] font-bold leading-[1.25] text-primary mt-6 mb-2">
+      <h1 className="text-[27px] sm:text-[30px] font-bold leading-[1.25] text-primary mt-4 mb-2">
         {t.h1}
       </h1>
-      <p className="text-[17px] text-secondary leading-snug mb-6">
+      <p className="text-[16px] sm:text-[17px] text-secondary leading-snug mb-5">
         {t.sub}
       </p>
 
@@ -259,7 +364,7 @@ export const SimpleFarmerHome: React.FC = () => {
       <button
         type="button"
         onClick={handleUseLocation}
-        className="w-full min-h-[60px] rounded-2xl bg-gold hover:opacity-95 text-[#1a1300] font-bold text-[19px] flex items-center justify-center gap-2.5 cursor-pointer shadow-sm active:scale-[0.99] transition-transform focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
+        className="w-full min-h-[58px] rounded-2xl bg-gold hover:opacity-95 text-[#1a1300] font-bold text-[18px] sm:text-[19px] flex items-center justify-center gap-2.5 cursor-pointer shadow-sm active:scale-[0.99] transition-transform focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary mb-5"
       >
         <svg
           width="24"
@@ -278,57 +383,78 @@ export const SimpleFarmerHome: React.FC = () => {
         <span>{t.go}</span>
       </button>
 
-      {/* Fallback Area Chips & Map Picker Toggle */}
-      <div className="flex items-center justify-between mt-5 mb-2">
-        <p className="text-[15px] text-secondary font-medium m-0">
-          {t.or}
-        </p>
+      {/* Cascading Location Selector: District -> Upazila (All 67 Upazilas of Rajshahi Division) */}
+      <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 mb-3 space-y-3 shadow-xs">
+        <div className="flex items-center justify-between">
+          <label className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+            <MapPin className="w-4 h-4 text-emerald-700" />
+            <span>{t.or}</span>
+          </label>
+          <button
+            type="button"
+            onClick={() => setShowMap(!showMap)}
+            className="text-xs font-semibold text-emerald-800 hover:text-emerald-950 underline flex items-center gap-1"
+          >
+            {showMap ? t.closeMap : t.pickMap}
+          </button>
+        </div>
 
-        {/* Map Picker Trigger Button */}
-        <button
-          type="button"
-          onClick={() => setShowMap((prev) => !prev)}
-          className={`px-3 py-1.5 rounded-full font-medium text-[13px] sm:text-[14px] transition-all cursor-pointer border flex items-center gap-1.5 ${
-            showMap
-              ? "border-forest bg-forest text-white"
-              : "border-gold/60 bg-gold/15 text-primary hover:border-gold"
-          }`}
-        >
-          <Navigation className="w-3.5 h-3.5 text-gold shrink-0" />
-          <span>{showMap ? t.closeMap : t.pickMap}</span>
-        </button>
-      </div>
-
-      {/* Pilot Upazila Chips */}
-      <div className="flex flex-wrap gap-2">
-        {PILOT_AREAS.map((a) => {
-          const isSelected = selectedArea?.id === a.id;
-          return (
-            <button
-              key={a.id}
-              type="button"
-              onClick={() => handleSelectArea(a)}
-              aria-pressed={isSelected}
-              className={`min-h-[44px] px-4 py-2 rounded-full font-medium text-[16px] transition-all cursor-pointer border ${
-                isSelected
-                  ? "border-forest bg-forest text-white shadow-sm"
-                  : "border-border bg-surface text-primary hover:border-gold"
-              } focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary`}
+        <div className="grid grid-cols-2 gap-3">
+          {/* District Dropdown (8 Districts) */}
+          <div>
+            <span className="block text-[11px] font-medium text-slate-500 mb-1">{t.district}</span>
+            <select
+              value={selectedDistrictEn}
+              onChange={(e) => handleDistrictChange(e.target.value)}
+              className="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white font-semibold text-sm text-slate-800 focus:ring-2 focus:ring-primary min-h-[44px]"
             >
-              {lang === "bn" ? a.name_bn : a.name_en}
-            </button>
-          );
-        })}
+              {RAJSHAHI_DISTRICTS.map((d) => (
+                <option key={d.en} value={d.en}>
+                  {lang === "bn" ? d.bn : d.en}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Upazila Dropdown (All Upazilas for selected district) */}
+          <div>
+            <span className="block text-[11px] font-medium text-slate-500 mb-1">
+              {lang === "bn" ? `উপজেলা (${filteredUpazilas.length}টি)` : `Upazila (${filteredUpazilas.length})`}
+            </span>
+            <select
+              value={selectedUpazilaEn}
+              onChange={(e) => handleUpazilaChange(e.target.value)}
+              className="w-full px-3 py-2.5 rounded-xl border border-slate-300 bg-white font-semibold text-sm text-slate-800 focus:ring-2 focus:ring-primary min-h-[44px]"
+            >
+              {filteredUpazilas.map((u) => (
+                <option key={u.upazila_en} value={u.upazila_en}>
+                  {lang === "bn" ? u.upazila_bn : u.upazila_en}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
       </div>
 
-      {/* Interactive Barind Map Picker (Opens when user wants) */}
+      {/* Interactive Barind Map Picker (Optional expansion) */}
       {showMap && (
-        <div className="mt-3">
+        <div className="mt-2 mb-3">
           <BarindMapPicker
-            selectedAreaId={selectedArea?.id}
+            selectedAreaId={currentUpazila?.upazila_en.toLowerCase()}
             lang={lang}
             onSelectArea={(area, details) => {
-              handleSelectArea(area, details);
+              if (details?.lat && details?.lng) {
+                const nearest = findNearestUpazila(details.lat, details.lng);
+                setSelectedDistrictEn(nearest.upazila.district_en);
+                setSelectedUpazilaEn(nearest.upazila.upazila_en);
+                fetchRecommendations({
+                  lat: details.lat,
+                  lng: details.lng,
+                  upazilaName: nearest.upazila.upazila_en,
+                  districtName: nearest.upazila.district_en,
+                  isFar: details.isFar,
+                });
+              }
             }}
             onClose={() => setShowMap(false)}
           />
@@ -337,203 +463,199 @@ export const SimpleFarmerHome: React.FC = () => {
 
       {/* Dynamic Status / Location Notes */}
       <p
-        className="min-h-[26px] mt-3 mb-1 text-[15px] text-secondary leading-snug"
+        className="min-h-[24px] mt-2 mb-2 text-[14px] text-secondary leading-snug"
         role="status"
       >
         {statusMessage}
       </p>
 
-      {/* Output Results Region (Only rendered after location/chip is selected) */}
-      <section id="out" aria-live="polite" className="mt-3">
+      {/* Output Results Region (Rendered after selection) */}
+      <section id="out" aria-live="polite" className="mt-2">
         {loading && (
           <div className="p-8 text-center text-secondary space-y-2">
             <div className="w-8 h-8 mx-auto rounded-full border-3 border-gold border-t-transparent animate-spin" />
-            <p className="text-[16px] font-medium">{t.loading}</p>
+            <p className="text-[16px]">{t.loading}</p>
           </div>
         )}
 
-        {!loading && selectedArea && recommendations.length > 0 && (
+        {!loading && recommendations.length > 0 && (
           <div>
-            {/* Selected Area Header */}
-            <p className="font-semibold text-[17px] text-primary mb-3">
-              {t.where}
-              <span className="text-forest dark:text-gold font-bold">
-                {lang === "bn" ? selectedArea.name_bn : selectedArea.name_en}
+            {/* Active Area Banner */}
+            <div className="flex items-center justify-between bg-gold/15 border border-gold/40 rounded-xl px-4 py-2.5 mb-4 text-[15px] font-semibold text-primary">
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-emerald-800" />
+                {t.where}
+                <strong className="text-forest">
+                  {lang === "bn"
+                    ? `${currentUpazila.district_bn} > ${currentUpazila.upazila_bn}`
+                    : `${currentUpazila.district_en} > ${currentUpazila.upazila_en}`}
+                </strong>
               </span>
-            </p>
+              <span className="text-xs text-secondary bg-surface px-2 py-0.5 rounded-full border border-border">
+                {lang === "bn" ? "৩টি বিকল্প" : "3 Options"}
+              </span>
+            </div>
 
-            {/* Exactly 3 Options in strict order: profit, shift, easy */}
-            {recommendations.map((opt) => {
-              const isBest = opt.key === "profit";
-              const isSelectedForOutline = selectedOptionForOutline?.key === opt.key;
-              const title = t.titles[opt.key] || (lang === "bn" ? opt.title_bn : opt.title_en);
-              const reason = lang === "bn" ? opt.reason_bn : opt.reason_en;
-              const waterLabel = t.lv[opt.water] || opt.water;
+            {/* Exactly 3 Recommendation Cards in fixed order: profit, shift, easy */}
+            <div className="space-y-4">
+              {recommendations.map((opt) => {
+                const isProfit = opt.key === "profit";
+                const isShift = opt.key === "shift";
+                const cardTitle = t.titles[opt.key] || opt.title_bn || opt.title_en;
+                const waterLabel = t.lv[opt.water] || opt.water;
+                const reason = lang === "bn" ? opt.reason_bn : opt.reason_en;
+                const isSelectedForOutline = selectedOptionForOutline?.key === opt.key;
 
-              return (
-                <article
-                  key={opt.key}
-                  className={`rounded-[18px] mb-3.5 transition-all shadow-card ${
-                    isBest
-                      ? "bg-forest border-2 border-forest text-white p-5 sm:p-6"
-                      : "bg-surface border border-border text-primary p-4 sm:p-5"
-                  } ${isSelectedForOutline ? "ring-2 ring-gold" : ""}`}
-                >
-                  <h2
-                    className={`text-[19px] font-bold mb-3 ${
-                      isBest ? "text-white" : "text-primary"
-                    }`}
+                return (
+                  <article
+                    key={opt.key}
+                    tabIndex={0}
+                    className={`rounded-[20px] p-5 border transition-all ${
+                      isProfit
+                        ? "bg-surface border-gold/70 shadow-sm ring-1 ring-gold/40"
+                        : "bg-surface border-border hover:border-gold/50"
+                    } focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary`}
                   >
-                    {title}
-                  </h2>
-
-                  {/* 3-Season Rotation Sequence */}
-                  <div className="flex items-start gap-1 sm:gap-2">
-                    {opt.crops.map((cropKey, idx) => (
-                      <React.Fragment key={cropKey + idx}>
-                        {idx > 0 && (
-                          <span
-                            className={`self-center -mt-4 opacity-50 text-xl font-bold ${
-                              isBest ? "text-white" : "text-secondary"
-                            }`}
-                            aria-hidden="true"
-                          >
-                            ›
+                    {/* Card Header Badge */}
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <div className="flex items-center gap-2">
+                        {isProfit && (
+                          <span className="inline-flex items-center gap-1 text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-gold text-[#1a1300] uppercase tracking-wide">
+                            <Sparkles className="w-3 h-3 fill-current" />
+                            {lang === "bn" ? "সেরা পছন্দ" : "Top Pick"}
                           </span>
                         )}
-                        <div className="flex-1 text-center text-[14px] leading-tight">
-                          <CropIcon
-                            crop={cropKey}
-                            size={52}
-                            showName={false}
-                            lang={lang}
-                          />
-                          <span
-                            className={`block mt-1 font-medium text-[13px] sm:text-[14px] ${
-                              isBest ? "text-white/95" : "text-primary"
-                            }`}
-                          >
-                            {CROP_NAMES[lang][cropKey] || cropKey}
+                        {isShift && (
+                          <span className="inline-flex items-center text-[12px] font-bold px-2.5 py-0.5 rounded-full bg-forest text-white uppercase tracking-wide">
+                            {lang === "bn" ? "পানি সাশ্রয়ী" : "Saves Water"}
                           </span>
+                        )}
+                        <h2 className="text-[19px] sm:text-[20px] font-bold text-primary leading-snug">
+                          {cardTitle}
+                        </h2>
+                      </div>
+                    </div>
+
+                    {/* 3-Season Rotation: Rabi -> Kharif-1 -> Kharif-2 */}
+                    <div className="bg-background-50 border border-border/80 rounded-2xl p-3 my-3">
+                      <div className="grid grid-cols-3 gap-2 items-center text-center">
+                        {opt.crops.map((cropKey, idx) => (
+                          <div key={idx} className="flex flex-col items-center">
+                            <span className="text-[11px] font-semibold text-secondary uppercase tracking-wider mb-1">
+                              {idx === 0
+                                ? lang === "bn"
+                                  ? "রবি"
+                                  : "Rabi"
+                                : idx === 1
+                                ? lang === "bn"
+                                  ? "খরিপ-১"
+                                  : "Kharif-1"
+                                : lang === "bn"
+                                ? "খরিপ-২"
+                                : "Kharif-2"}
+                            </span>
+                            <CropIcon crop={cropKey} size={48} className="my-0.5" />
+                            <span className="text-[13px] sm:text-[14px] font-bold text-primary mt-1 line-clamp-1">
+                              {CROP_NAMES[lang][cropKey] || cropKey}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Financial & Water Metrics */}
+                    <div className="grid grid-cols-3 gap-2 py-3 border-y border-border/70 my-3 text-center">
+                      <div>
+                        <div className="text-[12px] font-medium text-secondary">
+                          {t.profit}
                         </div>
-                      </React.Fragment>
-                    ))}
-                  </div>
+                        <div className="text-[18px] sm:text-[19px] font-extrabold text-forest mt-0.5">
+                          {formatTaka(opt.profit_per_bigha, lang)}
+                        </div>
+                      </div>
 
-                  {/* 3 Key Stats */}
-                  <div
-                    className={`grid grid-cols-3 gap-2 mt-4 mb-2.5 pt-3 border-t text-center ${
-                      isBest
-                        ? "border-white/20"
-                        : "border-border"
-                    }`}
-                  >
-                    <div>
-                      <b
-                        className={`text-[18px] sm:text-[20px] font-bold leading-tight block ${
-                          isBest ? "text-white" : "text-primary"
-                        }`}
-                      >
-                        {formatTaka(opt.profit_per_bigha, lang)}
-                      </b>
-                      <span
-                        className={`text-[13px] block mt-0.5 ${
-                          isBest ? "text-[#cfe0d3]" : "text-secondary"
-                        }`}
-                      >
-                        {t.profit}
-                      </span>
+                      <div className="border-x border-border/60">
+                        <div className="text-[12px] font-medium text-secondary">
+                          {t.cost}
+                        </div>
+                        <div className="text-[18px] sm:text-[19px] font-bold text-primary mt-0.5">
+                          {formatTaka(opt.cost_per_bigha, lang)}
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="text-[12px] font-medium text-secondary">
+                          {t.water}
+                        </div>
+                        <div className="text-[17px] sm:text-[18px] font-bold text-primary mt-0.5">
+                          {waterLabel}
+                        </div>
+                      </div>
                     </div>
 
-                    <div>
-                      <b
-                        className={`text-[18px] sm:text-[20px] font-bold leading-tight block ${
-                          isBest ? "text-white" : "text-primary"
-                        }`}
-                      >
-                        {formatTaka(opt.cost_per_bigha, lang)}
-                      </b>
-                      <span
-                        className={`text-[13px] block mt-0.5 ${
-                          isBest ? "text-[#cfe0d3]" : "text-secondary"
-                        }`}
-                      >
-                        {t.cost}
-                      </span>
-                    </div>
+                    {/* Short Reason Sentence */}
+                    <p className="text-[15px] sm:text-[16px] text-secondary leading-relaxed m-0">
+                      {reason}
+                    </p>
 
-                    <div>
-                      <b
-                        className={`text-[18px] sm:text-[20px] font-bold leading-tight block ${
-                          isBest ? "text-white" : "text-primary"
-                        }`}
-                      >
-                        {waterLabel}
-                      </b>
-                      <span
-                        className={`text-[13px] block mt-0.5 ${
-                          isBest ? "text-[#cfe0d3]" : "text-secondary"
-                        }`}
-                      >
-                        {t.water}
-                      </span>
-                    </div>
-                  </div>
+                    {/* Action button to expand stage-by-stage AI outline */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedOptionForOutline(opt);
+                        setTimeout(() => {
+                          const outlineEl = document.getElementById("ai-outline-section");
+                          if (outlineEl) outlineEl.scrollIntoView({ behavior: "smooth" });
+                        }, 100);
+                      }}
+                      className={`w-full mt-4 py-2.5 px-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[44px] ${
+                        isSelectedForOutline
+                          ? "bg-forest text-white ring-2 ring-gold"
+                          : "bg-gold/20 hover:bg-gold/30 text-primary border border-gold/40"
+                      }`}
+                    >
+                      <span>{t.selectPlan}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </article>
+                );
+              })}
+            </div>
 
-                  {/* 1 Short Reason Sentence */}
-                  <p
-                    className={`text-[15px] m-0 leading-snug ${
-                      isBest ? "text-[#cfe0d3]" : "text-secondary"
-                    }`}
-                  >
-                    {reason}
-                  </p>
-
-                  {/* Select this Option Button -> Triggers AI Outline & Weather Warning */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSelectedOptionForOutline(opt);
-                      setTimeout(() => {
-                        document.getElementById("outline-section")?.scrollIntoView({ behavior: "smooth" });
-                      }, 100);
-                    }}
-                    className={`mt-4 w-full py-3 px-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-2 transition-all cursor-pointer shadow-sm active:scale-[0.99] ${
-                      isBest
-                        ? "bg-gold hover:bg-gold/90 text-[#1a1300]"
-                        : "bg-forest hover:bg-forest/90 text-white"
-                    }`}
-                  >
-                    <Sparkles className="w-4 h-4" />
-                    <span>{t.selectPlan}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </article>
-              );
-            })}
-
-            {/* AI Farming Outline & Live Weather Advisory (Activated upon option selection) */}
+            {/* AI Farming Outline and Live Weather (Renders when an option is tapped) */}
             {selectedOptionForOutline && (
-              <div id="outline-section" className="mt-6 pt-4 border-t border-border">
+              <div id="ai-outline-section" className="mt-8">
                 <AiFarmingOutline
                   option={selectedOptionForOutline}
-                  areaNameBn={selectedArea.name_bn}
-                  areaNameEn={selectedArea.name_en}
-                  lat={selectedArea.lat}
-                  lng={selectedArea.lng}
+                  areaNameBn={`${currentUpazila.district_bn} > ${currentUpazila.upazila_bn}`}
+                  areaNameEn={`${currentUpazila.district_en} > ${currentUpazila.upazila_en}`}
+                  lat={currentUpazila.lat}
+                  lng={currentUpazila.lon}
                   lang={lang}
-                  onBackToOptions={() => setSelectedOptionForOutline(null)}
                 />
               </div>
             )}
+
+            {/* Honest Scientific Footnote */}
+            <p className="text-[13px] text-secondary leading-normal mt-6 mb-2 p-3.5 bg-background-50 rounded-xl border border-border/70 text-center">
+              {t.foot}
+            </p>
           </div>
         )}
       </section>
 
-      {/* Honest Pilot Footnote */}
-      <p className="text-[13.5px] text-secondary mt-6 leading-relaxed">
-        {t.foot}
-      </p>
+      {/* "My Farm" Modal / Drawer */}
+      <MyFarmModal
+        isOpen={myFarmOpen}
+        onClose={() => setMyFarmOpen(false)}
+        lang={lang}
+        currentDistrictEn={selectedDistrictEn}
+        currentUpazilaEn={selectedUpazilaEn}
+        onSaveLocation={(d, u) => {
+          handleDistrictChange(d);
+          handleUpazilaChange(u);
+        }}
+      />
     </div>
   );
 };

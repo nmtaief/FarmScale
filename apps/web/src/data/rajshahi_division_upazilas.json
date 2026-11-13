@@ -1,0 +1,538 @@
+[
+  {
+    "district_en": "Rajshahi",
+    "district_bn": "রাজশাহী",
+    "upazila_en": "Godagari",
+    "upazila_bn": "গোদাগাড়ী",
+    "lat": 24.4667,
+    "lon": 88.33
+  },
+  {
+    "district_en": "Rajshahi",
+    "district_bn": "রাজশাহী",
+    "upazila_en": "Tanore",
+    "upazila_bn": "তানোর",
+    "lat": 24.5833,
+    "lon": 88.5833
+  },
+  {
+    "district_en": "Rajshahi",
+    "district_bn": "রাজশাহী",
+    "upazila_en": "Mohanpur",
+    "upazila_bn": "মোহনপুর",
+    "lat": 24.5333,
+    "lon": 88.65
+  },
+  {
+    "district_en": "Rajshahi",
+    "district_bn": "রাজশাহী",
+    "upazila_en": "Bagmara",
+    "upazila_bn": "বাগমারা",
+    "lat": 24.5667,
+    "lon": 88.8
+  },
+  {
+    "district_en": "Rajshahi",
+    "district_bn": "রাজশাহী",
+    "upazila_en": "Durgapur",
+    "upazila_bn": "দুর্গাপুর",
+    "lat": 24.45,
+    "lon": 88.7667
+  },
+  {
+    "district_en": "Rajshahi",
+    "district_bn": "রাজশাহী",
+    "upazila_en": "Puthia",
+    "upazila_bn": "পুঠিয়া",
+    "lat": 24.3667,
+    "lon": 88.85
+  },
+  {
+    "district_en": "Rajshahi",
+    "district_bn": "রাজশাহী",
+    "upazila_en": "Charghat",
+    "upazila_bn": "চারঘাট",
+    "lat": 24.2833,
+    "lon": 88.75
+  },
+  {
+    "district_en": "Rajshahi",
+    "district_bn": "রাজশাহী",
+    "upazila_en": "Bagha",
+    "upazila_bn": "বাঘা",
+    "lat": 24.1833,
+    "lon": 88.8333
+  },
+  {
+    "district_en": "Rajshahi",
+    "district_bn": "রাজশাহী",
+    "upazila_en": "Paba",
+    "upazila_bn": "পবা",
+    "lat": 24.4333,
+    "lon": 88.5833
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Adamdighi",
+    "upazila_bn": "আদমদীঘি",
+    "lat": 24.7833,
+    "lon": 88.9333
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Bogura Sadar",
+    "upazila_bn": "বগুড়া সদর",
+    "lat": 24.85,
+    "lon": 89.3667
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Dhunat",
+    "upazila_bn": "ধুনট",
+    "lat": 24.6833,
+    "lon": 89.5333
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Dhupchanchia",
+    "upazila_bn": "দুপচাঁচিয়া",
+    "lat": 24.8667,
+    "lon": 89.1667
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Gabtali",
+    "upazila_bn": "গাবতলী",
+    "lat": 24.8833,
+    "lon": 89.5167
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Kahaloo",
+    "upazila_bn": "কাহালু",
+    "lat": 24.8167,
+    "lon": 89.2667
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Nandigram",
+    "upazila_bn": "নন্দীগ্রাম",
+    "lat": 24.65,
+    "lon": 89.2167
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Sariakandi",
+    "upazila_bn": "সারিয়াকান্দি",
+    "lat": 24.8833,
+    "lon": 89.65
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Shajahanpur",
+    "upazila_bn": "শাজাহানপুর",
+    "lat": 24.7667,
+    "lon": 89.3833
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Sherpur",
+    "upazila_bn": "শেরপুর",
+    "lat": 24.6667,
+    "lon": 89.4167
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Shibganj",
+    "upazila_bn": "শিবগঞ্জ",
+    "lat": 25.0,
+    "lon": 89.3333
+  },
+  {
+    "district_en": "Bogura",
+    "district_bn": "বগুড়া",
+    "upazila_en": "Sonatola",
+    "upazila_bn": "সোনাতলা",
+    "lat": 25.0,
+    "lon": 89.6
+  },
+  {
+    "district_en": "Pabna",
+    "district_bn": "পাবনা",
+    "upazila_en": "Atgharia",
+    "upazila_bn": "আটঘরিয়া",
+    "lat": 24.1333,
+    "lon": 89.25
+  },
+  {
+    "district_en": "Pabna",
+    "district_bn": "পাবনা",
+    "upazila_en": "Bera",
+    "upazila_bn": "বেড়া",
+    "lat": 24.0833,
+    "lon": 89.6167
+  },
+  {
+    "district_en": "Pabna",
+    "district_bn": "পাবনা",
+    "upazila_en": "Bhangoora",
+    "upazila_bn": "ভাঙ্গুড়া",
+    "lat": 24.2,
+    "lon": 89.3833
+  },
+  {
+    "district_en": "Pabna",
+    "district_bn": "পাবনা",
+    "upazila_en": "Chatmohar",
+    "upazila_bn": "চাটমোহর",
+    "lat": 24.2333,
+    "lon": 89.2833
+  },
+  {
+    "district_en": "Pabna",
+    "district_bn": "পাবনা",
+    "upazila_en": "Faridpur",
+    "upazila_bn": "ফরিদপুর",
+    "lat": 24.15,
+    "lon": 89.45
+  },
+  {
+    "district_en": "Pabna",
+    "district_bn": "পাবনা",
+    "upazila_en": "Ishwardi",
+    "upazila_bn": "ঈশ্বরদী",
+    "lat": 24.1333,
+    "lon": 89.0667
+  },
+  {
+    "district_en": "Pabna",
+    "district_bn": "পাবনা",
+    "upazila_en": "Santhia",
+    "upazila_bn": "সাঁথিয়া",
+    "lat": 24.0667,
+    "lon": 89.5333
+  },
+  {
+    "district_en": "Pabna",
+    "district_bn": "পাবনা",
+    "upazila_en": "Sujanagar",
+    "upazila_bn": "সুজানগর",
+    "lat": 23.9167,
+    "lon": 89.4333
+  },
+  {
+    "district_en": "Pabna",
+    "district_bn": "পাবনা",
+    "upazila_en": "Pabna Sadar",
+    "upazila_bn": "পাবনা সদর",
+    "lat": 24.0,
+    "lon": 89.2333
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Atrai",
+    "upazila_bn": "আত্রাই",
+    "lat": 24.6167,
+    "lon": 88.9667
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Badalgachhi",
+    "upazila_bn": "বদলগাছী",
+    "lat": 24.9667,
+    "lon": 88.9167
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Dhamoirhat",
+    "upazila_bn": "ধামইরহাট",
+    "lat": 25.0833,
+    "lon": 88.85
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Manda",
+    "upazila_bn": "মান্দা",
+    "lat": 24.7833,
+    "lon": 88.6667
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Mohadevpur",
+    "upazila_bn": "মহাদেবপুর",
+    "lat": 24.9167,
+    "lon": 88.75
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Naogaon Sadar",
+    "upazila_bn": "নওগাঁ সদর",
+    "lat": 24.8,
+    "lon": 88.95
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Niamatpur",
+    "upazila_bn": "নিয়ামতপুর",
+    "lat": 24.8667,
+    "lon": 88.5667
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Patnitala",
+    "upazila_bn": "পত্নীতলা",
+    "lat": 25.05,
+    "lon": 88.7333
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Porsha",
+    "upazila_bn": "পোরশা",
+    "lat": 25.0333,
+    "lon": 88.4833
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Raninagar",
+    "upazila_bn": "রাণীনগর",
+    "lat": 24.7333,
+    "lon": 88.9833
+  },
+  {
+    "district_en": "Naogaon",
+    "district_bn": "নওগাঁ",
+    "upazila_en": "Sapahar",
+    "upazila_bn": "সাপাহার",
+    "lat": 25.1167,
+    "lon": 88.5833
+  },
+  {
+    "district_en": "Natore",
+    "district_bn": "নাটোর",
+    "upazila_en": "Bagatipara",
+    "upazila_bn": "বাগাতিপাড়া",
+    "lat": 24.3333,
+    "lon": 88.95
+  },
+  {
+    "district_en": "Natore",
+    "district_bn": "নাটোর",
+    "upazila_en": "Baraigram",
+    "upazila_bn": "বড়াইগ্রাম",
+    "lat": 24.3167,
+    "lon": 89.1667
+  },
+  {
+    "district_en": "Natore",
+    "district_bn": "নাটোর",
+    "upazila_en": "Gurudaspur",
+    "upazila_bn": "গুরুদাসপুর",
+    "lat": 24.4667,
+    "lon": 89.25
+  },
+  {
+    "district_en": "Natore",
+    "district_bn": "নাটোর",
+    "upazila_en": "Lalpur",
+    "upazila_bn": "লালপুর",
+    "lat": 24.1833,
+    "lon": 88.9833
+  },
+  {
+    "district_en": "Natore",
+    "district_bn": "নাটোর",
+    "upazila_en": "Natore Sadar",
+    "upazila_bn": "নাটোর সদর",
+    "lat": 24.4167,
+    "lon": 89.0
+  },
+  {
+    "district_en": "Natore",
+    "district_bn": "নাটোর",
+    "upazila_en": "Singra",
+    "upazila_bn": "সিংড়া",
+    "lat": 24.5,
+    "lon": 89.15
+  },
+  {
+    "district_en": "Natore",
+    "district_bn": "নাটোর",
+    "upazila_en": "Naldanga",
+    "upazila_bn": "নলডাঙ্গা",
+    "lat": 24.5,
+    "lon": 88.9833
+  },
+  {
+    "district_en": "Joypurhat",
+    "district_bn": "জয়পুরহাট",
+    "upazila_en": "Akkelpur",
+    "upazila_bn": "আক্কেলপুর",
+    "lat": 24.9667,
+    "lon": 89.0167
+  },
+  {
+    "district_en": "Joypurhat",
+    "district_bn": "জয়পুরহাট",
+    "upazila_en": "Joypurhat Sadar",
+    "upazila_bn": "জয়পুরহাট সদর",
+    "lat": 25.1,
+    "lon": 89.0333
+  },
+  {
+    "district_en": "Joypurhat",
+    "district_bn": "জয়পুরহাট",
+    "upazila_en": "Kalai",
+    "upazila_bn": "কালাই",
+    "lat": 25.0667,
+    "lon": 89.1833
+  },
+  {
+    "district_en": "Joypurhat",
+    "district_bn": "জয়পুরহাট",
+    "upazila_en": "Khetlal",
+    "upazila_bn": "ক্ষেতলাল",
+    "lat": 24.9833,
+    "lon": 89.1333
+  },
+  {
+    "district_en": "Joypurhat",
+    "district_bn": "জয়পুরহাট",
+    "upazila_en": "Panchbibi",
+    "upazila_bn": "পাঁচবিবি",
+    "lat": 25.2,
+    "lon": 89.0167
+  },
+  {
+    "district_en": "Chapainawabganj",
+    "district_bn": "চাঁপাইনবাবগঞ্জ",
+    "upazila_en": "Bholahat",
+    "upazila_bn": "ভোলাহাট",
+    "lat": 24.8833,
+    "lon": 88.1833
+  },
+  {
+    "district_en": "Chapainawabganj",
+    "district_bn": "চাঁপাইনবাবগঞ্জ",
+    "upazila_en": "Gomastapur",
+    "upazila_bn": "গোমস্তাপুর",
+    "lat": 24.7833,
+    "lon": 88.2833
+  },
+  {
+    "district_en": "Chapainawabganj",
+    "district_bn": "চাঁপাইনবাবগঞ্জ",
+    "upazila_en": "Nachole",
+    "upazila_bn": "নাচোল",
+    "lat": 24.7333,
+    "lon": 88.4167
+  },
+  {
+    "district_en": "Chapainawabganj",
+    "district_bn": "চাঁপাইনবাবগঞ্জ",
+    "upazila_en": "Chapainawabganj Sadar",
+    "upazila_bn": "চাঁপাইনবাবগঞ্জ সদর",
+    "lat": 24.6,
+    "lon": 88.27
+  },
+  {
+    "district_en": "Chapainawabganj",
+    "district_bn": "চাঁপাইনবাবগঞ্জ",
+    "upazila_en": "Shibganj",
+    "upazila_bn": "শিবগঞ্জ",
+    "lat": 24.6833,
+    "lon": 88.1667
+  },
+  {
+    "district_en": "Sirajganj",
+    "district_bn": "সিরাজগঞ্জ",
+    "upazila_en": "Belkuchi",
+    "upazila_bn": "বেলকুচি",
+    "lat": 24.2833,
+    "lon": 89.7
+  },
+  {
+    "district_en": "Sirajganj",
+    "district_bn": "সিরাজগঞ্জ",
+    "upazila_en": "Chauhali",
+    "upazila_bn": "চৌহালী",
+    "lat": 24.2167,
+    "lon": 89.7167
+  },
+  {
+    "district_en": "Sirajganj",
+    "district_bn": "সিরাজগঞ্জ",
+    "upazila_en": "Kamarkhanda",
+    "upazila_bn": "কামারখন্দ",
+    "lat": 24.3667,
+    "lon": 89.65
+  },
+  {
+    "district_en": "Sirajganj",
+    "district_bn": "সিরাজগঞ্জ",
+    "upazila_en": "Kazipur",
+    "upazila_bn": "কাজীপুর",
+    "lat": 24.6667,
+    "lon": 89.65
+  },
+  {
+    "district_en": "Sirajganj",
+    "district_bn": "সিরাজগঞ্জ",
+    "upazila_en": "Raiganj",
+    "upazila_bn": "রায়গঞ্জ",
+    "lat": 24.5167,
+    "lon": 89.5333
+  },
+  {
+    "district_en": "Sirajganj",
+    "district_bn": "সিরাজগঞ্জ",
+    "upazila_en": "Shahjadpur",
+    "upazila_bn": "শাহজাদপুর",
+    "lat": 24.1833,
+    "lon": 89.6
+  },
+  {
+    "district_en": "Sirajganj",
+    "district_bn": "সিরাজগঞ্জ",
+    "upazila_en": "Sirajganj Sadar",
+    "upazila_bn": "সিরাজগঞ্জ সদর",
+    "lat": 24.45,
+    "lon": 89.7
+  },
+  {
+    "district_en": "Sirajganj",
+    "district_bn": "সিরাজগঞ্জ",
+    "upazila_en": "Tarash",
+    "upazila_bn": "তাড়াশ",
+    "lat": 24.4333,
+    "lon": 89.3667
+  },
+  {
+    "district_en": "Sirajganj",
+    "district_bn": "সিরাজগঞ্জ",
+    "upazila_en": "Ullahpara",
+    "upazila_bn": "উল্লাপাড়া",
+    "lat": 24.3167,
+    "lon": 89.5667
+  }
+]
