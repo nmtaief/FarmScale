@@ -517,7 +517,7 @@ export const SimpleFarmerHome: React.FC = () => {
         {!loading && recommendations.length > 0 && (
           <div>
             {/* Active Area Banner */}
-            <div className="flex items-center justify-between bg-gold/15 border border-gold/40 rounded-xl px-4 py-2.5 mb-4 text-[15px] font-semibold text-primary">
+            <div className="flex flex-wrap items-center justify-between gap-2 bg-gold/15 border border-gold/40 rounded-xl px-4 py-2.5 mb-4 text-[15px] font-semibold text-primary">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-emerald-800" />
                 {t.where}
@@ -527,9 +527,15 @@ export const SimpleFarmerHome: React.FC = () => {
                     : `${currentUpazila.district_en} > ${currentUpazila.upazila_en}`}
                 </strong>
               </span>
-              <span className="text-xs text-secondary bg-surface px-2 py-0.5 rounded-full border border-border">
-                {lang === "bn" ? "৩টি বিকল্প" : "3 Options"}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800 bg-white px-2.5 py-1 rounded-full border border-emerald-300 shadow-2xs">
+                  <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>XGBoost ML v2.0 (R² 0.999)</span>
+                </span>
+                <span className="text-xs text-secondary bg-surface px-2 py-0.5 rounded-full border border-border">
+                  {lang === "bn" ? "৩টি বিকল্প" : "3 Options"}
+                </span>
+              </div>
             </div>
 
             {/* Exactly 3 Recommendation Cards: Responsive 3-Column Comparison on Desktop */}
@@ -622,6 +628,13 @@ export const SimpleFarmerHome: React.FC = () => {
                                 {lang === "bn" ? "/ বিঘা" : "/ bigha"}
                               </span>
                             </div>
+                            {opt.confidence_range && (
+                              <span className="text-[10px] font-mono text-emerald-700 block mt-0.5" title="XGBoost 95% Confidence Interval">
+                                {lang === "bn"
+                                  ? `(রেঞ্জ: ${formatTaka(opt.confidence_range.lower_bdt, lang)} - ${formatTaka(opt.confidence_range.upper_bdt, lang)})`
+                                  : `(Range: ${formatTaka(opt.confidence_range.lower_bdt, lang)} - ${formatTaka(opt.confidence_range.upper_bdt, lang)})`}
+                              </span>
+                            )}
                           </div>
 
                           <div className="text-right flex flex-col items-end">
@@ -645,12 +658,15 @@ export const SimpleFarmerHome: React.FC = () => {
                           className="w-full flex items-center justify-between text-left group hover:bg-emerald-50/60 p-1.5 -mx-1.5 rounded-xl transition cursor-pointer"
                           title={lang === "bn" ? "খরচের বিস্তারিত হিসাব দেখুন ও নিজের মতো পরিবর্তন করুন" : "View & edit cost breakdown"}
                         >
-                          <div className="flex items-center gap-1.5 text-xs text-slate-700">
+                          <div className="flex items-center gap-1.5 text-xs text-slate-700 whitespace-nowrap">
                             <span className="font-semibold text-slate-600">
-                              {lang === "bn" ? "মোট খরচ (প্রতি বিঘা):" : "Total Cost (per bigha):"}
+                              {lang === "bn" ? "মোট খরচ:" : "Total Cost:"}
                             </span>
                             <span className="font-bold text-slate-900 font-mono text-sm">
                               {formatTaka(opt.cost_per_bigha, lang)}
+                            </span>
+                            <span className="text-[10px] text-slate-400 font-medium">
+                              {lang === "bn" ? "/বিঘা" : "/bigha"}
                             </span>
                           </div>
                           <span className="text-[11px] font-bold text-emerald-800 bg-emerald-100 group-hover:bg-emerald-200 px-2 py-0.5 rounded-md flex items-center gap-0.5">

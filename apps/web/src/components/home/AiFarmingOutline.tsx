@@ -16,6 +16,8 @@ import {
   Printer,
   ChevronDown,
   ChevronUp,
+  Layers,
+  CheckSquare,
 } from "lucide-react";
 import { CropIcon, CROP_NAMES } from "@/components/crops/CropIcon";
 import type { RecommendOption } from "@/lib/recommend/recommendData";
@@ -23,12 +25,15 @@ import type { WeatherResponse, DailyWeather } from "@/app/api/weather/route";
 
 interface FarmingTask {
   id: string;
+  seasonKey: "rabi" | "kharif1" | "kharif2";
   seasonNameBn: string;
   seasonNameEn: string;
   cropKey: string;
-  stageBn: string;
-  stageEn: string;
+  stageBn?: string;
+  stageEn?: string;
   approxDays: string;
+  dayBadgeBn?: string;
+  dayBadgeEn?: string;
   titleBn: string;
   titleEn: string;
   instructionBn: string;
@@ -62,10 +67,11 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
   const [weatherData, setWeatherData] = useState<WeatherResponse | null>(null);
   const [loadingWeather, setLoadingWeather] = useState(false);
   const [weatherShifted, setWeatherShifted] = useState(false);
+  const [selectedSeason, setSelectedSeason] = useState<"all" | "rabi" | "kharif1" | "kharif2">("all");
   const [aiQuery, setAiQuery] = useState("");
   const [aiAnswer, setAiAnswer] = useState<string | null>(null);
   const [loadingAi, setLoadingAi] = useState(false);
-  const [expandedSeason, setExpandedSeason] = useState<number>(0);
+  const [completedTasks, setCompletedTasks] = useState<Record<string, boolean>>({});
 
   // Fetch live weather from /api/weather
   useEffect(() => {
@@ -92,6 +98,13 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
     };
   }, [lat, lng]);
 
+  const toggleTaskCompleted = (taskId: string) => {
+    setCompletedTasks((prev) => ({
+      ...prev,
+      [taskId]: !prev[taskId],
+    }));
+  };
+
   // Generate date-wise outline based on rotation key and crops
   const getTasksForOption = (): FarmingTask[] => {
     const hasRain = weatherData?.hasRainWarning || false;
@@ -99,62 +112,72 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
     if (option.key === "profit") {
       // Potato -> Mungbean -> Aman Rice
       return [
+        // RABI SEASON: POTATO (7 steps)
         {
           id: "t_pot_1",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Feb)",
           cropKey: "potato",
+          dayBadgeBn: "দিন ১–৫",
+          dayBadgeEn: "Day 1–5",
           stageBn: "জমি তৈরি ও বেসাল সার প্রয়োগ",
           stageEn: "Land Preparation & Basal Fertilizer",
-          approxDays: "১৫–২০ নভেম্বর",
-          titleBn: "জমি গভীরভাবে চাষ ও সুষম সার প্রয়োগ",
+          approxDays: "১০–২০ নভেম্বর",
+          titleBn: "জমি গভীরভাবে ৪–৫ বার চাষ ও সুষম সার প্রয়োগ",
           titleEn: "Deep Tilth & Basal Fertilizer Application",
           instructionBn:
-            "মাটি ৪-৫ বার চাষ করে ঝুরঝুরে করুন। শেষ চাষের সময় জৈব সার, টিএসপি, এমওপি ও জিপসাম মাটিতে মিশিয়ে ভেলি তৈরি করুন।",
+            "মাটি ৪–৫ বার আড়াআড়ি চাষ ও মই দিয়ে ঝুরঝুরে করুন। শেষ চাষের সময় গোবর, টিএসপি, অর্ধেক এমওপি, জিপসাম, বোরন ও অর্ধেক ইউরিয়া মাটিতে মিশিয়ে ভেলি (Ridge) তৈরি করুন।",
           instructionEn:
-            "Plough 4–5 times to a fine tilth. Apply compost, TSP, MoP, and Gypsum during final land preparation before furrowing.",
-          doseBn: "গোবর ৮০০ কেজি, টিএসপি ৩৫ কেজি, এমওপি ৩৫ কেজি, জিপসাম ১৫ কেজি প্রতি বিঘা",
-          doseEn: "Compost 800 kg, TSP 35 kg, MoP 35 kg, Gypsum 15 kg per bigha",
+            "Plough 4–5 times to a fine tilth. Apply compost, TSP, half MoP, Gypsum, Boron, and half Urea before furrowing.",
+          doseBn: "গোবর ৮০০ কেজি, ইউরিয়া ১৮ কেজি, টিএসপি ৩৫ কেজি, এমওপি ২০ কেজি, জিপসাম ১৫ কেজি, বোরন ১.৫ কেজি প্রতি বিঘা (৩৩ শতক)।",
+          doseEn: "Compost 800 kg, Urea 18 kg, TSP 35 kg, MoP 20 kg, Gypsum 15 kg, Boron 1.5 kg per bigha.",
         },
         {
           id: "t_pot_2",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Feb)",
           cropKey: "potato",
+          dayBadgeBn: "রোপণ দিন",
+          dayBadgeEn: "Planting Day",
           stageBn: "বীজ আলু রোপণ",
           stageEn: "Seed Potato Planting",
-          approxDays: "২০–২৫ নভেম্বর",
-          titleBn: "অঙ্কুরিত রোগমুক্ত বীজ আলু রোপণ",
+          approxDays: "১৫–২৫ নভেম্বর",
+          titleBn: "অঙ্কুরিত রোগমুক্ত বীজ আলু সারিবদ্ধ রোপণ",
           titleEn: "Planting Sprouted Disease-Free Tubers",
           instructionBn:
-            "৬০ সেমি দূরত্বে সারি করে ২৫ সেমি পর পর বীজ আলু মাটির নিচে ৫–৭ সেমি গভীরে রোপণ করুন।",
+            "৬০ সেমি দূরত্বে ভেলি করে ২৫ সেমি পর পর বীজ আলু মাটির নিচে ৫–৭ সেমি গভীরে চোখ উপরের দিকে রেখে রোপণ করুন। সুস্থ বিএডিসি প্রত্যয়িত বীজ ব্যবহার করুন।",
           instructionEn:
             "Plant sprouted tubers at 60 cm row spacing and 25 cm plant spacing at 5–7 cm depth.",
-          doseBn: "বীজ আলু ২০০–২৫০ কেজি প্রতি বিঘা",
-          doseEn: "Seed tuber 200–250 kg per bigha",
+          doseBn: "বীজ আলু ২০০–২৫০ কেজি প্রতি বিঘা।",
+          doseEn: "Seed tuber 200–250 kg per bigha.",
         },
         {
           id: "t_pot_3",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Feb)",
           cropKey: "potato",
+          dayBadgeBn: "রোপণের ২০–২৫ দিন",
+          dayBadgeEn: "Day 20–25 Post-Plant",
           stageBn: "১ম সেচ ও গোড়ায় মাটি তোলা",
           stageEn: "1st Irrigation & Earthing-up",
-          approxDays: weatherShifted ? "৩০ নভেম্বর – ৫ ডিসেম্বর (বৃষ্টির পর)" : "২৫–২৮ নভেম্বর",
-          titleBn: "১ম হালকা সেচ ও ১ম ইউরিয়া উপরিপ্রয়োগ",
+          approxDays: weatherShifted ? "১৫–২০ ডিসেম্বর (বৃষ্টির পর)" : "৫–১০ ডিসেম্বর",
+          titleBn: "১ম হালকা সেচ, বাকি ইউরিয়া উপরিপ্রয়োগ ও ভেলি উঁচু করা",
           titleEn: "1st Light Irrigation & Urea Top-dress",
           instructionBn:
             hasRain && !weatherShifted
-              ? "সতর্কতা: বৃষ্টির পূর্বাভাস থাকায় সেচ সাময়িক বন্ধ রাখুন। বৃষ্টির পর মাটি জো হলে ইউরিয়া দিয়ে গোড়ায় মাটি তুলুন।"
-              : "রোপণের ২০–২৫ দিন পর হালকা সেচ দিন। জো আসলে অর্ধেক ইউরিয়া সার ছিটিয়ে গাছের গোড়ায় মাটি তুলে দিন।",
+              ? "সতর্কতা: বৃষ্টির পূর্বাভাস থাকায় সেচ স্থগিত রাখুন। বৃষ্টির পর মাটি জো হলে ইউরিয়া দিয়ে গোড়ায় মাটি তুলুন।"
+              : "ভেলার দুই পাশের নালিতে হালকা সেচ দিন। জো আসলে বাকি ইউরিয়া ও বাকি এমওপি সার ছিটিয়ে গাছের গোড়ায় মাটি তুলে ভেলি উঁচু করুন।",
           instructionEn:
-            "Apply light furrow irrigation at 20–25 days. Top-dress half urea and earth-up ridges once soil is workable.",
-          doseBn: "ইউরিয়া ১৮ কেজি প্রতি বিঘা",
-          doseEn: "Urea 18 kg per bigha",
+            "Apply light furrow irrigation at 20–25 days. Top-dress remaining urea and MoP, then earth-up ridges once soil is workable.",
+          doseBn: "ইউরিয়া ১৮ কেজি এবং এমওপি ১৫ কেজি প্রতি বিঘা।",
+          doseEn: "Urea 18 kg, MoP 15 kg per bigha.",
           isWeatherSensitive: true,
           weatherWarningBn:
             hasRain
-              ? "আবহাওয়া সতর্কতা: বৃষ্টির পূর্বাভাস আছে। সেচ স্থগিত রাখুন এবং বৃষ্টির পর ইউরিয়া দিন।"
+              ? "আবহাওয়া সতর্কতা: বৃষ্টির পূর্বাভাস আছে। সেচ সাময়িক স্থগিত রাখুন এবং বৃষ্টির পর ইউরিয়া দিন।"
               : undefined,
           weatherWarningEn:
             hasRain
@@ -163,110 +186,319 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
         },
         {
           id: "t_pot_4",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Feb)",
           cropKey: "potato",
-          stageBn: "নাবী ধসা রোগ নজরদারি",
-          stageEn: "Late Blight Monitoring",
-          approxDays: "ডিসেম্বর–জানুয়ারি",
-          titleBn: "ঘন কুয়াশা ও নাবী ধসা থেকে আলু রক্ষা",
-          titleEn: "Late Blight Prevention During Winter Fog",
+          dayBadgeBn: "রোপণের ৪০–৪৫ দিন",
+          dayBadgeEn: "Day 40–45 Post-Plant",
+          stageBn: "২য় সেচ ও কন্দ গঠন তদারকি",
+          stageEn: "2nd Irrigation & Tuber Bulking",
+          approxDays: "২৫–৩০ ডিসেম্বর",
+          titleBn: "কন্দ দ্রুত বৃদ্ধির সময়ে ২য় হালকা সেচ ও নিড়ানি",
+          titleEn: "2nd Irrigation During Tuber Bulking",
           instructionBn:
-            "টানা কুয়াশা ও মেঘলা আবহাওয়ায় ম্যানকোজেব জাতীয় ছত্রাকনাশক প্রতি লিটার পানিতে ২ গ্রাম হারে মিশিয়ে স্প্রে করুন।",
+            "আলু বড় হওয়ার এই সময়ে পানির ঘাটতি হলে ফলন কমে যায়। নালিতে ২য় হালকা সেচ দিন এবং নিশ্চিত করুন কোনো আলু যেন মাটি ভেদ করে বের হয়ে সবুজ না হয়।",
           instructionEn:
-            "Spray Mancozeb preventive fungicide at 2 g/L during dense persistent fog.",
-          doseBn: "ম্যানকোজেব (ডায়থেন এম-৪৫) স্প্রে",
-          doseEn: "Mancozeb spray 2 g/L",
-          isWeatherSensitive: true,
+            "Provide second controlled furrow irrigation. Ensure tubers remain buried under ridges so they do not turn green.",
         },
         {
           id: "t_pot_5",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Feb)",
           cropKey: "potato",
-          stageBn: "আলু কর্তন ও উত্তোলন",
-          stageEn: "Harvest & Curing",
-          approxDays: "১০–২০ ফেব্রুয়ারি",
-          titleBn: "গাছ কেটে ১০ দিন পর আলু তোলা",
-          titleEn: "Haulm Cutting & Harvest Curing",
+          dayBadgeBn: "কুয়াশা পর্যায়",
+          dayBadgeEn: "Fog Window",
+          stageBn: "নাবী ধসা রোগ নজরদারি",
+          stageEn: "Late Blight Monitoring",
+          approxDays: "১–১৫ জানুয়ারি",
+          titleBn: "ঘন কুয়াশা ও নাবী ধসা (Late Blight) থেকে আলু রক্ষা",
+          titleEn: "Late Blight Prevention During Winter Fog",
           instructionBn:
-            "তোলার ১০ দিন আগে মাটির উপরের গাছ কেটে দিন যাতে আলুর চামড়া শক্ত হয়। শুকনো দিনে সাবধানে আলু তুলুন।",
+            "টানা কুয়াশা ও মেঘলা আবহাওয়ায় আগাম প্রতিরোধক হিসেবে ম্যানকোজেব (ডায়থেন এম-৪৫) প্রতি লিটার পানিতে ২ গ্রাম হারে মিশিয়ে স্প্রে করুন। রোগ আক্রমণ করলে সিকিউর বা এক্রোব্যাট স্প্রে করুন।",
           instructionEn:
-            "Dehaulm 10 days before digging to cure potato skin. Harvest on dry sunny days.",
+            "Spray Mancozeb preventive fungicide at 2 g/L during dense persistent fog.",
+          doseBn: "ম্যানকোজেব (ডায়থেন এম-৪৫) ২ গ্রাম/লিটার পানিতে স্প্রে।",
+          doseEn: "Mancozeb spray 2 g/L water.",
+          isWeatherSensitive: true,
         },
         {
-          id: "t_mung_1",
+          id: "t_pot_6",
+          seasonKey: "rabi",
+          seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
+          seasonNameEn: "Rabi Season (Nov–Feb)",
+          cropKey: "potato",
+          dayBadgeBn: "তোলার ১০ দিন আগে",
+          dayBadgeEn: "10 Days Pre-Harvest",
+          stageBn: "মাথার গাছ কর্তন (Haulm Cutting)",
+          stageEn: "Haulm Cutting for Skin Curing",
+          approxDays: "১–১০ ফেব্রুয়ারি",
+          titleBn: "মাটির উপরিভাগের গাছ কেটে আলুর চামড়া শক্তকরণ",
+          titleEn: "Cut Foliage to Strengthen Potato Skin",
+          instructionBn:
+            "আলু তোলার ৮–১০ দিন আগে মাটির উপরিভাগের সমস্ত গাছ কেটে সরিয়ে ফেলুন এবং সেচ বন্ধ রাখুন। এতে আলুর চামড়া শক্ত হবে এবং সংরক্ষণকালে ক্ষত বা পচন হবে না।",
+          instructionEn:
+            "Dehaulm 10 days before harvesting and stop watering. Toughens skin and prevents post-harvest bruising and rotting.",
+        },
+        {
+          id: "t_pot_7",
+          seasonKey: "rabi",
+          seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
+          seasonNameEn: "Rabi Season (Nov–Feb)",
+          cropKey: "potato",
+          dayBadgeBn: "ফসল সংগ্রহ",
+          dayBadgeEn: "Harvest Day",
+          stageBn: "আলু উত্তোলন ও কিউরিং",
+          stageEn: "Digging, Sorting & Curing",
+          approxDays: "১৫–২৫ ফেব্রুয়ারি",
+          titleBn: "শুকনো আবহাওয়ায় সাবধানে আলু উত্তোলন ও ছায়ায় কিউরিং",
+          titleEn: "Harvest on Sunny Day & Shade Curing",
+          instructionBn:
+            "রোদেলা দিনে লাঙ্গল বা কোদাল দিয়ে সাবধানে আলু তুলুন। সরাসরি কড়া রোদে না রেখে ছায়াযুক্ত শীতল স্থানে মেঝেতে পাতলা করে ছড়িয়ে ৭–১০ দিন কিউরিং করুন।",
+          instructionEn:
+            "Dig tubers carefully on dry sunny days. Spread thinly under shaded ventilated area for 7–10 days curing.",
+        },
+
+        // KHARIF-1 SEASON: MUNGBEAN (4 steps)
+        {
+          id: "t_mung_pot_1",
+          seasonKey: "kharif1",
           seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
           seasonNameEn: "Kharif-1 Season (Mar–May)",
           cropKey: "mungbean",
+          dayBadgeBn: "দিন ১–৫",
+          dayBadgeEn: "Day 1–5",
           stageBn: "মুগ ডাল বপন ও নাইট্রোজেন বৃদ্ধি",
-          stageEn: "Mungbean Sowing & Biological N-Fixation",
+          stageEn: "Mungbean Sowing & N-Fixation",
           approxDays: "১–১৫ মার্চ",
-          titleBn: "বারি মুগ-৬ বপন (মাটির উর্বরতা পুনরুদ্ধার)",
+          titleBn: "বারি মুগ-৬ বপন (আলুর অবশিষ্ট সারের সদ্ব্যবহার)",
           titleEn: "Sow BARI Mung-6 for Soil Regeneration",
           instructionBn:
-            "আলু কাটার পর মাটিতে অবশিষ্ট সারে মুগ বীজ বপন করুন। শিকড়ে নাইট্রোজেন গুটি তৈরি হয়ে মাটির উর্বরতা বাড়াবে।",
+            "আলু তোলার পর জমি ইতিমধ্যে ঝুরঝুরে থাকে। ১–২টি হালকা চাষ দিয়ে সারিতে (৩০ সেমি পর পর) মুগ বীজ বপন করুন। বীজপ্রতি রাইজোবিয়াম অণুজীবাণু সার মিশিয়ে নিলে শিকড়ে প্রচুর নাইট্রোজেন গুটি হয়।",
           instructionEn:
-            "Sow mungbean utilizing residual moisture and nutrients. Rhizobium nodules naturally fix atmospheric nitrogen.",
-          doseBn: "বীজ ৪ কেজি প্রতি বিঘা (রাইজোবিয়াম ইনোকুলাম সহ)",
-          doseEn: "Seed 4 kg per bigha with Rhizobium inoculum",
+            "Sow BARI Mung-6 in rows utilizing residual potato fertilizer. Rhizobium inoculum triggers natural nitrogen nodules.",
+          doseBn: "বীজ ৪ কেজি প্রতি বিঘা, টিএসপি ৫ কেজি, এমওপি ৪ কেজি (ইউরিয়া ০ কেজি)।",
+          doseEn: "Seed 4 kg, TSP 5 kg, MoP 4 kg per bigha (Zero urea).",
         },
         {
-          id: "t_aman_1",
+          id: "t_mung_pot_2",
+          seasonKey: "kharif1",
+          seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
+          seasonNameEn: "Kharif-1 Season (Mar–May)",
+          cropKey: "mungbean",
+          dayBadgeBn: "বপনের ২০–২৫ দিন",
+          dayBadgeEn: "Day 20–25",
+          stageBn: "আগাছা নিড়ানি ও ফুল পর্যায়",
+          stageEn: "Weeding & Flowering Stage",
+          approxDays: "২৫ মার্চ – ৫ এপ্রিল",
+          titleBn: "১টি নিড়ানি ও চৈত্র মাসের তাপদাহে হালকা সেচ",
+          titleEn: "Single Hand Weeding & Flowering Moisture Check",
+          instructionBn:
+            "গাছ ছোট অবস্থায় ১টি নিড়ানি দিয়ে জমি আগাছামুক্ত করুন। চৈত্রের তীব্র খরায় মাটি ফেটে গেলে ফুল আসার শুরুতে একটিমাত্র হালকা সেচ দিন।",
+          instructionEn:
+            "Keep plot weed-free early. If extreme heat/drought occurs, apply one light supplemental irrigation at flower bud emergence.",
+        },
+        {
+          id: "t_mung_pot_3",
+          seasonKey: "kharif1",
+          seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
+          seasonNameEn: "Kharif-1 Season (Mar–May)",
+          cropKey: "mungbean",
+          dayBadgeBn: "বপনের ৫৫–৬০ দিন",
+          dayBadgeEn: "Day 55–60",
+          stageBn: "১ম দফায় পাকা শুঁটি সংগ্রহ",
+          stageEn: "1st Stage Pod Picking",
+          approxDays: "২৫ এপ্রিল – ৫ মে",
+          titleBn: "১ম দফায় কালো শুঁটি তোলা (পড পিকিং)",
+          titleEn: "First Flush Black Pod Picking",
+          instructionBn:
+            "গাছের শতকরা ৬০–৭০ ভাগ শুঁটি কালো বা গাঢ় বাদামী হলে সকালে হাত দিয়ে ছিঁড়ে তুলে নিন। রোদে শুকিয়ে মাড়াই করে দানা আলাদা করুন।",
+          instructionEn:
+            "Hand-pick mature black pods in the morning to prevent shattering. Sun-dry and thresh.",
+        },
+        {
+          id: "t_mung_pot_4",
+          seasonKey: "kharif1",
+          seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
+          seasonNameEn: "Kharif-1 Season (Mar–May)",
+          cropKey: "mungbean",
+          dayBadgeBn: "বপনের ৭০ দিন",
+          dayBadgeEn: "Day 70",
+          stageBn: "২য় দফায় শুঁটি তোলা ও সবুজ সার",
+          stageEn: "Final Pod Pick & Green Manuring",
+          approxDays: "১০–২০ মে",
+          titleBn: "শেষ দফায় মুগ সংগ্রহ ও গাছ মাটিতে চাষ দিয়ে সবুজ সার তৈরি",
+          titleEn: "Final Harvest & Legume Green Manure Incorporation",
+          instructionBn:
+            "বাকি পাকা শুঁটি তোলার পর অবশিষ্ট সবুজ গাছগুলো পাওয়ার টিলার দিয়ে চাষ করে মাটির সাথে মিশিয়ে দিন। এটি পচে পরবর্তী আমন ধানে অর্ধেক ইউরিয়া সারের খরচ বাঁচাবে।",
+          instructionEn:
+            "Plough remaining green legume biomass into soil. Enriches organic matter and cuts monsoon rice urea requirement by 50%.",
+        },
+
+        // KHARIF-2 SEASON: AMAN RICE (4 steps)
+        {
+          id: "t_aman_pot_1",
+          seasonKey: "kharif2",
           seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
           seasonNameEn: "Kharif-2 Season (Jul–Nov)",
           cropKey: "rice",
-          stageBn: "রোপা আমন চারা রোপণ",
-          stageEn: "T. Aman Rice Transplanting",
-          approxDays: "১৫–৩০ জুলাই",
-          titleBn: "ব্রি ধান-৮৭ চারা রোপণ (বৃষ্টির পানিতে চাষ)",
-          titleEn: "Transplant BRRI Dhan-87 (Monsoon Rainfed)",
+          dayBadgeBn: "বীজতলা",
+          dayBadgeEn: "Seedbed",
+          stageBn: "বীজ শোধন ও বীজতলা তৈরি",
+          stageEn: "Seedbed Preparation & Seed Treatment",
+          approxDays: "১৫–৩০ জুন",
+          titleBn: "ব্রি ধান-৮৭ / ব্রি ধান-৭১ এর সুস্থ চারা উৎপাদন",
+          titleEn: "Healthy Seedling Raising of BRRI Dhan-87",
           instructionBn:
-            "মুগের গাছ চাষ দিয়ে মাটিতে মিশিয়ে দিন (সবুজ সার)। ২৫–৩০ দিনের সুস্থ চারা ২০×১৫ সেমি দূরত্বে রোপণ করুন।",
+            "উঁচু জমিতে কাদাময় বীজতলায় প্রতি শতকে ৩ কেজি শোধিত বীজ বপন করুন। চারা ২৫–৩০ দিন বয়স পর্যন্ত সুস্থভাবে পরিচর্যা করুন।",
           instructionEn:
-            "Incorporate mungbean residue as green manure. Transplant 25–30 day seedlings at 20x15 cm spacing using monsoon rains.",
-          doseBn: "ইউরিয়া ১০ কেজি কম লাগবে (সবুজ সারের কারণে)",
-          doseEn: "Save 10 kg Urea per bigha due to legume residue",
+            "Sow treated certified seed on wet seedbed. Nurture for 25–30 days for robust disease-free seedlings.",
+          doseBn: "বীজ ৩ কেজি প্রতি শতক বীজতলায়।",
+          doseEn: "Seed 3 kg per decimal seedbed.",
+        },
+        {
+          id: "t_aman_pot_2",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "রোপণ দিন",
+          dayBadgeEn: "Transplant Day",
+          stageBn: "মূল জমি কাদাকরণ ও চারা রোপণ",
+          stageEn: "Puddling & Seedling Transplanting",
+          approxDays: "১৫–৩০ জুলাই",
+          titleBn: "বর্ষার পানিতে মূল জমি তৈরি ও চারা রোপণ",
+          titleEn: "Monsoon Rainfed Puddling & Transplanting",
+          instructionBn:
+            "সবুজ সারের জমিতে ৩–৪ বার চাষ ও মই দিয়ে কাদা তৈরি করুন। ২৫–৩০ দিন বয়সের চারা সারি থেকে সারি ২০ সেমি এবং গোছা থেকে গোছা ১৫ সেমি দূরত্বে রোপণ করুন।",
+          instructionEn:
+            "Transplant 25–30 day seedlings at 20x15 cm spacing using monsoon rainfall. Legume residue saves upfront nitrogen.",
+          doseBn: "টিএসপি ৭ কেজি, এমওপি ৭ কেজি, জিপসাম ৫ কেজি, দস্তা ১ কেজি প্রতি বিঘা।",
+          doseEn: "TSP 7 kg, MoP 7 kg, Gypsum 5 kg, Zinc 1 kg per bigha.",
+        },
+        {
+          id: "t_aman_pot_3",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "রোপণের ২০–২৫ দিন",
+          dayBadgeEn: "Day 20–25 Post-Transplant",
+          stageBn: "১ম নিড়ানি ও ইউরিয়া উপরিপ্রয়োগ",
+          stageEn: "Weeding & Reduced Urea Top-dress",
+          approxDays: "১৫–২৫ আগস্ট",
+          titleBn: "কুশি গজানোর শুরুতে স্বল্প ইউরিয়া ও নিড়ানি",
+          titleEn: "Early Tillering Weeding & Single Top-dress",
+          instructionBn:
+            "জমির আগাছা পরিষ্কার করুন। মুগডালের সবুজ সারের কারণে মাটিতে প্রচুর নাইট্রোজেন জমা থাকায় মাত্র ১ কিস্তিতে স্বল্প ইউরিয়া প্রয়োগ করলেই চলবে।",
+          instructionEn:
+            "Weed thoroughly. Apply a reduced single dose of urea as mungbean green manure supplies organic nitrogen.",
+          doseBn: "ইউরিয়া ৮ কেজি প্রতি বিঘা (সাধারণের চেয়ে অর্ধেক সাশ্রয়)।",
+          doseEn: "Urea 8 kg per bigha (50% savings due to legume green manure).",
+        },
+        {
+          id: "t_aman_pot_4",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "ফসল সংগ্রহ",
+          dayBadgeEn: "Harvest Day",
+          stageBn: "ধান কর্তন ও মাড়াই",
+          stageEn: "Harvesting & Threshing",
+          approxDays: "২৫ অক্টোবর – ১০ নভেম্বর",
+          titleBn: "ধান কর্তন, মাড়াই ও পরবর্তী রবি আলুর প্রস্তুতি",
+          titleEn: "Harvest Matured Paddy & Field Prep for Potato",
+          instructionBn:
+            "শীষের শতকরা ৮০ ভাগ ধান সোনালী বর্ণ হলে কেটে নিন। দ্রুত মাড়াই ও শুকিয়ে মাঠ খালি করুন যাতে মধ্য-নভেম্বরের মধ্যে রবি আলুর জমি তৈরি করা যায়।",
+          instructionEn:
+            "Harvest when 80% panicles turn golden yellow. Thresh, dry, and immediately prepare plot for winter potato.",
         },
       ];
     } else if (option.key === "shift") {
       // Mustard -> Mungbean -> Aman Rice
       return [
+        // RABI SEASON: MUSTARD (6 steps)
         {
           id: "t_mus_1",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Jan)",
           cropKey: "mustard",
-          stageBn: "জমি তৈরি ও সরিষা বীজ বপন",
-          stageEn: "Land Preparation & Sowing",
+          dayBadgeBn: "দিন ১–৫",
+          dayBadgeEn: "Day 1–5",
+          stageBn: "জমি তৈরি ও বেসাল সার প্রয়োগ",
+          stageEn: "Land Preparation & Basal Fertilizer",
           approxDays: "১৫–২৫ নভেম্বর",
-          titleBn: "বারি সরিষা-১৪/১৮ বপন (বোরোর বদলে সেরা)",
-          titleEn: "Sow BARI Sarisha-14/18 (Low Water Alternative)",
+          titleBn: "গভীরভাবে চাষ ও সুষম সার প্রয়োগ (বোরোর বদলে সেরা বিকল্প)",
+          titleEn: "Land Preparation & Basal Fertilizer Application",
           instructionBn:
-            "জমি ৩–৪ বার চাষ দিয়ে সমান করুন। কার্তিক–অগ্রহায়ণে বপন করলে জাবপোকার আক্রমণ এড়ানো যায়।",
+            "জমি ৩–৪ বার আড়াআড়ি চাষ ও মই দিয়ে সমান ঝুরঝুরে করুন। শেষ চাষের সময় টিএসপি, অর্ধেক এমওপি, জিপসাম ও গোবর মাটিতে ভালোভাবে মিশিয়ে দিন। কার্তিক–অগ্রহায়ণে বপন করলে জাবপোকার আক্রমণ এড়ানো যায়।",
           instructionEn:
-            "Plough 3–4 times. Mid-November planting avoids severe winter aphid infestation peaks.",
-          doseBn: "বীজ ১ কেজি, টিএসপি ১০ কেজি, এমওপি ৮ কেজি, জিপসাম ৬ কেজি",
-          doseEn: "Seed 1 kg, TSP 10 kg, MoP 8 kg, Gypsum 6 kg per bigha",
+            "Plough 3–4 times. Mid-November planting avoids severe winter aphid infestation peaks. Incorporate basal fertilizers during final land preparation.",
+          doseBn: "টিএসপি ১০ কেজি, এমওপি ৮ কেজি, জিপসাম ৬ কেজি, দস্তা ১ কেজি ও গোবর ৫০০ কেজি প্রতি বিঘা।",
+          doseEn: "TSP 10 kg, MoP 8 kg, Gypsum 6 kg, Zinc 1 kg, Compost 500 kg per bigha.",
         },
         {
           id: "t_mus_2",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Jan)",
           cropKey: "mustard",
-          stageBn: "১ম হালকা সেচ ও ইউরিয়া",
+          dayBadgeBn: "বপন দিন",
+          dayBadgeEn: "Sowing Day",
+          stageBn: "বীজ শোধন ও বপন",
+          stageEn: "Seed Treatment & Sowing",
+          approxDays: "১৮–২৫ নভেম্বর",
+          titleBn: "বারি সরিষা-১৪/১৮ বীজ বপন (স্বল্পমেয়াদী জাত)",
+          titleEn: "Sow BARI Sarisha-14/18 (80-Day Short Duration)",
+          instructionBn:
+            "জমিতে পর্যাপ্ত জো অবস্থায় বীজ ছিটিয়ে বা সারিতে (২৫ সেমি পর পর) বপন করুন। বপনের আগে প্রতি কেজি বীজে ২.৫ গ্রাম প্রোভ্যাক্স বা অটোস্টিন মিশিয়ে শোধন করে নিন।",
+          instructionEn:
+            "Broadcast or drill in 25 cm rows in moist soil. Treat seeds with Provax or Autostin (2.5 g/kg seed) to prevent seedling damping-off.",
+          doseBn: "বীজ ১ কেজি প্রতি বিঘা।",
+          doseEn: "Certified seed 1 kg per bigha.",
+        },
+        {
+          id: "t_mus_3",
+          seasonKey: "rabi",
+          seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
+          seasonNameEn: "Rabi Season (Nov–Jan)",
+          cropKey: "mustard",
+          dayBadgeBn: "বপনের ১৫–২০ দিন",
+          dayBadgeEn: "Day 15–20",
+          stageBn: "চারা পাতলাকরণ ও ১ম নিড়ানি",
+          stageEn: "Thinning & Hand Weeding",
+          approxDays: "১–৭ ডিসেম্বর",
+          titleBn: "গাছ পাতলাকরণ ও আগাছা পরিষ্কার",
+          titleEn: "Seedling Thinning & Weed Removal",
+          instructionBn:
+            "চারা গজানোর ১০–১৫ দিন পর অতিরিক্ত চারা তুলে পাতলা করুন, যাতে গাছ থেকে গাছের দূরত্ব ৬–৮ সেমি বজায় থাকে। জমিতে কোনো আগাছা থাকলে সাবধানে নিড়িয়ে পরিষ্কার করুন।",
+          instructionEn:
+            "Thin out crowded seedlings to maintain 6–8 cm spacing between plants. Hand weed carefully.",
+        },
+        {
+          id: "t_mus_4",
+          seasonKey: "rabi",
+          seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
+          seasonNameEn: "Rabi Season (Nov–Jan)",
+          cropKey: "mustard",
+          dayBadgeBn: "বপনের ২৫–৩০ দিন",
+          dayBadgeEn: "Day 25–30",
+          stageBn: "১ম হালকা সেচ ও ইউরিয়া উপরিপ্রয়োগ",
           stageEn: "1st Irrigation & Nitrogen Top-dress",
-          approxDays: weatherShifted ? "১০–১৫ ডিসেম্বর (বৃষ্টির পর)" : "৫–১০ ডিসেম্বর",
-          titleBn: "ফুল ফোটার শুরুতে একমাত্র হালকা সেচ",
+          approxDays: weatherShifted ? "১৫–২০ ডিসেম্বর (বৃষ্টির পর)" : "৮–১৫ ডিসেম্বর",
+          titleBn: "ফুল ফোটার প্রাক্কালে একমাত্র হালকা সেচ ও ১ম ইউরিয়া",
           titleEn: "Single Controlled Irrigation at Flower Bud Stage",
           instructionBn:
             hasRain && !weatherShifted
-              ? "সতর্কতা: বৃষ্টির পূর্বাভাস থাকায় সেচ স্থগিত রাখুন। বৃষ্টির পর জমি জো হলে ইউরিয়া ছিটিয়ে দিন।"
-              : "ফুল আসার শুরুতে ১টি হালকা সেচ দিন। জমিতে যেন পানি না জমে। সেচের পর বিঘায় ১২ কেজি ইউরিয়া দিন।",
+              ? "সতর্কতা: বৃষ্টির পূর্বাভাস থাকায় সেচ সাময়িক স্থগিত রাখুন। বৃষ্টির পর মাটি জো হলে ইউরিয়া দিন।"
+              : "ফুল আসার শুরুতে মাত্র একটি হালকা সেচ দিন। জমিতে কোনোভাবেই পানি জমতে দেবেন না, দ্রুত নিকাশ করুন। জমি জো আসার পর ইউরিয়া সার উপরিপ্রয়োগ করুন।",
           instructionEn:
             "Provide one light irrigation before flowering. Ensure zero waterlogging. Top-dress 12 kg Urea once workable.",
-          doseBn: "ইউরিয়া ১২ কেজি প্রতি বিঘা",
-          doseEn: "Urea 12 kg per bigha",
+          doseBn: "ইউরিয়া ১২ কেজি প্রতি বিঘা।",
+          doseEn: "Urea 12 kg per bigha.",
           isWeatherSensitive: true,
           weatherWarningBn:
             hasRain
@@ -278,85 +510,280 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
               : undefined,
         },
         {
-          id: "t_mus_3",
+          id: "t_mus_5",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Jan)",
           cropKey: "mustard",
-          stageBn: "ফসল কর্তন ও মাড়াই",
-          stageEn: "Harvesting & Threshing",
-          approxDays: "৫–১৫ ফেব্রুয়ারি",
-          titleBn: "সরিষা পাকা ও কর্তন (৮০ দিনের স্বল্পমেয়াদী)",
-          titleEn: "Harvest Matured Crop (80-Day Short Duration)",
+          dayBadgeBn: "বপনের ৪৫–৫০ দিন",
+          dayBadgeEn: "Day 45–50",
+          stageBn: "জাবপোকা নজরদারি ও দমন",
+          stageEn: "Aphid Monitoring & Management",
+          approxDays: "১–১০ জানুয়ারি",
+          titleBn: "শীতের কুয়াশাচ্ছন্ন আবহাওয়ায় জাবপোকা পর্যবেক্ষণ",
+          titleEn: "Winter Fog Aphid Scouting & Spray",
           instructionBn:
-            "গাছ ও শুঁটি শতকরা ৭০–৮০ ভাগ হলদে হলে সকালের দিকে কেটে নিন যাতে বীজ ঝরে না পড়ে।",
+            "টানা কুয়াশায় সরিষার ডগায় জাবপোকার আক্রমণ হতে পারে। আক্রান্ত হলে ইমিডাক্লোপ্রিড (টিডো/অ্যাডমায়ার) প্রতি ১০ লিটার পানিতে ২ মিলি অথবা ম্যালাথিয়ন ২ মিলি মিশিয়ে বিকালে স্প্রে করুন।",
           instructionEn:
-            "Harvest in early morning when 70–80% of siliques turn yellowish to prevent pod shattering.",
+            "Scout for aphids during heavy fog. If noticed, spray Imidacloprid (0.2 ml/L water) in late afternoon.",
+          doseBn: "ইমিডাক্লোপ্রিড ০.২ মিলি প্রতি লিটার পানিতে স্প্রে।",
+          doseEn: "Imidacloprid spray 0.2 ml/L water.",
+          isWeatherSensitive: true,
         },
         {
-          id: "t_mung_2",
+          id: "t_mus_6",
+          seasonKey: "rabi",
+          seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
+          seasonNameEn: "Rabi Season (Nov–Jan)",
+          cropKey: "mustard",
+          dayBadgeBn: "বপনের ৭৫–৮৫ দিন",
+          dayBadgeEn: "Day 75–85",
+          stageBn: "ফসল পাকা ও মাড়াই",
+          stageEn: "Harvesting & Threshing",
+          approxDays: "৫–১৫ ফেব্রুয়ারি",
+          titleBn: "সরিষা পাকা, কর্তন ও শুষ্ক মাড়াই (৮০ দিনের স্বল্পমেয়াদী)",
+          titleEn: "Harvest Matured Crop (80-Day Short Duration)",
+          instructionBn:
+            "গাছ ও শুঁটি শতকরা ৭৫–৮০ ভাগ হলদে হলে সকালের দিকে কেটে নিন যাতে রোদে শুঁটি ফেটে বীজ ঝরে না পড়ে। মাড়াই করে বীজ ৩–৪ দিন কড়া রোদে শুকিয়ে সংরক্ষণ করুন।",
+          instructionEn:
+            "Harvest in early morning when 75–80% of siliques turn yellowish to prevent pod shattering. Sun-dry 3–4 days before bagging.",
+        },
+
+        // KHARIF-1 SEASON: MUNGBEAN (4 steps)
+        {
+          id: "t_mung_mus_1",
+          seasonKey: "kharif1",
           seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
           seasonNameEn: "Kharif-1 Season (Mar–May)",
           cropKey: "mungbean",
-          stageBn: "মুগ ডাল বপন",
-          stageEn: "Mungbean Planting",
-          approxDays: "১–১৫ মার্চ",
-          titleBn: "বারি মুগ-৬ বপন (মাটিতে নাইট্রোজেন সঞ্চয়)",
-          titleEn: "Sow BARI Mung-6 for Soil Nitrogen Regeneration",
+          dayBadgeBn: "দিন ১–৫",
+          dayBadgeEn: "Day 1–5",
+          stageBn: "জমি তৈরি ও মুগ বপন",
+          stageEn: "Land Preparation & Mungbean Sowing",
+          approxDays: "২৫ ফেব্রুয়ারি – ১০ মার্চ",
+          titleBn: "বারি মুগ-৬ বপন (মাটিতে প্রাকৃতিকভাবে নাইট্রোজেন সঞ্চয়)",
+          titleEn: "Sow BARI Mung-6 for Biological Nitrogen Fixation",
           instructionBn:
-            "সরিষা কাটার পর জমি তৈরি করে মুগ ডাল বপন করুন। এটি পরবর্তী আমন ধানের ইউরিয়া সারের খরচ অর্ধেক কমায়।",
+            "সরিষা কাটার পর জমিতে ১–২ বার চাষ দিন। শিকড়ে নাইট্রোজেন গুটি গঠনের জন্য বীজপ্রতি ২০ গ্রাম রাইজোবিয়াম অণুজীবাণু সার মিশিয়ে সারিতে (৩০ সেমি পর পর) বপন করুন।",
           instructionEn:
             "Sow mungbean immediately after mustard. Enriches Barind soil and cuts chemical urea cost for monsoon rice.",
-          doseBn: "বীজ ৪ কেজি প্রতি বিঘা",
-          doseEn: "Seed 4 kg per bigha",
+          doseBn: "বীজ ৪ কেজি প্রতি বিঘা, টিএসপি ৫ কেজি, এমওপি ৪ কেজি (ইউরিয়া প্রয়োজন নেই)।",
+          doseEn: "Seed 4 kg, TSP 5 kg, MoP 4 kg per bigha (Zero urea).",
         },
         {
-          id: "t_aman_2",
+          id: "t_mung_mus_2",
+          seasonKey: "kharif1",
+          seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
+          seasonNameEn: "Kharif-1 Season (Mar–May)",
+          cropKey: "mungbean",
+          dayBadgeBn: "বপনের ১৫–২০ দিন",
+          dayBadgeEn: "Day 15–20",
+          stageBn: "আগাছা দমন ও নিড়ানি",
+          stageEn: "Weeding & Moisture Conservation",
+          approxDays: "২০–২৫ মার্চ",
+          titleBn: "নিড়ানি ও চৈত্রের খরায় মাটির আর্দ্রতা রক্ষা",
+          titleEn: "Weed Control & Moisture Management",
+          instructionBn:
+            "চারা গজানোর পর জমিতে নিড়ানি দিয়ে আগাছা মুক্ত রাখুন। গাছে ফুল আসার শুরুতে খরা বা উচ্চ তাপমাত্রা দেখা দিলে মাত্র একটি হালকা সেচ দিন।",
+          instructionEn:
+            "Keep plot weed-free. If soil dries severely in Chaitra heat, apply one light supplemental irrigation at flower bud emergence.",
+        },
+        {
+          id: "t_mung_mus_3",
+          seasonKey: "kharif1",
+          seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
+          seasonNameEn: "Kharif-1 Season (Mar–May)",
+          cropKey: "mungbean",
+          dayBadgeBn: "বপনের ৫৫–৬০ দিন",
+          dayBadgeEn: "Day 55–60",
+          stageBn: "১ম দফায় পাকা শুঁটি সংগ্রহ",
+          stageEn: "1st Stage Pod Picking",
+          approxDays: "২০–৩০ এপ্রিল",
+          titleBn: "১ম দফায় কালো শুঁটি তোলা (পড পিকিং)",
+          titleEn: "Hand-picking Mature Black Pods",
+          instructionBn:
+            "গাছের অধিকাংশ শুঁটি কালো বা গাঢ় বাদামী হলে সকালে হাত দিয়ে ছিঁড়ে তুলে নিন। রোদে শুকিয়ে মাড়াই করুন।",
+          instructionEn:
+            "Hand-pick mature pods in morning hours. Sun-dry and thresh.",
+        },
+        {
+          id: "t_mung_mus_4",
+          seasonKey: "kharif1",
+          seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
+          seasonNameEn: "Kharif-1 Season (Mar–May)",
+          cropKey: "mungbean",
+          dayBadgeBn: "বপনের ৭০–৭৫ দিন",
+          dayBadgeEn: "Day 70–75",
+          stageBn: "২য় দফায় শুঁটি তোলা ও সবুজ সার",
+          stageEn: "Final Pod Pick & Green Manuring",
+          approxDays: "১০–২০ মে",
+          titleBn: "২য় দফায় ফসল সংগ্রহ ও মুগ গাছ মাটিতে মিশিয়ে সবুজ সার তৈরি",
+          titleEn: "Final Flush Harvest & Green Manure Incorporation",
+          instructionBn:
+            "বাকি পাকা শুঁটি তোলার পর অবশিষ্ট সবুজ গাছগুলো লাঙ্গল দিয়ে চাষ করে মাটির সাথে মিশিয়ে দিন। এটি মাটিতে পচে উৎকৃষ্ট জৈব সার হবে এবং আমন ধানে অর্ধেক ইউরিয়া সাশ্রয় করবে।",
+          instructionEn:
+            "Incorporate remaining crop residue into soil as green manure. Provides organic matter and saves chemical fertilizer.",
+        },
+
+        // KHARIF-2 SEASON: AMAN RICE (5 steps)
+        {
+          id: "t_aman_mus_1",
+          seasonKey: "kharif2",
           seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
           seasonNameEn: "Kharif-2 Season (Jul–Nov)",
           cropKey: "rice",
-          stageBn: "রোপা আমন ধান",
-          stageEn: "T. Aman Rice Transplanting",
-          approxDays: "১৫–৩০ জুলাই",
-          titleBn: "ব্রি ধান-৮৭ চারা রোপণ",
-          titleEn: "Transplant BRRI Dhan-87",
+          dayBadgeBn: "বীজতলা",
+          dayBadgeEn: "Seedbed",
+          stageBn: "বীজতলা তৈরি ও বীজ বপন",
+          stageEn: "Seedbed Preparation & Sowing",
+          approxDays: "১৫–৩০ জুন",
+          titleBn: "ব্রি ধান-৮৭ / ব্রি ধান-৭১ এর সুস্থ সবল চারা উৎপাদন",
+          titleEn: "Seedbed Management of BRRI Dhan-87",
           instructionBn:
-            "বর্ষার পানিতে রোপা আমন সম্পন্ন করুন। বোরোর মতো কোনো গভীর নলকূপের ভারী সেচ খরচের প্রয়োজন নেই।",
+            "আমন মৌসুমের জন্য উঁচু জমিতে কাদাময় বীজতলা তৈরি করুন। প্রতি শতক বীজতলায় ৩ কেজি শোধিত বীজ বপন করুন। চারা ২৫–৩০ দিন বয়স পর্যন্ত সুস্থভাবে পরিচর্যা করুন।",
           instructionEn:
-            "Rely entirely on seasonal monsoon rain, avoiding deep tube-well pumping costs of winter boro.",
+            "Raise healthy seedlings on elevated wet seedbed. 25–30 day old seedlings are ideal for transplanting.",
+          doseBn: "বীজ ৩ কেজি প্রতি শতক বীজতলায়।",
+          doseEn: "Seed 3 kg per decimal seedbed.",
+        },
+        {
+          id: "t_aman_mus_2",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "রোপণ দিন",
+          dayBadgeEn: "Transplant Day",
+          stageBn: "জমি কাদাকরণ ও চারা রোপণ",
+          stageEn: "Puddling & Seedling Transplanting",
+          approxDays: "১৫–৩০ জুলাই",
+          titleBn: "বর্ষার পানিতে মূল জমি তৈরি ও চারা রোপণ",
+          titleEn: "Transplant BRRI Dhan-87 (Monsoon Rainfed)",
+          instructionBn:
+            "সবুজ সারের জমিতে ৩–৪ বার চাষ ও মই দিয়ে জমি ভালোভাবে থকথকে কাদা করুন। ২৫–৩০ দিন বয়সের চারা সারি থেকে সারি ২০ সেমি এবং গোছা থেকে গোছা ১৫ সেমি দূরত্বে রোপণ করুন।",
+          instructionEn:
+            "Puddle plot using seasonal monsoon rain. Transplant 25–30 day seedlings at 20x15 cm spacing. Zero deep tube-well pumping required.",
+          doseBn: "টিএসপি ৭ কেজি, এমওপি ৭ কেজি, জিপসাম ৫ কেজি, দস্তা ১ কেজি প্রতি বিঘা।",
+          doseEn: "TSP 7 kg, MoP 7 kg, Gypsum 5 kg, Zinc 1 kg per bigha.",
+        },
+        {
+          id: "t_aman_mus_3",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "রোপণের ২০–২৫ দিন",
+          dayBadgeEn: "Day 20–25 Post-Transplant",
+          stageBn: "১ম নিড়ানি ও ইউরিয়া উপরিপ্রয়োগ",
+          stageEn: "Weeding & 1st Urea Top-dress",
+          approxDays: "১৫–২৫ আগস্ট",
+          titleBn: "কুশি গজানোর শুরুতে ১ম ইউরিয়া প্রয়োগ ও আগাছা দমন",
+          titleEn: "Tillering Stage Weeding & Nitrogen Top-dress",
+          instructionBn:
+            "জমির আগাছা পরিষ্কার করে গাছের গোড়ায় মাটি চেপে দিন। মাটিতে হালকা পানি বা জো অবস্থায় ইউরিয়া উপরিপ্রয়োগ করুন।",
+          instructionEn:
+            "Clean weeds and firm soil around hills. Top-dress reduced urea under moist field conditions.",
+          doseBn: "ইউরিয়া ৮ কেজি প্রতি বিঘা (মুগডাল সবুজ সারের কারণে অর্ধেক কম)।",
+          doseEn: "Urea 8 kg per bigha (Legume residue saves 50% synthetic nitrogen).",
+        },
+        {
+          id: "t_aman_mus_4",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "রোপণের ৫৫–৬০ দিন",
+          dayBadgeEn: "Day 55–60",
+          stageBn: "কাইচথোড় পর্যায় ও ২য় ইউরিয়া",
+          stageEn: "Panicle Initiation & Insect Scouting",
+          approxDays: "২০ সেপ্টেম্বর – ৫ অক্টোবর",
+          titleBn: "কাইচথোড় পর্যায় ও মাজরা/ব্লাস্ট রোগ নজরদারি",
+          titleEn: "Panicle Initiation & Stem Borer / Blast Management",
+          instructionBn:
+            "গাছের কাইচথোড় আসার সময় শেষ কিস্তির ইউরিয়া প্রয়োগ করুন। মাজরা পোকা ও পাতা মোড়ানো পোকা দমনে পার্চিং (ডালে পাখি বসার ব্যবস্থা) করুন এবং প্রয়োজনে অনুমোদিত দানাদার কীটনাশক ব্যবহার করুন।",
+          instructionEn:
+            "Apply final urea top-dress at panicle initiation. Practice perching for natural insect control.",
+          doseBn: "ইউরিয়া ৪ কেজি প্রতি বিঘা।",
+          doseEn: "Urea 4 kg per bigha.",
+        },
+        {
+          id: "t_aman_mus_5",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "রোপণের ১০০–১১০ দিন",
+          dayBadgeEn: "Day 100–110",
+          stageBn: "ধান পাকা, কর্তন ও মাড়াই",
+          stageEn: "Harvesting, Threshing & Drying",
+          approxDays: "২৫ অক্টোবর – ১৫ নভেম্বর",
+          titleBn: "ধান কর্তন, মাড়াই ও পরবর্তী সরিষার জন্য জমি খালিকরণ",
+          titleEn: "Harvest Matured Paddy & Clear Field for Mustard",
+          instructionBn:
+            "শীষের শতকরা ৮০ ভাগ ধান সোনালী হলে কেটে নিন। দ্রুত মাড়াই ও শুকিয়ে সংরক্ষণ করুন, যাতে মধ্য-নভেম্বরের মধ্যে রবি সরিষা বপনের জন্য জমি প্রস্তুত থাকে।",
+          instructionEn:
+            "Harvest when 80% grains are golden yellow. Thresh promptly to clear land for Rabi mustard sowing.",
         },
       ];
     } else {
       // Lentil -> Mungbean -> Aman Rice (Low cost, low effort)
       return [
+        // RABI SEASON: LENTIL (5 steps)
         {
           id: "t_len_1",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Feb)",
           cropKey: "lentil",
-          stageBn: "মসুর বীজ বপন ও জমি তৈরি",
-          stageEn: "Lentil Sowing & Minimal Tilth",
-          approxDays: "১৫–৩০ নভেম্বর",
-          titleBn: "বারি মসুর-৮ বপন (কম খরচে বেশি লাভ)",
-          titleEn: "Sow BARI Masur-8 (Low Cost, High Market Value)",
+          dayBadgeBn: "দিন ১–৩",
+          dayBadgeEn: "Day 1–3",
+          stageBn: "স্বল্প চাষে জমি তৈরি",
+          stageEn: "Minimal Tilth Land Preparation",
+          approxDays: "১৫–২৫ নভেম্বর",
+          titleBn: "২–৩ চাষে জো অবস্থায় জমি তৈরি (কম খরচ, কম ঝামেলা)",
+          titleEn: "Minimal Tilth & Basal Fertilizer Application",
           instructionBn:
-            "জমি ২–৩ বার হালকা চাষ দিয়ে জো অবস্থায় বীজ ছিটিয়ে দিন। মসুরে কোনো রাসায়নিক নাইট্রোজেন সারের প্রয়োজন নেই।",
+            "মাটি খুব বেশি ঝুরঝুরে না করে ২–৩ বার চাষ ও মই দিন। শেষ চাষের সময় সুষম সার প্রয়োগ করুন। মসুর শিকড়ে নিজে নাইট্রোজেন তৈরি করে, তাই কোনো ইউরিয়া সারের প্রয়োজন নেই।",
           instructionEn:
-            "Sow in moist soil after 2 light ploughs. Lentil fixes its own nitrogen, needing zero urea fertilizer.",
-          doseBn: "বীজ ৪–৫ কেজি, টিএসপি ৮ কেজি, এমওপি ৫ কেজি প্রতি বিঘা",
-          doseEn: "Seed 4–5 kg, TSP 8 kg, MoP 5 kg per bigha",
+            "Plough 2–3 times. Lentil fixes its own nitrogen, needing zero urea fertilizer.",
+          doseBn: "টিএসপি ৮ কেজি, এমওপি ৫ কেজি, জিপসাম ৪ কেজি প্রতি বিঘা (ইউরিয়া ০ কেজি)।",
+          doseEn: "TSP 8 kg, MoP 5 kg, Gypsum 4 kg per bigha (Zero urea).",
         },
         {
           id: "t_len_2",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Feb)",
           cropKey: "lentil",
-          stageBn: "আগাছা দমন ও মাটির আর্দ্রতা রক্ষা",
-          stageEn: "Weeding & Moisture Conservation",
-          approxDays: "২০–২৫ ডিসেম্বর",
-          titleBn: "১টি নিড়ানি ও নিকাশ নিশ্চিতকরণ",
+          dayBadgeBn: "বপন দিন",
+          dayBadgeEn: "Sowing Day",
+          stageBn: "বীজ শোধন ও বপন",
+          stageEn: "Seed Treatment & Sowing",
+          approxDays: "১৮–৩০ নভেম্বর",
+          titleBn: "বারি মসুর-৮ বপন (উচ্চ বাজারদর ও কম সেচ)",
+          titleEn: "Sow BARI Masur-8 (High Value, Zero Tube-well Water)",
+          instructionBn:
+            "বীজ বপনের পূর্বে প্রতি কেজি বীজে ২ গ্রাম প্রোভ্যাক্স মিশিয়ে শোধন করে নিন। জো জমিতে ছিটিয়ে বা সারিতে বীজ বপন করে হালকা মই দিয়ে ঢেকে দিন।",
+          instructionEn:
+            "Treat seed with Provax (2 g/kg). Broadcast or drill in moist soil and cover lightly.",
+          doseBn: "বীজ ৪–৫ কেজি প্রতি বিঘা।",
+          doseEn: "Certified seed 4–5 kg per bigha.",
+        },
+        {
+          id: "t_len_3",
+          seasonKey: "rabi",
+          seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
+          seasonNameEn: "Rabi Season (Nov–Feb)",
+          cropKey: "lentil",
+          dayBadgeBn: "বপনের ২০–২৫ দিন",
+          dayBadgeEn: "Day 20–25",
+          stageBn: "আগাছা দমন ও নিকাশ নালা",
+          stageEn: "Weeding & Drainage Maintenance",
+          approxDays: "১৫–২৫ ডিসেম্বর",
+          titleBn: "১টি হাত নিড়ানি ও জমির পানি নিষ্কাশন নিশ্চিতকরণ",
           titleEn: "Single Hand Weeding & Drainage Maintenance",
           instructionBn:
-            "গাছ ছোট অবস্থায় আগাছা পরিষ্কার করুন। জমিতে যেন কোনোভাবেই বৃষ্টির পানি জমে না থাকে।",
+            "গাছ ছোট অবস্থায় আগাছা তুলে পরিষ্কার করুন। জমিতে যেন কোনোভাবেই বৃষ্টির বা কুয়াশার পানি না জমে সেজন্য চারদিকে নিকাশ নালা কেটে রাখুন।",
           instructionEn:
             "Keep plot weed-free at seedling stage. Ensure free surface drainage as lentil is sensitive to standing water.",
           isWeatherSensitive: true,
@@ -370,57 +797,186 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
               : undefined,
         },
         {
-          id: "t_len_3",
+          id: "t_len_4",
+          seasonKey: "rabi",
           seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
           seasonNameEn: "Rabi Season (Nov–Feb)",
           cropKey: "lentil",
-          stageBn: "মসুর কর্তন",
-          stageEn: "Harvesting",
+          dayBadgeBn: "ফুল পর্যায়",
+          dayBadgeEn: "Flowering Stage",
+          stageBn: "পাতা ঝলসানো ও মরিচা রোগ নজরদারি",
+          stageEn: "Stemphylium Blight Scouting",
+          approxDays: "১০–২০ জানুয়ারি",
+          titleBn: "ঘন কুয়াশায় পাতা ঝলসানো রোগ পর্যবেক্ষণ ও দমন",
+          titleEn: "Stemphylium Blight Monitoring During Fog",
+          instructionBn:
+            "ঘন কুয়াশায় মসুরে স্টেমফিলিয়াম ব্লাইট বা পাতা ঝলসানো রোগ হতে পারে। লক্ষণ দেখলে রোভরাল বা অটোস্টিন প্রতি লিটার পানিতে ২ গ্রাম হারে স্প্রে করুন।",
+          instructionEn:
+            "Scout for Stemphylium blight during prolonged fog. Spray Rovral (2 g/L) if blight appears.",
+          doseBn: "রোভরাল ২ গ্রাম/লিটার পানিতে স্প্রে।",
+          doseEn: "Rovral spray 2 g/L water.",
+          isWeatherSensitive: true,
+        },
+        {
+          id: "t_len_5",
+          seasonKey: "rabi",
+          seasonNameBn: "রবি মৌসুম (কার্তিক–মাঘ)",
+          seasonNameEn: "Rabi Season (Nov–Feb)",
+          cropKey: "lentil",
+          dayBadgeBn: "বপনের ৮৫–৯৫ দিন",
+          dayBadgeEn: "Day 85–95",
+          stageBn: "মসুর কর্তন ও মাড়াই",
+          stageEn: "Harvesting & Threshing",
           approxDays: "২০ ফেব্রুয়ারি – ৫ মার্চ",
-          titleBn: "সকালে ফসল কর্তন ও মাড়াই",
+          titleBn: "সকালে মসুর কর্তন ও রোদে শুকিয়ে মাড়াই",
           titleEn: "Morning Harvesting & Threshing",
           instructionBn:
-            "গাছের নিচের পাতা শুকিয়ে শুঁটি বাদামী হলে সকালে কেটে রোদ্রে শুকিয়ে মাড়াই করুন।",
+            "গাছের নিচের পাতা ঝরে গেলে এবং শুঁটি বাদামী হলে সকালের দিকে কেটে নিন। রোদে শুকিয়ে মাড়াই করে দানা আলাদা করুন।",
           instructionEn:
             "Harvest in morning hours when pods turn brownish to prevent pod shatter.",
         },
+
+        // KHARIF-1 SEASON: MUNGBEAN (3 steps)
         {
-          id: "t_mung_3",
+          id: "t_mung_len_1",
+          seasonKey: "kharif1",
           seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
           seasonNameEn: "Kharif-1 Season (Mar–May)",
           cropKey: "mungbean",
+          dayBadgeBn: "দিন ১–৫",
+          dayBadgeEn: "Day 1–5",
           stageBn: "মুগ ডাল বপন",
           stageEn: "Mungbean Sowing",
           approxDays: "১০–২৫ মার্চ",
-          titleBn: "বারি মুগ-৬ বপন (অতিরিক্ত আয় ও সবুজ সার)",
+          titleBn: "বারি মুগ-৬ বপন (ডাবল ডাল ফসল চক্র)",
           titleEn: "Sow BARI Mung-6 for Double Legume Soil Rebuilding",
           instructionBn:
-            "মসুরের পরপরই মুগ চাষ করলে জমিতে দ্বিগুণ নাইট্রোজেন জমে এবং মাটির স্বাস্থ্য চমৎকার থাকে।",
+            "মসুরের পরপরই মুগ চাষ বরেন্দ্র ভূমির জন্য সবচেয়ে নিরাপদ ও লাভজনক। এক ফোঁটাও ভূগর্ভস্থ পানি পাম্প করতে হয় না। সারিতে বীজ বপন করুন।",
           instructionEn:
-            "Successive pulse rotation doubles natural nitrogen capture and restores organic carbon.",
-          doseBn: "বীজ ৪ কেজি প্রতি বিঘা",
-          doseEn: "Seed 4 kg per bigha",
+            "Successive pulse rotation doubles natural nitrogen capture and restores organic carbon with zero tube-well pumping.",
+          doseBn: "বীজ ৪ কেজি প্রতি বিঘা, টিএসপি ৫ কেজি।",
+          doseEn: "Seed 4 kg, TSP 5 kg per bigha.",
         },
         {
-          id: "t_aman_3",
+          id: "t_mung_len_2",
+          seasonKey: "kharif1",
+          seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
+          seasonNameEn: "Kharif-1 Season (Mar–May)",
+          cropKey: "mungbean",
+          dayBadgeBn: "বপনের ২০–২৫ দিন",
+          dayBadgeEn: "Day 20–25",
+          stageBn: "পরিচর্যা ও নিড়ানি",
+          stageEn: "Weeding & Summer Heat Care",
+          approxDays: "১–১৫ এপ্রিল",
+          titleBn: "গাছের গোড়া আগাছামুক্তকরণ ও পোকা তদারকি",
+          titleEn: "Weed Control & Insect Scouting",
+          instructionBn:
+            "আগাছা পরিষ্কার করুন। চৈত্র মাসের তাপদাহে মাটি শুকিয়ে গেলে নদী বা খালের পানি দিয়ে একটিমাত্র হালকা সেচ দিন।",
+          instructionEn:
+            "Clean weeds. If severe drought develops, provide one light irrigation.",
+        },
+        {
+          id: "t_mung_len_3",
+          seasonKey: "kharif1",
+          seasonNameBn: "খরিপ-১ মৌসুম (ফাল্গুন–জ্যৈষ্ঠ)",
+          seasonNameEn: "Kharif-1 Season (Mar–May)",
+          cropKey: "mungbean",
+          dayBadgeBn: "ফসল সংগ্রহ ও সবুজ সার",
+          dayBadgeEn: "Harvest & Green Manure",
+          approxDays: "১৫ মে – ৫ জুন",
+          titleBn: "মুগডাল ঘরে তোলা ও গাছ জমিতে মিশিয়ে মাটির উর্বরতা বৃদ্ধি",
+          titleEn: "Harvest Pods & Soil Incorporation",
+          instructionBn:
+            "টানা দুটি ডাল ফসলের কারণে মাটিতে বিপুল পরিমাণ প্রাকৃতিক নাইট্রোজেন জমা হয়, যা মাটির উর্বরতা দীর্ঘমেয়াদে বজায় রাখে।",
+          instructionEn:
+            "Monsoon rice after two pulse crops yields exceptionally well with up to 60% less synthetic fertilizer.",
+        },
+
+        // KHARIF-2 SEASON: AMAN RICE (4 steps)
+        {
+          id: "t_aman_len_1",
+          seasonKey: "kharif2",
           seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
           seasonNameEn: "Kharif-2 Season (Jul–Nov)",
           cropKey: "rice",
-          stageBn: "রোপা আমন ধান",
-          stageEn: "T. Aman Rice",
-          approxDays: "জুলাই–নভেম্বর",
-          titleBn: "বৃষ্টি নির্ভর ব্রি ধান-৮৭ চাষ",
-          titleEn: "Rainfed BRRI Dhan-87 Planting",
+          dayBadgeBn: "বীজতলা",
+          dayBadgeEn: "Seedbed",
+          stageBn: "বীজতলা তৈরি",
+          stageEn: "Seedbed Sowing",
+          approxDays: "২৫ জুন – ১০ জুলাই",
+          titleBn: "আমন ধানের সুস্থ চারা উৎপাদন",
+          titleEn: "Raise Healthy Aman Rice Seedlings",
           instructionBn:
-            "টানা দুটি ডাল ফসলের পর আমন ধান চাষে আশাতীত ফলন পাওয়া যায় এবং ইউরিয়া সার ৬০% সাশ্রয় হয়।",
+            "উঁচু জমিতে সুস্থ সবল চারা তৈরি করুন। চারা গজানোর ২৫ দিন পর মূল জমিতে রোপণের জন্য প্রস্তুত হবে।",
           instructionEn:
-            "Monsoon rice after two pulse crops yields exceptionally well with up to 60% less synthetic fertilizer.",
+            "Prepare raised seedbed and nurture seedlings for 25 days.",
+        },
+        {
+          id: "t_aman_len_2",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "রোপণ দিন",
+          dayBadgeEn: "Transplant Day",
+          stageBn: "চারা রোপণ",
+          stageEn: "Seedling Transplanting",
+          approxDays: "২৫ জুলাই – ১০ আগস্ট",
+          titleBn: "বর্ষার পানিতে চারা রোপণ (জিরো ডিজেল/বিদ্যুৎ খরচ)",
+          titleEn: "Rainfed BRRI Dhan-87 Planting (Zero Fuel Cost)",
+          instructionBn:
+            "কাদা জমিতে ২০×১৫ সেমি দূরত্বে চারা রোপণ করুন। বরেন্দ্র অঞ্চলে বর্ষার প্রাকৃতিক বৃষ্টিতে এই ধান সম্পূর্ণ বিনা সেচ খরচে চাষ হয়।",
+          instructionEn:
+            "Transplant at 20x15 cm spacing using natural monsoon rains.",
+          doseBn: "টিএসপি ৬ কেজি, এমওপি ৬ কেজি প্রতি বিঘা।",
+          doseEn: "TSP 6 kg, MoP 6 kg per bigha.",
+        },
+        {
+          id: "t_aman_len_3",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "রোপণের ২৫ দিন",
+          dayBadgeEn: "Day 25 Post-Transplant",
+          stageBn: "স্বল্প ইউরিয়া প্রয়োগ ও নিড়ানি",
+          stageEn: "Minimal Urea Top-dress",
+          approxDays: "২৫ আগস্ট – ১০ সেপ্টেম্বর",
+          titleBn: "নামমাত্র ইউরিয়া প্রয়োগ ও আগাছা পরিষ্কার",
+          titleEn: "Minimal Synthetic Nitrogen & Weeding",
+          instructionBn:
+            "ডাবল ডাল ফসলের অবশিষ্টাংশের কারণে সাধারণ ধানের চেয়ে মাত্র এক-তৃতীয়াংশ সার দিলেই সর্বোচ্চ ফলন মেলে।",
+          instructionEn:
+            "Two pulse crops accumulate abundant natural soil nitrogen, drastically cutting synthetic fertilizer costs.",
+          doseBn: "ইউরিয়া মাত্র ৬ কেজি প্রতি বিঘা।",
+          doseEn: "Urea only 6 kg per bigha.",
+        },
+        {
+          id: "t_aman_len_4",
+          seasonKey: "kharif2",
+          seasonNameBn: "খরিপ-২ মৌসুম (আষাঢ়–কার্তিক)",
+          seasonNameEn: "Kharif-2 Season (Jul–Nov)",
+          cropKey: "rice",
+          dayBadgeBn: "ফসল কর্তন",
+          dayBadgeEn: "Harvest Day",
+          stageBn: "ধান কর্তন ও মাড়াই",
+          stageEn: "Harvesting & Threshing",
+          approxDays: "১০–২৫ নভেম্বর",
+          titleBn: "আমন ধান সংগ্রহ ও রবি মসুরের প্রস্তুতি",
+          titleEn: "Harvest Paddy & Prepare for Winter Lentil",
+          instructionBn:
+            "ধান কেটে মাড়াই করে ঘরে তুলুন এবং পরবর্তী রবি মৌসুমের মসুর চাষের জন্য মাঠ উন্মুক্ত রাখুন।",
+          instructionEn:
+            "Harvest matured rice, thresh, and prepare the field for winter lentil.",
         },
       ];
     }
   };
 
-  const tasks = getTasksForOption();
+  const allTasks = getTasksForOption();
+  const filteredTasks = selectedSeason === "all"
+    ? allTasks
+    : allTasks.filter((t) => t.seasonKey === selectedSeason);
 
   // Handle weather date shift
   const handleToggleWeatherShift = () => {
@@ -467,16 +1023,21 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
   return (
     <div className="space-y-5 animate-fadeIn">
       {/* Top Navigation & Selected Plan Summary */}
-      <div className="p-4 rounded-2xl bg-forest text-white border border-forest shadow-card">
+      <div className="p-4 sm:p-5 rounded-2xl bg-forest text-white border border-forest shadow-card">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-gold text-[#1a1300] font-bold">
-            {lang === "bn" ? "নির্বাচিত চাষ পরিকল্পনা" : "Selected Rotation Outline"}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-gold text-[#1a1300] font-bold">
+              {lang === "bn" ? "নির্বাচিত চাষ পরিকল্পনা" : "Selected Rotation Outline"}
+            </span>
+            <span className="text-xs text-white/80 bg-white/10 px-2.5 py-0.5 rounded-full font-mono">
+              {allTasks.length} {lang === "bn" ? "টি পর্যায়ক্রমিক ধাপ" : "Stage Milestones"}
+            </span>
+          </div>
           {onBackToOptions && (
             <button
               type="button"
               onClick={onBackToOptions}
-              className="text-xs text-gold underline hover:text-white transition-colors"
+              className="text-xs text-gold underline hover:text-white transition-colors cursor-pointer"
             >
               {lang === "bn" ? "বিকল্প বদলান" : "Change Rotation"}
             </button>
@@ -510,7 +1071,7 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
           <div className="flex items-center gap-2">
             <CloudRain className="w-5 h-5 text-water" />
             <span className="font-bold text-[16px] text-primary">
-              {lang === "bn" ? "লাইভ আবহাওয়া পূর্বাভাস (রাজশাহী বরেন্দ্র)" : "Live Weather Telemetry (Barind)"}
+              {lang === "bn" ? "লাইভ আবহাওয়া পূর্বাভাস (বরেন্দ্র ও প্লাবনভূমি)" : "Live Weather Telemetry"}
             </span>
           </div>
           {loadingWeather && (
@@ -586,82 +1147,166 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
         )}
       </div>
 
-      {/* Date-wise Farming Plan Outline */}
+      {/* Date-wise Farming Plan Outline Section */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <Calendar className="w-5 h-5 text-leaf" />
-            <h3 className="text-lg font-bold text-primary m-0">
-              {lang === "bn" ? "কখন কী করবেন: পূর্ণাঙ্গ চাষের রূপরেখা" : "When & What to Do: Farming Schedule"}
-            </h3>
+            <div>
+              <h3 className="text-lg font-bold text-primary m-0">
+                {lang === "bn" ? "পূর্ণাঙ্গ চাষের রূপরেখা ও ক্যালেন্ডার (দিন ও তারিখসহ)" : "Complete Day-by-Day Farming Calendar"}
+              </h3>
+              <span className="text-xs text-secondary">
+                {lang === "bn" ? "BARC সুষম সার গাইড ও DAE/BRRI/BARI প্রমাণিত জাত" : "Official BARC Fertilizer Doses & BARI/BRRI Varieties"}
+              </span>
+            </div>
           </div>
           <button
             type="button"
             onClick={() => window.print()}
-            className="text-xs font-medium text-forest hover:text-gold flex items-center gap-1 px-2.5 py-1 rounded bg-surface border border-border"
+            className="text-xs font-medium text-forest hover:text-gold flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface border border-border shadow-2xs cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5" />
-            <span>{lang === "bn" ? "ছাপুন" : "Print"}</span>
+            <span>{lang === "bn" ? "ছাপুন / ক্যালেন্ডার প্রিন্ট" : "Print Calendar"}</span>
+          </button>
+        </div>
+
+        {/* Season Filter Tabs */}
+        <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-surface rounded-xl border border-border shadow-2xs">
+          <button
+            type="button"
+            onClick={() => setSelectedSeason("all")}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              selectedSeason === "all"
+                ? "bg-forest text-gold shadow-2xs"
+                : "bg-transparent text-secondary hover:text-primary hover:bg-bg"
+            }`}
+          >
+            {lang === "bn" ? `সব মৌসুম (${allTasks.length}টি ধাপ)` : `All Year (${allTasks.length} stages)`}
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedSeason("rabi")}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              selectedSeason === "rabi"
+                ? "bg-forest text-gold shadow-2xs"
+                : "bg-transparent text-secondary hover:text-primary hover:bg-bg"
+            }`}
+          >
+            {lang === "bn" ? "১. রবি মৌসুম (শীতকাল)" : "1. Rabi (Winter)"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedSeason("kharif1")}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              selectedSeason === "kharif1"
+                ? "bg-forest text-gold shadow-2xs"
+                : "bg-transparent text-secondary hover:text-primary hover:bg-bg"
+            }`}
+          >
+            {lang === "bn" ? "২. খরিপ-১ (গ্রীষ্মকাল - মুগডাল)" : "2. Kharif-1 (Mungbean)"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedSeason("kharif2")}
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+              selectedSeason === "kharif2"
+                ? "bg-forest text-gold shadow-2xs"
+                : "bg-transparent text-secondary hover:text-primary hover:bg-bg"
+            }`}
+          >
+            {lang === "bn" ? "৩. খরিপ-২ (বর্ষাকাল - রোপা আমন)" : "3. Kharif-2 (Aman Rice)"}
           </button>
         </div>
 
         {/* Task Cards Sequence */}
-        <div className="space-y-2.5">
-          {tasks.map((task, idx) => (
-            <div
-              key={task.id}
-              className={`p-4 rounded-xl border transition-all shadow-2xs bg-surface ${
-                task.weatherWarningBn
-                  ? "border-gold/60 ring-1 ring-gold/40"
-                  : "border-border"
-              }`}
-            >
-              <div className="flex items-start justify-between gap-2 mb-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-forest text-white text-xs font-bold flex items-center justify-center shrink-0">
-                    {idx + 1}
-                  </span>
-                  <div>
-                    <span className="text-[11px] font-mono font-bold text-secondary uppercase block">
-                      {lang === "bn" ? task.seasonNameBn : task.seasonNameEn} • {task.approxDays}
-                    </span>
-                    <h4 className="text-[16px] font-bold text-primary m-0 leading-tight">
-                      {lang === "bn" ? task.titleBn : task.titleEn}
-                    </h4>
+        <div className="space-y-3">
+          {filteredTasks.map((task, idx) => {
+            const isDone = !!completedTasks[task.id];
+
+            return (
+              <div
+                key={task.id}
+                className={`p-4 rounded-xl border transition-all shadow-2xs bg-surface ${
+                  isDone
+                    ? "opacity-60 bg-slate-50 border-slate-300"
+                    : task.weatherWarningBn
+                    ? "border-gold/60 ring-1 ring-gold/40"
+                    : "border-border hover:border-slate-300"
+                }`}
+              >
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <div className="flex items-start gap-2.5">
+                    {/* Step Number with Checklist Toggle */}
+                    <button
+                      type="button"
+                      onClick={() => toggleTaskCompleted(task.id)}
+                      className={`w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 cursor-pointer transition-all ${
+                        isDone
+                          ? "bg-emerald-600 text-white"
+                          : "bg-forest text-gold hover:opacity-90"
+                      }`}
+                      title={lang === "bn" ? "সম্পন্ন হিসেবে চিহ্নিত করতে চাপুন" : "Click to mark done"}
+                    >
+                      {isDone ? "✓" : idx + 1}
+                    </button>
+
+                    <div>
+                      <div className="flex flex-wrap items-center gap-1.5 mb-1">
+                        <span className="text-[11px] font-mono font-bold text-slate-500 uppercase">
+                          {lang === "bn" ? task.seasonNameBn : task.seasonNameEn}
+                        </span>
+                        <span className="text-slate-300">•</span>
+                        <span className="text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
+                          {task.approxDays}
+                        </span>
+                        {task.dayBadgeBn && (
+                          <span className="text-[10px] font-mono font-bold text-slate-600 bg-slate-200 px-1.5 py-0.5 rounded">
+                            {lang === "bn" ? task.dayBadgeBn : task.dayBadgeEn}
+                          </span>
+                        )}
+                      </div>
+
+                      <h4 className={`text-[16px] font-bold m-0 leading-tight ${isDone ? "line-through text-slate-500" : "text-primary"}`}>
+                        {lang === "bn" ? task.titleBn : task.titleEn}
+                      </h4>
+                    </div>
                   </div>
+
+                  <CropIcon crop={task.cropKey} size={32} />
                 </div>
 
-                <CropIcon crop={task.cropKey} size={32} />
+                <p className="text-[14px] text-secondary leading-relaxed mt-1 mb-2 pl-9">
+                  {lang === "bn" ? task.instructionBn : task.instructionEn}
+                </p>
+
+                {task.doseBn && (
+                  <div className="ml-9 mt-2 p-2.5 rounded-lg bg-bg border border-border text-xs text-primary font-medium flex items-start gap-1.5">
+                    <span className="font-bold text-forest shrink-0">
+                      {lang === "bn" ? "সারের সঠিক মাত্রা (বিঘা প্রতি):" : "Recommended Dose / Bigha:"}
+                    </span>
+                    <span className="text-slate-800 font-semibold">{lang === "bn" ? task.doseBn : task.doseEn}</span>
+                  </div>
+                )}
+
+                {task.weatherWarningBn && (
+                  <div className="ml-9 mt-2 p-2.5 rounded-lg bg-gold/15 border border-gold/40 text-xs text-[#705200] font-semibold flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4 shrink-0 text-[#b08000]" />
+                    <span>{lang === "bn" ? task.weatherWarningBn : task.weatherWarningEn}</span>
+                  </div>
+                )}
               </div>
-
-              <p className="text-[14px] text-secondary leading-relaxed mt-2 mb-1.5 pl-8">
-                {lang === "bn" ? task.instructionBn : task.instructionEn}
-              </p>
-
-              {task.doseBn && (
-                <div className="ml-8 mt-2 p-2 rounded-lg bg-bg border border-border text-xs text-primary font-medium">
-                  <span className="font-bold text-forest">সারের মাত্রা: </span>
-                  {lang === "bn" ? task.doseBn : task.doseEn}
-                </div>
-              )}
-
-              {task.weatherWarningBn && (
-                <div className="ml-8 mt-2 p-2 rounded-lg bg-gold/15 border border-gold/40 text-xs text-[#705200] font-semibold flex items-center gap-1.5">
-                  <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-                  <span>{lang === "bn" ? task.weatherWarningBn : task.weatherWarningEn}</span>
-                </div>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
       {/* Interactive AI Farm Advisor Q&A */}
-      <div className="p-4 rounded-2xl bg-surface border border-border shadow-card space-y-3">
+      <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-border shadow-card space-y-3">
         <div className="flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-gold" />
           <span className="font-bold text-[16px] text-primary">
-            {lang === "bn" ? "AI কৃষি উপদেষ্টাকে জিজ্ঞাসা করুন" : "Ask AI Advisor for Tailored Guidance"}
+            {lang === "bn" ? "AI কৃষি উপদেষ্টাকে প্রশ্ন করুন" : "Ask AI Advisor for Tailored Guidance"}
           </span>
         </div>
 
@@ -679,7 +1324,7 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
             onKeyDown={(e) => e.key === "Enter" && handleAskAi()}
             placeholder={
               lang === "bn"
-                ? "যেমন: মাটিতে ইউরিয়া কখন দেব বা নাবী ধসা থেকে রক্ষার উপায় কি?"
+                ? "যেমন: সরিষার জমিতে ইউরিয়া কখন দেব বা নাবী ধসা থেকে রক্ষার উপায় কি?"
                 : "e.g. When is the best time to apply urea or prevent blight?"
             }
             className="flex-1 min-h-[44px] px-3.5 text-sm bg-bg rounded-xl border border-border text-primary focus:outline-none focus:ring-2 focus:ring-gold"
@@ -708,4 +1353,3 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
     </div>
   );
 };
-

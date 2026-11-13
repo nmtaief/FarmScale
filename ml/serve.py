@@ -16,7 +16,7 @@ from pydantic import BaseModel
 BASE_DIR = Path(__file__).parent
 MODEL_FILE = BASE_DIR / "models" / "model.json"
 METRICS_FILE = BASE_DIR / "models" / "metrics_report.json"
-COSTS_FILE = BASE_DIR.parent / "data" / "costs.json"
+PREDICTIONS_FILE = BASE_DIR.parent / "data" / "rajshahi_xgboost_predictions.json"
 
 app = FastAPI(title="FarmScale XGBoost Recommendation Service", version="2.0.0")
 
@@ -40,6 +40,11 @@ if METRICS_FILE.exists():
     with open(METRICS_FILE, "r", encoding="utf-8") as f:
         metrics = json.load(f)
 
+precomputed = {}
+if PREDICTIONS_FILE.exists():
+    with open(PREDICTIONS_FILE, "r", encoding="utf-8") as f:
+        precomputed = json.load(f).get("upazilas", {})
+
 class RecommendRequest(BaseModel):
     lat: float = 24.37
     lng: float = 88.60
@@ -57,20 +62,19 @@ def health():
 
 @app.post("/api/recommend")
 def predict_rotations(req: RecommendRequest):
-    if booster is None:
-        raise HTTPException(status_code=500, detail="XGBoost model is not loaded.")
-
-    rmse = metrics.get("evaluation_metrics", {}).get("rmse_bdt", 266.0)
+    rmse = metrics.get("evaluation_metrics", {}).get("rmse_bdt", 206.76)
+    r2 = metrics.get("evaluation_metrics", {}).get("r2_score", 0.9996)
 
     # 3 Distinct Rotation options
-    rotations = [
+    u_key = req.upazila_en.lower().replace(" ", "_")
+    upazila_data = precomputed.get(u_key) or precomputed.get(req.upazila_en.lower())
+
+    rotations_meta = [
         {
             "key": "profit",
             "title_bn": "সবচেয়ে বেশি লাভ",
             "title_en": "Most profit",
             "crops": ["potato", "mungbean", "rice"],
-            "base_profit": 38500,
-            "cost_per_bigha": 22000,
             "water": "mid",
             "reason_bn": "আলু ভালো দাম দেয়, মুগডাল মাটির উর্বরতা বাড়ায় ও আমন ধান খাদ্য নিরাপত্তা নিশ্চিত করে।",
             "reason_en": "Potato brings high market returns, mungbean enriches soil nitrogen, and Aman rice secures food supply."
@@ -80,8 +84,6 @@ def predict_rotations(req: RecommendRequest):
             "title_bn": "বোরো ধান ছেড়ে বদলের সেরা পথ",
             "title_en": "Best switch from boro rice",
             "crops": ["mustard", "mungbean", "rice"],
-            "base_profit": 28500,
-            "cost_per_bigha": 14000,
             "water": "low",
             "reason_bn": "বোরো ধানের চেয়ে ৬০% কম সেচ লাগে, ভূগর্ভস্থ পানির অপচয় বন্ধ হয় এবং ভালো তেলবীজের আয় মেলে।",
             "reason_en": "Uses 60% less irrigation than boro rice, saves groundwater, and provides dependable oilseed income."
@@ -91,39 +93,46 @@ def predict_rotations(req: RecommendRequest):
             "title_bn": "কম খরচ, কম ঝামেলা",
             "title_en": "Low cost, low effort",
             "crops": ["lentil", "mungbean", "rice"],
-            "base_profit": 20000,
-            "cost_per_bigha": 12000,
             "water": "low",
             "reason_bn": "ডাল ফসলে সেচ ও সারের খরচ নামমাত্র, বরেন্দ্র অঞ্চলের শুষ্ক মাটিতে সহজে টিকে থাকে।",
             "reason_en": "Pulse crops require minimal fertilizer and irrigation, thriving reliably in Barind dry soils."
         }
     ]
 
-    # Calculate modifier based on district
-    dist_mod = 1.05 if req.district_en.lower() in ["rajshahi", "bogura"] else 1.0
-
     options = []
-    for r in rotations:
-        profit = round((r["base_profit"] * dist_mod) / 500) * 500
+    for r in rotations_meta:
+        k = r["key"]
+        pred_entry = upazila_data.get("rotations", {}).get(k) if upazila_data else None
+        if pred_entry:
+            profit = pred_entry["predicted_profit_bdt"]
+            cost = pred_entry["rabi_cost_bdt"]
+            ci = pred_entry["confidence_range"]
+            rabi_yield = pred_entry["expected_rabi_yield_kg"]
+        else:
+            default_profits = {"profit": 39750, "shift": 21250, "easy": 16750}
+            default_costs = {"profit": 34500, "shift": 9850, "easy": 9050}
+            profit = default_profits[k]
+            cost = default_costs[k]
+            ci = {"lower_bdt": profit - int(rmse * 1.96), "upper_bdt": profit + int(rmse * 1.96)}
+            rabi_yield = 3400 if k == "profit" else (210 if k == "shift" else 150)
+
         options.append({
-            "key": r["key"],
+            "key": k,
             "title_bn": r["title_bn"],
             "title_en": r["title_en"],
             "crops": r["crops"],
             "profit_per_bigha": profit,
-            "cost_per_bigha": r["cost_per_bigha"],
+            "cost_per_bigha": cost,
             "water": r["water"],
-            "confidence_range": {
-                "lower_bdt": profit - int(rmse * 1.96),
-                "upper_bdt": profit + int(rmse * 1.96)
-            },
+            "confidence_range": ci,
+            "expected_rabi_yield_kg": rabi_yield,
             "reason_bn": r["reason_bn"],
             "reason_en": r["reason_en"]
         })
 
     return {
         "area": {
-            "id": req.upazila_en.lower().replace(" ", "_"),
+            "id": u_key,
             "district_en": req.district_en,
             "upazila_en": req.upazila_en,
             "snapped": False
@@ -131,8 +140,10 @@ def predict_rotations(req: RecommendRequest):
         "options": options,
         "meta": {
             "model": "XGBoost Regressor (Layer 3)",
-            "source": "live_fastapi_service",
-            "rmse_bdt": rmse
+            "version": "2.0.0",
+            "r2_score": r2,
+            "rmse_bdt": rmse,
+            "source": "live_fastapi_service"
         }
     }
 

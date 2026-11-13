@@ -1,0 +1,4024 @@
+{
+  "model": "XGBoost Regressor (Layer 3)",
+  "version": "2.0.0",
+  "r2_score": 0.9996,
+  "rmse_bdt": 206.76,
+  "total_upazilas": 67,
+  "upazilas": {
+    "adamdighi": {
+      "upazila_en": "Adamdighi",
+      "district_en": "Bogura",
+      "lat": 24.7833,
+      "lon": 88.9333,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44250,
+          "exact_xgb_profit_bdt": 44221.23,
+          "confidence_range": {
+            "lower_bdt": 43800,
+            "upper_bdt": 44600
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4299,
+          "expected_rabi_yield_kg": 3616,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 22750,
+          "exact_xgb_profit_bdt": 22868.48,
+          "confidence_range": {
+            "lower_bdt": 22500,
+            "upper_bdt": 23300
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 902,
+          "expected_rabi_yield_kg": 219,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17733.05,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "akkelpur": {
+      "upazila_en": "Akkelpur",
+      "district_en": "Joypurhat",
+      "lat": 24.9667,
+      "lon": 89.0167,
+      "soil_ph": 5.6,
+      "soil_soc_g_kg": 8.5,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 43000,
+          "exact_xgb_profit_bdt": 42983.58,
+          "confidence_range": {
+            "lower_bdt": 42600,
+            "upper_bdt": 43400
+          },
+          "total_cost_bdt": 51700,
+          "rabi_cost_bdt": 33700,
+          "expected_yield_sum_kg": 4258,
+          "expected_rabi_yield_kg": 3572,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21828.08,
+          "confidence_range": {
+            "lower_bdt": 21400,
+            "upper_bdt": 22200
+          },
+          "total_cost_bdt": 27570,
+          "rabi_cost_bdt": 9570,
+          "expected_yield_sum_kg": 897,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16714.08,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 26850,
+          "rabi_cost_bdt": 8850,
+          "expected_yield_sum_kg": 825,
+          "expected_rabi_yield_kg": 139,
+          "water": "low"
+        }
+      }
+    },
+    "atgharia": {
+      "upazila_en": "Atgharia",
+      "district_en": "Pabna",
+      "lat": 24.1333,
+      "lon": 89.25,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41500,
+          "exact_xgb_profit_bdt": 41571.91,
+          "confidence_range": {
+            "lower_bdt": 41200,
+            "upper_bdt": 42000
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4133,
+          "expected_rabi_yield_kg": 3452,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23834.27,
+          "confidence_range": {
+            "lower_bdt": 23400,
+            "upper_bdt": 24200
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 911,
+          "expected_rabi_yield_kg": 230,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18393.0,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "atrai": {
+      "upazila_en": "Atrai",
+      "district_en": "Naogaon",
+      "lat": 24.6167,
+      "lon": 88.9667,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41000,
+          "exact_xgb_profit_bdt": 40909.1,
+          "confidence_range": {
+            "lower_bdt": 40500,
+            "upper_bdt": 41300
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4177,
+          "expected_rabi_yield_kg": 3488,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21605.94,
+          "confidence_range": {
+            "lower_bdt": 21200,
+            "upper_bdt": 22000
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 900,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16784.97,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 141,
+          "water": "low"
+        }
+      }
+    },
+    "badalgachhi": {
+      "upazila_en": "Badalgachhi",
+      "district_en": "Naogaon",
+      "lat": 24.9667,
+      "lon": 88.9167,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42250,
+          "exact_xgb_profit_bdt": 42197.76,
+          "confidence_range": {
+            "lower_bdt": 41800,
+            "upper_bdt": 42600
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4241,
+          "expected_rabi_yield_kg": 3551,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21686.49,
+          "confidence_range": {
+            "lower_bdt": 21300,
+            "upper_bdt": 22100
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 901,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16818.29,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 140,
+          "water": "low"
+        }
+      }
+    },
+    "bagatipara": {
+      "upazila_en": "Bagatipara",
+      "district_en": "Natore",
+      "lat": 24.3333,
+      "lon": 88.95,
+      "soil_ph": 6.8,
+      "soil_soc_g_kg": 13.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 47000,
+          "exact_xgb_profit_bdt": 46982.12,
+          "confidence_range": {
+            "lower_bdt": 46600,
+            "upper_bdt": 47400
+          },
+          "total_cost_bdt": 51300,
+          "rabi_cost_bdt": 33300,
+          "expected_yield_sum_kg": 4406,
+          "expected_rabi_yield_kg": 3683,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24500,
+          "exact_xgb_profit_bdt": 24385.14,
+          "confidence_range": {
+            "lower_bdt": 24000,
+            "upper_bdt": 24800
+          },
+          "total_cost_bdt": 27430,
+          "rabi_cost_bdt": 9430,
+          "expected_yield_sum_kg": 943,
+          "expected_rabi_yield_kg": 220,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 19750,
+          "exact_xgb_profit_bdt": 19660.48,
+          "confidence_range": {
+            "lower_bdt": 19300,
+            "upper_bdt": 20100
+          },
+          "total_cost_bdt": 26750,
+          "rabi_cost_bdt": 8750,
+          "expected_yield_sum_kg": 875,
+          "expected_rabi_yield_kg": 152,
+          "water": "low"
+        }
+      }
+    },
+    "bagha": {
+      "upazila_en": "Bagha",
+      "district_en": "Rajshahi",
+      "lat": 24.1833,
+      "lon": 88.8333,
+      "soil_ph": 5.8,
+      "soil_soc_g_kg": 7.5,
+      "precip_annual_avg": 58.0,
+      "temp_mean": 25.82,
+      "water_stress_score": 32.3,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39000,
+          "exact_xgb_profit_bdt": 38908.15,
+          "confidence_range": {
+            "lower_bdt": 38500,
+            "upper_bdt": 39300
+          },
+          "total_cost_bdt": 52500,
+          "rabi_cost_bdt": 34500,
+          "expected_yield_sum_kg": 4083,
+          "expected_rabi_yield_kg": 3395,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21429.07,
+          "confidence_range": {
+            "lower_bdt": 21000,
+            "upper_bdt": 21800
+          },
+          "total_cost_bdt": 27850,
+          "rabi_cost_bdt": 9850,
+          "expected_yield_sum_kg": 899,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16755.98,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 142,
+          "water": "low"
+        }
+      }
+    },
+    "bagmara": {
+      "upazila_en": "Bagmara",
+      "district_en": "Rajshahi",
+      "lat": 24.5667,
+      "lon": 88.8,
+      "soil_ph": 5.8,
+      "soil_soc_g_kg": 7.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39750,
+          "exact_xgb_profit_bdt": 39646.95,
+          "confidence_range": {
+            "lower_bdt": 39200,
+            "upper_bdt": 40100
+          },
+          "total_cost_bdt": 52500,
+          "rabi_cost_bdt": 34500,
+          "expected_yield_sum_kg": 4148,
+          "expected_rabi_yield_kg": 3460,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21250,
+          "exact_xgb_profit_bdt": 21365.19,
+          "confidence_range": {
+            "lower_bdt": 21000,
+            "upper_bdt": 21800
+          },
+          "total_cost_bdt": 27850,
+          "rabi_cost_bdt": 9850,
+          "expected_yield_sum_kg": 898,
+          "expected_rabi_yield_kg": 210,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16739.99,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 142,
+          "water": "low"
+        }
+      }
+    },
+    "baraigram": {
+      "upazila_en": "Baraigram",
+      "district_en": "Natore",
+      "lat": 24.3167,
+      "lon": 89.1667,
+      "soil_ph": 6.8,
+      "soil_soc_g_kg": 13.5,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 46500,
+          "exact_xgb_profit_bdt": 46500.42,
+          "confidence_range": {
+            "lower_bdt": 46100,
+            "upper_bdt": 46900
+          },
+          "total_cost_bdt": 51300,
+          "rabi_cost_bdt": 33300,
+          "expected_yield_sum_kg": 4375,
+          "expected_rabi_yield_kg": 3651,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24750,
+          "exact_xgb_profit_bdt": 24714.1,
+          "confidence_range": {
+            "lower_bdt": 24300,
+            "upper_bdt": 25100
+          },
+          "total_cost_bdt": 27430,
+          "rabi_cost_bdt": 9430,
+          "expected_yield_sum_kg": 947,
+          "expected_rabi_yield_kg": 223,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19502.88,
+          "confidence_range": {
+            "lower_bdt": 19100,
+            "upper_bdt": 19900
+          },
+          "total_cost_bdt": 26750,
+          "rabi_cost_bdt": 8750,
+          "expected_yield_sum_kg": 873,
+          "expected_rabi_yield_kg": 149,
+          "water": "low"
+        }
+      }
+    },
+    "belkuchi": {
+      "upazila_en": "Belkuchi",
+      "district_en": "Sirajganj",
+      "lat": 24.2833,
+      "lon": 89.7,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 92.8,
+      "temp_mean": 25.44,
+      "water_stress_score": 25.7,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42250,
+          "exact_xgb_profit_bdt": 42332.9,
+          "confidence_range": {
+            "lower_bdt": 41900,
+            "upper_bdt": 42700
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4162,
+          "expected_rabi_yield_kg": 3488,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23500,
+          "exact_xgb_profit_bdt": 23622.61,
+          "confidence_range": {
+            "lower_bdt": 23200,
+            "upper_bdt": 24000
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 904,
+          "expected_rabi_yield_kg": 230,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17868.34,
+          "confidence_range": {
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "bera": {
+      "upazila_en": "Bera",
+      "district_en": "Pabna",
+      "lat": 24.0833,
+      "lon": 89.6167,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41500,
+          "exact_xgb_profit_bdt": 41448.87,
+          "confidence_range": {
+            "lower_bdt": 41000,
+            "upper_bdt": 41900
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4126,
+          "expected_rabi_yield_kg": 3445,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24000,
+          "exact_xgb_profit_bdt": 23894.71,
+          "confidence_range": {
+            "lower_bdt": 23500,
+            "upper_bdt": 24300
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 914,
+          "expected_rabi_yield_kg": 233,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18250,
+          "exact_xgb_profit_bdt": 18361.12,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "bhangoora": {
+      "upazila_en": "Bhangoora",
+      "district_en": "Pabna",
+      "lat": 24.2,
+      "lon": 89.3833,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41750,
+          "exact_xgb_profit_bdt": 41781.55,
+          "confidence_range": {
+            "lower_bdt": 41400,
+            "upper_bdt": 42200
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4142,
+          "expected_rabi_yield_kg": 3461,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24000,
+          "exact_xgb_profit_bdt": 23898.37,
+          "confidence_range": {
+            "lower_bdt": 23500,
+            "upper_bdt": 24300
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 912,
+          "expected_rabi_yield_kg": 231,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18401.21,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "bholahat": {
+      "upazila_en": "Bholahat",
+      "district_en": "Chapainawabganj",
+      "lat": 24.8833,
+      "lon": 88.1833,
+      "soil_ph": 6.1,
+      "soil_soc_g_kg": 7.2,
+      "precip_annual_avg": 48.7,
+      "temp_mean": 25.79,
+      "water_stress_score": 41.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 40000,
+          "exact_xgb_profit_bdt": 40025.47,
+          "confidence_range": {
+            "lower_bdt": 39600,
+            "upper_bdt": 40400
+          },
+          "total_cost_bdt": 52700,
+          "rabi_cost_bdt": 34700,
+          "expected_yield_sum_kg": 4170,
+          "expected_rabi_yield_kg": 3491,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 20750,
+          "exact_xgb_profit_bdt": 20650.38,
+          "confidence_range": {
+            "lower_bdt": 20200,
+            "upper_bdt": 21100
+          },
+          "total_cost_bdt": 27920,
+          "rabi_cost_bdt": 9920,
+          "expected_yield_sum_kg": 885,
+          "expected_rabi_yield_kg": 206,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17000,
+          "exact_xgb_profit_bdt": 16962.39,
+          "confidence_range": {
+            "lower_bdt": 16600,
+            "upper_bdt": 17400
+          },
+          "total_cost_bdt": 27100,
+          "rabi_cost_bdt": 9100,
+          "expected_yield_sum_kg": 828,
+          "expected_rabi_yield_kg": 149,
+          "water": "low"
+        }
+      }
+    },
+    "bogura_sadar": {
+      "upazila_en": "Bogura Sadar",
+      "district_en": "Bogura",
+      "lat": 24.85,
+      "lon": 89.3667,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44250,
+          "exact_xgb_profit_bdt": 44311.34,
+          "confidence_range": {
+            "lower_bdt": 43900,
+            "upper_bdt": 44700
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4308,
+          "expected_rabi_yield_kg": 3625,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23135.57,
+          "confidence_range": {
+            "lower_bdt": 22700,
+            "upper_bdt": 23500
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 906,
+          "expected_rabi_yield_kg": 223,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17707.27,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "bogura sadar": {
+      "upazila_en": "Bogura Sadar",
+      "district_en": "Bogura",
+      "lat": 24.85,
+      "lon": 89.3667,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44250,
+          "exact_xgb_profit_bdt": 44311.34,
+          "confidence_range": {
+            "lower_bdt": 43900,
+            "upper_bdt": 44700
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4308,
+          "expected_rabi_yield_kg": 3625,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23135.57,
+          "confidence_range": {
+            "lower_bdt": 22700,
+            "upper_bdt": 23500
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 906,
+          "expected_rabi_yield_kg": 223,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17707.27,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "chapainawabganj_sadar": {
+      "upazila_en": "Chapainawabganj Sadar",
+      "district_en": "Chapainawabganj",
+      "lat": 24.6,
+      "lon": 88.27,
+      "soil_ph": 6.1,
+      "soil_soc_g_kg": 7.2,
+      "precip_annual_avg": 45.8,
+      "temp_mean": 26.02,
+      "water_stress_score": 42.1,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39250,
+          "exact_xgb_profit_bdt": 39130.62,
+          "confidence_range": {
+            "lower_bdt": 38700,
+            "upper_bdt": 39500
+          },
+          "total_cost_bdt": 52700,
+          "rabi_cost_bdt": 34700,
+          "expected_yield_sum_kg": 4120,
+          "expected_rabi_yield_kg": 3441,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20511.89,
+          "confidence_range": {
+            "lower_bdt": 20100,
+            "upper_bdt": 20900
+          },
+          "total_cost_bdt": 27920,
+          "rabi_cost_bdt": 9920,
+          "expected_yield_sum_kg": 885,
+          "expected_rabi_yield_kg": 206,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17000,
+          "exact_xgb_profit_bdt": 16993.93,
+          "confidence_range": {
+            "lower_bdt": 16600,
+            "upper_bdt": 17400
+          },
+          "total_cost_bdt": 27100,
+          "rabi_cost_bdt": 9100,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "chapainawabganj sadar": {
+      "upazila_en": "Chapainawabganj Sadar",
+      "district_en": "Chapainawabganj",
+      "lat": 24.6,
+      "lon": 88.27,
+      "soil_ph": 6.1,
+      "soil_soc_g_kg": 7.2,
+      "precip_annual_avg": 45.8,
+      "temp_mean": 26.02,
+      "water_stress_score": 42.1,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39250,
+          "exact_xgb_profit_bdt": 39130.62,
+          "confidence_range": {
+            "lower_bdt": 38700,
+            "upper_bdt": 39500
+          },
+          "total_cost_bdt": 52700,
+          "rabi_cost_bdt": 34700,
+          "expected_yield_sum_kg": 4120,
+          "expected_rabi_yield_kg": 3441,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20511.89,
+          "confidence_range": {
+            "lower_bdt": 20100,
+            "upper_bdt": 20900
+          },
+          "total_cost_bdt": 27920,
+          "rabi_cost_bdt": 9920,
+          "expected_yield_sum_kg": 885,
+          "expected_rabi_yield_kg": 206,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17000,
+          "exact_xgb_profit_bdt": 16993.93,
+          "confidence_range": {
+            "lower_bdt": 16600,
+            "upper_bdt": 17400
+          },
+          "total_cost_bdt": 27100,
+          "rabi_cost_bdt": 9100,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "charghat": {
+      "upazila_en": "Charghat",
+      "district_en": "Rajshahi",
+      "lat": 24.2833,
+      "lon": 88.75,
+      "soil_ph": 5.8,
+      "soil_soc_g_kg": 7.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39500,
+          "exact_xgb_profit_bdt": 39395.03,
+          "confidence_range": {
+            "lower_bdt": 39000,
+            "upper_bdt": 39800
+          },
+          "total_cost_bdt": 52500,
+          "rabi_cost_bdt": 34500,
+          "expected_yield_sum_kg": 4109,
+          "expected_rabi_yield_kg": 3421,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21250,
+          "exact_xgb_profit_bdt": 21296.41,
+          "confidence_range": {
+            "lower_bdt": 20900,
+            "upper_bdt": 21700
+          },
+          "total_cost_bdt": 27850,
+          "rabi_cost_bdt": 9850,
+          "expected_yield_sum_kg": 898,
+          "expected_rabi_yield_kg": 210,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16723.3,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 142,
+          "water": "low"
+        }
+      }
+    },
+    "chatmohar": {
+      "upazila_en": "Chatmohar",
+      "district_en": "Pabna",
+      "lat": 24.2333,
+      "lon": 89.2833,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41750,
+          "exact_xgb_profit_bdt": 41788.19,
+          "confidence_range": {
+            "lower_bdt": 41400,
+            "upper_bdt": 42200
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4146,
+          "expected_rabi_yield_kg": 3465,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23850.56,
+          "confidence_range": {
+            "lower_bdt": 23400,
+            "upper_bdt": 24300
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 911,
+          "expected_rabi_yield_kg": 230,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18406.04,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "chauhali": {
+      "upazila_en": "Chauhali",
+      "district_en": "Sirajganj",
+      "lat": 24.2167,
+      "lon": 89.7167,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 87.0,
+      "temp_mean": 25.56,
+      "water_stress_score": 24.7,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42500,
+          "exact_xgb_profit_bdt": 42406.2,
+          "confidence_range": {
+            "lower_bdt": 42000,
+            "upper_bdt": 42800
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4143,
+          "expected_rabi_yield_kg": 3469,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23638.25,
+          "confidence_range": {
+            "lower_bdt": 23200,
+            "upper_bdt": 24000
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 904,
+          "expected_rabi_yield_kg": 230,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17873.7,
+          "confidence_range": {
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "dhamoirhat": {
+      "upazila_en": "Dhamoirhat",
+      "district_en": "Naogaon",
+      "lat": 25.0833,
+      "lon": 88.85,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42500,
+          "exact_xgb_profit_bdt": 42406.91,
+          "confidence_range": {
+            "lower_bdt": 42000,
+            "upper_bdt": 42800
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4257,
+          "expected_rabi_yield_kg": 3567,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21653.11,
+          "confidence_range": {
+            "lower_bdt": 21200,
+            "upper_bdt": 22100
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 900,
+          "expected_rabi_yield_kg": 210,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16803.11,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 140,
+          "water": "low"
+        }
+      }
+    },
+    "dhunat": {
+      "upazila_en": "Dhunat",
+      "district_en": "Bogura",
+      "lat": 24.6833,
+      "lon": 89.5333,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 43750,
+          "exact_xgb_profit_bdt": 43850.91,
+          "confidence_range": {
+            "lower_bdt": 43400,
+            "upper_bdt": 44300
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4277,
+          "expected_rabi_yield_kg": 3594,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23279.24,
+          "confidence_range": {
+            "lower_bdt": 22900,
+            "upper_bdt": 23700
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 907,
+          "expected_rabi_yield_kg": 224,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17714.17,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "dhupchanchia": {
+      "upazila_en": "Dhupchanchia",
+      "district_en": "Bogura",
+      "lat": 24.8667,
+      "lon": 89.1667,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44500,
+          "exact_xgb_profit_bdt": 44413.63,
+          "confidence_range": {
+            "lower_bdt": 44000,
+            "upper_bdt": 44800
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4310,
+          "expected_rabi_yield_kg": 3627,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23000,
+          "exact_xgb_profit_bdt": 23057.95,
+          "confidence_range": {
+            "lower_bdt": 22700,
+            "upper_bdt": 23500
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 904,
+          "expected_rabi_yield_kg": 221,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17697.59,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "durgapur": {
+      "upazila_en": "Durgapur",
+      "district_en": "Rajshahi",
+      "lat": 24.45,
+      "lon": 88.7667,
+      "soil_ph": 5.8,
+      "soil_soc_g_kg": 7.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39750,
+          "exact_xgb_profit_bdt": 39789.68,
+          "confidence_range": {
+            "lower_bdt": 39400,
+            "upper_bdt": 40200
+          },
+          "total_cost_bdt": 52500,
+          "rabi_cost_bdt": 34500,
+          "expected_yield_sum_kg": 4132,
+          "expected_rabi_yield_kg": 3444,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21250,
+          "exact_xgb_profit_bdt": 21348.85,
+          "confidence_range": {
+            "lower_bdt": 20900,
+            "upper_bdt": 21800
+          },
+          "total_cost_bdt": 27850,
+          "rabi_cost_bdt": 9850,
+          "expected_yield_sum_kg": 898,
+          "expected_rabi_yield_kg": 210,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16753.11,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 142,
+          "water": "low"
+        }
+      }
+    },
+    "faridpur": {
+      "upazila_en": "Faridpur",
+      "district_en": "Pabna",
+      "lat": 24.15,
+      "lon": 89.45,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41500,
+          "exact_xgb_profit_bdt": 41617.02,
+          "confidence_range": {
+            "lower_bdt": 41200,
+            "upper_bdt": 42000
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4135,
+          "expected_rabi_yield_kg": 3454,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24000,
+          "exact_xgb_profit_bdt": 23903.92,
+          "confidence_range": {
+            "lower_bdt": 23500,
+            "upper_bdt": 24300
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 912,
+          "expected_rabi_yield_kg": 231,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18391.47,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "gabtali": {
+      "upazila_en": "Gabtali",
+      "district_en": "Bogura",
+      "lat": 24.8833,
+      "lon": 89.5167,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44500,
+          "exact_xgb_profit_bdt": 44393.51,
+          "confidence_range": {
+            "lower_bdt": 44000,
+            "upper_bdt": 44800
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4312,
+          "expected_rabi_yield_kg": 3629,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23304.83,
+          "confidence_range": {
+            "lower_bdt": 22900,
+            "upper_bdt": 23700
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 907,
+          "expected_rabi_yield_kg": 224,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17731.3,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "godagari": {
+      "upazila_en": "Godagari",
+      "district_en": "Rajshahi",
+      "lat": 24.4667,
+      "lon": 88.33,
+      "soil_ph": 5.8,
+      "soil_soc_g_kg": 7.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39750,
+          "exact_xgb_profit_bdt": 39829.45,
+          "confidence_range": {
+            "lower_bdt": 39400,
+            "upper_bdt": 40200
+          },
+          "total_cost_bdt": 52500,
+          "rabi_cost_bdt": 34500,
+          "expected_yield_sum_kg": 4134,
+          "expected_rabi_yield_kg": 3446,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21000,
+          "exact_xgb_profit_bdt": 20992.75,
+          "confidence_range": {
+            "lower_bdt": 20600,
+            "upper_bdt": 21400
+          },
+          "total_cost_bdt": 27850,
+          "rabi_cost_bdt": 9850,
+          "expected_yield_sum_kg": 894,
+          "expected_rabi_yield_kg": 206,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16742.45,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 142,
+          "water": "low"
+        }
+      }
+    },
+    "gomastapur": {
+      "upazila_en": "Gomastapur",
+      "district_en": "Chapainawabganj",
+      "lat": 24.7833,
+      "lon": 88.2833,
+      "soil_ph": 6.1,
+      "soil_soc_g_kg": 7.2,
+      "precip_annual_avg": 48.7,
+      "temp_mean": 25.79,
+      "water_stress_score": 41.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39750,
+          "exact_xgb_profit_bdt": 39778.95,
+          "confidence_range": {
+            "lower_bdt": 39400,
+            "upper_bdt": 40200
+          },
+          "total_cost_bdt": 52700,
+          "rabi_cost_bdt": 34700,
+          "expected_yield_sum_kg": 4156,
+          "expected_rabi_yield_kg": 3477,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20588.06,
+          "confidence_range": {
+            "lower_bdt": 20200,
+            "upper_bdt": 21000
+          },
+          "total_cost_bdt": 27920,
+          "rabi_cost_bdt": 9920,
+          "expected_yield_sum_kg": 886,
+          "expected_rabi_yield_kg": 207,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17000,
+          "exact_xgb_profit_bdt": 16956.28,
+          "confidence_range": {
+            "lower_bdt": 16600,
+            "upper_bdt": 17400
+          },
+          "total_cost_bdt": 27100,
+          "rabi_cost_bdt": 9100,
+          "expected_yield_sum_kg": 828,
+          "expected_rabi_yield_kg": 149,
+          "water": "low"
+        }
+      }
+    },
+    "gurudaspur": {
+      "upazila_en": "Gurudaspur",
+      "district_en": "Natore",
+      "lat": 24.4667,
+      "lon": 89.25,
+      "soil_ph": 6.8,
+      "soil_soc_g_kg": 13.5,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 46750,
+          "exact_xgb_profit_bdt": 46874.79,
+          "confidence_range": {
+            "lower_bdt": 46500,
+            "upper_bdt": 47300
+          },
+          "total_cost_bdt": 51300,
+          "rabi_cost_bdt": 33300,
+          "expected_yield_sum_kg": 4395,
+          "expected_rabi_yield_kg": 3671,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24750,
+          "exact_xgb_profit_bdt": 24776.49,
+          "confidence_range": {
+            "lower_bdt": 24400,
+            "upper_bdt": 25200
+          },
+          "total_cost_bdt": 27430,
+          "rabi_cost_bdt": 9430,
+          "expected_yield_sum_kg": 948,
+          "expected_rabi_yield_kg": 224,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19498.66,
+          "confidence_range": {
+            "lower_bdt": 19100,
+            "upper_bdt": 19900
+          },
+          "total_cost_bdt": 26750,
+          "rabi_cost_bdt": 8750,
+          "expected_yield_sum_kg": 873,
+          "expected_rabi_yield_kg": 149,
+          "water": "low"
+        }
+      }
+    },
+    "ishwardi": {
+      "upazila_en": "Ishwardi",
+      "district_en": "Pabna",
+      "lat": 24.1333,
+      "lon": 89.0667,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41500,
+          "exact_xgb_profit_bdt": 41598.54,
+          "confidence_range": {
+            "lower_bdt": 41200,
+            "upper_bdt": 42000
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4133,
+          "expected_rabi_yield_kg": 3452,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23709.86,
+          "confidence_range": {
+            "lower_bdt": 23300,
+            "upper_bdt": 24100
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 909,
+          "expected_rabi_yield_kg": 228,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18385.76,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "joypurhat_sadar": {
+      "upazila_en": "Joypurhat Sadar",
+      "district_en": "Joypurhat",
+      "lat": 25.1,
+      "lon": 89.0333,
+      "soil_ph": 5.6,
+      "soil_soc_g_kg": 8.5,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 43250,
+          "exact_xgb_profit_bdt": 43277.98,
+          "confidence_range": {
+            "lower_bdt": 42900,
+            "upper_bdt": 43700
+          },
+          "total_cost_bdt": 51700,
+          "rabi_cost_bdt": 33700,
+          "expected_yield_sum_kg": 4276,
+          "expected_rabi_yield_kg": 3590,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21986.78,
+          "confidence_range": {
+            "lower_bdt": 21600,
+            "upper_bdt": 22400
+          },
+          "total_cost_bdt": 27570,
+          "rabi_cost_bdt": 9570,
+          "expected_yield_sum_kg": 897,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16743.07,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 26850,
+          "rabi_cost_bdt": 8850,
+          "expected_yield_sum_kg": 825,
+          "expected_rabi_yield_kg": 139,
+          "water": "low"
+        }
+      }
+    },
+    "joypurhat sadar": {
+      "upazila_en": "Joypurhat Sadar",
+      "district_en": "Joypurhat",
+      "lat": 25.1,
+      "lon": 89.0333,
+      "soil_ph": 5.6,
+      "soil_soc_g_kg": 8.5,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 43250,
+          "exact_xgb_profit_bdt": 43277.98,
+          "confidence_range": {
+            "lower_bdt": 42900,
+            "upper_bdt": 43700
+          },
+          "total_cost_bdt": 51700,
+          "rabi_cost_bdt": 33700,
+          "expected_yield_sum_kg": 4276,
+          "expected_rabi_yield_kg": 3590,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21986.78,
+          "confidence_range": {
+            "lower_bdt": 21600,
+            "upper_bdt": 22400
+          },
+          "total_cost_bdt": 27570,
+          "rabi_cost_bdt": 9570,
+          "expected_yield_sum_kg": 897,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16743.07,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 26850,
+          "rabi_cost_bdt": 8850,
+          "expected_yield_sum_kg": 825,
+          "expected_rabi_yield_kg": 139,
+          "water": "low"
+        }
+      }
+    },
+    "kahaloo": {
+      "upazila_en": "Kahaloo",
+      "district_en": "Bogura",
+      "lat": 24.8167,
+      "lon": 89.2667,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44250,
+          "exact_xgb_profit_bdt": 44323.68,
+          "confidence_range": {
+            "lower_bdt": 43900,
+            "upper_bdt": 44700
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4303,
+          "expected_rabi_yield_kg": 3620,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23000,
+          "exact_xgb_profit_bdt": 23118.32,
+          "confidence_range": {
+            "lower_bdt": 22700,
+            "upper_bdt": 23500
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 905,
+          "expected_rabi_yield_kg": 222,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17701.21,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "kalai": {
+      "upazila_en": "Kalai",
+      "district_en": "Joypurhat",
+      "lat": 25.0667,
+      "lon": 89.1833,
+      "soil_ph": 5.6,
+      "soil_soc_g_kg": 8.5,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42750,
+          "exact_xgb_profit_bdt": 42664.93,
+          "confidence_range": {
+            "lower_bdt": 42300,
+            "upper_bdt": 43100
+          },
+          "total_cost_bdt": 51700,
+          "rabi_cost_bdt": 33700,
+          "expected_yield_sum_kg": 4235,
+          "expected_rabi_yield_kg": 3548,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 22070.35,
+          "confidence_range": {
+            "lower_bdt": 21700,
+            "upper_bdt": 22500
+          },
+          "total_cost_bdt": 27570,
+          "rabi_cost_bdt": 9570,
+          "expected_yield_sum_kg": 900,
+          "expected_rabi_yield_kg": 213,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16723.79,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 26850,
+          "rabi_cost_bdt": 8850,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 137,
+          "water": "low"
+        }
+      }
+    },
+    "kamarkhanda": {
+      "upazila_en": "Kamarkhanda",
+      "district_en": "Sirajganj",
+      "lat": 24.3667,
+      "lon": 89.65,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42500,
+          "exact_xgb_profit_bdt": 42507.79,
+          "confidence_range": {
+            "lower_bdt": 42100,
+            "upper_bdt": 42900
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4173,
+          "expected_rabi_yield_kg": 3500,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23631.3,
+          "confidence_range": {
+            "lower_bdt": 23200,
+            "upper_bdt": 24000
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 902,
+          "expected_rabi_yield_kg": 229,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18000,
+          "exact_xgb_profit_bdt": 17938.27,
+          "confidence_range": {
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 151,
+          "water": "low"
+        }
+      }
+    },
+    "kazipur": {
+      "upazila_en": "Kazipur",
+      "district_en": "Sirajganj",
+      "lat": 24.6667,
+      "lon": 89.65,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 92.8,
+      "temp_mean": 25.44,
+      "water_stress_score": 25.7,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42500,
+          "exact_xgb_profit_bdt": 42604.75,
+          "confidence_range": {
+            "lower_bdt": 42200,
+            "upper_bdt": 43000
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4214,
+          "expected_rabi_yield_kg": 3540,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23705.66,
+          "confidence_range": {
+            "lower_bdt": 23300,
+            "upper_bdt": 24100
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 904,
+          "expected_rabi_yield_kg": 230,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18000,
+          "exact_xgb_profit_bdt": 17890.27,
+          "confidence_range": {
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "khetlal": {
+      "upazila_en": "Khetlal",
+      "district_en": "Joypurhat",
+      "lat": 24.9833,
+      "lon": 89.1333,
+      "soil_ph": 5.6,
+      "soil_soc_g_kg": 8.5,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42750,
+          "exact_xgb_profit_bdt": 42737.68,
+          "confidence_range": {
+            "lower_bdt": 42300,
+            "upper_bdt": 43100
+          },
+          "total_cost_bdt": 51700,
+          "rabi_cost_bdt": 33700,
+          "expected_yield_sum_kg": 4224,
+          "expected_rabi_yield_kg": 3537,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21960.94,
+          "confidence_range": {
+            "lower_bdt": 21600,
+            "upper_bdt": 22400
+          },
+          "total_cost_bdt": 27570,
+          "rabi_cost_bdt": 9570,
+          "expected_yield_sum_kg": 899,
+          "expected_rabi_yield_kg": 212,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16659.41,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 26850,
+          "rabi_cost_bdt": 8850,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 137,
+          "water": "low"
+        }
+      }
+    },
+    "lalpur": {
+      "upazila_en": "Lalpur",
+      "district_en": "Natore",
+      "lat": 24.1833,
+      "lon": 88.9833,
+      "soil_ph": 6.8,
+      "soil_soc_g_kg": 13.5,
+      "precip_annual_avg": 58.0,
+      "temp_mean": 25.82,
+      "water_stress_score": 32.3,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 46500,
+          "exact_xgb_profit_bdt": 46560.12,
+          "confidence_range": {
+            "lower_bdt": 46200,
+            "upper_bdt": 47000
+          },
+          "total_cost_bdt": 51300,
+          "rabi_cost_bdt": 33300,
+          "expected_yield_sum_kg": 4373,
+          "expected_rabi_yield_kg": 3650,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24500,
+          "exact_xgb_profit_bdt": 24436.44,
+          "confidence_range": {
+            "lower_bdt": 24000,
+            "upper_bdt": 24800
+          },
+          "total_cost_bdt": 27430,
+          "rabi_cost_bdt": 9430,
+          "expected_yield_sum_kg": 944,
+          "expected_rabi_yield_kg": 221,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19573.01,
+          "confidence_range": {
+            "lower_bdt": 19200,
+            "upper_bdt": 20000
+          },
+          "total_cost_bdt": 26750,
+          "rabi_cost_bdt": 8750,
+          "expected_yield_sum_kg": 874,
+          "expected_rabi_yield_kg": 151,
+          "water": "low"
+        }
+      }
+    },
+    "manda": {
+      "upazila_en": "Manda",
+      "district_en": "Naogaon",
+      "lat": 24.7833,
+      "lon": 88.6667,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41250,
+          "exact_xgb_profit_bdt": 41259.68,
+          "confidence_range": {
+            "lower_bdt": 40900,
+            "upper_bdt": 41700
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4199,
+          "expected_rabi_yield_kg": 3510,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21250,
+          "exact_xgb_profit_bdt": 21364.84,
+          "confidence_range": {
+            "lower_bdt": 21000,
+            "upper_bdt": 21800
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 897,
+          "expected_rabi_yield_kg": 208,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16787.93,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 141,
+          "water": "low"
+        }
+      }
+    },
+    "mohadevpur": {
+      "upazila_en": "Mohadevpur",
+      "district_en": "Naogaon",
+      "lat": 24.9167,
+      "lon": 88.75,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42000,
+          "exact_xgb_profit_bdt": 41998.86,
+          "confidence_range": {
+            "lower_bdt": 41600,
+            "upper_bdt": 42400
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4234,
+          "expected_rabi_yield_kg": 3544,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21535.56,
+          "confidence_range": {
+            "lower_bdt": 21100,
+            "upper_bdt": 21900
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 899,
+          "expected_rabi_yield_kg": 209,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16797.76,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 140,
+          "water": "low"
+        }
+      }
+    },
+    "mohanpur": {
+      "upazila_en": "Mohanpur",
+      "district_en": "Rajshahi",
+      "lat": 24.5333,
+      "lon": 88.65,
+      "soil_ph": 5.8,
+      "soil_soc_g_kg": 7.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 40000,
+          "exact_xgb_profit_bdt": 39963.34,
+          "confidence_range": {
+            "lower_bdt": 39600,
+            "upper_bdt": 40400
+          },
+          "total_cost_bdt": 52500,
+          "rabi_cost_bdt": 34500,
+          "expected_yield_sum_kg": 4143,
+          "expected_rabi_yield_kg": 3455,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21250,
+          "exact_xgb_profit_bdt": 21257.61,
+          "confidence_range": {
+            "lower_bdt": 20900,
+            "upper_bdt": 21700
+          },
+          "total_cost_bdt": 27850,
+          "rabi_cost_bdt": 9850,
+          "expected_yield_sum_kg": 897,
+          "expected_rabi_yield_kg": 209,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16759.6,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 142,
+          "water": "low"
+        }
+      }
+    },
+    "nachole": {
+      "upazila_en": "Nachole",
+      "district_en": "Chapainawabganj",
+      "lat": 24.7333,
+      "lon": 88.4167,
+      "soil_ph": 6.1,
+      "soil_soc_g_kg": 7.2,
+      "precip_annual_avg": 45.8,
+      "temp_mean": 26.02,
+      "water_stress_score": 42.1,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39250,
+          "exact_xgb_profit_bdt": 39298.23,
+          "confidence_range": {
+            "lower_bdt": 38900,
+            "upper_bdt": 39700
+          },
+          "total_cost_bdt": 52700,
+          "rabi_cost_bdt": 34700,
+          "expected_yield_sum_kg": 4138,
+          "expected_rabi_yield_kg": 3459,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 20750,
+          "exact_xgb_profit_bdt": 20680.9,
+          "confidence_range": {
+            "lower_bdt": 20300,
+            "upper_bdt": 21100
+          },
+          "total_cost_bdt": 27920,
+          "rabi_cost_bdt": 9920,
+          "expected_yield_sum_kg": 887,
+          "expected_rabi_yield_kg": 208,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17000,
+          "exact_xgb_profit_bdt": 17042.11,
+          "confidence_range": {
+            "lower_bdt": 16600,
+            "upper_bdt": 17400
+          },
+          "total_cost_bdt": 27100,
+          "rabi_cost_bdt": 9100,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "naldanga": {
+      "upazila_en": "Naldanga",
+      "district_en": "Natore",
+      "lat": 24.5,
+      "lon": 88.9833,
+      "soil_ph": 6.8,
+      "soil_soc_g_kg": 13.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 47000,
+          "exact_xgb_profit_bdt": 47106.39,
+          "confidence_range": {
+            "lower_bdt": 46700,
+            "upper_bdt": 47500
+          },
+          "total_cost_bdt": 51300,
+          "rabi_cost_bdt": 33300,
+          "expected_yield_sum_kg": 4429,
+          "expected_rabi_yield_kg": 3706,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24500,
+          "exact_xgb_profit_bdt": 24426.57,
+          "confidence_range": {
+            "lower_bdt": 24000,
+            "upper_bdt": 24800
+          },
+          "total_cost_bdt": 27430,
+          "rabi_cost_bdt": 9430,
+          "expected_yield_sum_kg": 944,
+          "expected_rabi_yield_kg": 221,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 19750,
+          "exact_xgb_profit_bdt": 19668.39,
+          "confidence_range": {
+            "lower_bdt": 19300,
+            "upper_bdt": 20100
+          },
+          "total_cost_bdt": 26750,
+          "rabi_cost_bdt": 8750,
+          "expected_yield_sum_kg": 875,
+          "expected_rabi_yield_kg": 152,
+          "water": "low"
+        }
+      }
+    },
+    "nandigram": {
+      "upazila_en": "Nandigram",
+      "district_en": "Bogura",
+      "lat": 24.65,
+      "lon": 89.2167,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44250,
+          "exact_xgb_profit_bdt": 44196.63,
+          "confidence_range": {
+            "lower_bdt": 43800,
+            "upper_bdt": 44600
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4273,
+          "expected_rabi_yield_kg": 3590,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23172.12,
+          "confidence_range": {
+            "lower_bdt": 22800,
+            "upper_bdt": 23600
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 904,
+          "expected_rabi_yield_kg": 221,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17706.8,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "naogaon_sadar": {
+      "upazila_en": "Naogaon Sadar",
+      "district_en": "Naogaon",
+      "lat": 24.8,
+      "lon": 88.95,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41750,
+          "exact_xgb_profit_bdt": 41706.22,
+          "confidence_range": {
+            "lower_bdt": 41300,
+            "upper_bdt": 42100
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4218,
+          "expected_rabi_yield_kg": 3528,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21690.51,
+          "confidence_range": {
+            "lower_bdt": 21300,
+            "upper_bdt": 22100
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 901,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16811.0,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 140,
+          "water": "low"
+        }
+      }
+    },
+    "naogaon sadar": {
+      "upazila_en": "Naogaon Sadar",
+      "district_en": "Naogaon",
+      "lat": 24.8,
+      "lon": 88.95,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41750,
+          "exact_xgb_profit_bdt": 41706.22,
+          "confidence_range": {
+            "lower_bdt": 41300,
+            "upper_bdt": 42100
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4218,
+          "expected_rabi_yield_kg": 3528,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21690.51,
+          "confidence_range": {
+            "lower_bdt": 21300,
+            "upper_bdt": 22100
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 901,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16811.0,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 140,
+          "water": "low"
+        }
+      }
+    },
+    "natore_sadar": {
+      "upazila_en": "Natore Sadar",
+      "district_en": "Natore",
+      "lat": 24.4167,
+      "lon": 89.0,
+      "soil_ph": 6.8,
+      "soil_soc_g_kg": 13.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 47250,
+          "exact_xgb_profit_bdt": 47132.77,
+          "confidence_range": {
+            "lower_bdt": 46700,
+            "upper_bdt": 47500
+          },
+          "total_cost_bdt": 51300,
+          "rabi_cost_bdt": 33300,
+          "expected_yield_sum_kg": 4417,
+          "expected_rabi_yield_kg": 3694,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24500,
+          "exact_xgb_profit_bdt": 24468.78,
+          "confidence_range": {
+            "lower_bdt": 24100,
+            "upper_bdt": 24900
+          },
+          "total_cost_bdt": 27430,
+          "rabi_cost_bdt": 9430,
+          "expected_yield_sum_kg": 944,
+          "expected_rabi_yield_kg": 221,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 19750,
+          "exact_xgb_profit_bdt": 19662.44,
+          "confidence_range": {
+            "lower_bdt": 19300,
+            "upper_bdt": 20100
+          },
+          "total_cost_bdt": 26750,
+          "rabi_cost_bdt": 8750,
+          "expected_yield_sum_kg": 875,
+          "expected_rabi_yield_kg": 152,
+          "water": "low"
+        }
+      }
+    },
+    "natore sadar": {
+      "upazila_en": "Natore Sadar",
+      "district_en": "Natore",
+      "lat": 24.4167,
+      "lon": 89.0,
+      "soil_ph": 6.8,
+      "soil_soc_g_kg": 13.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 47250,
+          "exact_xgb_profit_bdt": 47132.77,
+          "confidence_range": {
+            "lower_bdt": 46700,
+            "upper_bdt": 47500
+          },
+          "total_cost_bdt": 51300,
+          "rabi_cost_bdt": 33300,
+          "expected_yield_sum_kg": 4417,
+          "expected_rabi_yield_kg": 3694,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24500,
+          "exact_xgb_profit_bdt": 24468.78,
+          "confidence_range": {
+            "lower_bdt": 24100,
+            "upper_bdt": 24900
+          },
+          "total_cost_bdt": 27430,
+          "rabi_cost_bdt": 9430,
+          "expected_yield_sum_kg": 944,
+          "expected_rabi_yield_kg": 221,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 19750,
+          "exact_xgb_profit_bdt": 19662.44,
+          "confidence_range": {
+            "lower_bdt": 19300,
+            "upper_bdt": 20100
+          },
+          "total_cost_bdt": 26750,
+          "rabi_cost_bdt": 8750,
+          "expected_yield_sum_kg": 875,
+          "expected_rabi_yield_kg": 152,
+          "water": "low"
+        }
+      }
+    },
+    "niamatpur": {
+      "upazila_en": "Niamatpur",
+      "district_en": "Naogaon",
+      "lat": 24.8667,
+      "lon": 88.5667,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42000,
+          "exact_xgb_profit_bdt": 41889.35,
+          "confidence_range": {
+            "lower_bdt": 41500,
+            "upper_bdt": 42300
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4227,
+          "expected_rabi_yield_kg": 3537,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21423.03,
+          "confidence_range": {
+            "lower_bdt": 21000,
+            "upper_bdt": 21800
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 898,
+          "expected_rabi_yield_kg": 208,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16798.18,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 140,
+          "water": "low"
+        }
+      }
+    },
+    "paba": {
+      "upazila_en": "Paba",
+      "district_en": "Rajshahi",
+      "lat": 24.4333,
+      "lon": 88.5833,
+      "soil_ph": 5.8,
+      "soil_soc_g_kg": 7.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39750,
+          "exact_xgb_profit_bdt": 39846.07,
+          "confidence_range": {
+            "lower_bdt": 39400,
+            "upper_bdt": 40300
+          },
+          "total_cost_bdt": 52500,
+          "rabi_cost_bdt": 34500,
+          "expected_yield_sum_kg": 4130,
+          "expected_rabi_yield_kg": 3442,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21250,
+          "exact_xgb_profit_bdt": 21166.07,
+          "confidence_range": {
+            "lower_bdt": 20800,
+            "upper_bdt": 21600
+          },
+          "total_cost_bdt": 27850,
+          "rabi_cost_bdt": 9850,
+          "expected_yield_sum_kg": 896,
+          "expected_rabi_yield_kg": 208,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16726.84,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 142,
+          "water": "low"
+        }
+      }
+    },
+    "pabna_sadar": {
+      "upazila_en": "Pabna Sadar",
+      "district_en": "Pabna",
+      "lat": 24.0,
+      "lon": 89.2333,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41500,
+          "exact_xgb_profit_bdt": 41475.76,
+          "confidence_range": {
+            "lower_bdt": 41100,
+            "upper_bdt": 41900
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4115,
+          "expected_rabi_yield_kg": 3434,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23822.47,
+          "confidence_range": {
+            "lower_bdt": 23400,
+            "upper_bdt": 24200
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 911,
+          "expected_rabi_yield_kg": 230,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18391.63,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "pabna sadar": {
+      "upazila_en": "Pabna Sadar",
+      "district_en": "Pabna",
+      "lat": 24.0,
+      "lon": 89.2333,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41500,
+          "exact_xgb_profit_bdt": 41475.76,
+          "confidence_range": {
+            "lower_bdt": 41100,
+            "upper_bdt": 41900
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4115,
+          "expected_rabi_yield_kg": 3434,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23822.47,
+          "confidence_range": {
+            "lower_bdt": 23400,
+            "upper_bdt": 24200
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 911,
+          "expected_rabi_yield_kg": 230,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18391.63,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "panchbibi": {
+      "upazila_en": "Panchbibi",
+      "district_en": "Joypurhat",
+      "lat": 25.2,
+      "lon": 89.0167,
+      "soil_ph": 5.6,
+      "soil_soc_g_kg": 8.5,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 43000,
+          "exact_xgb_profit_bdt": 42967.63,
+          "confidence_range": {
+            "lower_bdt": 42600,
+            "upper_bdt": 43400
+          },
+          "total_cost_bdt": 51700,
+          "rabi_cost_bdt": 33700,
+          "expected_yield_sum_kg": 4253,
+          "expected_rabi_yield_kg": 3566,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 22000,
+          "exact_xgb_profit_bdt": 21905.84,
+          "confidence_range": {
+            "lower_bdt": 21500,
+            "upper_bdt": 22300
+          },
+          "total_cost_bdt": 27570,
+          "rabi_cost_bdt": 9570,
+          "expected_yield_sum_kg": 898,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16738.79,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 26850,
+          "rabi_cost_bdt": 8850,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 137,
+          "water": "low"
+        }
+      }
+    },
+    "patnitala": {
+      "upazila_en": "Patnitala",
+      "district_en": "Naogaon",
+      "lat": 25.05,
+      "lon": 88.7333,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42250,
+          "exact_xgb_profit_bdt": 42298.96,
+          "confidence_range": {
+            "lower_bdt": 41900,
+            "upper_bdt": 42700
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4252,
+          "expected_rabi_yield_kg": 3562,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21540.63,
+          "confidence_range": {
+            "lower_bdt": 21100,
+            "upper_bdt": 21900
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 899,
+          "expected_rabi_yield_kg": 209,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16801.21,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 140,
+          "water": "low"
+        }
+      }
+    },
+    "porsha": {
+      "upazila_en": "Porsha",
+      "district_en": "Naogaon",
+      "lat": 25.0333,
+      "lon": 88.4833,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42250,
+          "exact_xgb_profit_bdt": 42255.61,
+          "confidence_range": {
+            "lower_bdt": 41900,
+            "upper_bdt": 42700
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4250,
+          "expected_rabi_yield_kg": 3560,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21452.68,
+          "confidence_range": {
+            "lower_bdt": 21000,
+            "upper_bdt": 21900
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 897,
+          "expected_rabi_yield_kg": 207,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16800.76,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 140,
+          "water": "low"
+        }
+      }
+    },
+    "puthia": {
+      "upazila_en": "Puthia",
+      "district_en": "Rajshahi",
+      "lat": 24.3667,
+      "lon": 88.85,
+      "soil_ph": 5.8,
+      "soil_soc_g_kg": 7.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39750,
+          "exact_xgb_profit_bdt": 39743.31,
+          "confidence_range": {
+            "lower_bdt": 39300,
+            "upper_bdt": 40100
+          },
+          "total_cost_bdt": 52500,
+          "rabi_cost_bdt": 34500,
+          "expected_yield_sum_kg": 4121,
+          "expected_rabi_yield_kg": 3433,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21404.08,
+          "confidence_range": {
+            "lower_bdt": 21000,
+            "upper_bdt": 21800
+          },
+          "total_cost_bdt": 27850,
+          "rabi_cost_bdt": 9850,
+          "expected_yield_sum_kg": 899,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16737.43,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 142,
+          "water": "low"
+        }
+      }
+    },
+    "raiganj": {
+      "upazila_en": "Raiganj",
+      "district_en": "Sirajganj",
+      "lat": 24.5167,
+      "lon": 89.5333,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42750,
+          "exact_xgb_profit_bdt": 42853.54,
+          "confidence_range": {
+            "lower_bdt": 42400,
+            "upper_bdt": 43300
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4194,
+          "expected_rabi_yield_kg": 3521,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23684.57,
+          "confidence_range": {
+            "lower_bdt": 23300,
+            "upper_bdt": 24100
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 901,
+          "expected_rabi_yield_kg": 228,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18000,
+          "exact_xgb_profit_bdt": 17980.74,
+          "confidence_range": {
+            "lower_bdt": 17600,
+            "upper_bdt": 18400
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 151,
+          "water": "low"
+        }
+      }
+    },
+    "raninagar": {
+      "upazila_en": "Raninagar",
+      "district_en": "Naogaon",
+      "lat": 24.7333,
+      "lon": 88.9833,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41250,
+          "exact_xgb_profit_bdt": 41157.48,
+          "confidence_range": {
+            "lower_bdt": 40800,
+            "upper_bdt": 41600
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4193,
+          "expected_rabi_yield_kg": 3504,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21750,
+          "exact_xgb_profit_bdt": 21628.98,
+          "confidence_range": {
+            "lower_bdt": 21200,
+            "upper_bdt": 22000
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 900,
+          "expected_rabi_yield_kg": 211,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16797.92,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 141,
+          "water": "low"
+        }
+      }
+    },
+    "santhia": {
+      "upazila_en": "Santhia",
+      "district_en": "Pabna",
+      "lat": 24.0667,
+      "lon": 89.5333,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41500,
+          "exact_xgb_profit_bdt": 41435.93,
+          "confidence_range": {
+            "lower_bdt": 41000,
+            "upper_bdt": 41800
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4124,
+          "expected_rabi_yield_kg": 3443,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24000,
+          "exact_xgb_profit_bdt": 23895.74,
+          "confidence_range": {
+            "lower_bdt": 23500,
+            "upper_bdt": 24300
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 913,
+          "expected_rabi_yield_kg": 232,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18386.9,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "sapahar": {
+      "upazila_en": "Sapahar",
+      "district_en": "Naogaon",
+      "lat": 25.1167,
+      "lon": 88.5833,
+      "soil_ph": 5.7,
+      "soil_soc_g_kg": 8.0,
+      "precip_annual_avg": 59.8,
+      "temp_mean": 25.39,
+      "water_stress_score": 30.6,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42250,
+          "exact_xgb_profit_bdt": 42352.5,
+          "confidence_range": {
+            "lower_bdt": 41900,
+            "upper_bdt": 42800
+          },
+          "total_cost_bdt": 52300,
+          "rabi_cost_bdt": 34300,
+          "expected_yield_sum_kg": 4261,
+          "expected_rabi_yield_kg": 3571,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21500,
+          "exact_xgb_profit_bdt": 21444.83,
+          "confidence_range": {
+            "lower_bdt": 21000,
+            "upper_bdt": 21900
+          },
+          "total_cost_bdt": 27780,
+          "rabi_cost_bdt": 9780,
+          "expected_yield_sum_kg": 898,
+          "expected_rabi_yield_kg": 208,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16798.46,
+          "confidence_range": {
+            "lower_bdt": 16400,
+            "upper_bdt": 17200
+          },
+          "total_cost_bdt": 27000,
+          "rabi_cost_bdt": 9000,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 140,
+          "water": "low"
+        }
+      }
+    },
+    "sariakandi": {
+      "upazila_en": "Sariakandi",
+      "district_en": "Bogura",
+      "lat": 24.8833,
+      "lon": 89.65,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44500,
+          "exact_xgb_profit_bdt": 44451.35,
+          "confidence_range": {
+            "lower_bdt": 44000,
+            "upper_bdt": 44900
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4312,
+          "expected_rabi_yield_kg": 3629,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23500,
+          "exact_xgb_profit_bdt": 23375.24,
+          "confidence_range": {
+            "lower_bdt": 23000,
+            "upper_bdt": 23800
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 908,
+          "expected_rabi_yield_kg": 225,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17721.67,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "shahjadpur": {
+      "upazila_en": "Shahjadpur",
+      "district_en": "Sirajganj",
+      "lat": 24.1833,
+      "lon": 89.6,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42000,
+          "exact_xgb_profit_bdt": 41952.49,
+          "confidence_range": {
+            "lower_bdt": 41500,
+            "upper_bdt": 42400
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4144,
+          "expected_rabi_yield_kg": 3471,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23500,
+          "exact_xgb_profit_bdt": 23586.68,
+          "confidence_range": {
+            "lower_bdt": 23200,
+            "upper_bdt": 24000
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 902,
+          "expected_rabi_yield_kg": 229,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18000,
+          "exact_xgb_profit_bdt": 17881.78,
+          "confidence_range": {
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 823,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "shajahanpur": {
+      "upazila_en": "Shajahanpur",
+      "district_en": "Bogura",
+      "lat": 24.7667,
+      "lon": 89.3833,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44250,
+          "exact_xgb_profit_bdt": 44176.03,
+          "confidence_range": {
+            "lower_bdt": 43800,
+            "upper_bdt": 44600
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4297,
+          "expected_rabi_yield_kg": 3614,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23206.18,
+          "confidence_range": {
+            "lower_bdt": 22800,
+            "upper_bdt": 23600
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 906,
+          "expected_rabi_yield_kg": 223,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17711.35,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "sherpur": {
+      "upazila_en": "Sherpur",
+      "district_en": "Bogura",
+      "lat": 24.6667,
+      "lon": 89.4167,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 43750,
+          "exact_xgb_profit_bdt": 43798.63,
+          "confidence_range": {
+            "lower_bdt": 43400,
+            "upper_bdt": 44200
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4275,
+          "expected_rabi_yield_kg": 3592,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23221.07,
+          "confidence_range": {
+            "lower_bdt": 22800,
+            "upper_bdt": 23600
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 906,
+          "expected_rabi_yield_kg": 223,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17702.73,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "shibganj": {
+      "upazila_en": "Shibganj",
+      "district_en": "Bogura",
+      "lat": 25.0,
+      "lon": 89.3333,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 45.8,
+      "temp_mean": 26.02,
+      "water_stress_score": 42.1,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39250,
+          "exact_xgb_profit_bdt": 39146.73,
+          "confidence_range": {
+            "lower_bdt": 38700,
+            "upper_bdt": 39600
+          },
+          "total_cost_bdt": 52700,
+          "rabi_cost_bdt": 34700,
+          "expected_yield_sum_kg": 4131,
+          "expected_rabi_yield_kg": 3452,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 20500,
+          "exact_xgb_profit_bdt": 20531.3,
+          "confidence_range": {
+            "lower_bdt": 20100,
+            "upper_bdt": 20900
+          },
+          "total_cost_bdt": 27920,
+          "rabi_cost_bdt": 9920,
+          "expected_yield_sum_kg": 885,
+          "expected_rabi_yield_kg": 206,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17000,
+          "exact_xgb_profit_bdt": 17018.19,
+          "confidence_range": {
+            "lower_bdt": 16600,
+            "upper_bdt": 17400
+          },
+          "total_cost_bdt": 27100,
+          "rabi_cost_bdt": 9100,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "singra": {
+      "upazila_en": "Singra",
+      "district_en": "Natore",
+      "lat": 24.5,
+      "lon": 89.15,
+      "soil_ph": 6.8,
+      "soil_soc_g_kg": 13.5,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 47000,
+          "exact_xgb_profit_bdt": 46952.69,
+          "confidence_range": {
+            "lower_bdt": 46500,
+            "upper_bdt": 47400
+          },
+          "total_cost_bdt": 51300,
+          "rabi_cost_bdt": 33300,
+          "expected_yield_sum_kg": 4400,
+          "expected_rabi_yield_kg": 3676,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24750,
+          "exact_xgb_profit_bdt": 24728.03,
+          "confidence_range": {
+            "lower_bdt": 24300,
+            "upper_bdt": 25100
+          },
+          "total_cost_bdt": 27430,
+          "rabi_cost_bdt": 9430,
+          "expected_yield_sum_kg": 947,
+          "expected_rabi_yield_kg": 223,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 19500,
+          "exact_xgb_profit_bdt": 19493.68,
+          "confidence_range": {
+            "lower_bdt": 19100,
+            "upper_bdt": 19900
+          },
+          "total_cost_bdt": 26750,
+          "rabi_cost_bdt": 8750,
+          "expected_yield_sum_kg": 873,
+          "expected_rabi_yield_kg": 149,
+          "water": "low"
+        }
+      }
+    },
+    "sirajganj_sadar": {
+      "upazila_en": "Sirajganj Sadar",
+      "district_en": "Sirajganj",
+      "lat": 24.45,
+      "lon": 89.7,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 92.8,
+      "temp_mean": 25.44,
+      "water_stress_score": 25.7,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42750,
+          "exact_xgb_profit_bdt": 42721.58,
+          "confidence_range": {
+            "lower_bdt": 42300,
+            "upper_bdt": 43100
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4185,
+          "expected_rabi_yield_kg": 3511,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23708.16,
+          "confidence_range": {
+            "lower_bdt": 23300,
+            "upper_bdt": 24100
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 904,
+          "expected_rabi_yield_kg": 230,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18000,
+          "exact_xgb_profit_bdt": 17885.59,
+          "confidence_range": {
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "sirajganj sadar": {
+      "upazila_en": "Sirajganj Sadar",
+      "district_en": "Sirajganj",
+      "lat": 24.45,
+      "lon": 89.7,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 92.8,
+      "temp_mean": 25.44,
+      "water_stress_score": 25.7,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42750,
+          "exact_xgb_profit_bdt": 42721.58,
+          "confidence_range": {
+            "lower_bdt": 42300,
+            "upper_bdt": 43100
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4185,
+          "expected_rabi_yield_kg": 3511,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23750,
+          "exact_xgb_profit_bdt": 23708.16,
+          "confidence_range": {
+            "lower_bdt": 23300,
+            "upper_bdt": 24100
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 904,
+          "expected_rabi_yield_kg": 230,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18000,
+          "exact_xgb_profit_bdt": 17885.59,
+          "confidence_range": {
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 150,
+          "water": "low"
+        }
+      }
+    },
+    "sonatola": {
+      "upazila_en": "Sonatola",
+      "district_en": "Bogura",
+      "lat": 25.0,
+      "lon": 89.6,
+      "soil_ph": 6.5,
+      "soil_soc_g_kg": 11.0,
+      "precip_annual_avg": 76.3,
+      "temp_mean": 25.44,
+      "water_stress_score": 26.4,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 44500,
+          "exact_xgb_profit_bdt": 44484.24,
+          "confidence_range": {
+            "lower_bdt": 44100,
+            "upper_bdt": 44900
+          },
+          "total_cost_bdt": 51500,
+          "rabi_cost_bdt": 33500,
+          "expected_yield_sum_kg": 4328,
+          "expected_rabi_yield_kg": 3645,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23250,
+          "exact_xgb_profit_bdt": 23309.99,
+          "confidence_range": {
+            "lower_bdt": 22900,
+            "upper_bdt": 23700
+          },
+          "total_cost_bdt": 27500,
+          "rabi_cost_bdt": 9500,
+          "expected_yield_sum_kg": 907,
+          "expected_rabi_yield_kg": 224,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 17750,
+          "exact_xgb_profit_bdt": 17727.55,
+          "confidence_range": {
+            "lower_bdt": 17300,
+            "upper_bdt": 18100
+          },
+          "total_cost_bdt": 26800,
+          "rabi_cost_bdt": 8800,
+          "expected_yield_sum_kg": 829,
+          "expected_rabi_yield_kg": 146,
+          "water": "low"
+        }
+      }
+    },
+    "sujanagar": {
+      "upazila_en": "Sujanagar",
+      "district_en": "Pabna",
+      "lat": 23.9167,
+      "lon": 89.4333,
+      "soil_ph": 7.4,
+      "soil_soc_g_kg": 9.5,
+      "precip_annual_avg": 74.8,
+      "temp_mean": 25.66,
+      "water_stress_score": 25.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 41500,
+          "exact_xgb_profit_bdt": 41456.46,
+          "confidence_range": {
+            "lower_bdt": 41100,
+            "upper_bdt": 41900
+          },
+          "total_cost_bdt": 51000,
+          "rabi_cost_bdt": 33000,
+          "expected_yield_sum_kg": 4103,
+          "expected_rabi_yield_kg": 3422,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 24000,
+          "exact_xgb_profit_bdt": 23898.91,
+          "confidence_range": {
+            "lower_bdt": 23500,
+            "upper_bdt": 24300
+          },
+          "total_cost_bdt": 27325,
+          "rabi_cost_bdt": 9325,
+          "expected_yield_sum_kg": 912,
+          "expected_rabi_yield_kg": 231,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18500,
+          "exact_xgb_profit_bdt": 18396.04,
+          "confidence_range": {
+            "lower_bdt": 18000,
+            "upper_bdt": 18800
+          },
+          "total_cost_bdt": 26675,
+          "rabi_cost_bdt": 8675,
+          "expected_yield_sum_kg": 835,
+          "expected_rabi_yield_kg": 154,
+          "water": "low"
+        }
+      }
+    },
+    "tanore": {
+      "upazila_en": "Tanore",
+      "district_en": "Rajshahi",
+      "lat": 24.5833,
+      "lon": 88.5833,
+      "soil_ph": 5.8,
+      "soil_soc_g_kg": 7.5,
+      "precip_annual_avg": 57.3,
+      "temp_mean": 25.63,
+      "water_stress_score": 32.5,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 39750,
+          "exact_xgb_profit_bdt": 39719.27,
+          "confidence_range": {
+            "lower_bdt": 39300,
+            "upper_bdt": 40100
+          },
+          "total_cost_bdt": 52500,
+          "rabi_cost_bdt": 34500,
+          "expected_yield_sum_kg": 4150,
+          "expected_rabi_yield_kg": 3462,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 21250,
+          "exact_xgb_profit_bdt": 21171.04,
+          "confidence_range": {
+            "lower_bdt": 20800,
+            "upper_bdt": 21600
+          },
+          "total_cost_bdt": 27850,
+          "rabi_cost_bdt": 9850,
+          "expected_yield_sum_kg": 896,
+          "expected_rabi_yield_kg": 208,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 16750,
+          "exact_xgb_profit_bdt": 16738.15,
+          "confidence_range": {
+            "lower_bdt": 16300,
+            "upper_bdt": 17100
+          },
+          "total_cost_bdt": 27050,
+          "rabi_cost_bdt": 9050,
+          "expected_yield_sum_kg": 830,
+          "expected_rabi_yield_kg": 142,
+          "water": "low"
+        }
+      }
+    },
+    "tarash": {
+      "upazila_en": "Tarash",
+      "district_en": "Sirajganj",
+      "lat": 24.4333,
+      "lon": 89.3667,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42750,
+          "exact_xgb_profit_bdt": 42656.17,
+          "confidence_range": {
+            "lower_bdt": 42300,
+            "upper_bdt": 43100
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4182,
+          "expected_rabi_yield_kg": 3509,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23500,
+          "exact_xgb_profit_bdt": 23449.29,
+          "confidence_range": {
+            "lower_bdt": 23000,
+            "upper_bdt": 23900
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 900,
+          "expected_rabi_yield_kg": 227,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18000,
+          "exact_xgb_profit_bdt": 17921.55,
+          "confidence_range": {
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 151,
+          "water": "low"
+        }
+      }
+    },
+    "ullahpara": {
+      "upazila_en": "Ullahpara",
+      "district_en": "Sirajganj",
+      "lat": 24.3167,
+      "lon": 89.5667,
+      "soil_ph": 7.0,
+      "soil_soc_g_kg": 9.8,
+      "precip_annual_avg": 75.1,
+      "temp_mean": 25.61,
+      "water_stress_score": 26.9,
+      "rotations": {
+        "profit": {
+          "rotation_key": "profit",
+          "predicted_profit_bdt": 42500,
+          "exact_xgb_profit_bdt": 42408.65,
+          "confidence_range": {
+            "lower_bdt": 42000,
+            "upper_bdt": 42800
+          },
+          "total_cost_bdt": 50700,
+          "rabi_cost_bdt": 32700,
+          "expected_yield_sum_kg": 4167,
+          "expected_rabi_yield_kg": 3494,
+          "water": "mid"
+        },
+        "shift": {
+          "rotation_key": "shift",
+          "predicted_profit_bdt": 23500,
+          "exact_xgb_profit_bdt": 23583.02,
+          "confidence_range": {
+            "lower_bdt": 23200,
+            "upper_bdt": 24000
+          },
+          "total_cost_bdt": 27220,
+          "rabi_cost_bdt": 9220,
+          "expected_yield_sum_kg": 902,
+          "expected_rabi_yield_kg": 229,
+          "water": "low"
+        },
+        "easy": {
+          "rotation_key": "easy",
+          "predicted_profit_bdt": 18000,
+          "exact_xgb_profit_bdt": 17938.29,
+          "confidence_range": {
+            "lower_bdt": 17500,
+            "upper_bdt": 18300
+          },
+          "total_cost_bdt": 26600,
+          "rabi_cost_bdt": 8600,
+          "expected_yield_sum_kg": 824,
+          "expected_rabi_yield_kg": 151,
+          "water": "low"
+        }
+      }
+    }
+  }
+}

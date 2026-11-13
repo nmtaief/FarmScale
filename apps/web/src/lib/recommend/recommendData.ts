@@ -71,6 +71,13 @@ export interface RecommendOption {
   water: "low" | "mid" | "high";
   reason_bn: string;
   reason_en: string;
+  confidence_range?: {
+    lower_bdt: number;
+    upper_bdt: number;
+  };
+  expected_rabi_yield_kg?: number;
+  expected_yield_sum_kg?: number;
+  total_rotation_cost_bdt?: number;
 }
 
 export interface RecommendResponse {
@@ -85,6 +92,9 @@ export interface RecommendResponse {
   options: RecommendOption[];
   meta?: {
     model: string;
+    version?: string;
+    r2_score?: number;
+    rmse_bdt?: number;
     source: string;
   };
 }
