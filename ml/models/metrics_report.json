@@ -1,0 +1,56 @@
+{
+  "model_type": "XGBoost Regressor (Layer 3)",
+  "version": "2.0.0",
+  "dataset_samples": 201,
+  "train_samples": 139,
+  "val_samples": 31,
+  "test_samples": 31,
+  "evaluation_metrics": {
+    "r2_score": 0.9963,
+    "rmse_bdt": 266.68,
+    "mae_bdt": 127.99
+  },
+  "best_hyperparameters": {
+    "colsample_bytree": 0.85,
+    "learning_rate": 0.08,
+    "max_depth": 4,
+    "n_estimators": 250,
+    "subsample": 0.85
+  },
+  "top_features_importance": {
+    "rotation_key_profit": 0.7290547490119934,
+    "total_cost_bdt": 0.15240789949893951,
+    "total_water_mm": 0.11277105659246445,
+    "rotation_key_shift": 0.002447768347337842,
+    "district_Chapainawabganj": 0.001539376680739224,
+    "district_Sirajganj": 0.0005272358539514244,
+    "lat": 0.00019366797641851008,
+    "lon": 0.0001907426631078124,
+    "precip_annual_avg": 0.0001624949654797092,
+    "rootzone_wetness": 0.0001412521960446611
+  },
+  "feature_columns": [
+    "lat",
+    "lon",
+    "precip_annual_avg",
+    "temp_mean",
+    "rootzone_wetness",
+    "water_stress_score",
+    "soil_ph",
+    "soil_texture_group",
+    "irrigation_available",
+    "total_water_mm",
+    "total_cost_bdt",
+    "district_Chapainawabganj",
+    "district_Joypurhat",
+    "district_Naogaon",
+    "district_Natore",
+    "district_Pabna",
+    "district_Rajshahi",
+    "district_Sirajganj",
+    "rotation_key_profit",
+    "rotation_key_shift",
+    "crop_rabi_mustard",
+    "crop_rabi_potato"
+  ]
+}
