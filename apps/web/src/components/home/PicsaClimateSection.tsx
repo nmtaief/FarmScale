@@ -459,8 +459,6 @@ export const PicsaClimateSection: React.FC<PicsaClimateSectionProps> = ({
           ))}
         </div>
       </div>
-        </button>
-      )}
 
       {/* Verified Citations Footer */}
       <div className="mt-5 pt-3 border-t border-slate-200/80 text-[11px] text-slate-500 leading-normal">
