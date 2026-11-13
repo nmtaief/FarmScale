@@ -37,3 +37,4 @@ if __name__ == "__main__":
     print(f" API Docs:      http://127.0.0.1:{port}/docs")
     print("=" * 60)
     uvicorn.run(app, host=host, port=port)
+
