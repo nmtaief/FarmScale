@@ -1,0 +1,50 @@
+flowchart TB
+    U["Farmer in Rajshahi<br/>exact area + need<br/>cash crop, fertility, land protection, cultivability"]
+
+    subgraph L1["Layer 1: LLM"]
+        direction TB
+        A["Understand the request<br/>location, goal, season"]
+        B["Classify the goal<br/>cash crop / soil fertility /<br/>land preservation / cultivability"]
+        P["Package for the model<br/>goal + location + crop data"]
+        F["Write the answer<br/>top 3 rotations with reasons<br/>in the farmer's language"]
+    end
+
+    subgraph L2["Layer 2: Crop data"]
+        C["Crop knowledge base<br/>water and nutrient needs, temperature, pH,<br/>cycle length, nitrogen fixation, soil impact"]
+    end
+
+    subgraph L3["Layer 3: XGBoost ML model"]
+        direction TB
+        D["Location features<br/>weather trends, soil, water,<br/>vegetation index, pH"]
+        E["Score and rank<br/>crop rotations for this goal"]
+    end
+
+    subgraph DATA["Open data sources"]
+        S1["NASA POWER<br/>rain and heat trends"]
+        S2["SMAP<br/>soil moisture"]
+        S3["MODIS and VIIRS<br/>vegetation index"]
+        S4["SoilGrids<br/>soil and pH"]
+    end
+
+    R["Answer to the farmer<br/>3 best rotations for this field"]
+
+    U -->|"1. need + location"| A
+    A --> B
+    B -->|"2. goal"| C
+    C -->|"3. matching crop profiles"| P
+    P -->|"4. goal + location + crop data"| D
+    S1 & S2 & S3 & S4 -->|"5. collected for the location"| D
+    D --> E
+    E -.->|"6. ranking, skips layer 2"| F
+    F -->|"7. plain-language reply"| R
+
+    classDef llm fill:#E1F5EE,stroke:#0F6E56,color:#04342C
+    classDef crop fill:#FAEEDA,stroke:#854F0B,color:#412402
+    classDef ml fill:#EEEDFE,stroke:#534AB7,color:#26215C
+    classDef src fill:#F1EFE8,stroke:#5F5E5A,color:#2C2C2A
+    classDef io fill:#FAECE7,stroke:#993C1D,color:#4A1B0C
+    class A,B,P,F llm
+    class C crop
+    class D,E ml
+    class S1,S2,S3,S4 src
+    class U,R io

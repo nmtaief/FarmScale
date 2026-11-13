@@ -8,11 +8,25 @@ env/
 .env
 *.env
 !.env.example
+.env.local
+.env.*.local
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+.vercel/
+.turbo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Byte-compiled / cache files
 __pycache__/
 *.py[cod]
 *$py.class
+*.pytest_cache/
 
 # Database files
 *.db
@@ -27,7 +41,6 @@ Thumbs.db
 .vscode/
 *.log
 
-# Large raw unsimplified GeoJSON dumps (>100MB exceeds GitHub hard limit; vector geojson files are tracked instead)
+# Large raw unsimplified GeoJSON dumps (>100MB exceeds GitHub hard limit)
 *_raw.geojson
 *boundaries.geojson
-

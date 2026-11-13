@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&amp;family=Noto+Sans:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-error-container": "#93000a", "surface-tint": "#7a5900", "on-error": "#ffffff", "outline": "#817662", "tertiary-fixed-dim": "#87cffc", "secondary-fixed-dim": "#89d7a1", "surface-bright": "#e8fff0", "on-secondary": "#ffffff", "tertiary": "#00658d", "secondary-container": "#a1f1b9", "on-tertiary-fixed": "#001e2d", "on-tertiary-container": "#004460", "surface-container-low": "#e1faea", "inverse-primary": "#f8bd39", "secondary": "#1a6c40", "error": "#ba1a1a", "on-secondary-fixed": "#00210e", "primary-fixed-dim": "#f8bd39", "on-tertiary-fixed-variant": "#004c6b", "secondary-fixed": "#a4f4bc", "surface-container-high": "#d5eede", "error-container": "#ffdad6", "primary-fixed": "#ffdea3", "tertiary-container": "#6bb3df", "primary-container": "#d9a21b", "inverse-surface": "#20352a", "on-background": "#0a1f16", "on-surface": "#0a1f16", "on-secondary-fixed-variant": "#00522c", "outline-variant": "#d3c5ae", "on-primary-fixed": "#261900", "on-tertiary": "#ffffff", "inverse-on-surface": "#def7e7", "on-primary-fixed-variant": "#5d4200", "background": "#e8fff0", "on-primary": "#ffffff", "surface-container": "#dbf4e4", "tertiary-fixed": "#c6e7ff", "surface-container-highest": "#d0e8d9", "on-secondary-container": "#207044", "on-surface-variant": "#4f4534", "primary": "#7a5900", "surface-dim": "#c7e0d0", "surface-variant": "#d0e8d9", "on-primary-container": "#533b00", "surface": "#e8fff0", "surface-container-lowest": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.5rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "gutter-mobile": "1rem", "margin": "2.5rem", "gutter": "1.5rem", "space-md": "1rem", "space-xl": "2.5rem", "space-xs": "0.25rem" }, "fontFamily": { "display-lg": [ "\"Source Serif 4\"" ], "label-lg": [ "Noto Sans" ], "label-md": [ "Noto Sans" ], "body-md": [ "Noto Sans" ], "headline-lg": [ "\"Source Serif 4\"" ], "headline-lg-mobile": [ "\"Source Serif 4\"" ], "headline-md": [ "\"Source Serif 4\"" ], "metric-num": [ "JetBrains Mono" ], "body-sm": [ "Noto Sans" ], "metric-sm": [ "JetBrains Mono" ], "headline-sm": [ "\"Source Serif 4\"" ], "display-lg-mobile": [ "\"Source Serif 4\"" ], "body-lg": [ "Noto Sans" ] }, "fontSize": { "display-lg": [ "48px", { "lineHeight": "56px", "fontWeight": "600" } ], "label-lg": [ "14px", { "lineHeight": "20px", "fontWeight": "600" } ], "label-md": [ "12px", { "lineHeight": "16px", "fontWeight": "500" } ], "body-md": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "fontWeight": "600" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ], "headline-md": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ], "metric-num": [ "20px", { "lineHeight": "24px", "fontWeight": "600" } ], "body-sm": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "metric-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "500" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ], "display-lg-mobile": [ "32px", { "lineHeight": "40px", "fontWeight": "600" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-inverse-surface/95 text-on-primary backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.06)]"><div class="h-20 w-full px-margin flex items-center justify-between gap-gutter"><div class="flex items-center gap-space-md shrink-0"><div class="flex items-center gap-space-sm"><img alt="FarmScale Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRo3xr0UCsZE86Gd6podzoR42whC8FYlsKJeBWnkpwTAbNkbJemEP01mRbF79ZgCNuvB0Pat9bxy3ralqMyGyEbwptlBqGmuxvZWWkbtsa_sctyheaCSA0qN7UT6yF7kb5L9x29Jzf2IfHEUCRn_c-WRvLtimaUysDZ8bYX2dv-KFlroZgfKWA-xFrLqqrCP_EomVc5lUemdhBYW_ZjFwEpVyBhNHAxlu0z505PHbw0I_6uLEEmL4W"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-surface-container-lowest leading-none">FarmScale</span><span class="px-space-xs py-0.5 rounded bg-tertiary text-on-tertiary font-metric-sm text-metric-sm tracking-wider uppercase leading-none">NASA POWER</span></div><span class="font-label-md text-label-md text-surface-container-high leading-tight">Earth Data &amp; Crop Rotation Intelligence</span></div></div><div class="hidden xl:flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-low/20 text-inverse-on-surface"><span class="material-symbols-outlined text-sm text-secondary-fixed">location_on</span><span class="font-label-md text-label-md">Rajshahi, Bangladesh (Active Pilot)</span></div></div><nav class="hidden lg:flex items-center gap-space-xs" data-active-classes="bg-surface-container-lowest/15 text-surface-container-lowest font-label-lg rounded-lg"><a class="px-space-sm py-1.5 rounded-lg font-label-lg text-label-lg text-surface-container-highest hover:text-surface-container-lowest hover:bg-surface-container-lowest/10 transition-colors" data-path="overview-and-landing" href="#">Overview &amp; Landing</a><a class="px-space-sm py-1.5 rounded-lg font-label-lg text-label-lg text-surface-container-highest hover:text-surface-container-lowest hover:bg-surface-container-lowest/10 transition-colors" data-path="location-explorer" href="#">Location Explorer</a><a class="px-space-sm py-1.5 rounded-lg font-label-lg text-label-lg text-surface-container-highest hover:text-surface-container-lowest hover:bg-surface-container-lowest/10 transition-colors" data-path="climate-and-soil-dashboard" href="#">Climate &amp; Soil Dashboard</a><a aria-current="page" class="px-space-sm py-1.5 transition-colors bg-surface-container-lowest/15 text-surface-container-lowest font-label-lg rounded-lg" data-path="rotation-planner" href="#">Rotation Planner</a><a class="px-space-sm py-1.5 rounded-lg font-label-lg text-label-lg text-surface-container-highest hover:text-surface-container-lowest hover:bg-surface-container-lowest/10 transition-colors" data-path="crop-library" href="#">Crop Library</a><a class="px-space-sm py-1.5 rounded-lg font-label-lg text-label-lg text-surface-container-highest hover:text-surface-container-lowest hover:bg-surface-container-lowest/10 transition-colors" data-path="data-gateway" href="#">Data Gateway (API)</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-secondary/30 text-secondary-fixed"><span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span><span class="font-metric-sm text-metric-sm">Live NASA POWER sync</span></div><div class="flex items-center rounded-lg bg-inverse-surface p-0.5"><button class="px-2 py-1 rounded font-label-md text-label-md bg-surface-container-highest text-on-surface transition-all" type="button">English</button><button class="px-2 py-1 rounded font-label-md text-label-md text-surface-container-highest hover:text-surface-container-lowest transition-colors" type="button">বাংলা</button><button class="px-2 py-1 rounded font-label-md text-label-md text-surface-container-highest hover:text-surface-container-lowest transition-colors" type="button">日本語</button></div><button class="hidden md:flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-high/20 hover:bg-surface-container-high/30 text-surface-container-lowest transition-colors" type="button"><span class="material-symbols-outlined text-sm text-primary-fixed">smart_toy</span><span class="font-label-md text-label-md">AI Advisor (Coming Soon)</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><aside class="fixed left-0 top-20 bottom-0 w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex flex-col p-space-md justify-between"><div class="flex flex-col gap-space-md"><div class="px-space-sm py-space-xs"><span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant font-semibold">Agronomic Context</span><div class="mt-1 font-body-sm text-body-sm text-on-surface font-semibold">Rajshahi District #04</div></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-lg"><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="climate-and-soil-dashboard" href="#"><span class="material-symbols-outlined text-lg">wb_sunny</span>Climate Diagnostics</a><a aria-current="page" class="flex items-center gap-space-sm px-space-sm py-space-sm transition-colors bg-primary-container text-on-primary-container font-semibold rounded-lg" data-path="rotation-planner" href="#"><span class="material-symbols-outlined text-lg">published_with_changes</span>Rotation Wheel</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="crop-library" href="#"><span class="material-symbols-outlined text-lg">psychiatry</span>Crop Database</a><a class="flex items-center gap-space-sm px-space-sm py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="data-gateway" href="#"><span class="material-symbols-outlined text-lg">satellite_alt</span>NASA API Query</a></nav></div><div class="p-space-sm rounded-lg bg-surface-container text-on-surface-variant"><div class="font-label-md text-label-md font-semibold text-secondary">Season: Rabi (Active)</div><div class="font-metric-sm text-metric-sm mt-0.5">Soil Moisture: 28.4%</div></div></aside><div class="pl-64"><main class="relative pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Context & Live Telemetry Strip -->
+<div class="w-full px-margin py-space-sm bg-surface-container-low flex flex-wrap items-center justify-between gap-gutter shadow-sm">
+<div class="flex items-center gap-space-md flex-wrap">
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-sm">terrain</span>
+<span class="font-label-lg text-label-lg">Rajshahi Barind Pilot Parcel (Boro-dominant baseline)</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-metric-sm text-metric-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>LAT: 24.3745°N • LON: 88.6042°E</span>
+<span class="text-outline mx-1">/</span>
+<span>Soil: Deep Red Clay Loam (pH 5.8)</span>
+</div>
+</div>
+<!-- Multi-Language Demonstration Preview -->
+<div class="flex items-center gap-space-sm bg-surface-container-highest px-space-sm py-1 rounded">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">translate</span>
+        Rotation Script Preview:
+      </span>
+<div class="inline-flex items-center gap-space-xs font-body-sm text-body-sm font-medium">
+<button class="px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface shadow-sm" id="lang-btn-en" onclick="setPlannerLanguage('en')" type="button">English</button>
+<button class="px-2 py-0.5 rounded text-on-surface-variant hover:text-on-surface transition-colors" id="lang-btn-bn" onclick="setPlannerLanguage('bn')" type="button">বাংলা</button>
+<button class="px-2 py-0.5 rounded text-on-surface-variant hover:text-on-surface transition-colors" id="lang-btn-ja" onclick="setPlannerLanguage('ja')" type="button">日本語</button>
+</div>
+</div>
+</div>
+<!-- Main Split-Screen Workspace -->
+<div class="w-full px-margin py-space-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- ============================================== -->
+<!-- LEFT COLUMN: Priority Sliders & Constraints     -->
+<!-- ============================================== -->
+<section class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Controls Master Card -->
+<div class="p-space-lg bg-surface-container-lowest rounded-xl shadow-md flex flex-col gap-space-md">
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<span class="font-metric-sm text-metric-sm uppercase tracking-wider text-primary font-semibold">Adaptive Engine Weights</span>
+<h1 class="font-headline-md text-headline-md text-on-surface mt-0.5">Priority Calibration</h1>
+</div>
+<span class="px-space-xs py-1 rounded bg-surface-container-high text-on-surface-variant font-metric-sm text-metric-sm">
+              Live Re-Rank
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Adjust the trade-offs below to realign seasonal rotations against Barind groundwater drawdowns, local market liquidity, and long-term soil biology.
+          </p>
+<!-- Dynamic Balance Banner -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary">tune</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Status:</span>
+<span class="font-label-lg text-label-lg text-secondary font-semibold" id="priority-status-text">Priority Balance: Maximum Water Conservation</span>
+</div>
+<span class="font-metric-sm text-metric-sm text-on-surface font-semibold bg-surface-container px-2 py-0.5 rounded" id="total-weight-indicator">100% Total</span>
+</div>
+<!-- Slider 1: Save Groundwater -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex justify-between items-baseline">
+<label class="font-label-lg text-label-lg text-on-surface flex items-center gap-space-xs" for="slider-water">
+<span class="material-symbols-outlined text-tertiary text-base">water_drop</span>
+                Save Groundwater &amp; Water Footprint
+              </label>
+<div class="flex items-baseline gap-1">
+<span class="font-metric-num text-metric-num text-tertiary" id="val-water">50</span>
+<span class="font-metric-sm text-metric-sm text-outline">%</span>
+</div>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-2 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-tertiary" id="slider-water" max="80" min="10" step="5" type="range" value="50"/>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span>Aquifer depletion limit</span>
+<span class="text-tertiary font-medium">NASA SMAP Priority</span>
+</div>
+</div>
+<!-- Slider 2: Household Cash Income -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-baseline">
+<label class="font-label-lg text-label-lg text-on-surface flex items-center gap-space-xs" for="slider-income">
+<span class="material-symbols-outlined text-primary text-base">payments</span>
+                Earn Household Cash Income
+              </label>
+<div class="flex items-baseline gap-1">
+<span class="font-metric-num text-metric-num text-primary" id="val-income">30</span>
+<span class="font-metric-sm text-metric-sm text-outline">%</span>
+</div>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-2 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-primary" id="slider-income" max="80" min="10" step="5" type="range" value="30"/>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span>Local mandi market index</span>
+<span class="text-primary font-medium">Stable Market Value</span>
+</div>
+</div>
+<!-- Slider 3: Rebuild Soil Health -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex justify-between items-baseline">
+<label class="font-label-lg text-label-lg text-on-surface flex items-center gap-space-xs" for="slider-soil">
+<span class="material-symbols-outlined text-secondary text-base">compost</span>
+                Rebuild Soil Health &amp; Nitrogen
+              </label>
+<div class="flex items-baseline gap-1">
+<span class="font-metric-num text-metric-num text-secondary" id="val-soil">20</span>
+<span class="font-metric-sm text-metric-sm text-outline">%</span>
+</div>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-2 bg-surface-container-high rounded-full appearance-none cursor-pointer accent-secondary" id="slider-soil" max="80" min="10" step="5" type="range" value="20"/>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span>Rhizobia nodulation &amp; carbon</span>
+<span class="text-secondary font-medium">Organic Restorations</span>
+</div>
+</div>
+<!-- Secondary Constraints (Checkboxes) -->
+<div class="pt-space-sm flex flex-col gap-space-sm">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Agronomic Constraints</span>
+<label class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<input checked="" class="mt-0.5 w-4 h-4 rounded text-secondary focus:ring-0 accent-secondary" id="check-boro" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Avoid Boro high-irrigation rice</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Replaces 120-day deep tube well flooded cultivation</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<input checked="" class="mt-0.5 w-4 h-4 rounded text-secondary focus:ring-0 accent-secondary" id="check-legume" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Include legume nitrogen fixers</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ensures at least one pulse crop in the annual loop</span>
+</div>
+</label>
+<label class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container cursor-pointer transition-colors">
+<input class="mt-0.5 w-4 h-4 rounded text-secondary focus:ring-0 accent-secondary" id="check-duration" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Target individual crop duration &lt; 110 days</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Protects crops against dry spells and flash heat waves</span>
+</div>
+</label>
+</div>
+<!-- Farmer Parameter Override -->
+<div class="pt-space-xs">
+<button class="w-full py-2.5 px-space-md rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center gap-space-xs font-label-lg text-label-lg font-semibold" id="btn-soil-override" type="button">
+<span class="material-symbols-outlined text-base">edit_note</span>
+<span>Override Soil &amp; Field Parameters</span>
+</button>
+<div class="hidden mt-space-sm p-space-md bg-surface-container-low rounded-lg flex flex-col gap-space-xs" id="soil-override-panel">
+<div class="flex justify-between items-center text-on-surface font-body-sm text-body-sm">
+<span>Topsoil Sand Ratio:</span>
+<span class="font-metric-sm text-metric-sm font-semibold">22% (Barind Loam)</span>
+</div>
+<div class="flex justify-between items-center text-on-surface font-body-sm text-body-sm">
+<span>Residual Nitrate (NO3):</span>
+<span class="font-metric-sm text-metric-sm font-semibold">18.4 mg/kg</span>
+</div>
+<div class="flex justify-between items-center text-on-surface font-body-sm text-body-sm">
+<span>Pumping Lift Depth:</span>
+<span class="font-metric-sm text-metric-sm font-semibold text-error">42m (Deep Tube)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Evidential NASA Telemetry Reference Box -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-tertiary">
+<span class="material-symbols-outlined text-lg">satellite</span>
+<span class="font-label-md text-label-md uppercase font-semibold">NASA POWER Diagnostic Signal</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Rajshahi District 30-year average indicates March–May evaporative demand (<span class="font-metric-sm text-metric-sm text-on-surface">ETo &gt; 5.8 mm/day</span>) surpasses regional recharge. Transitioning out of Boro rice mitigates cumulative seasonal water stress index by 42%.
+          </p>
+<div class="flex items-center justify-between text-outline font-metric-sm text-metric-sm pt-space-xs">
+<span>DATASET: POWER Merged CERES/SMAP</span>
+<span>UPDATED: 06H AGO</span>
+</div>
+</div>
+</section>
+<!-- ============================================== -->
+<!-- RIGHT COLUMN: Ranked Crop Rotation Cards      -->
+<!-- ============================================== -->
+<section class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-metric-sm text-metric-sm uppercase tracking-wider text-secondary font-semibold">Engine Outputs</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Recommended Annual Rotations</h2>
+</div>
+<div class="flex items-center gap-1 font-label-md text-label-md text-on-surface-variant">
+<span>Ranked by suitability score</span>
+<span class="material-symbols-outlined text-sm">arrow_downward</span>
+</div>
+</div>
+<!-- CARD 1: Optimal Water Conservation (Default Rank #1) -->
+<article class="p-space-lg bg-surface-container-lowest rounded-xl shadow-md flex flex-col gap-space-md transition-all duration-300 hover:shadow-xl relative overflow-hidden" data-rotation-card="1">
+<!-- Top Accent Color Bar -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-secondary"></div>
+<!-- Header & Score Pill -->
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-space-xs py-0.5 rounded bg-secondary text-on-secondary font-metric-sm text-metric-sm font-semibold uppercase tracking-wider">Rank #1 Recommended Shift</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-md text-label-md font-semibold">Optimal Water Conservation</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1" id="card1-title">
+                Mustard (Tori-7) → Mungbean (BARI Mung-6) → Short-duration Aman Rice (BRRI dhan71)
+              </h3>
+</div>
+<!-- Compatibility Score Circular Dial -->
+<div class="shrink-0 flex items-center sm:flex-col items-end gap-space-xs sm:gap-0 bg-surface-container-low sm:bg-transparent p-2 sm:p-0 rounded-lg">
+<div class="relative w-14 h-14 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-metric-num text-metric-num text-secondary">94</span>
+</div>
+<span class="font-metric-sm text-metric-sm text-outline mt-1 font-semibold">Compatibility</span>
+</div>
+</div>
+<!-- 3-Season Visual Timeline Bar -->
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-lg">
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span class="font-semibold text-on-surface">Three-Season Barind Cycle Timeline</span>
+<span class="font-metric-sm text-metric-sm">Total 260 Days Active Field Time</span>
+</div>
+<!-- Timeline Multi-colored Segments -->
+<div class="w-full h-4 rounded-full bg-surface-container-highest overflow-hidden flex shadow-inner">
+<!-- Kharif-1: Mungbean (65 days / ~25%) -->
+<div class="h-full bg-secondary transition-all" style="width: 25%;" title="Kharif-1: Mungbean (65d)"></div>
+<!-- Kharif-2: Aman (115 days / ~44%) -->
+<div class="h-full bg-tertiary transition-all" style="width: 44%;" title="Kharif-2: Aman Rice (115d)"></div>
+<!-- Rabi: Mustard (80 days / ~31%) -->
+<div class="h-full bg-primary-container transition-all" style="width: 31%;" title="Rabi: Mustard (80d)"></div>
+</div>
+<!-- Season Legends -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs pt-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Kharif-1 (Pre-Monsoon)</span>
+<span class="font-metric-sm text-metric-sm text-on-surface-variant">BARI Mung-6 • 65 days</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Kharif-2 (Monsoon)</span>
+<span class="font-metric-sm text-metric-sm text-on-surface-variant">BRRI dhan71 • 115 days</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Rabi (Winter)</span>
+<span class="font-metric-sm text-metric-sm text-on-surface-variant">Mustard Tori-7 • 80 days</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Plain Language Agronomic Evidence -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-base">eco</span>
+              Why this rotation works for this plot:
+            </span>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed" id="card1-evidence">
+              Replaces thirsty dry-season Boro rice with drought-resilient mustard and mungbean. Saves ~450mm groundwater (38% pump reduction) while mungbean fixes 35kg/ha atmospheric nitrogen for the subsequent monsoon rice crop.
+            </p>
+</div>
+<!-- Satellite Signals + Footer AI Trigger -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs text-on-surface-variant font-metric-sm text-metric-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container text-tertiary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">water</span>
+                NASA SMAP: -42% root stress
+              </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">light_mode</span>
+                POWER: +1.2 kWh/m² winter solar
+              </span>
+</div>
+<!-- Future AI Placeholder with Tooltip Indicator -->
+<div class="relative group shrink-0">
+<button class="cursor-not-allowed opacity-60 px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant flex items-center gap-space-xs font-label-md text-label-md" disabled="" type="button">
+<span class="material-symbols-outlined text-sm text-primary">smart_toy</span>
+<span>Ask about this recommendation</span>
+</button>
+<div class="pointer-events-none absolute bottom-full right-0 mb-1 hidden group-hover:block w-48 p-2 rounded bg-inverse-surface text-inverse-on-surface font-label-md text-label-md text-center shadow-lg">
+                Generative AI advisor integration activates in v2.4
+              </div>
+</div>
+</div>
+</article>
+<!-- CARD 2: High Economic Return (Rank #2) -->
+<article class="p-space-lg bg-surface-container-lowest rounded-xl shadow-md flex flex-col gap-space-md transition-all duration-300 hover:shadow-xl relative overflow-hidden" data-rotation-card="2">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary-container"></div>
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-metric-sm text-metric-sm font-semibold uppercase tracking-wider">Rank #2 Market Focus</span>
+<span class="px-space-xs py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-label-md text-label-md font-semibold">High Cash Yield, Moderate Water</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1" id="card2-title">
+                Potato (Cardinal) → Sesame (BARI Til-4) → T. Aman (BRRI dhan49)
+              </h3>
+</div>
+<!-- Compatibility Score Dial -->
+<div class="shrink-0 flex items-center sm:flex-col items-end gap-space-xs sm:gap-0 bg-surface-container-low sm:bg-transparent p-2 sm:p-0 rounded-lg">
+<div class="relative w-14 h-14 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="87, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-metric-num text-metric-num text-primary">87</span>
+</div>
+<span class="font-metric-sm text-metric-sm text-outline mt-1 font-semibold">Compatibility</span>
+</div>
+</div>
+<!-- 3-Season Visual Timeline Bar -->
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-lg">
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span class="font-semibold text-on-surface">Three-Season Barind Cycle Timeline</span>
+<span class="font-metric-sm text-metric-sm">Total 295 Days Active Field Time</span>
+</div>
+<div class="w-full h-4 rounded-full bg-surface-container-highest overflow-hidden flex shadow-inner">
+<div class="h-full bg-primary transition-all" style="width: 29%;" title="Kharif-1: Sesame (85d)"></div>
+<div class="h-full bg-tertiary transition-all" style="width: 44%;" title="Kharif-2: BRRI dhan49 (130d)"></div>
+<div class="h-full bg-primary-container transition-all" style="width: 27%;" title="Rabi: Potato (80d)"></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs pt-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Kharif-1 (Pre-Monsoon)</span>
+<span class="font-metric-sm text-metric-sm text-on-surface-variant">BARI Til-4 • 85 days</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Kharif-2 (Monsoon)</span>
+<span class="font-metric-sm text-metric-sm text-on-surface-variant">BRRI dhan49 • 130 days</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Rabi (Winter)</span>
+<span class="font-metric-sm text-metric-sm text-on-surface-variant">Potato Cardinal • 80 days</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Plain Language Agronomic Evidence -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-base">trending_up</span>
+              Why this rotation works for this plot:
+            </span>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed" id="card2-evidence">
+              Provides highest immediate net profit margin per hectare with commercial potato export potential. Requires supplemental drip irrigation in late winter, but sesame utilizes residual subsoil moisture with zero extra diesel pumping.
+            </p>
+</div>
+<!-- Signals & AI trigger -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs text-on-surface-variant font-metric-sm text-metric-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">storefront</span>
+                Mandi Price Index: ৳32/kg Potato baseline
+              </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-tertiary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">cloud</span>
+                Rainfall alignment: 91%
+              </span>
+</div>
+<div class="relative group shrink-0">
+<button class="cursor-not-allowed opacity-60 px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant flex items-center gap-space-xs font-label-md text-label-md" disabled="" type="button">
+<span class="material-symbols-outlined text-sm text-primary">smart_toy</span>
+<span>Ask about this recommendation</span>
+</button>
+</div>
+</div>
+</article>
+<!-- CARD 3: Deep Soil Regeneration (Rank #3) -->
+<article class="p-space-lg bg-surface-container-lowest rounded-xl shadow-md flex flex-col gap-space-md transition-all duration-300 hover:shadow-xl relative overflow-hidden" data-rotation-card="3">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-outline"></div>
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-metric-sm text-metric-sm font-semibold uppercase tracking-wider">Rank #3 Soil Restorative</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-md text-label-md font-semibold">Maximum Soil Rebuilding</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1" id="card3-title">
+                Chickpea / Lentil → Green Manure (Dhaincha) → Drought-tolerant Aman (BRRI dhan56)
+              </h3>
+</div>
+<!-- Compatibility Score Dial -->
+<div class="shrink-0 flex items-center sm:flex-col items-end gap-space-xs sm:gap-0 bg-surface-container-low sm:bg-transparent p-2 sm:p-0 rounded-lg">
+<div class="relative w-14 h-14 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="82, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-metric-num text-metric-num text-secondary">82</span>
+</div>
+<span class="font-metric-sm text-metric-sm text-outline mt-1 font-semibold">Compatibility</span>
+</div>
+</div>
+<!-- 3-Season Visual Timeline Bar -->
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-lg">
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span class="font-semibold text-on-surface">Three-Season Barind Cycle Timeline</span>
+<span class="font-metric-sm text-metric-sm">Total 245 Days Active Field Time</span>
+</div>
+<div class="w-full h-4 rounded-full bg-surface-container-highest overflow-hidden flex shadow-inner">
+<div class="h-full bg-secondary-fixed-dim transition-all" style="width: 20%;" title="Kharif-1: Dhaincha (50d)"></div>
+<div class="h-full bg-tertiary transition-all" style="width: 45%;" title="Kharif-2: Aman (110d)"></div>
+<div class="h-full bg-secondary transition-all" style="width: 35%;" title="Rabi: Chickpea (85d)"></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs pt-1">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed-dim"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Kharif-1 (Pre-Monsoon)</span>
+<span class="font-metric-sm text-metric-sm text-on-surface-variant">Dhaincha Bio-mass • 50 days</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Kharif-2 (Monsoon)</span>
+<span class="font-metric-sm text-metric-sm text-on-surface-variant">BRRI dhan56 • 110 days</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Rabi (Winter)</span>
+<span class="font-metric-sm text-metric-sm text-on-surface-variant">Chickpea / Lentil • 85 days</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Plain Language Agronomic Evidence -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-base">recycling</span>
+              Why this rotation works for this plot:
+            </span>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed" id="card3-evidence">
+              Incorporates 8 tons/ha green biomass through Dhaincha incorporation prior to monsoon planting. Significantly reverses hardpan crusting in Barind soils, reducing inorganic urea fertilizer costs by up to 50% for subsequent cycles.
+            </p>
+</div>
+<!-- Signals & AI trigger -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex flex-wrap items-center gap-space-xs text-on-surface-variant font-metric-sm text-metric-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">compost</span>
+                Organic matter +1.1% over 3 years
+              </span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-tertiary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">water_drop</span>
+                Near-zero deep pumping
+              </span>
+</div>
+<div class="relative group shrink-0">
+<button class="cursor-not-allowed opacity-60 px-space-md py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant flex items-center gap-space-xs font-label-md text-label-md" disabled="" type="button">
+<span class="material-symbols-outlined text-sm text-primary">smart_toy</span>
+<span>Ask about this recommendation</span>
+</button>
+</div>
+</div>
+</article>
+</section>
+</div>
+</div>
+<!-- Collapsed AI Farm Assistant Drawer on Right Margin -->
+<aside class="fixed right-0 top-36 z-30 flex items-center">
+<button class="flex items-center gap-space-xs py-3 px-2 rounded-l-xl bg-inverse-surface text-surface-container-lowest shadow-xl hover:bg-surface-container-highest hover:text-on-surface transition-all [writing-mode:vertical-rl] select-none" id="toggle-assistant-rail" type="button">
+<div class="flex items-center gap-1 rotate-180">
+<span class="material-symbols-outlined text-sm text-primary-fixed">psychology</span>
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">AI Farm Assistant</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed animate-ping"></span>
+</button>
+</aside>
+</div>
+<script>
+  // Dynamic Priority Slider Interactivity & Live Re-ranking
+  const sWater = document.getElementById('slider-water');
+  const sIncome = document.getElementById('slider-income');
+  const sSoil = document.getElementById('slider-soil');
+  const valWater = document.getElementById('val-water');
+  const valIncome = document.getElementById('val-income');
+  const valSoil = document.getElementById('val-soil');
+  const statusText = document.getElementById('priority-status-text');
+  const weightIndicator = document.getElementById('total-weight-indicator');
+
+  function updateWeights() {
+    const w = parseInt(sWater.value, 10);
+    const i = parseInt(sIncome.value, 10);
+    const s = parseInt(sSoil.value, 10);
+
+    valWater.textContent = w;
+    valIncome.textContent = i;
+    valSoil.textContent = s;
+
+    const total = w + i + s;
+    weightIndicator.textContent = `${total}% Total`;
+
+    if (w > i && w > s) {
+      statusText.textContent = 'Priority Balance: Maximum Water Conservation';
+      statusText.className = 'font-label-lg text-label-lg text-tertiary font-semibold';
+    } else if (i > w && i > s) {
+      statusText.textContent = 'Priority Balance: High Cash Flow Optimization';
+      statusText.className = 'font-label-lg text-label-lg text-primary font-semibold';
+    } else if (s > w && s > i) {
+      statusText.textContent = 'Priority Balance: Accelerated Soil Biology Repair';
+      statusText.className = 'font-label-lg text-label-lg text-secondary font-semibold';
+    } else {
+      statusText.textContent = 'Priority Balance: Multi-Objective Equilibrium';
+      statusText.className = 'font-label-lg text-label-lg text-on-surface font-semibold';
+    }
+  }
+
+  [sWater, sIncome, sSoil].forEach(slider => {
+    slider.addEventListener('input', updateWeights);
+  });
+
+  // Toggle Soil Parameter Override Panel
+  const btnOverride = document.getElementById('btn-soil-override');
+  const panelOverride = document.getElementById('soil-override-panel');
+  btnOverride.addEventListener('click', () => {
+    panelOverride.classList.toggle('hidden');
+    if (!panelOverride.classList.contains('hidden')) {
+      btnOverride.classList.add('bg-surface-container-high');
+    } else {
+      btnOverride.classList.remove('bg-surface-container-high');
+    }
+  });
+
+  // Language Switch Test Bar Logic
+  const langData = {
+    en: {
+      card1: "Mustard (Tori-7) → Mungbean (BARI Mung-6) → Short-duration Aman Rice (BRRI dhan71)",
+      evidence1: "Replaces thirsty dry-season Boro rice with drought-resilient mustard and mungbean. Saves ~450mm groundwater (38% pump reduction) while mungbean fixes 35kg/ha atmospheric nitrogen for the subsequent monsoon rice crop.",
+      card2: "Potato (Cardinal) → Sesame (BARI Til-4) → T. Aman (BRRI dhan49)",
+      card3: "Chickpea / Lentil → Green Manure (Dhaincha) → Drought-tolerant Aman (BRRI dhan56)"
+    },
+    bn: {
+      card1: "সরিষা (টরি-৭) → মুগডাল (বারি মুগ-৬) → স্বল্পমেয়াদী আমন ধান (ব্রি ধান৭১)",
+      evidence1: "অতিরিক্ত সেচনির্ভর বোরো ধানের বিকল্প হিসেবে খরা-সহনশীল সরিষা ও মুগডাল নির্বাচন। প্রায় ৪৫০ মিমি ভূগর্ভস্থ পানি সাশ্রয় (৩৮% পাম্পিং হ্রাস) এবং মুগডাল পরবর্তী আমন ফসলের জন্য ৩৫ কেজি/হেক্টর বায়ুমণ্ডলীয় নাইট্রোজেন সংবন্ধন করে।",
+      card2: "গোল আলু (কার্ডিনাল) → তিল (বারি তিল-৪) → রোপা আমন (ব্রি ধান৪৯)",
+      card3: "ছোলা / মসুর → সবুজ সার (ধৈঞ্চা) → খরা সহনশীল আমন (ব্রি ধান৫৬)"
+    },
+    ja: {
+      card1: "マスタード (Tori-7) → 緑豆 (BARI Mung-6) → 短期アマン稲 (BRRI dhan71)",
+      evidence1: "大量の灌漑を必要とするボロ稲を高耐乾性のマスタードと緑豆に転換。地下水消費量を約450mm削減（ポンプ稼働38%減）し、後作モンスーン稲のために緑豆が35kg/haの大気中窒素を固定します。",
+      card2: "ジャガイモ (Cardinal) → ゴマ (BARI Til-4) → T. アマン稲 (BRRI dhan49)",
+      card3: "ヒヨコマメ / レンズ豆 → 緑肥 (ダイチャ) → 耐乾性アマン稲 (BRRI dhan56)"
+    }
+  };
+
+  window.setPlannerLanguage = function(langKey) {
+    const data = langData[langKey];
+    if (!data) return;
+
+    document.getElementById('card1-title').textContent = data.card1;
+    document.getElementById('card1-evidence').textContent = data.evidence1;
+    document.getElementById('card2-title').textContent = data.card2;
+    document.getElementById('card3-title').textContent = data.card3;
+
+    ['en', 'bn', 'ja'].forEach(k => {
+      const btn = document.getElementById(`lang-btn-${k}`);
+      if (k === langKey) {
+        btn.className = "px-2 py-0.5 rounded bg-surface-container-lowest text-on-surface font-semibold shadow-sm";
+      } else {
+        btn.className = "px-2 py-0.5 rounded text-on-surface-variant hover:text-on-surface transition-colors";
+      }
+    });
+  };
+
+  // AI Farm Assistant Collapsed Margin Trigger Notice
+  const railBtn = document.getElementById('toggle-assistant-rail');
+  railBtn.addEventListener('click', () => {
+    alert("FarmScale AI Advisor: Spatial reasoning model is processing Rajshahi 30-year NASA POWER precipitation cycles. Live dialogue unlocks in next update.");
+  });
+</script></main></div></body></html>

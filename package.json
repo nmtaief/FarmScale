@@ -1,0 +1,24 @@
+{
+  "name": "farmscale",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FarmScale decision-support web app for climate-adapted crop rotations",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @farmscale/web",
+    "build": "npm run build -w @farmscale/web",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.1"
+  }
+}

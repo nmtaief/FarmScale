@@ -1,0 +1,137 @@
+/**
+ * FarmScale UI Tokens - Source of Truth
+ * Derived strictly from docs/DESIGN-RULES.md and docs/DESIGN.md ("Agro-Scientific Tactile")
+ */
+
+:root {
+  /* Light Theme Brand Colors */
+  --color-forest: #14291F;
+  --color-sage: #F3F7F0;
+  --color-white: #FFFFFF;
+  --color-gold: #D9A21B;
+  --color-gold-pressed: #C28F13;
+  --color-leaf: #2F7D4F;
+  --color-water: #2E7DA6;
+  --color-heat: #C2472D;
+  --color-muted: #4B6357;
+
+  /* Accessible Text Variants (WCAG AA compliant against light backgrounds) */
+  --color-water-text: #256B8F; /* 5.4:1 on sage, 5.8:1 on white */
+  --color-gold-text: #7A5900;  /* 6.0:1 on sage, 6.5:1 on white - Gold fill only on sage! */
+
+  /* Surface & Border Semantics */
+  --color-bg: var(--color-sage);
+  --color-surface: var(--color-white);
+  --color-surface-hover: #F8FAF6;
+  --color-text-primary: var(--color-forest);
+  --color-text-secondary: var(--color-muted);
+  --color-border: rgba(20, 41, 31, 0.08);
+  --color-border-strong: rgba(20, 41, 31, 0.20);
+  --color-overlay: rgba(20, 41, 31, 0.40);
+
+  /* Focus Ring */
+  --focus-ring-color: #D9A21B;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* Spacing Scale (8px system) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 96px;
+
+  /* Radius Scale */
+  --radius-sm: 8px;   /* buttons, inputs, tags */
+  --radius-md: 16px;  /* cards */
+  --radius-lg: 24px;  /* panels, sheets, modals */
+  --radius-full: 9999px; /* chips, slider thumbs, ring */
+
+  /* Elevation / Shadows */
+  --shadow-card: 0 1px 3px rgba(20, 41, 31, 0.05), 0 1px 2px rgba(20, 41, 31, 0.03);
+  --shadow-raised: 0 4px 12px rgba(20, 41, 31, 0.08), 0 2px 4px rgba(20, 41, 31, 0.04);
+  --shadow-sheet: 0 -4px 20px rgba(20, 41, 31, 0.15);
+
+  /* Typography Stacks */
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-sans: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Script-specific Line Heights (defaults: English) */
+  --line-height-display: 1.2;
+  --line-height-headline: 1.25;
+  --line-height-body: 1.5;
+  --line-height-small: 1.45;
+  --line-height-label: 1.35;
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"],
+.dark {
+  --color-bg: #0C1812;
+  --color-surface: #15281E;
+  --color-surface-hover: #1C3327;
+  --color-text-primary: #E8F0E4;
+  --color-text-secondary: #9DB3A5;
+  --color-border: #28402F;
+  --color-border-strong: #3D5F47;
+  --color-overlay: rgba(0, 0, 0, 0.65);
+
+  /* Semantic status in dark mode (all tested >= 4.5:1 against #0C1812) */
+  --color-gold: #E3B23C;
+  --color-gold-pressed: #C79828;
+  --color-leaf: #5BB27B;
+  --color-water: #5BB0D8;
+  --color-heat: #E8735A;
+  --color-water-text: #78C5EC;
+  --color-gold-text: #E3B23C;
+
+  --focus-ring-color: #E3B23C;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-raised: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-sheet: 0 -4px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* Script-Specific Typography Adjustments */
+html[lang="bn"],
+:lang(bn) {
+  --font-sans: "Noto Sans Bengali", "Noto Sans", sans-serif;
+  --line-height-display: 1.3;
+  --line-height-headline: 1.4;
+  --line-height-body: 1.65;
+  --line-height-small: 1.6;
+}
+
+html[lang="ja"],
+:lang(ja) {
+  --font-sans: "Noto Sans JP", "Noto Sans", sans-serif;
+  --font-serif: "Noto Serif JP", "Source Serif 4", serif;
+  --line-height-display: 1.4;
+  --line-height-headline: 1.5;
+  --line-height-body: 1.75;
+  --line-height-small: 1.7;
+}
+
+/* Base resets & utilities conforming to DESIGN-RULES.md */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  line-height: var(--line-height-body);
+  font-size: 16px; /* Body text never below 16px on mobile */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Focus ring accessibility standard */
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}

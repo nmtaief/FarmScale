@@ -1,0 +1,27 @@
+@import "@farmscale/ui-tokens/tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg text-primary min-h-screen flex flex-col font-sans;
+  }
+}
+
+@layer utilities {
+  /* Safe touch target minimum 44px */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Safe area padding for mobile bottom bar */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+}

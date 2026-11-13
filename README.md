@@ -1,114 +1,221 @@
-# FarmScale — Full-Stack Agro-Intelligence Platform
+# 🛰️ FarmScale — NASA Space Apps Challenge 2026
+### *Climate-Adapted Crop Rotation & Groundwater Preservation Platform for the Barind Tract*
 
-An integrated, end-to-end agricultural intelligence platform connecting:
-1. **Layer 1: LLM Natural Language Advisor (`farmscale/llm_layer/`)** — Natural language prompt interface powered by OpenRouter / OpenAI / Anthropic / Gemini, extracting farmer intent, location, constraints, and generating plain-language guidance in Bangla and English.
-2. **Layer 2: Crop Data Layer (`farmscale/crop_layer/`)** — Agronomic data, local core crops, water budgeting, and offline caching.
-3. **Layer 3: XGBoost ML Engine (`NasaAPIgateWay/ml/`)** — 335-tree gradient boosted crop rotation scoring and ranking engine, trained on real NASA satellite telemetry.
-4. **NASA Earth Data Gateway (`NasaAPIgateWay/`)** — Satellite telemetry engine with 10-year (2016–2026, 130 months) historical climate database (`engine.db`), interactive vector map, and REST APIs.
-
----
-
-## Quick Start (Run the Full Unified System)
-
-To run the complete system (Layer 1 LLM + Layer 2 Crop Data + Layer 3 XGBoost ML):
-
-```bash
-# 1. Install dependencies
-pip install -r NasaAPIgateWay/requirements.txt
-pip install fastapi uvicorn httpx pydantic pyyaml xgboost scikit-learn
-
-# 2. Run the unified application
-python run_farmscale.py
-```
-
-- **Unified Web Tester & Prompt Space:** Open [http://127.0.0.1:8000/tester.html](http://127.0.0.1:8000/tester.html)
-- **API Documentation:** Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- **NASA Climate Map Viewer:** Open [http://127.0.0.1:8000/map](http://127.0.0.1:8000/map)
-
-### Configuring OpenRouter / LLM
-In the Web Tester (`/tester.html`), click **LLM Settings** (top-right gear icon) to enter your OpenRouter API key and preferred model (e.g. `openai/gpt-4o-mini`, `google/gemini-2.0-flash`), or export it in your environment:
-```bash
-export OPENROUTER_API_KEY="your-openrouter-key"
-```
+[![NASA Space Apps 2026](https://img.shields.io/badge/NASA%20Space%20Apps-Challenge%202026-blue.svg)](https://www.spaceappschallenge.org/)
+[![Vercel Production](https://img.shields.io/badge/Vercel-Live%20Production-000?logo=vercel)](https://farmscale-web.vercel.app)
+[![Bilingual](https://img.shields.io/badge/Language-Bangla%20%7C%20English-green.svg)](https://farmscale-web.vercel.app/bn)
+[![XGBoost](https://img.shields.io/badge/ML-XGBoost%20Regressor%20(Layer%203)-orange.svg)](https://github.com/nmtaief/FarmScale)
+[![NASA Earth Data](https://img.shields.io/badge/NASA%20Earthdata-SMAP%20%7C%20MODIS%20%7C%20POWER-red.svg)](https://appeears.earthdatacloud.nasa.gov/)
+[![Tests Passing](https://img.shields.io/badge/Tests-41%2F41%20Passing%20(100%25)-brightgreen.svg)](https://github.com/nmtaief/FarmScale)
 
 ---
 
-## Architecture Overview
+## 🌐 Live Application & Repositories
+
+| Component | URL | Description |
+| :--- | :--- | :--- |
+| **🚀 Live Production Web App** | **[farmscale-web.vercel.app](https://farmscale-web.vercel.app)** | Next.js 15 mobile-first farmer app on Vercel |
+| **🇧🇩 বাংলা ইন্টারফেস (Bangla Default)** | **[farmscale-web.vercel.app/bn](https://farmscale-web.vercel.app/bn)** | Designed for low-literacy farmers (360px viewport) |
+| **📦 All-in-One GitHub Submission** | **[github.com/nmtaief/FarmScale](https://github.com/nmtaief/FarmScale)** | Official Monorepo (Web, ML, NASA Data, LLM Layer) |
+
+---
+
+## 🌾 The Problem: The Barind Tract Groundwater Crisis
+
+The **Barind Tract** across northwestern Bangladesh (Rajshahi, Naogaon, Chapai Nawabganj) is confronting a severe hydrological emergency:
+1. **Catastrophic Groundwater Depletion:** Over-reliance on irrigated dry-season Boro rice (*Oryza sativa*) has driven groundwater extraction beyond natural recharge. The water table in Upazilas like Tanore and Godagari drops by over **0.5 – 1.0 meter annually**, causing deep tubewells to run dry.
+2. **Smallholder Vulnerability:** Marginal farmers cultivate fragmented plots ($\approx 1$ bigha / 33 decimals). High diesel and electricity costs for deep irrigation wipe out farmer profit margins.
+3. **Information Barrier:** Smallholder farmers rely on mid-range Android smartphones (360px screen width), unstable 3G networks, and have limited reading literacy. Existing agricultural advisory tools present dense text, English interfaces, and lack localized satellite telemetry.
+
+---
+
+## 💡 The FarmScale Solution
+
+FarmScale turns **NASA Earth Observation data** and **Machine Learning** into one ultra-simple, honest decision-support experience built specifically for low-literacy smallholder farmers:
+
+```
+                  ┌─────────────────────────────────────────────────────────┐
+                  │                 NASA Earth Observations                 │
+                  │  • SMAP (Rootzone Soil Moisture)                        │
+                  │  • MODIS (250m NDVI / EVI & Drought Anomaly)            │
+                  │  • NASA POWER (Precipitation, Solar Radiation, Temp)    │
+                  └────────────────────────────┬────────────────────────────┘
+                                               │
+                                               ▼
+                  ┌─────────────────────────────────────────────────────────┐
+                  │             Layer 3: XGBoost ML Engine                  │
+                  │  • 335-Tree Regressor trained on 10-Yr NASA Telemetry   │
+                  │  • Evaluates 3-season crop rotation suitability         │
+                  └────────────────────────────┬────────────────────────────┘
+                                               │
+                                               ▼
+                  ┌─────────────────────────────────────────────────────────┐
+                  │          Layer 2: Agronomic Rules & Live Weather        │
+                  │  • BARI / DAE crop calendars & fertilizer doses/bigha   │
+                  │  • Open-Meteo 7-day live rainfall warnings & adaptation │
+                  └────────────────────────────┬────────────────────────────┘
+                                               │
+                                               ▼
+                  ┌─────────────────────────────────────────────────────────┐
+                  │       Layer 1: Mobile-First Farmer App (Vercel)         │
+                  │  • 1-Tap Location GPS & Barind Interactive Map Picker   │
+                  │  • Exactly 3 distinct rotation strategies (৳, 💧, ⚡)   │
+                  │  • Stage-by-stage AI farming outline (যখন কী করবেন)    │
+                  │  • Hind Siliguri typography, 44px+ touch targets        │
+                  └─────────────────────────────────────────────────────────┘
+```
+
+### Key Capabilities
+1. **Interactive Barind Map Picker & GPS:**
+   - 1-tap "আমার অবস্থান ব্যবহার করুন" (GPS geolocation).
+   - Interactive SVG map covering the Barind Tract (Rajshahi Sadar, Godagari, Tanore, Paba) with Padma River boundary. Farmers can tap directly on the map to drop a pin. Outside-pilot locations automatically snap to the nearest pilot upazila with an honest note.
+2. **Exactly 3 Distinct Rotation Choices (Rabi ➔ Kharif-1 ➔ Kharif-2):**
+   - **সবচেয়ে বেশি লাভ (Most Profit):** e.g., Potato $\rightarrow$ Mungbean $\rightarrow$ Aman Rice (Net Profit: ~৳40,000 / bigha).
+   - **বোরোর সেরা বিকল্প (Best Shift from Boro):** e.g., Mustard $\rightarrow$ Mungbean $\rightarrow$ Aman Rice (Saves **60% groundwater**, Net Profit: ~৳28,500 / bigha).
+   - **কম খরচ ও সহজ (Low Cost & Low Effort):** e.g., Lentil $\rightarrow$ Mungbean $\rightarrow$ Aman Rice (Cost: ~৳12,000, Net Profit: ~৳20,000 / bigha).
+3. **Live Weather Warning & Schedule Adaptation:**
+   - Connects live to Open-Meteo for 7-day local rainfall and temperature forecasts.
+   - Detects upcoming rain events ($\ge 1.0\text{ mm}$ or $\ge 50\%$ rain probability).
+   - **1-Tap Schedule Adjustment:** Farmers tap "আবহাওয়া অনুযায়ী সূচি সমন্বয় করুন" to dynamically push fertilizer application and irrigation past the rainy window to prevent nutrient runoff and seed rot.
+4. **Comprehensive Stage-by-Stage Farming Plan:**
+   - Detailed date-wise and growth-stage instructions (জমি তৈরি ➔ বীজ বপন ➔ সেচ ও সার ➔ নিড়ানি ➔ ফসল তোলা) for all 3 seasons.
+   - Exact BARI/DAE fertilizer dosage per bigha (Urea, TSP, MoP, Gypsum, Zinc).
+   - Grounded interactive AI Farm Advisor for voice/text Q&A in natural Bangla.
+
+---
+
+## 🛰️ NASA Earth Science Data Integration
+
+| Dataset | Satellite / Mission | Spatial / Temporal Resolution | How FarmScale Uses It |
+| :--- | :--- | :--- | :--- |
+| **L4_SM** (Rootzone Soil Moisture) | **NASA SMAP** (Soil Moisture Active Passive) | 9 km grid / 3-day global | Monitors root-zone water availability ($0\text{--}100\text{ cm}$) to predict crop water stress and trigger drought-tolerant rotation recommendations. |
+| **MOD13Q1.061** (NDVI & EVI) | **NASA Terra / Aqua MODIS** | 250 m / 16-day composite | Historical 10-year vegetation baseline (2016–2026). Generates the Vegetation Condition Index (VCI) to identify crop stress anomalies. |
+| **NASA POWER** | Multi-mission satellite & assimilation | $0.5^\circ \times 0.5^\circ$ daily | Climatology features: Daily precipitation sum, 2m air temperature, surface solar radiation, and relative humidity. |
+| **SoilGrids Telemetry** | ISRIC / NASA partnership | 250 m | Sand, silt, clay, bulk density, and organic carbon calibrated into 4 Barind soil texture classes (clay loam, loam, sandy loam, clay). |
+
+Data is processed via NASA AppEEARS API scripts in [`NasaAPIgateWay/scripts/`](file:///f:/Nasa%20API/FarmScale/NasaAPIgateWay/scripts/) and stored in an indexed 10-year SQLite climate database ([`engine.db`](file:///f:/Nasa%20API/FarmScale/NasaAPIgateWay/data/engine.db)).
+
+---
+
+## 📂 Repository Monorepo Structure
 
 ```
 FarmScale/
-├── farmscale/                         # Integrated LLM & Crop Data Package
-│   ├── llm_layer/                     # Layer 1: Prompt interpreter, intent parser, providers
-│   │   ├── web/tester.html            # Clean natural language prompt UI
-│   │   ├── providers/                 # OpenRouter, Anthropic, Gemini, OpenAI clients
-│   │   └── pipeline.py                # Pipeline coordinator
-│   ├── crop_layer/                    # Layer 2: Crop database, local core crop lookups
-│   ├── ml_seam/                       # Integration bridge connecting to Layer 3 ML
-│   │   ├── inprocess_client.py        # Direct zero-latency ML client
-│   │   └── contract_check.py          # Payload schema validation
-│   └── tests/                         # Full automated test suite (42 tests)
+├── apps/
+│   └── web/                               # Next.js 15 App Router Frontend
+│       ├── src/
+│       │   ├── app/
+│       │   │   ├── [locale]/              # Bilingual pages (/bn and /en)
+│       │   │   ├── api/weather/           # Open-Meteo 7-day forecast & rain warning API
+│       │   │   ├── api/recommend/         # 3-option deterministic/ML recommendation API
+│       │   │   └── api/advisor/           # AI farming advisor endpoint
+│       │   ├── components/
+│       │   │   ├── home/
+│       │   │   │   ├── BarindMapPicker.tsx # Interactive Barind SVG map picker
+│       │   │   │   ├── AiFarmingOutline.tsx# 3-season stage plan & weather adaptation
+│       │   │   │   └── SimpleFarmerHome.tsx# Farmer home matching farmscale-home spec
+│       │   │   ├── crops/CropIcon.tsx     # Reusable custom SVG crop icons
+│       │   │   └── brand/FarmScaleLogo.tsx# Brand logo
+│       │   └── lib/recommend/             # Pilot area bounds, crop data, scoring rules
+│       └── tests/                         # Vitest acceptance & unit test suites (37 tests)
 │
-├── NasaAPIgateWay/                    # NASA Earth Data & ML Gateway
-│   ├── ml/                            # Layer 3: XGBoost ML Model & Rotations
-│   │   ├── models/                    # Trained XGBoost models (xgb_crop_rotation.json)
-│   │   ├── service.py                 # Telemetry aggregator & scoring service
-│   │   ├── feature_pipeline.py        # Soil & telemetry feature assembler
-│   │   └── llm_tool.py                # Schema-validated tool executor
+├── packages/
+│   ├── scoring/                           # Deterministic & XGBoost scoring module (4 tests)
+│   └── ui-tokens/                         # Tailwind design tokens (#1B3B2B green, #E0A800 gold)
+│
+├── NasaAPIgateWay/                        # NASA Earth Observation & ML Gateway
+│   ├── ml/
+│   │   ├── models/xgb_crop_rotation.json  # Pre-trained 335-tree XGBoost model
+│   │   ├── xgboost_model.py               # Layer 3 XGBoost inference engine
+│   │   ├── feature_pipeline.py            # Telemetry & soil feature assembler
+│   │   ├── service.py                     # ML scoring service
+│   │   └── llm_tool.py                    # Structured LLM tool-calling seam
 │   ├── data/
-│   │   ├── engine.db                  # 10-Year Bangladesh NASA climate SQLite database
-│   │   └── crops.json                 # Crop parameters
-│   ├── main.py                        # NASA API gateway server
-│   └── requirements.txt               # Dependencies
+│   │   ├── engine.db                      # 10-year NASA historical climate database
+│   │   └── crops.json                     # Agronomic parameters for Barind crops
+│   └── scripts/                           # AppEEARS sync & GeoJSON generation scripts
 │
-├── run_farmscale.py                   # One-command full system launcher
-└── Crop Data API/                     # Legacy crop suitability microservice
+├── farmscale/                             # Layer 1 LLM & Layer 2 Crop Data Layer
+│   ├── llm_layer/                         # Natural language interpreter & OpenRouter interface
+│   ├── crop_layer/                        # Core crop lookups and agronomic data
+│   └── ml_seam/                           # Zero-latency in-process client bridging ML
+│
+├── docs/                                  # Project Architecture & Documentation
+│   ├── NASA_XGBOOST_ML_ARCHITECTURE.md    # Deep dive into Layer 1, 2, 3 ML architecture
+│   ├── NASA_Gateway_Rajshahi_Antigravity_Guide.md # NASA AppEEARS ingestion guide
+│   ├── DESIGN-RULES.md                    # Mobile-first UX constraints (360px viewport)
+│   └── architecture.mermaid               # Mermaid workflow diagram
+│
+├── package.json                           # Root monorepo workspace configuration
+├── vercel.json                            # Vercel deployment configuration
+├── requirements.txt                       # Python dependencies for ML/NASA backend
+├── run_farmscale.py                       # Unified backend launcher
+├── start_online.py                        # Cloudflare tunnel production runner
+└── sync_to_github.py                      # Automatic multi-repo GitHub sync utility
 ```
 
 ---
 
-## Quick Start
+## ⚡ Quick Start & Local Development
 
-### 1. Run NASA API Gateway (Port 8000)
-
+### 1. Web Application (Frontend)
 ```bash
-cd NasaAPIgateWay
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env       # (Optional: set EARTHDATA credentials for async AppEEARS jobs)
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+# Clone the repository
+git clone https://github.com/nmtaief/FarmScale.git
+cd FarmScale
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Run test suite
+npm test
 ```
+The web app is available at **http://localhost:3000** (Bangla at **http://localhost:3000/bn**).
 
-- **Interactive Climate Map:** Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) or `/map`
-- **Gateway Dashboard:** Open [http://127.0.0.1:8000/dashboard](http://127.0.0.1:8000/dashboard)
-- **API Tester:** Open [http://127.0.0.1:8000/tester](http://127.0.0.1:8000/tester)
-- **Interactive Swagger Docs:** Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
-### 2. Run Crop Data API (Port 8100)
-
+### 2. ML Gateway & NASA Telemetry (Backend)
 ```bash
-cd "Crop Data API"
+# Install Python dependencies
 pip install -r requirements.txt
-cp .env.example .env
-uvicorn main:app --reload --host 0.0.0.0 --port 8100
-```
 
-- **Interactive Tester:** Open [http://127.0.0.1:8100/](http://127.0.0.1:8100/)
-- **Swagger Docs:** Open [http://127.0.0.1:8100/docs](http://127.0.0.1:8100/docs)
+# Run the backend API & ML Gateway
+python run_farmscale.py
+```
+- API Documentation (Swagger): **http://127.0.0.1:8000/docs**
+- Unified Prompt Space: **http://127.0.0.1:8000/tester.html**
 
 ---
 
-## 10-Year Bangladesh Climate Dataset (2016–2026)
+## 🧪 Verification & Automated Testing
 
-The NASA API Gateway includes pre-collected and verified 10-year month-by-month NASA POWER agroclimatology records:
-- **Coverage:** All 64 Districts of Bangladesh and all 70 Upazilas of Rajshahi Division.
-- **Time Range:** January 2016 through October 2026 (130 monthly slices per area).
-- **Parameters:**
-  - `TempMean_C`, `TempMax_C`, `TempMin_C` (2m Air Temperature)
-  - `Precip_mm` (Corrected Monthly Precipitation)
-  - `RootzoneWetness` (0–1 Root Zone Soil Wetness)
-  - `TopsoilWetness` (0–1 Surface Soil Wetness)
-  - `WaterStressScore` (0–100 Normalized Agro-hydrological Stress Score)
-  - `WaterStressLevel` (`low`, `moderate`, `high`, `severe`)
+The repository includes comprehensive automated test suites covering:
+1. **Simple Farmer Home Acceptance:** Bilingual purity, zero Japanese leak, 3-option structure, Taka formatting with Bangla digits (`Intl.NumberFormat('bn-BD')`).
+2. **Barind Map Coordinate Snapping:** Correct nearest pilot upazila selection for boundary coordinates.
+3. **Open-Meteo Live Weather Thresholds:** Triggering alerts when $\ge 1.0\text{ mm}$ precipitation is forecasted.
+4. **Deterministic Scoring Engine:** Goal weight mapping (profit, water, soil).
 
-All dataset files can be queried via API or downloaded directly via CSV/GeoJSON endpoints.
+```bash
+npm test
+```
+```
+ ✓ tests/engine.test.ts (4 tests)
+ ✓ tests/store.test.ts (3 tests)
+ ✓ tests/farmJourney.test.ts (13 tests)
+ ✓ tests/acceptance.test.ts (9 tests)
+ ✓ tests/simpleHome.test.ts (10 tests)
+ ✓ tests/Button.test.tsx (2 tests)
+
+ Test Files  6 passed (6)
+      Tests  41 passed (41) - 100% Passing
+```
+
+---
+
+## 👥 NASA Space Apps Challenge 2026 Team
+
+* **Project Name:** FarmScale
+* **Lead Developer & Submitter:** Noor Mohammed Taief ([@nmtaief](https://github.com/nmtaief))
+* **Challenge:** Climate-Smart Agriculture / Earth Observation for Food Security
+* **Target Community:** Smallholder Farmers in Barind Tract (Rajshahi Division, Bangladesh)
