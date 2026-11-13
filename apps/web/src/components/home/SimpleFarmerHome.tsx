@@ -3,10 +3,12 @@
 import React, { useState, useEffect, useTransition } from "react";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
-import { Navigation, Sparkles, ArrowRight, MapPin, Check } from "lucide-react";
+import { Navigation, Sparkles, ArrowRight, MapPin, Check, Calculator } from "lucide-react";
 import { CropIcon, CROP_NAMES } from "@/components/crops/CropIcon";
 import { BarindMapPicker } from "./BarindMapPicker";
 import { AiFarmingOutline } from "./AiFarmingOutline";
+import { PicsaClimateSection } from "./PicsaClimateSection";
+import { CostBreakdownDrawer } from "@/components/planner/CostBreakdownDrawer";
 import { AuthButton } from "@/components/auth/AuthButton";
 import { MyFarmModal } from "./MyFarmModal";
 import {
@@ -102,6 +104,7 @@ export const SimpleFarmerHome: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [recommendations, setRecommendations] = useState<RecommendOption[]>([]);
   const [selectedOptionForOutline, setSelectedOptionForOutline] = useState<RecommendOption | null>(null);
+  const [costBreakdownOption, setCostBreakdownOption] = useState<RecommendOption | null>(null);
   const [myFarmOpen, setMyFarmOpen] = useState<boolean>(false);
   const [initialLoaded, setInitialLoaded] = useState<boolean>(false);
 
@@ -574,14 +577,23 @@ export const SimpleFarmerHome: React.FC = () => {
                         </div>
                       </div>
 
-                      <div className="border-x border-border/60">
-                        <div className="text-[12px] font-medium text-secondary">
-                          {t.cost}
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCostBreakdownOption(opt);
+                        }}
+                        className="border-x border-border/60 hover:bg-gold/10 transition-colors rounded-lg py-0.5 px-1 flex flex-col items-center cursor-pointer group"
+                        title={lang === "bn" ? "খরচের বিস্তারিত হিসাব দেখুন ও নিজের মতো পরিবর্তন করুন" : "View & edit cost breakdown"}
+                      >
+                        <div className="text-[12px] font-medium text-secondary flex items-center gap-1">
+                          <span>{t.cost}</span>
+                          <span className="text-[10px] text-emerald-800 font-bold bg-emerald-100 px-1 rounded-sm group-hover:bg-emerald-200">ⓘ</span>
                         </div>
                         <div className="text-[18px] sm:text-[19px] font-bold text-primary mt-0.5">
                           {formatTaka(opt.cost_per_bigha, lang)}
                         </div>
-                      </div>
+                      </button>
 
                       <div>
                         <div className="text-[12px] font-medium text-secondary">
@@ -598,6 +610,20 @@ export const SimpleFarmerHome: React.FC = () => {
                       {reason}
                     </p>
 
+                    {/* Cost Breakdown & Participatory Budget Button */}
+                    <button
+                      type="button"
+                      onClick={() => setCostBreakdownOption(opt)}
+                      className="w-full mt-3 py-2 px-3 rounded-xl text-xs sm:text-[13px] font-bold text-emerald-900 bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/90 flex items-center justify-center gap-1.5 transition-colors cursor-pointer min-h-[40px]"
+                    >
+                      <Calculator className="w-4 h-4 text-amber-600" />
+                      <span>
+                        {lang === "bn"
+                          ? "উৎপাদন খরচ ও লাভ-ক্ষতির পূর্ণ হিসাব (সম্পাদনাযোগ্য) ⓘ"
+                          : "Cost Breakdown & Participatory Budget ⓘ"}
+                      </span>
+                    </button>
+
                     {/* Action button to expand stage-by-stage AI outline */}
                     <button
                       type="button"
@@ -608,7 +634,7 @@ export const SimpleFarmerHome: React.FC = () => {
                           if (outlineEl) outlineEl.scrollIntoView({ behavior: "smooth" });
                         }, 100);
                       }}
-                      className={`w-full mt-4 py-2.5 px-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[44px] ${
+                      className={`w-full mt-2.5 py-2.5 px-4 rounded-xl font-bold text-[15px] flex items-center justify-center gap-2 transition-all cursor-pointer min-h-[44px] ${
                         isSelectedForOutline
                           ? "bg-forest text-white ring-2 ring-gold"
                           : "bg-gold/20 hover:bg-gold/30 text-primary border border-gold/40"
@@ -620,6 +646,19 @@ export const SimpleFarmerHome: React.FC = () => {
                   </article>
                 );
               })}
+            </div>
+
+            {/* PICSA Historical Climate History & Risk Analysis (NASA POWER Climatology) */}
+            <div className="mt-8">
+              <PicsaClimateSection
+                districtEn={currentUpazila.district_en}
+                upazilaBn={currentUpazila.upazila_bn}
+                upazilaEn={currentUpazila.upazila_en}
+                lang={lang}
+                onOpenCostBreakdown={() => {
+                  setCostBreakdownOption(recommendations[0]);
+                }}
+              />
             </div>
 
             {/* AI Farming Outline and Live Weather (Renders when an option is tapped) */}
@@ -643,6 +682,19 @@ export const SimpleFarmerHome: React.FC = () => {
           </div>
         )}
       </section>
+
+      {/* Participatory Budgeting & Cost Breakdown Drawer */}
+      {costBreakdownOption && (
+        <CostBreakdownDrawer
+          isOpen={costBreakdownOption !== null}
+          onClose={() => setCostBreakdownOption(null)}
+          rotationKey={costBreakdownOption.key}
+          rotationTitle={t.titles[costBreakdownOption.key] || costBreakdownOption.title_bn}
+          crops={costBreakdownOption.crops}
+          lang={lang}
+          districtName={currentUpazila.district_en}
+        />
+      )}
 
       {/* "My Farm" Modal / Drawer */}
       <MyFarmModal

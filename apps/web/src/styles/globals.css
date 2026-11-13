@@ -25,3 +25,18 @@
     padding-bottom: env(safe-area-inset-bottom, 16px);
   }
 }
+
+@media print {
+  header, nav, button, .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  #ai-outline-section {
+    display: block !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
