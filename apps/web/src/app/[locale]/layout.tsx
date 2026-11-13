@@ -102,7 +102,7 @@ export default async function RootLayout({
           <OfflineBanner />
           <Header />
           <ContextBar />
-          <main className="flex-1 pb-24 md:pb-12 max-w-content w-full mx-auto px-4 py-6">
+          <main className="flex-1 pb-24 md:pb-12 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
             {children}
           </main>
           <AiAssistantSlot />

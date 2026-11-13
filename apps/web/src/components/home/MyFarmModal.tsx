@@ -158,12 +158,16 @@ export const MyFarmModal: React.FC<MyFarmModalProps> = ({
             <Sprout className="w-6 h-6 text-amber-300" />
             <div>
               <h2 className="text-lg font-bold tracking-tight">{t.title}</h2>
-              {user && <p className="text-xs text-emerald-200">{user.email}</p>}
+              <span className="text-[11px] text-emerald-200">
+                {lang === "bn"
+                  ? "জমির মাপ ও সেচ তথ্য স্বয়ংক্রিয় সংরক্ষিত"
+                  : "Locally saved farm preferences"}
+              </span>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-emerald-700/60 transition min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="p-2 rounded-full hover:bg-emerald-700/60 transition min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer"
             aria-label={t.close}
           >
             <X className="w-5 h-5 text-white" />
@@ -296,22 +300,28 @@ export const MyFarmModal: React.FC<MyFarmModalProps> = ({
 
         {/* Footer */}
         <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-3">
-          {user ? (
-            <button
-              onClick={signOut}
-              className="px-3.5 py-2.5 text-rose-600 hover:bg-rose-50 rounded-xl text-sm font-semibold flex items-center gap-1.5 transition min-h-[44px]"
-            >
-              <LogOut className="w-4 h-4" />
-              <span>{t.signOut}</span>
-            </button>
-          ) : (
-            <span className="text-xs text-slate-400">গেস্ট মোড</span>
-          )}
+          <button
+            type="button"
+            onClick={() => {
+              try {
+                localStorage.removeItem("farmscale_saved_farm");
+              } catch {}
+              setDistrictEn(currentDistrictEn);
+              setUpazilaEn(currentUpazilaEn);
+              setLandSize(1.0);
+              setLandUnit("bigha");
+              setSoilType("clay_loam");
+              setIrrigation("deep_tubewell");
+            }}
+            className="px-3.5 py-2 text-slate-500 hover:text-rose-600 hover:bg-rose-50 rounded-xl text-xs font-semibold transition min-h-[44px] cursor-pointer"
+          >
+            {lang === "bn" ? "রিসেট করুন" : "Reset"}
+          </button>
 
           <button
             onClick={handleSave}
             disabled={saving}
-            className="px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-sm font-bold shadow-md hover:shadow transition flex items-center gap-2 min-h-[44px]"
+            className="px-6 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl text-sm font-bold shadow-md hover:shadow transition flex items-center gap-2 min-h-[44px] cursor-pointer"
           >
             <Save className="w-4 h-4" />
             <span>{saving ? "..." : t.saveBtn}</span>

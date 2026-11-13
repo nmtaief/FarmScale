@@ -667,7 +667,7 @@ export const AiFarmingOutline: React.FC<AiFarmingOutlineProps> = ({
 
         <p className="text-xs text-secondary leading-relaxed m-0">
           {lang === "bn"
-            ? "আপনার নির্বাচিত ফসল, সার প্রয়োগ বা আবহাওয়ার সমস্যা সম্পর্কে প্রশ্ন লিখুন বা বলুন।"
+            ? "আপনার নির্বাচিত ফসল, সার প্রয়োগ বা আবহাওয়ার সমস্যা সম্পর্কে প্রশ্ন লিখুন।"
             : "Ask questions specifically tailored to this crop sequence, soil and local Barind climate."}
         </p>
 

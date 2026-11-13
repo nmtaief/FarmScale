@@ -3,13 +3,12 @@
 import React, { useState, useEffect, useTransition } from "react";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
-import { Navigation, Sparkles, ArrowRight, MapPin, Check, Calculator } from "lucide-react";
+import { Navigation, Sparkles, ArrowRight, MapPin, Check, Calculator, Sprout } from "lucide-react";
 import { CropIcon, CROP_NAMES } from "@/components/crops/CropIcon";
 import { BarindMapPicker } from "./BarindMapPicker";
 import { AiFarmingOutline } from "./AiFarmingOutline";
 import { PicsaClimateSection } from "./PicsaClimateSection";
 import { CostBreakdownDrawer } from "@/components/planner/CostBreakdownDrawer";
-import { AuthButton } from "@/components/auth/AuthButton";
 import { MyFarmModal } from "./MyFarmModal";
 import {
   ALL_RAJSHAHI_UPAZILAS,
@@ -279,8 +278,8 @@ export const SimpleFarmerHome: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto py-3 sm:py-6 px-3 sm:px-6 lg:px-8 pb-20 font-sans antialiased text-primary">
-      {/* Top Header: Brand + Lang Toggle + Auth Button */}
+    <div className="w-full mx-auto pb-12 font-sans antialiased text-primary">
+      {/* Top Header: Brand + Lang Toggle + Direct "My Farm" Button */}
       <header className="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8 pb-4 border-b border-border/70">
         <div className="flex items-center gap-3">
           <svg
@@ -360,8 +359,16 @@ export const SimpleFarmerHome: React.FC = () => {
             </button>
           </div>
 
-          {/* Google Auth & My Farm Dropdown */}
-          <AuthButton lang={lang} onOpenMyFarm={() => setMyFarmOpen(true)} />
+          {/* Frictionless "My Farm" Button (No Login Required) */}
+          <button
+            type="button"
+            onClick={() => setMyFarmOpen(true)}
+            className="flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-emerald-600/30 bg-emerald-50 hover:bg-emerald-100 text-emerald-950 font-bold text-xs sm:text-sm shadow-2xs transition min-h-[38px] cursor-pointer"
+            title={lang === "bn" ? "আমার খামার (জমির তথ্য ও সেচ সংরক্ষণ)" : "My Farm (Saved Land & Irrigation)"}
+          >
+            <Sprout className="w-4 h-4 text-emerald-700" />
+            <span>{lang === "bn" ? "আমার খামার" : "My Farm"}</span>
+          </button>
         </div>
       </header>
 
@@ -498,14 +505,6 @@ export const SimpleFarmerHome: React.FC = () => {
         </div>
       )}
 
-      {/* Dynamic Status / Location Notes */}
-      <p
-        className="min-h-[24px] mt-2 mb-2 text-[14px] text-secondary leading-snug"
-        role="status"
-      >
-        {statusMessage}
-      </p>
-
       {/* Output Results Region (Rendered after selection) */}
       <section id="out" aria-live="polite" className="mt-2">
         {loading && (
@@ -576,7 +575,7 @@ export const SimpleFarmerHome: React.FC = () => {
                         </div>
                       </div>
 
-                      <h2 className="text-[19px] sm:text-[21px] font-bold text-primary leading-snug mb-3">
+                      <h2 className="text-[18px] sm:text-[20px] font-bold text-primary leading-snug mb-3 min-h-[54px] flex items-center">
                         {cardTitle}
                       </h2>
 
@@ -656,7 +655,7 @@ export const SimpleFarmerHome: React.FC = () => {
                       </div>
 
                       {/* Short Reason Sentence */}
-                      <p className="text-[14px] sm:text-[15px] text-secondary leading-relaxed m-0 mb-4">
+                      <p className="text-[13px] sm:text-[14px] text-secondary leading-relaxed m-0 mb-4 min-h-[64px]">
                         {reason}
                       </p>
                     </div>
